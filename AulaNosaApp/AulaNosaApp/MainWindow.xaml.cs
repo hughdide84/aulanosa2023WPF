@@ -24,5 +24,10 @@ namespace AulaNosaApp
         {
             InitializeComponent();
         }
+
+        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        {
+            fPrincipal.Source = new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative);
+        }
     }
 }

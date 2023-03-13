@@ -48,7 +48,7 @@
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios"></Button>
                     <Button x:Name="btnCursos" Content="Cursos"></Button>
-                    <Button x:Name="btnEstudios" Content="Estudios"></Button>
+                    <Button x:Name="btnEstudios" Content="Estudios" Click="btnEstudios_Click"></Button>
                 </StackPanel>
             </StackPanel>
 
@@ -125,9 +125,9 @@
 
         </Grid>
 
-        <Frame DockPanel.Dock="Right" Content="Frame">
+        <Frame x:Name="fPrincipal" DockPanel.Dock="Right" Content="Frame"/>
 
-        </Frame>
+
 
     </DockPanel>
 </Window>
