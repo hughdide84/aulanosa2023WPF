@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" MinHeight="650" MinWidth="1000">
+        Title="MainWindow" Height="650" Width="800" MinHeight="650" MinWidth="800">
 
     <Window.Resources>
         <Style TargetType="Button">
@@ -18,15 +18,29 @@
             <Setter Property="Margin" Value="0,0,0,5"/>
         </Style>
 
-        <Style x:Key="LabelMenuPpal" TargetType="Label">
+        <Style x:Key="BotonesBarraSuperior" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,0,5"/>
         </Style>
 
         <Style x:Key="BotonesCentrados" TargetType="StackPanel">
             <Setter Property="Margin" Value="25,0,0,0"/>
         </Style>
-
+        
     </Window.Resources>
 
     <DockPanel>
@@ -42,9 +56,9 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,5" >
+            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Foreground="Gray"
-                       Style="{StaticResource LabelMenuPpal}"/>
+                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios"></Button>
                     <Button x:Name="btnCursos" Content="Cursos"></Button>
@@ -52,9 +66,9 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,5" >
+            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblFCT" Content="GESTIÓN FCT" Foreground="Gray"
-                       Style="{StaticResource LabelMenuPpal}"/>
+                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnEmpresas" Content="Empresas"></Button>
                     <Button x:Name="btnAlumnado" Content="Alumnado"></Button>
@@ -65,9 +79,9 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,5" >
+            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPFC" Content="GESTIÓN PFC" Foreground="Gray"
-                       Style="{StaticResource LabelMenuPpal}"/>
+                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnProyectos" Content="Proyectos"></Button>
                     <Button x:Name="btnNotas" Content="Notas"></Button>
@@ -76,9 +90,9 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,5" >
+            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Foreground="Gray"
-                       Style="{StaticResource LabelMenuPpal}"/>
+                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo"></Button>
                     <Button x:Name="btnCalendarioPext" Content="Calendario"></Button>
@@ -88,24 +102,24 @@
 
         <Grid DockPanel.Dock="Top" Height="60">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65*"/>
-                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Image Source="/Imagenes/aulanosa_logo.png" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0"/>
 
-            <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="btnInicio" Background="White" Margin="0,0,15,0">
+            <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
                     <StackPanel  Orientation="Vertical">
                         <Image Source="/Imagenes/home_icon.png" Width="25"/>
-                        <TextBlock Text="Inicio" Foreground="Black"/>
+                        <TextBlock Text="Inicio"/>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="btnMensajeria" Background="White" Margin="0,0,15,0">
+                <Button x:Name="btnMensajeria" Style="{StaticResource BotonesBarraSuperior}">
                     <StackPanel  Orientation="Vertical">
                         <Image Source="/Imagenes/message_icon.png" Width="25"/>
-                        <TextBlock Text="Mensajería" Foreground="Black"/>
+                        <TextBlock Text="Mensajería"/>
                     </StackPanel>
                 </Button>
 
@@ -114,13 +128,12 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagenes/user_icon.png" Width="45"/>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="Nombre" Foreground="Black" FontSize="15" FontWeight="DemiBold"/>
-                                <TextBlock Text="Categoría" Foreground="Black"/>
+                                <TextBlock Text="Nombre" FontSize="15" FontWeight="DemiBold"/>
+                                <TextBlock Text="Categoría"/>
                             </StackPanel>
                         </StackPanel>
                     </ComboBoxItem>
                 </ComboBox>
-
             </WrapPanel>
 
         </Grid>
