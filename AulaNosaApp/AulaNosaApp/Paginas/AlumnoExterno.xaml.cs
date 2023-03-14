@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AulaNosaApp.Ventanas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,26 +14,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp
+namespace AulaNosaApp.Paginas
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para AlumnoExterno.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AlumnoExterno : Page
     {
-        public MainWindow()
+        public AlumnoExterno()
         {
             InitializeComponent();
         }
 
-        private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
+        private void CrearAlumnExt_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void Frame1_Navigated(object sender, NavigationEventArgs e)
-        {
-
+            CrearAlumnoExterno crearAlumnExt = new CrearAlumnoExterno();
+            crearAlumnExt.Show();
         }
     }
 }

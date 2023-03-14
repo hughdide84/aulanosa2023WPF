@@ -1,0 +1,49 @@
+﻿<Window x:Class="AulaNosaApp.Ventanas.CrearAlumnoExterno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
+        mc:Ignorable="d"
+        Title="CrearAlumnoExterno" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Width="665">
+            <Label Content="Crear Alumno Externo" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Text="Nombre:"/>
+                <TextBox Name="txtNombre"/>
+
+                <TextBlock Text="Apellidos:"/>
+                <TextBox Name="txtApellidos"/>
+
+                <TextBlock Text="Correo:"/>
+                <TextBox Name="txtCorreo"/>
+
+                <TextBlock Text="Teléfono:"/>
+                <TextBox Name="txtTelefono"/>
+
+                <TextBlock Text="Universidad:"/>
+                <TextBox Name="txtUniversidad"/>
+
+                <TextBlock Text="Titulación:"/>
+                <TextBox Name="txtTitulacion"/>
+
+                <TextBlock Text="Especialidad:"/>
+                <TextBox Name="txtEspecialidad"/>
+
+                <TextBlock Text="Comentarios:"/>
+                <TextBox Name="txtComentarios"/>
+            <WrapPanel Height="10"/>
+            <WrapPanel>
+                <TextBlock Text="CV:" Margin="10"/>
+                <Button Name="btnSubirCV" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Convenio:" Margin="10"/>
+                <Button Name="btnSubirConvenio" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Evaluación:" Margin="10"/>
+                <Button Name="btnSubirEvaluacion" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Horario:" Margin="10"/>
+                <Button Name="btnSubirHorario" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+            </WrapPanel>
+            </StackPanel>
+            
+    </Grid>
+</Window>

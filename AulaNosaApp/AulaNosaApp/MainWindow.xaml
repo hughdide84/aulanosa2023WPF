@@ -92,7 +92,7 @@
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo"></Button>
+                    <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Click="btnAlumnadoExterno_Click"></Button>
                     <Button x:Name="btnCalendarioPext" Content="Calendario"></Button>
                 </StackPanel>
             </StackPanel>
@@ -136,8 +136,8 @@
 
         </Grid>
 
-        <Frame DockPanel.Dock="Right" Content="Frame">
-
+        <Frame DockPanel.Dock="Right" Content="Frame" Name="Frame1" Navigated="Frame1_Navigated">
+            
         </Frame>
 
     </DockPanel>
