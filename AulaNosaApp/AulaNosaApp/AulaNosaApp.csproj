@@ -89,6 +89,9 @@
     </ApplicationDefinition>
     <Compile Include="DTO\ErrorDTO.cs" />
     <Compile Include="DTO\EstudioDTO.cs" />
+    <Compile Include="Paginas\investigacionCalendario.xaml.cs">
+      <DependentUpon>investigacionCalendario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\EstudioApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Ventanas\EstudioAlta.xaml.cs">
@@ -110,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Paginas\CORE-Administración-de-estudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\investigacionCalendario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
