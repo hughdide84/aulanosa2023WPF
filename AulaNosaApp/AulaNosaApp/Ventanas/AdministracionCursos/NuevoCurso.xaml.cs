@@ -31,7 +31,14 @@ namespace AulaNosaApp
 
         private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
-            //Close();
+            if (tbxAñadirNombre.Text == "" || dtpAñadirInicio.Text == "" || dtpAñadirFin.Text == "" || cmbAñadirEstado.SelectedIndex == 0)
+            {
+                MessageBox.Show("Alguno de los campos está vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                //Agregar a la lista de cursos el nuevo curso
+            }
         }
     }
 }

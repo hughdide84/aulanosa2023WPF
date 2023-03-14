@@ -31,7 +31,13 @@ namespace AulaNosaApp
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            //Close();
+            if (tbxEditarNombre.Text == "" || dtpEditarInicio.Text == "" || dtpEditarFin.Text == "" || cmbEditarEstado.SelectedIndex == 0) {
+                MessageBox.Show("Alguno de los campos está vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                //Modificar la lista de cursos con los nuevos datos
+            }
         }
     }
 }

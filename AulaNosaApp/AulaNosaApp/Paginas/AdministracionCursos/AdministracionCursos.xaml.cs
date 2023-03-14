@@ -30,7 +30,7 @@ namespace AulaNosaApp
             cmbConsultar.Visibility = Visibility.Hidden;
             tbxConsultar.Visibility = Visibility.Hidden;
             //lista = ProductosApi.ListarProductos();
-            //this.grdListado.ItemsSource = lista;
+            //this.dtgListado.ItemsSource = lista;
         }
 
         private void BtnRefrescar_Click(object sender, RoutedEventArgs e)
@@ -48,7 +48,7 @@ namespace AulaNosaApp
         private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
 
-            //ProductoDTO? productoSel = grdListado.SelectedItem as ProductoDTO;
+            //ProductoDTO? productoSel = dtgListado.SelectedItem as ProductoDTO;
             //if (productoSel != null)
             //{
             //    EditarCurso editarcurso = new EditarCurso(productoSel);
@@ -63,7 +63,7 @@ namespace AulaNosaApp
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            //ProductoDTO? productoSel = grdListado.SelectedItem as ProductoDTO;
+            //ProductoDTO? productoSel = dtgListado.SelectedItem as ProductoDTO;
 
             //if (productoSel != null)
             //{
@@ -83,11 +83,16 @@ namespace AulaNosaApp
                 MessageBox.Show("No existe nada de momento en BBDD", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 filtrar();
             }
+            else if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text == "")
+            {
+                MessageBox.Show("El buscador no puede estar vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
                 cmbConsultar.Items.Clear();
                 cmbConsultar.Items.Add("Id");
                 cmbConsultar.Items.Add("Nombre");
+                cmbConsultar.SelectedIndex = 0;
 
                 if (cmbConsultar.Visibility == Visibility.Visible)
                 {
@@ -107,12 +112,12 @@ namespace AulaNosaApp
             if (cmbConsultar.SelectedIndex == 0)
             {
                 //lista = ProductosApi.ListarProductosPorId(tbxConsultar);
-                //this.grdListado.ItemsSource = lista;
+                //this.dtgListado.ItemsSource = lista;
             }
             else if (cmbConsultar.SelectedIndex == 1)
             {
                 //lista = ProductosApi.ListarProductosPorNombre(tbxConsultar);
-                //this.grdListado.ItemsSource = lista;
+                //this.dtgListado.ItemsSource = lista;
             }
         }
     }

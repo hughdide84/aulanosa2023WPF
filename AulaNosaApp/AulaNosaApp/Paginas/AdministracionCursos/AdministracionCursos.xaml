@@ -39,8 +39,8 @@
                 </ToolBar>
             </DockPanel>
 
-            <DataGrid Grid.Row="1" Name="grdListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False">
-                <DataGrid.Columns >
+            <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False">
+                <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
                     <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
