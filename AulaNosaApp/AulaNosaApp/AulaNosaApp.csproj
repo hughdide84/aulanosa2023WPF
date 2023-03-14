@@ -55,13 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Paginas\UsuarioAdm.xaml.cs">
+    <Compile Include="Paginas\AdministracionUsuarios\UsuarioAdm.xaml.cs">
       <DependentUpon>UsuarioAdm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\UsuarioCrear.xaml.cs">
+    <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
       <DependentUpon>UsuarioCrear.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\UsuarioModificar.xaml.cs">
+    <Compile Include="Ventanas\AdministracionUsuarios\UsuarioModificar.xaml.cs">
       <DependentUpon>UsuarioModificar.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -76,15 +76,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Paginas\UsuarioAdm.xaml">
+    <Page Include="Paginas\AdministracionUsuarios\UsuarioAdm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ventanas\UsuarioCrear.xaml">
+    <Page Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ventanas\UsuarioModificar.xaml">
+    <Page Include="Ventanas\AdministracionUsuarios\UsuarioModificar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

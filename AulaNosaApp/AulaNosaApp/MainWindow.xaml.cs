@@ -24,10 +24,5 @@ namespace AulaNosaApp
         {
             InitializeComponent();
         }
-
-        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrinicpal.Source = new Uri("/Paginas/UsuarioAdm.xaml", UriKind.Relative);
-        }
     }
 }
