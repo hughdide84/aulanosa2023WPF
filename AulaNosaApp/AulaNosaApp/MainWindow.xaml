@@ -27,6 +27,7 @@
         <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="Gray"/>
         </Style>
 
         <Style TargetType="TextBlock">
@@ -67,8 +68,7 @@
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblFCT" Content="GESTIÓN FCT" Foreground="Gray"
-                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
+                <Label x:Name="lblFCT" Content="GESTIÓN FCT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnEmpresas" Content="Empresas"></Button>
                     <Button x:Name="btnAlumnado" Content="Alumnado"></Button>
@@ -80,8 +80,7 @@
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblPFC" Content="GESTIÓN PFC" Foreground="Gray"
-                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
+                <Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnProyectos" Content="Proyectos"></Button>
                     <Button x:Name="btnNotas" Content="Notas"></Button>
@@ -91,8 +90,7 @@
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Foreground="Gray"
-                       Style="{StaticResource LabelTitulosMenuIzqda}"/>
+                <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo"></Button>
                     <Button x:Name="btnCalendarioPext" Content="Calendario"></Button>
