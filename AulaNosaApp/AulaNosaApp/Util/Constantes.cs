@@ -8,6 +8,6 @@ namespace AulaNosaApp.Util
 {
     static class Constantes
     {
-        public const String baseApi = "";
+        public const String baseApi = "localhost";
     }
 }

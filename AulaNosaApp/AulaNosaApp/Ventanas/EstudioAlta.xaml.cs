@@ -30,7 +30,7 @@ namespace AulaNosaApp.Ventanas
         {
             string mensaje = "Va a abandonar la pantalla sin guardar las modificaciones, ¿está seguro?";
             string titulo = "Confirmación";
-            if (!tbNombre.Text.Equals(""))
+            if (!tbxNombre.Text.Equals(""))
             {
                 if (MessageBox.Show(mensaje, titulo, MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
                     this.Close();
@@ -43,17 +43,17 @@ namespace AulaNosaApp.Ventanas
 
         private void Aceptar(object sender, RoutedEventArgs e)
         {
-            tbErrores.Visibility = Visibility.Hidden;
+            tbkErrores.Visibility = Visibility.Hidden;
             EstudioDTO estudio = new EstudioDTO();
-            estudio.nombre = tbNombre.Text;
-            estudio.fct = (bool)cbFct.IsChecked ? true : false;
-            estudio.pext = (bool)cbPext.IsChecked ? true : false;
+            estudio.nombre = tbxNombre.Text;
+            estudio.fct = (bool)chbFct.IsChecked ? true : false;
+            estudio.pext = (bool)chbPext.IsChecked ? true : false;
             string errores = EstudioApi.AltaEstudio(estudio);
 
             if (!errores.Equals(""))
             {
-                tbErrores.Text = errores;
-                tbErrores.Visibility = Visibility.Visible;
+                tbkErrores.Text = errores;
+                tbkErrores.Visibility = Visibility.Visible;
             }
             else
             {

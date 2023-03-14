@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 <ToolBarTray Height="40" VerticalAlignment="Top">
-                    <ToolBar Name="tbDatos" Height="40">
+                    <ToolBar Height="40">
                         <Button Content="Refrescar" Click="btnRefrescar_Click"/>
                         <Button Content="Nuevo" Click="btnNuevo_Click"/>
                         <Button Content="Editar" Click="btnEditar_Click"/>
@@ -27,7 +27,7 @@
                     </ToolBar>
                 </ToolBarTray>
             </StackPanel>
-            <DataGrid Grid.Row="1" Name="dgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" x:Name="dgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False">
                 <DataGrid.Columns >
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>

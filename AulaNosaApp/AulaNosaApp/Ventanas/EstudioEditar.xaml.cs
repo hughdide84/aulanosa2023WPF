@@ -24,17 +24,17 @@ namespace AulaNosaApp.Ventanas
         public EstudioEditar(EstudioDTO estudio)
         {
             InitializeComponent();
-            tbId.Text = estudio.id.ToString();
-            tbNombre.Text = estudio.nombre.ToString();
-            cbFct.IsChecked = estudio.fct;
-            cbPext.IsChecked = estudio.pext;
+            tbkId.Text = estudio.id.ToString();
+            tbxNombre.Text = estudio.nombre.ToString();
+            chbFct.IsChecked = estudio.fct;
+            chbPext.IsChecked = estudio.pext;
         }
 
         private void Cancelar(object sender, RoutedEventArgs e)
         {
             string mensaje = "Va a abandonar la pantalla, podría perder las modificaciones realizadas. ¿Está seguro?";
             string titulo = "Confirmación";
-            if (!tbNombre.Text.Equals(""))
+            if (!tbxNombre.Text.Equals(""))
             {
                 if (MessageBox.Show(mensaje, titulo, MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
                     this.Close();
@@ -47,17 +47,17 @@ namespace AulaNosaApp.Ventanas
 
         private void Aceptar(object sender, RoutedEventArgs e)
         {
-            tbErrores.Visibility = Visibility.Hidden;
+            tbkErrores.Visibility = Visibility.Hidden;
             EstudioDTO estudio = new EstudioDTO();
-            estudio.id = Convert.ToInt32(tbId.Text);
-            estudio.nombre = tbNombre.Text;
-            estudio.fct = (bool) cbFct.IsChecked ? true : false;
-            estudio.pext = (bool) cbPext.IsChecked ? true : false;
+            estudio.id = Convert.ToInt32(tbkId.Text);
+            estudio.nombre = tbxNombre.Text;
+            estudio.fct = (bool) chbFct.IsChecked ? true : false;
+            estudio.pext = (bool) chbPext.IsChecked ? true : false;
             string errores = EstudioApi.EditarEstudio(estudio);
             if (!errores.Equals(""))
             {
-                tbErrores.Text = errores;
-                tbErrores.Visibility = Visibility.Visible;
+                tbkErrores.Text = errores;
+                tbkErrores.Visibility = Visibility.Visible;
             }
             else
             {

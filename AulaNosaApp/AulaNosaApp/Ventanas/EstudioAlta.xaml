@@ -9,19 +9,26 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="Nuevo Estudio" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0,0,0,15"/>
-            <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <TextBlock Text="Nombre" TextAlignment="Right" Margin="10,0,10,0"/>
-                <TextBox x:Name="tbNombre" Width="200" Margin="0,0,235,0"/>
-            </WrapPanel>
-            <WrapPanel  HorizontalAlignment="Right" Margin="0,0,0,10">
-                <TextBlock Text="FCT" TextAlignment="Right" Margin="10,0,10,0"/>
-                <CheckBox x:Name="cbFct" Margin="0,0,420,0"/>
-            </WrapPanel>
-            <WrapPanel  HorizontalAlignment="Right" Margin="0,0,0,10">
-                <TextBlock Text="PEXT" TextAlignment="Right" Margin="10,0,10,0"/>
-                <CheckBox x:Name="cbPext" Margin="0,0,420,0"/>
-            </WrapPanel>
-            <TextBlock x:Name="tbErrores" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
+                <TextBox x:Name="tbxNombre" Grid.Column="1" Width="200" Margin="5,0,0,10" HorizontalAlignment="Left"/>
+
+                <TextBlock Text="FCT" Grid.Row="1" TextAlignment="Right" Margin="10,0,10,0"/>
+                <CheckBox x:Name="chbFct" Grid.Row="1" Grid.Column="1" Margin="5,0,0,10" HorizontalAlignment="Left"/>
+
+                <TextBlock Text="PEXT" Grid.Row="2" TextAlignment="Right" Margin="10,0,10,0"/>
+                <CheckBox x:Name="chbPext" Grid.Row="2" Grid.Column="1" Margin="5,0,0,10"/>
+            </Grid>
+            <TextBlock x:Name="tbkErrores" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" Visibility="Hidden"/>
         </StackPanel>
         <Button Content="Aceptar" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Click="Aceptar"/>
         <Button Content="Cancelar" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Click="Cancelar"/>

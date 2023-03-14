@@ -18,7 +18,7 @@ namespace AulaNosaApp.Servicios
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient(Constantes.baseApi);
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/productos", Method.Post);
+            var request = new RestRequest("api/estudio", Method.Post);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = client.Execute(request);
@@ -48,7 +48,7 @@ namespace AulaNosaApp.Servicios
             List<EstudioDTO> estudios = new List<EstudioDTO>();
             var cliente = new RestClient(Constantes.baseApi);
             cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudios", Method.Get);
+            var request = new RestRequest("api/estudio", Method.Get);
             var response = cliente.Execute(request);
 
             if (response != null) {
@@ -72,7 +72,7 @@ namespace AulaNosaApp.Servicios
             string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.baseApi);
             cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudios", Method.Put);
+            var request = new RestRequest("api/estudio", Method.Put);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = cliente.Execute(request);
@@ -103,7 +103,7 @@ namespace AulaNosaApp.Servicios
             string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.baseApi);
             cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudios/" + id.ToString(), Method.Delete);
+            var request = new RestRequest("api/estudio/" + id.ToString(), Method.Delete);
             var response = cliente.Execute(request);
 
             if ((response != null) && (response.Content != null))
