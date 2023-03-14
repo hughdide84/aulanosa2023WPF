@@ -24,5 +24,24 @@ namespace AulaNosaApp
         {
             InitializeComponent();
         }
+
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnCursos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+       
     }
 }

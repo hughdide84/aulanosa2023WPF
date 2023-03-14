@@ -24,6 +24,12 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
+        <Style x:Key="BotonesLogin" TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+
         <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
@@ -75,9 +81,9 @@
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
+                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
                 </StackPanel>
             </StackPanel>
 
@@ -151,17 +157,17 @@
         </Grid>
 
         <Grid>
-            <StackPanel Name="spAcceso" Width="350" Height="350"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Name="spnAcceso" Width="350" Height="350"  HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Imagenes/aulanosa_logo.png" Width="100" Margin="0,0,0,15"/>
                 <TextBlock Text="Usuario" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <TextBox Text="Hugo" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btAcceder" Content="Acceder" Click="AccederApp" HorizontalAlignment="Center"/>
+                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}"/>
                 <TextBlock Name="tbError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
 
-            <Frame></Frame>
+            
         </Grid>
 
 
