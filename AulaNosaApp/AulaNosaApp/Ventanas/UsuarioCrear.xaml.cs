@@ -15,34 +15,39 @@ using System.Windows.Shapes;
 namespace AulaNosaApp.Ventanas
 {
     /// <summary>
-    /// Lógica de interacción para UsuarioModificar.xaml
+    /// Lógica de interacción para UsuarioCrear.xaml
     /// </summary>
-    public partial class UsuarioModificar : Window
+    public partial class UsuarioCrear : Window
     {
-        public UsuarioModificar()
+        public UsuarioCrear()
         {
             InitializeComponent();
-            cbbEdicionUsuarioRol.SelectedIndex = 0;
+            cbbCreacionUsuarioRol.SelectedIndex = 0;
         }
 
-        private void btnUsuarioModificar_Click(object sender, RoutedEventArgs e)
+        private void btnUsuarioCrear_Click(object sender, RoutedEventArgs e)
         {
-            if (tbxNombreModificarUsuario.Text.Length == 0)
+            if (tbxNombreCrearUsuario.Text.Length == 0)
             {
                 MessageBox.Show("Nombre de usuario vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (pwbContrasenaModificarUsuario.Password.Length == 0)
+            if (pwbContrasenaCrearUsuario.Password.Length == 0)
             {
                 MessageBox.Show("Contraseña vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (tbxEmailModificarUsuario.Text.Length == 0)
+            if (tbxEmailCrearUsuario.Text.Length == 0)
             {
                 MessageBox.Show("Email vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (tbxNombreModificarUsuario.Text.Length > 0 && pwbContrasenaModificarUsuario.Password.Length > 0 && tbxEmailModificarUsuario.Text.Length > 0) { }
+            if (tbxNombreCrearUsuario.Text.Length > 0 && pwbContrasenaCrearUsuario.Password.Length > 0 && tbxEmailCrearUsuario.Text.Length > 0) { }
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
