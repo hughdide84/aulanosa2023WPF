@@ -61,7 +61,7 @@
                        Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios"></Button>
-                    <Button x:Name="btnCursos" Content="Cursos"></Button>
+                    <Button x:Name="btnCursos" Content="Cursos" Click="btnCursos_Click"></Button>
                     <Button x:Name="btnEstudios" Content="Estudios"></Button>
                 </StackPanel>
             </StackPanel>
@@ -138,9 +138,6 @@
 
         </Grid>
 
-        <Frame DockPanel.Dock="Right" Content="Frame">
-
-        </Frame>
-
+        <Frame DockPanel.Dock="Right" Name="frmPrincipal" Content="Frame"/>
     </DockPanel>
 </Window>

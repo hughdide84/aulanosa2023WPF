@@ -12,16 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Admin_Cursos
+namespace AulaNosaApp
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para EditarCurso.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditarCurso : Window
     {
-        public MainWindow()
+        public EditarCurso()
         {
             InitializeComponent();
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            //Close();
         }
     }
 }

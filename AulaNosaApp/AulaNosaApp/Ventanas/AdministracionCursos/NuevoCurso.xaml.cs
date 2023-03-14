@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Admin_Cursos
+namespace AulaNosaApp
 {
     /// <summary>
     /// Lógica de interacción para NuevoCurso.xaml
@@ -22,6 +22,16 @@ namespace Admin_Cursos
         public NuevoCurso()
         {
             InitializeComponent();
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnAñadir_Click(object sender, RoutedEventArgs e)
+        {
+            //Close();
         }
     }
 }

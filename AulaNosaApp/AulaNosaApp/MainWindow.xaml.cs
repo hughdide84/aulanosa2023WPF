@@ -24,5 +24,10 @@ namespace AulaNosaApp
         {
             InitializeComponent();
         }
+
+        private void btnCursos_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Source = new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml",UriKind.Relative);
+        }
     }
 }
