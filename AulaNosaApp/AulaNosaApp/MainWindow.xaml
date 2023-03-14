@@ -66,7 +66,7 @@
     </Window.Resources>
 
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Background="#1A17A1" Width="200">
+        <StackPanel x:Name="spnMenuIzqda" DockPanel.Dock="Left" Background="#1A17A1" Width="200">
             <StackPanel Margin="5">
                 <ComboBox Name="cbEstudios" SelectedIndex="0">
                     <ComboBoxItem>Grado Básico</ComboBoxItem>
@@ -78,7 +78,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
+            <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
@@ -87,7 +87,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
+            <StackPanel x:Name="spnFCT" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblFCT" Content="GESTIÓN FCT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnEmpresas" Content="Empresas" Style="{StaticResource BotonesMenuIzqda}"/>
@@ -99,7 +99,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
+            <StackPanel x:Name="spnPFC" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
@@ -109,7 +109,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
+            <StackPanel x:Name="spnPEXT" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
@@ -118,7 +118,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Grid DockPanel.Dock="Top" Height="60">
+        <Grid x:Name="grdMenuSuperior" DockPanel.Dock="Top" Height="60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -163,11 +163,13 @@
                 <TextBox Text="Hugo" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}"/>
+                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
                 <TextBlock Name="tbError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
 
-            
+            <Frame x:Name="frmPrincipal"/>
+
+
         </Grid>
 
 
