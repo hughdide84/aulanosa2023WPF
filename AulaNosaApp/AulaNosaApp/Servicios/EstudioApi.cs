@@ -10,12 +10,42 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Servicios
 {
-    public class EstudiosApi
+    public class EstudioApi
     {
-        public static List<EstudiosDTO> ListarEstudios() {
+        public static string AltaEstudio(EstudioDTO estudio)
+        {
+            //pendiente de modificar
+            string resultado = "Se ha producido un error no controlado";
+            var client = new RestClient(Constantes.baseApi);
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/productos", Method.Post);
+            request.RequestFormat = RestSharp.DataFormat.Json;
+            request.AddBody(JsonSerializer.Serialize(estudio));
+            var response = client.Execute(request);
+
+            if ((response != null) && (response.Content != null))
+            {
+                if ((response.StatusCode == System.Net.HttpStatusCode.Created))
+                {
+                    resultado = "";
+                }
+                else
+                {
+                    ErrorDTO error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                    if ((error != null) && (error.mensaje != null))
+                    {
+                        resultado = error.mensaje;
+                    }
+                }
+            }
+
+            return resultado;
+        }
+
+        public static List<EstudioDTO> ListarEstudios() {
 
             //pendiente de modificar
-            List<EstudiosDTO> estudios = new List<EstudiosDTO>();
+            List<EstudioDTO> estudios = new List<EstudioDTO>();
             var cliente = new RestClient(Constantes.baseApi);
             cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("api/estudios", Method.Get);
@@ -24,7 +54,7 @@ namespace AulaNosaApp.Servicios
             if (response != null) {
                 if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null)) {
 
-                    var resultado = JsonSerializer.Deserialize<List<EstudiosDTO>>(response.Content);
+                    var resultado = JsonSerializer.Deserialize<List<EstudioDTO>>(response.Content);
                     if (resultado != null)
                     {
                         estudios = resultado;
@@ -36,7 +66,7 @@ namespace AulaNosaApp.Servicios
             return estudios;
         }
 
-        public static string EditarEstudio(EstudiosDTO estudiosDTO)
+        public static string EditarEstudio(EstudioDTO estudio)
         {
             //pendiente de modificar
             string resultado = "Se ha producido un error no controlado";
@@ -44,7 +74,7 @@ namespace AulaNosaApp.Servicios
             cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("api/estudios", Method.Put);
             request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddBody(JsonSerializer.Serialize(estudiosDTO));
+            request.AddBody(JsonSerializer.Serialize(estudio));
             var response = cliente.Execute(request);
 
             if ((response != null) && (response.Content != null))

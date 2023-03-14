@@ -125,7 +125,7 @@
 
         </Grid>
 
-        <Frame x:Name="fPrincipal" DockPanel.Dock="Right" Content="Frame"/>
+        <Frame x:Name="fPrincipal" DockPanel.Dock="Right" Content="Frame" NavigationUIVisibility="Hidden"/>
 
 
 

@@ -1,4 +1,6 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
+using AulaNosaApp.Ventanas;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,8 +24,8 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class CORE_Administración_de_estudios : Page
     {
-        public List<EstudiosDTO> lista;
-        public ObservableCollection<EstudiosDTO> listaGrid { get; set; }
+        public List<EstudioDTO> lista;
+        public ObservableCollection<EstudioDTO> listaGrid { get; set; }
 
         public CORE_Administración_de_estudios()
         {
@@ -32,28 +34,50 @@ namespace AulaNosaApp.Paginas
         }
 
         private void RefrescarDatos() {
-            lista = EstudiosApi.ListarEstudios();
+            lista = EstudioApi.ListarEstudios();
             this.dgListado.ItemsSource = lista;
         }
 
         private void btnRefrescar_Click(object sender, RoutedEventArgs e)
         {
-
+            RefrescarDatos();
         }
 
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
-
+            EstudioAlta pantalla = new EstudioAlta();
+            pantalla.ShowDialog();
+            RefrescarDatos();
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            EstudioDTO estudio = dgListado.SelectedItem as EstudioDTO;
 
+            if (estudio != null) {
+                EstudioEditar pantalla = new EstudioEditar(estudio);
+                pantalla.ShowDialog();
+                RefrescarDatos();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un estudio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            EstudioDTO estudio = dgListado.SelectedItem as EstudioDTO;
 
+            if (estudio != null)
+            {
+                EstudioApi.EliminarEstudio(estudio.id);
+                RefrescarDatos();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un estudio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

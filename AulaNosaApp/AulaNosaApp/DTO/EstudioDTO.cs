@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.DTO
 {
-    public class EstudiosDTO
+    public class EstudioDTO
     {
         public int id { get; set; }
         public String nombre { get; set; }

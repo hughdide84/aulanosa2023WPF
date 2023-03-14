@@ -88,9 +88,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DTO\ErrorDTO.cs" />
-    <Compile Include="DTO\EstudiosDTO.cs" />
-    <Compile Include="Servicios\EstudiosApi.cs" />
+    <Compile Include="DTO\EstudioDTO.cs" />
+    <Compile Include="Servicios\EstudioApi.cs" />
     <Compile Include="Util\Constantes.cs" />
+    <Compile Include="Ventanas\EstudioAlta.xaml.cs">
+      <DependentUpon>EstudioAlta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\EstudioEditar.xaml.cs">
+      <DependentUpon>EstudioEditar.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +110,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Paginas\CORE-Administración-de-estudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\EstudioAlta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\EstudioEditar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,9 +152,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ventanas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
   </ItemGroup>
