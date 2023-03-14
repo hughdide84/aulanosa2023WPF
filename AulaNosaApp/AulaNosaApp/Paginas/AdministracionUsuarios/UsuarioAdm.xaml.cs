@@ -1,4 +1,6 @@
-﻿using AulaNosaApp.Ventanas;
+﻿using AulaNosaApp.Util;
+using AulaNosaApp.Ventanas;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +23,21 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class UsuarioAdm : Page
     {
+
+        RestClient client;
+        RestRequest request;
+        List<Usuario> usuariosLista;
+
         public UsuarioAdm()
         {
             InitializeComponent();
             cbbFiltroUsuario.SelectedIndex = 0;
+            refrescarUsuarios();
         }
 
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
         {
-
+            refrescarUsuarios();
         }
 
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
@@ -40,20 +48,38 @@ namespace AulaNosaApp.Paginas
 
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
-            usuarioModificarVentana.Show();
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            if (usuarioSeleccionado == null)
+            {
+                MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+               UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
+               usuarioModificarVentana.Show();
+            }
         }
 
         private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
-           var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
-            if (resultado == MessageBoxResult.Yes)
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            if (usuarioSeleccionado == null)
             {
-
+                MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-
+                var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    request = new RestRequest("/api/usuario/"+usuarioSeleccionado.id, Method.Delete);
+                    var response = client.Execute(request);
+                    refrescarUsuarios();
+                }
+                else
+                {
+                    refrescarUsuarios();
+                }
             }
         }
 
@@ -66,6 +92,18 @@ namespace AulaNosaApp.Paginas
             {
 
             }
+        }
+
+        void refrescarUsuarios()
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario", Method.Get);
+            var response = client.Execute<List<Usuario>>(request);
+            var apiResponse = response.Data;
+            usuariosLista = apiResponse;
+            dgvUsuarios.ItemsSource = null;
+            dgvUsuarios.Items.Clear();
+            dgvUsuarios.ItemsSource = usuariosLista;
         }
     }
 }

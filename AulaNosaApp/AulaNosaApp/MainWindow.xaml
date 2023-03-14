@@ -41,7 +41,7 @@
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Foreground="Gray"
                        Style="{StaticResource LabelMenuPpal}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnUsuarios" Content="Usuarios" Click="btnUsuarios_Click"></Button>
+                    <Button x:Name="btnUsuarios" Content="Usuarios" Click="btnUsuarios_Click"/>
                     <Button x:Name="btnCursos" Content="Cursos"></Button>
                     <Button x:Name="btnEstudios" Content="Estudios"></Button>
                 </StackPanel>
