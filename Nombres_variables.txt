@@ -1,0 +1,23 @@
+Criterios de definición de Nombres para componentes:
+	- Label -> lbl<Nombre>
+	- TextBox -> tbx<Nombre>
+	- TextBlock -> tbk<Nombre>
+	- Combobox -> cbb<Nombre>
+	- CheckBox -> chb<Nombre>
+	- PasswordBox -> pwb<Nombre>
+	- ListBox -> lbx<Nombre>
+	- Button -> btn<Nombre>
+	- RadioButton -> rdb<Nombre>
+	- Slider -> sld<Nombre>
+	- Calendar -> cld<Nombre>
+	- DatePicker -> dtp<Nombre>
+	- ProgressBar -> pgb<Nombre>
+	- Image -> img<Nombre>
+	- Toolbar -> tbr<Nombre>
+	- TabControl -> tbc<Nombre>
+	- Frame -> frm<Nombre>
+	- DockPanel -> dpn<Nombre>
+	- StackPanel -> spn<Nombre>
+	- WrapPanel -> wpn<Nombre>
+	- Grid -> grd<Nombre>
+	- Canvas -> cnv<Nombre>
