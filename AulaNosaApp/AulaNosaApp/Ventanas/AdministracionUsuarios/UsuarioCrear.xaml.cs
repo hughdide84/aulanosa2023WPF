@@ -31,28 +31,32 @@ namespace AulaNosaApp.Ventanas
 
         private void btnUsuarioCrear_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar que se ha introducido el nombre de usuario
             if (tbxNombreCrearUsuario.Text.Length == 0)
             {
                 MessageBox.Show("Nombre de usuario vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            // Verificar que se ha introducido la contrasena
             if (pwbContrasenaCrearUsuario.Password.Length == 0)
             {
                 MessageBox.Show("Contraseña vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            // Verificar que se ha introducido el email
             if (tbxEmailCrearUsuario.Text.Length == 0)
             {
                 MessageBox.Show("Email vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            // Si se ha introducido todo
             if (tbxNombreCrearUsuario.Text.Length > 0 && pwbContrasenaCrearUsuario.Password.Length > 0 && tbxEmailCrearUsuario.Text.Length > 0) {
                 bool existeUsuario = false;
+                // Almacenar todos los usuarios actuales en una lista
                 client = new RestClient(Constantes.client);
                 request = new RestRequest("/api/usuario", Method.Get);
                 var response = client.Execute<List<Usuario>>(request);
                 var apiResponse = response.Data;
+                // Ir al metodo Post para anadir usuarios
                 request = new RestRequest("/api/usuario", Method.Post);
+                // Crear objeto Usuario con todos los parametros
                 Usuario usuario = new Usuario();
                 usuario.id = Statics.ultimoIdUsuario + 1;
                 usuario.nombre = tbxNombreCrearUsuario.Text;
@@ -66,6 +70,7 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "ROLE_EDITOR";
                 }
+                // Comparar si el nombre de usuario que se ha puesto esta en la BBDD
                 for (int i=0; i<apiResponse.Count; i++)
                 {
                     if (apiResponse[i].nombre.Equals(usuario.nombre))
@@ -73,10 +78,12 @@ namespace AulaNosaApp.Ventanas
                         existeUsuario = true;
                     }
                 }
+                // Si esta, no se anade a la BBDD
                 if (existeUsuario)
                 {
                     MessageBox.Show("Error: ya existe usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                // Si no existe, se anade a la BBDD
                 else
                 {
                     request.AddJsonBody(usuario);
@@ -88,6 +95,7 @@ namespace AulaNosaApp.Ventanas
             }
         }
 
+        // Cerrar ventana
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();

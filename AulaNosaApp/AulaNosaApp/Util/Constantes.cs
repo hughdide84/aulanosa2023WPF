@@ -8,6 +8,7 @@ namespace AulaNosaApp.Util
 {
     static class Constantes
     {
-        public const String client = "http://localhost:8080";
+        // Clase estatica para almacenar las variables
+        public const String client = "http://localhost:8080"; // Cliente de la API
     }
 }

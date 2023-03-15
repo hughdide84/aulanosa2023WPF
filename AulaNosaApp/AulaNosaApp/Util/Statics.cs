@@ -9,7 +9,7 @@ namespace AulaNosaApp.Util
     class Statics
     {
         // Usuario
-        public static int ultimoIdUsuario = 0;
-        public static Usuario usuarioSeleccionado = null;
+        public static int ultimoIdUsuario = 0; // Obtener el ultimo ID del ultimo usuario del DataGrid
+        public static Usuario usuarioSeleccionado = null; // Obtener el usuario que se ha seleccionado
     }
 }

@@ -26,13 +26,14 @@ namespace AulaNosaApp.Paginas
 
         RestClient client;
         RestRequest request;
+        // Lista de usuarios que se recoge de la API
         List<Usuario> usuariosLista;
 
         public UsuarioAdm()
         {
             InitializeComponent();
             cbbFiltroUsuario.SelectedIndex = 0;
-            refrescarUsuarios();
+            refrescarUsuarios(); // Refrescar DataGrid de usuarios
         }
 
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
@@ -40,45 +41,58 @@ namespace AulaNosaApp.Paginas
             refrescarUsuarios();
         }
 
+        // Crear usuario
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
+            // Ventana de creacion de usuario
             UsuarioCrear usuarioCrearVentana = new UsuarioCrear();
             usuarioCrearVentana.Show();
         }
 
+        // Editar usuario
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
+            // Obtener el Usuario seleccionado
             var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
             if (usuarioSeleccionado == null)
             {
+                // Error al no seleccionar ningun usuario
                 MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+               // Almacenar el usuario seleccionado y abrir la ventana de modificacion de usuario
                Statics.usuarioSeleccionado = usuarioSeleccionado;
                UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
                usuarioModificarVentana.Show();
             }
         }
 
+        // Eliminar usuario
         private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
+            // Obtener el Usuario seleccionado
             var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
             if (usuarioSeleccionado == null)
             {
+                // Error al no seleccionar ningun usuario
                 MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                // Mostrar ventana de confirmacion de si quiere eliminar el usuario
                 var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
                 if (resultado == MessageBoxResult.Yes)
                 {
+                    // Eliminar usuario
                     request = new RestRequest("/api/usuario/"+usuarioSeleccionado.id, Method.Delete);
                     var response = client.Execute(request);
+                    // Refrescar DataGrid de usuarios
                     refrescarUsuarios();
                 }
                 else
                 {
+                    // Refrescar DataGrid de usuarios
                     refrescarUsuarios();
                 }
             }
@@ -87,36 +101,40 @@ namespace AulaNosaApp.Paginas
         private void btnBuscarFiltroUsuario_Click(object sender, RoutedEventArgs e)
         {
             if (tbxFiltroUsuario.Text.Length == 0) {
+                // Error al hacer una busqueda vacia
                 MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
                 if (cbbFiltroUsuario.SelectedIndex == 0)
                 {
+                    // Recoger por ID
                     request = new RestRequest("/api/usuario/"+tbxFiltroUsuario.Text, Method.Get);
                     var response = client.Execute<Usuario>(request);
                     var apiResponse = response.Data;
                     List<Usuario> usuarioIdRetornado = new List<Usuario>();
                     usuarioIdRetornado.Add(apiResponse);
+                    // Mostrarlo en un DataGrid
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
                     dgvUsuarios.ItemsSource = usuarioIdRetornado;
                 }
                 else if(cbbFiltroUsuario.SelectedIndex == 1)
                 {
-
+                    // Falta API Buscar por nombre de usuario
                 }
                 else if (cbbFiltroUsuario.SelectedIndex == 2)
                 {
-
+                    // Falta API Buscar por rol
                 }
                 else if (cbbFiltroUsuario.SelectedIndex == 3)
                 {
-
+                    // Falta API Buscar por email
                 }
             }
         }
 
+        // Refresca el DataGrid de usuarios
         void refrescarUsuarios()
         {
             client = new RestClient(Constantes.client);
