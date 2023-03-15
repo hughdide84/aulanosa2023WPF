@@ -17,7 +17,7 @@
                 <Separator/>
                 <Button Content="Editar Usuario" Name="btnEditarUsuario" Click="btnEditarUsuario_Click"/>
                 <Separator/>
-                <Button Content="Eliminar" Name="btnEliminarUsuario" Click="btnEliminarUsuario_Click"/>
+                <Button Content="Eliminar Usuario" Name="btnEliminarUsuario" Click="btnEliminarUsuario_Click"/>
                 <Separator/>
                 <Label Content="Buscar Usuario" Name="lblBuscarUsuario"/>
                 <ComboBox Name="cbbFiltroUsuario">
@@ -30,7 +30,7 @@
                 <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Click="btnBuscarFiltroUsuario_Click"/>
             </ToolBar>
         </ToolBarTray>
-        <DataGrid Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True">
+        <DataGrid Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="True">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>

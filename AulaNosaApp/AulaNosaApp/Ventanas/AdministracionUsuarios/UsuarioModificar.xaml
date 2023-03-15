@@ -8,45 +8,52 @@
         Title="UsuarioModificar" Height="650" Width="800" MinHeight="650" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="25*"/>
-        </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Modificacion Usuario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-        </DockPanel>
-        <DockPanel Grid.Row="2" Grid.Column="1">
-            <Label Content="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <TextBox Margin="15" Name="tbxNombreModificarUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="3" Grid.Column="1">
-            <Label Content="Contraseña" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <PasswordBox Margin="15" Name="pwbContrasenaModificarUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="4" Grid.Column="1">
-            <Label Content="Email" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <TextBox Margin="15" Name="tbxEmailModificarUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="5" Grid.Column="1">
-            <Label Content="Rol" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <ComboBox Margin="20" Name="cbbEdicionUsuarioRol">
-                <ComboBoxItem>Administrador</ComboBoxItem>
-                <ComboBoxItem>Editor</ComboBoxItem>
-            </ComboBox>
-        </DockPanel>
-        <DockPanel Grid.Row="7" Grid.Column="1">
-            <Button Content="Salir" FontSize="21" Margin="15" Name="btnSalir" Click="btnSalir_Click"/>
-            <Button Content="Modificar" FontSize="21" Margin="15" Name="btnUsuarioModificar" Click="btnUsuarioModificar_Click"/>
-        </DockPanel>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Modificación de usuarios" Style="{StaticResource LabelTituloFormularios}"/>
+        </Grid>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelFilaForm}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxNombreModificarUsuario" Style="{StaticResource TextBoxFormularios}" MaxHeight="50"/>
+                </StackPanel>
+                <Label Name="lblNombreEstado"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
+                    <PasswordBox Name="pwbContrasenaModificarUsuario" Style="{StaticResource PasswordBoxFormularios}" MaxHeight="100"/>
+                </StackPanel>
+                <Label Name="lblContrasenaEstado"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxEmailModificarUsuario" Style="{StaticResource TextBoxFormularios}" MaxHeight="50"/>
+                </StackPanel>
+                <Label Name="lblEmailEstado"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Rol" Style="{StaticResource TextBlockFormularios}"/>
+                <ComboBox Name="cbbEdicionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
+                    <ComboBoxItem>Administrador</ComboBoxItem>
+                    <ComboBoxItem>Editor</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                <Button x:Name="btnModificar" Content="Modificar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnUsuarioModificar_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

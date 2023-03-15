@@ -14,6 +14,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         static RestClient client;
         static RestRequest request;
 
+        // Listar usuarios
         public static List<UsuarioDTO> listarUsuarios()
         {
             client = new RestClient(Constantes.client);
@@ -23,6 +24,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             return apiResponse;
         }
 
+        // Crear usuarios
         public static void crearUsuario(UsuarioDTO usuario)
         {
             // Almacenar todos los usuarios actuales en una lista
@@ -54,9 +56,11 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
                 client.Execute<UsuarioDTO>(request);
                 MessageBox.Show("Usuario creado", "Exito", MessageBoxButton.OK);
                 Statics.ultimoIdUsuario += 1;
+                Statics.usuariosLista = AdmUsuariosAPI.listarUsuarios();
             }
         }
 
+        // Modificar usuario
         public static void modificarUsuario(UsuarioDTO usuario)
         {
             // Almacenar todos los usuarios actuales en una lista
@@ -86,6 +90,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
                 request.AddJsonBody(usuario);
                 client.Execute<UsuarioDTO>(request);
                 MessageBox.Show("Usuario modificado", "Exito", MessageBoxButton.OK);
+                Statics.usuariosLista = AdmUsuariosAPI.listarUsuarios();
             }
         }
 

@@ -23,11 +23,30 @@ namespace AulaNosaApp
         public MainWindow()
         {
             InitializeComponent();
+            spnMenuIzqda.Visibility = Visibility.Collapsed;
+            grdMenuSuperior.Visibility = Visibility.Collapsed;
         }
 
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {
-            frmPrinicpal.Source = new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative);
+            frmPrincipal.Source = new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative);
+        }
+
+        private void btnAcceder_Click(object sender, RoutedEventArgs e)
+        {
+            spnMenuIzqda.Visibility = Visibility.Visible;
+            grdMenuSuperior.Visibility = Visibility.Visible;
+            spnAcceso.Visibility = Visibility.Hidden;
+            txbNombreUsuarioLogueado.Text = tbUsuario.Text;
+            txbRolUsuarioLogueado.Text = "Admin";
+            cbbUsuario.SelectedIndex = 0;
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            spnMenuIzqda.Visibility = Visibility.Collapsed;
+            grdMenuSuperior.Visibility = Visibility.Collapsed;
+            spnAcceso.Visibility = Visibility.Visible;
         }
     }
 }

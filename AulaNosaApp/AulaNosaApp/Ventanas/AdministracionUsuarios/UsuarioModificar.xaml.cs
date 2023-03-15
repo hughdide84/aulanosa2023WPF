@@ -46,20 +46,44 @@ namespace AulaNosaApp.Ventanas
             // Verificar que se ha introducido el nombre de usuario
             if (tbxNombreModificarUsuario.Text.Length == 0)
             {
-                MessageBox.Show("Nombre de usuario vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+               lblNombreEstado.Content = "Nombre de usuario vacio";
+            }
+            else if (tbxNombreModificarUsuario.Text.Contains("@"))
+            {
+               lblNombreEstado.Content = "No se permiten correos electronicos como nombre de usuario";
+            }
+            else
+            {
+                lblNombreEstado.Content = "";
             }
             // Verificar que se ha introducido la contrasena
             if (pwbContrasenaModificarUsuario.Password.Length == 0)
             {
-                MessageBox.Show("Contraseña vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+               lblContrasenaEstado.Content = "Contraseña vacia";
+            }
+            else if (pwbContrasenaModificarUsuario.Password.Length < 3)
+            {
+                lblContrasenaEstado.Content = "Minimo tres caracteres de contraseña";
+            }
+            else
+            {
+                lblContrasenaEstado.Content = "";
             }
             // Verificar que se ha introducido el email
             if (tbxEmailModificarUsuario.Text.Length == 0)
             {
-                MessageBox.Show("Email vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                lblEmailEstado.Content = "Email vacio";
+            }
+            else if (!tbxEmailModificarUsuario.Text.Contains("@"))
+            {
+                lblEmailEstado.Content = "Se debe introducir un formato correcto de correo electronico";
+            }
+            else
+            {
+                lblEmailEstado.Content = "";
             }
             // Si se ha introducido todo
-            if (tbxNombreModificarUsuario.Text.Length > 0 && pwbContrasenaModificarUsuario.Password.Length > 0 && tbxEmailModificarUsuario.Text.Length > 0) {
+            if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@")) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@"))) {
                 // Almacenar todos los usuarios actuales en una lista
                 client = new RestClient(Constantes.client);
                 request = new RestRequest("/api/usuario", Method.Get);
