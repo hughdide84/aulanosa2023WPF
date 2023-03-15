@@ -95,5 +95,43 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             request = new RestRequest("/api/usuario/" + idUsuarioEliminar, Method.Delete);
             var response = client.Execute(request);
         }
+
+
+        // Filtros (primera version no disponibles aun) (aun no terminados)
+        public static UsuarioDTO filtrarUsuarioId(String filtro)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario/"+filtro, Method.Get);
+            var response = client.Execute<UsuarioDTO>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
+
+        public static List<UsuarioDTO> filtrarUsuarioNombre(String filtro)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            var response = client.Execute<List<UsuarioDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
+
+        public static List<UsuarioDTO> filtrarUsuarioRol(String filtro)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            var response = client.Execute<List<UsuarioDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
+
+        public static List<UsuarioDTO> filtrarUsuarioEmail(String filtro)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            var response = client.Execute<List<UsuarioDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
     }
 }

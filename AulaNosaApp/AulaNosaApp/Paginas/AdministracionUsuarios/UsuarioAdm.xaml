@@ -19,7 +19,7 @@
                 <Separator/>
                 <Button Content="Eliminar" Name="btnEliminarUsuario" Click="btnEliminarUsuario_Click"/>
                 <Separator/>
-                <Label Content="Buscar Usuario"/>
+                <Label Content="Buscar Usuario" Name="lblBuscarUsuario"/>
                 <ComboBox Name="cbbFiltroUsuario">
                     <ComboBoxItem>ID</ComboBoxItem>
                     <ComboBoxItem>Usuario</ComboBoxItem>

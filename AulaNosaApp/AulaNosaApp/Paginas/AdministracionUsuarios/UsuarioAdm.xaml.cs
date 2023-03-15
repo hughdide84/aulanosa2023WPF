@@ -35,6 +35,11 @@ namespace AulaNosaApp.Paginas
             InitializeComponent();
             cbbFiltroUsuario.SelectedIndex = 0;
             refrescarUsuarios(); // Refrescar DataGrid de usuarios
+            // Filtros por usuario (ocultar primera version)
+            btnBuscarFiltroUsuario.Visibility = Visibility.Hidden;
+            tbxFiltroUsuario.Visibility = Visibility.Hidden;
+            cbbFiltroUsuario.Visibility = Visibility.Hidden;
+            lblBuscarUsuario.Visibility = Visibility.Hidden;
         }
 
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
@@ -109,11 +114,9 @@ namespace AulaNosaApp.Paginas
                 if (cbbFiltroUsuario.SelectedIndex == 0)
                 {
                     // Recoger por ID
-                    request = new RestRequest("/api/usuario/"+tbxFiltroUsuario.Text, Method.Get);
-                    var response = client.Execute<UsuarioDTO>(request);
-                    var apiResponse = response.Data;
+                    UsuarioDTO usuarioId = AdmUsuariosAPI.filtrarUsuarioId(tbxFiltroUsuario.Text);
                     List<UsuarioDTO> usuarioIdRetornado = new List<UsuarioDTO>();
-                    usuarioIdRetornado.Add(apiResponse);
+                    usuarioIdRetornado.Add(usuarioId);
                     // Mostrarlo en un DataGrid
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
