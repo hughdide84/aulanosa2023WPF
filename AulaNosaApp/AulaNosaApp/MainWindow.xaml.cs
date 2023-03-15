@@ -55,11 +55,14 @@ namespace AulaNosaApp
             spnAcceso.Visibility = Visibility.Collapsed;
 
             if (rol.Equals("Admin")) { 
-                spnAdmin.Visibility = Visibility.Visible;
-                spnFCT.Visibility = Visibility.Visible;
+                spnAdmin.Visibility = Visibility.Visible; 
                 spnPFC.Visibility = Visibility.Visible;
+            } else {
+                spnFCT.Visibility = Visibility.Visible;
                 spnPEXT.Visibility = Visibility.Visible;
             }
+
+            
         }
 
         

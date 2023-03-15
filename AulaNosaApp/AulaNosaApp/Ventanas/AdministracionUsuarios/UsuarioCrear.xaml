@@ -6,47 +6,99 @@
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
         Title="UsuarioCrear" Height="650" Width="800" MinHeight="650" MinWidth="800">
+
+    <Window.Resources>
+        <Style x:Key="TextBlockFormularios" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+
+        <Style x:Key="TextBoxFormularios" TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
+
+        <Style x:Key="PasswordBoxFormularios" TargetType="PasswordBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style x:Key="ComboBoxFormularios" TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style x:Key="StackPanelDatosForm" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,0,25"/>
+        </Style>
+
+        <Style x:Key="BotonesFormularios" TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+
+
+
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="25*"/>
-        </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Creacion Usuario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-        </DockPanel>
-        <DockPanel Grid.Row="2" Grid.Column="1">
-            <Label Content="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <TextBox Margin="15" Name="tbxNombreCrearUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="3" Grid.Column="1">
-            <Label Content="Contraseña" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <PasswordBox Margin="15" Name="pwbContrasenaCrearUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="4" Grid.Column="1">
-            <Label Content="Email" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <TextBox Margin="15" Name="tbxEmailCrearUsuario"/>
-        </DockPanel>
-        <DockPanel Grid.Row="5" Grid.Column="1">
-            <Label Content="Rol" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-            <ComboBox Margin="20" Name="cbbCreacionUsuarioRol">
-                <ComboBoxItem>Administrador</ComboBoxItem>
-                <ComboBoxItem>Editor</ComboBoxItem>
-            </ComboBox>
-        </DockPanel>
-        <DockPanel Grid.Row="7" Grid.Column="1">
-            <Button Content="Salir" FontSize="21" Margin="15" Name="btnSalir" Click="btnSalir_Click"/>
-            <Button Content="Crear" FontSize="21" Margin="15" Name="btnUsuarioCrear" Click="btnUsuarioCrear_Click"/>
-        </DockPanel>
+
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Imagenes/aulanosa_logo.png" Width="75" Margin="20,0,0,0" HorizontalAlignment="Left"/>
+            <Label Grid.Column="1" Content="Registro de usuarios" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="70"
+               FontSize="20" FontWeight="DemiBold"/>
+
+            
+
+        </Grid>
+
+        <Border BorderThickness="1" BorderBrush="Gray"/>
+
+        <StackPanel Grid.Row="1" Width="370" Height="300">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"  Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
+                <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,50" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Rol" Style="{StaticResource TextBlockFormularios}"/>
+                <ComboBox Name="cbbCreacionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
+                    <ComboBoxItem>Administrador</ComboBoxItem>
+                    <ComboBoxItem>Editor</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Width="250" Height="30">
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}"/>
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

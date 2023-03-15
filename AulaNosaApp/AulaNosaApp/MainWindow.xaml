@@ -22,6 +22,7 @@
             <Setter Property="Background" Value="White"/>
             <Setter Property="Margin" Value="0,0,15,0"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="60"/>
         </Style>
 
         <Style x:Key="BotonesLogin" TargetType="Button">
@@ -45,7 +46,7 @@
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="0,0,0,15"/>
-            
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="PasswordBoxLogin" TargetType="PasswordBox">
@@ -168,8 +169,6 @@
             </StackPanel>
 
             <Frame x:Name="frmPrincipal"/>
-
-
         </Grid>
 
 
