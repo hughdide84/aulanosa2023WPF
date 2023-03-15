@@ -1,4 +1,6 @@
-﻿using AulaNosaApp.Ventanas;
+﻿using AulaNosaApp.Util;
+using AulaNosaApp.Ventanas;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,51 +23,129 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class UsuarioAdm : Page
     {
+
+        RestClient client;
+        RestRequest request;
+        // Lista de usuarios que se recoge de la API
+        List<Usuario> usuariosLista;
+
         public UsuarioAdm()
         {
             InitializeComponent();
             cbbFiltroUsuario.SelectedIndex = 0;
+            refrescarUsuarios(); // Refrescar DataGrid de usuarios
         }
 
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
         {
-
+            refrescarUsuarios();
         }
 
+        // Crear usuario
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
+            // Ventana de creacion de usuario
             UsuarioCrear usuarioCrearVentana = new UsuarioCrear();
             usuarioCrearVentana.Show();
         }
 
+        // Editar usuario
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
-            usuarioModificarVentana.Show();
-        }
-
-        private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
-        {
-           var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
-            if (resultado == MessageBoxResult.Yes)
+            // Obtener el Usuario seleccionado
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            if (usuarioSeleccionado == null)
             {
-
+                // Error al no seleccionar ningun usuario
+                MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+               // Almacenar el usuario seleccionado y abrir la ventana de modificacion de usuario
+               Statics.usuarioSeleccionado = usuarioSeleccionado;
+               UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
+               usuarioModificarVentana.Show();
+            }
+        }
 
+        // Eliminar usuario
+        private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtener el Usuario seleccionado
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            if (usuarioSeleccionado == null)
+            {
+                // Error al no seleccionar ningun usuario
+                MessageBox.Show("No se ha seleccionado ningun usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                // Mostrar ventana de confirmacion de si quiere eliminar el usuario
+                var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    // Eliminar usuario
+                    request = new RestRequest("/api/usuario/"+usuarioSeleccionado.id, Method.Delete);
+                    var response = client.Execute(request);
+                    // Refrescar DataGrid de usuarios
+                    refrescarUsuarios();
+                }
+                else
+                {
+                    // Refrescar DataGrid de usuarios
+                    refrescarUsuarios();
+                }
             }
         }
 
         private void btnBuscarFiltroUsuario_Click(object sender, RoutedEventArgs e)
         {
             if (tbxFiltroUsuario.Text.Length == 0) {
+                // Error al hacer una busqueda vacia
                 MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-
+                if (cbbFiltroUsuario.SelectedIndex == 0)
+                {
+                    // Recoger por ID
+                    request = new RestRequest("/api/usuario/"+tbxFiltroUsuario.Text, Method.Get);
+                    var response = client.Execute<Usuario>(request);
+                    var apiResponse = response.Data;
+                    List<Usuario> usuarioIdRetornado = new List<Usuario>();
+                    usuarioIdRetornado.Add(apiResponse);
+                    // Mostrarlo en un DataGrid
+                    dgvUsuarios.ItemsSource = null;
+                    dgvUsuarios.Items.Clear();
+                    dgvUsuarios.ItemsSource = usuarioIdRetornado;
+                }
+                else if(cbbFiltroUsuario.SelectedIndex == 1)
+                {
+                    // Falta API Buscar por nombre de usuario
+                }
+                else if (cbbFiltroUsuario.SelectedIndex == 2)
+                {
+                    // Falta API Buscar por rol
+                }
+                else if (cbbFiltroUsuario.SelectedIndex == 3)
+                {
+                    // Falta API Buscar por email
+                }
             }
+        }
+
+        // Refresca el DataGrid de usuarios
+        void refrescarUsuarios()
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/usuario", Method.Get);
+            var response = client.Execute<List<Usuario>>(request);
+            var apiResponse = response.Data;
+            usuariosLista = apiResponse;
+            dgvUsuarios.ItemsSource = null;
+            dgvUsuarios.Items.Clear();
+            dgvUsuarios.ItemsSource = usuariosLista;
+            Statics.ultimoIdUsuario = usuariosLista[usuariosLista.Count - 1].id;
         }
     }
 }

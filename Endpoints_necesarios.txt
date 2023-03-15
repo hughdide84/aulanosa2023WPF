@@ -7,11 +7,10 @@ Lista de endpoints necesarios:
 	/usuarios/email/{email} (devolverá una lista)
 	
 	-> Cursos:
-	/cursos/id/{id} 
-	/cursos/nombre/{nombre}
-	/cursos/inicio/{inicio}
-	/cursos/fin/{fin}
-	/cursos/estado/{estado}
+	/cursos/ (devuelve una lista)
+	/cursos/id/{id} (devuelve un resultado)
+	/cursos/nombre/{nombre} (devuelve un resultado)
+	/cursos/estado/{estado} (devuelve una lista)
 	
 	-> Estudios:
 	/estudios/
