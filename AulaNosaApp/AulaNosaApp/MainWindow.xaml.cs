@@ -23,11 +23,48 @@ namespace AulaNosaApp
         public MainWindow()
         {
             InitializeComponent();
+            spnMenuIzqda.Visibility = Visibility.Collapsed;
+            grdMenuSuperior.Visibility = Visibility.Collapsed;
+            spnAdmin.Visibility = Visibility.Collapsed;
+            spnFCT.Visibility = Visibility.Collapsed;
+            spnPFC.Visibility = Visibility.Collapsed;
+            spnPEXT.Visibility = Visibility.Collapsed;
         }
 
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {
-            frmPrinicpal.Source = new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative);
+            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative));
         }
+
+        private void btnCursos_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("", UriKind.Relative));
+        }
+
+        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("", UriKind.Relative));
+        }
+
+        private void btnAcceder_Click(object sender, RoutedEventArgs e)
+        {
+            String rol = "Admin";
+
+            spnMenuIzqda.Visibility = Visibility.Visible;
+            grdMenuSuperior.Visibility = Visibility.Visible;
+            spnAcceso.Visibility = Visibility.Collapsed;
+
+            if (rol.Equals("Admin")) { 
+                spnAdmin.Visibility = Visibility.Visible; 
+                spnPFC.Visibility = Visibility.Visible;
+            } else {
+                spnFCT.Visibility = Visibility.Visible;
+                spnPEXT.Visibility = Visibility.Visible;
+            }
+
+            
+        }
+
+        
     }
 }

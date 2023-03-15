@@ -90,9 +90,6 @@
     <Compile Include="Paginas\AdministracionUsuarios\UsuarioAdm.xaml.cs">
       <DependentUpon>UsuarioAdm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Servicios\Usuario.cs" />
-    <Compile Include="Util\Constantes.cs" />
-    <Compile Include="Util\Statics.cs" />
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
       <DependentUpon>UsuarioCrear.xaml</DependentUpon>
     </Compile>
@@ -153,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
+    <Folder Include="Servicios\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
