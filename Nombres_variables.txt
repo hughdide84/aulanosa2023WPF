@@ -21,3 +21,4 @@ Criterios de definición de Nombres para componentes:
 	- WrapPanel -> wpn<Nombre>
 	- Grid -> grd<Nombre>
 	- Canvas -> cnv<Nombre>
+	- DataGrid -> dgv<Nombre>
