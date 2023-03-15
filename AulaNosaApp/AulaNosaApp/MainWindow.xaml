@@ -64,6 +64,17 @@
             <Setter Property="Margin" Value="25,0,0,0"/>
         </Style>
 
+        <Style x:Key="ImagenesIconosMenuSup" TargetType="Image">
+            <Setter Property="Width" Value="25"/>
+        </Style>
+
+        <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
+            <Setter Property="SelectedIndex" Value="0"/>
+        </Style>
+
+        <Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
     </Window.Resources>
 
     <DockPanel>

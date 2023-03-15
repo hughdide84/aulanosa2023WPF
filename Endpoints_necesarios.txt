@@ -1,20 +1,22 @@
 Lista de endpoints necesarios:
 	-> Usuarios:
-	/usuarios/
-	/usuarios/id/{id} (devolverá un resultado)
+	/usuarios/all
+	/usuarios/{id} (devolverá un resultado)
 	/usuarios/username/{username} (devolverá un resultado)
 	/usuarios/rol/{rol} (devolverá una lista)
 	/usuarios/email/{email} (devolverá una lista)
 	
 	-> Cursos:
-	/cursos/ (devuelve una lista)
-	/cursos/id/{id} (devuelve un resultado)
+	/cursos/all (devuelve una lista)
+	/cursos/{id} (devuelve un resultado)
 	/cursos/nombre/{nombre} (devuelve un resultado)
 	/cursos/estado/{estado} (devuelve una lista)
 	
 	-> Estudios:
-	/estudios/
-    /estudios/
-    /estudios/
-    /estudios/
-    /estudios/
+	/estudios/all
+	/estudios/{id}
+	/estudios/nombre/{nombre}
+    	/estudios/fct/{fct}
+    	/estudios/pext/{pext}
+    	
+    	/estudios/
