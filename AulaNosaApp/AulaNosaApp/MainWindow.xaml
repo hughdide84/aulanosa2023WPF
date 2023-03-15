@@ -8,7 +8,7 @@
         Title="MainWindow" Height="650" Width="800" MinHeight="650" MinWidth="800">
 
     <Window.Resources>
-        <Style TargetType="Button">
+        <Style x:Key="BotonesMenuIzqda" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#1A17A1"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -22,6 +22,7 @@
             <Setter Property="Background" Value="White"/>
             <Setter Property="Margin" Value="0,0,15,0"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="60"/>
         </Style>
 
         <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
@@ -41,13 +42,26 @@
         <Style x:Key="BotonesCentrados" TargetType="StackPanel">
             <Setter Property="Margin" Value="25,0,0,0"/>
         </Style>
-        
+
+        <Style x:Key="ImagenesIconosMenuSup" TargetType="Image">
+            <Setter Property="Width" Value="25"/>
+        </Style>
+
+        <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
+            <Setter Property="SelectedIndex" Value="0"/>
+        </Style>
+
+        <Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+
+        </Style>
+
     </Window.Resources>
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Background="#1A17A1" Width="200">
             <StackPanel Margin="5">
-                <ComboBox Name="cbEstudios" SelectedIndex="0">
+                <ComboBox Name="cbEstudios" Style="{StaticResource ComboBoxPantallaPrincipal}">
                     <ComboBoxItem>Grado Básico</ComboBoxItem>
                     <ComboBoxItem>Ciclo Medio</ComboBoxItem>
                     <ComboBoxItem>Ciclo Superior</ComboBoxItem>
@@ -61,39 +75,39 @@
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Foreground="Gray"
                        Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnUsuarios" Content="Usuarios"></Button>
-                    <Button x:Name="btnCursos" Content="Cursos"></Button>
-                    <Button x:Name="btnEstudios" Content="Estudios"></Button>
+                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblFCT" Content="GESTIÓN FCT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnEmpresas" Content="Empresas"></Button>
-                    <Button x:Name="btnAlumnado" Content="Alumnado"></Button>
-                    <Button x:Name="btnCalendarioFct" Content="Calendario"></Button>
-                    <Button x:Name="btnEmpresaAlumno" Content="Empresa - Alumno"></Button>
-                    <Button x:Name="btnInformes" Content="Informes"></Button>
-                    <Button x:Name="btnTutorias" Content="Tutorías"></Button>
+                    <Button x:Name="btnEmpresas" Content="Empresas" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnAlumnado" Content="Alumnado" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnCalendarioFct" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnEmpresaAlumno" Content="Empresa - Alumno" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnInformes" Content="Informes" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnTutorias" Content="Tutorías" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnProyectos" Content="Proyectos"></Button>
-                    <Button x:Name="btnNotas" Content="Notas"></Button>
-                    <Button x:Name="btnExposiciones" Content="Exposiciones"></Button>
-                    <Button x:Name="btnInfo" Content="Info"></Button>
+                    <Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo"></Button>
-                    <Button x:Name="btnCalendarioPext" Content="Calendario"></Button>
+                    <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -108,20 +122,20 @@
 
             <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
-                    <StackPanel  Orientation="Vertical">
-                        <Image Source="/Imagenes/home_icon.png" Width="25"/>
+                    <StackPanel Style="{StaticResource StackPanelBotonesMenuSup}">
+                        <Image Source="/Imagenes/home_icon.png"  Style="{StaticResource ImagenesIconosMenuSup}"/>
                         <TextBlock Text="Inicio"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="btnMensajeria" Style="{StaticResource BotonesBarraSuperior}">
-                    <StackPanel  Orientation="Vertical">
-                        <Image Source="/Imagenes/message_icon.png" Width="25"/>
+                    <StackPanel Style="{StaticResource StackPanelBotonesMenuSup}">
+                        <Image Source="/Imagenes/message_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
                         <TextBlock Text="Mensajería"/>
                     </StackPanel>
                 </Button>
 
-                <ComboBox x:Name="cbbUsuario" SelectedIndex="0" Background="White">
+                <ComboBox x:Name="cbbUsuario" Style="{StaticResource ComboBoxPantallaPrincipal}">
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagenes/user_icon.png" Width="45"/>
