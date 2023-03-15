@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\AlumnoDTO.cs" />
     <Compile Include="DTO\ErrorDTO.cs" />
     <Compile Include="DTO\EstudioDTO.cs" />
     <Compile Include="Paginas\investigacionCalendario.xaml.cs">

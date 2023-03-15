@@ -58,7 +58,7 @@
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnEmpresas" Content="Empresas"></Button>
                     <Button x:Name="btnAlumnado" Content="Alumnado"></Button>
-                    <Button x:Name="btnCalendarioFct" Content="Calendario"></Button>
+                    <Button x:Name="btnCalendarioFct" Content="Calendario" Click="btnCalendarioFct_Click"></Button>
                     <Button x:Name="btnEmpresaAlumno" Content="Empresa - Alumno"></Button>
                     <Button x:Name="btnInformes" Content="Informes"></Button>
                     <Button x:Name="btnTutorias" Content="Tutorías"></Button>

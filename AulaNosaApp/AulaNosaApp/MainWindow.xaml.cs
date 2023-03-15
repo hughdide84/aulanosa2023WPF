@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AulaNosaApp.Paginas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,11 @@ namespace AulaNosaApp
         private void btnEstudios_Click(object sender, RoutedEventArgs e)
         {
             fPrincipal.Source = new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative);
+        }
+
+        private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
+        {
+            fPrincipal.Source = new Uri("/Paginas/investigacionCalendario.xaml", UriKind.Relative);
         }
     }
 }

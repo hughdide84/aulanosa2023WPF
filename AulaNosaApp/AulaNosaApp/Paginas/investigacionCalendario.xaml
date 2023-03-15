@@ -5,11 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AulaNosaApp.Paginas"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="2500"
-      Title="investigacionCalendario">
+      d:DesignHeight="450"
+      Title="investigacionCalendario" Width="800">
 
+    <Page.Resources>
+        <Style x:Key="fechasNombre" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Page.Resources>
     <Grid Background="White">
-        <ScrollViewer>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible">
             <Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -31,22 +37,22 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="1" Text="Septiembre" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="2" Text="Octubre" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="3" Text="Noviembre" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="4" Text="Diciembre" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="5" Text="Enero" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="6" Text="Febrero" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="7" Text="Marzo" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="8" Text="Abril" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="9" Text="Mayo" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="10" Text="Junio" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
-                    <TextBlock Grid.Column="11" Text="Julio" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="1" Content="Septiembre"  VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="2" Content="Octubre"  VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="3" Content="Noviembre" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="4" Content="Diciembre" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="5" Content="Enero" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="6" Content="Febrero" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="7" Content="Marzo" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="8" Content="Abril" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="9" Content="Mayo" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="10" Content="Junio" VerticalAlignment="Bottom" FontSize="20"/>
+                    <Button Grid.Column="11" Content="Julio" VerticalAlignment="Bottom" FontSize="20"/>
 
                     <TextBlock Grid.Row="1" Text="Pepe primero Agusto" TextAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center"/>
 
                 </Grid>
-                <Grid>
+                <Grid x:Name="grdLista">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
                         <ColumnDefinition/>
@@ -59,7 +65,7 @@
                     <!-- supuesta fecha  9 de febrero inicio: margin (((mesInicio - 7).siemprePositivo * 200) + ((100 * diaInicio)  / dias que tiene el mes) * 2) final: width ((200 - ((100 * diaInicio)  / dias que tiene el mes) * 2)) + ((mesFinal - mesInicio) -1 * 200))-->
                     <!--                                                (2-7) = -5 >> 5 * 200 = 1000            900 / 29 = 31 >> 31 * 2 = 62 >> 1000 + 62                                                                                         -->
                     <!--                                                                                                                                                                              -->
-                    <Border Grid.Row="1" Grid.Column="1" Background="#732487" CornerRadius="15" Margin="1062,3,0,3" Width="300" HorizontalAlignment="Left">
+                    <Border Grid.Row="1" Grid.Column="1" Background="#732487" CornerRadius="15" Margin="1444,3,0,3" Width="200" HorizontalAlignment="Left">
                         <Grid VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
