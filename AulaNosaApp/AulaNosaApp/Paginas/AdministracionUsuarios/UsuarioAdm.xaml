@@ -34,7 +34,8 @@
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Contraseña" Binding="{Binding rol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding password}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding rol}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email" Binding="{Binding email}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

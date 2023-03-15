@@ -1,4 +1,5 @@
-﻿using AulaNosaApp.Util;
+﻿using AulaNosaApp.Servicios.AdministracionUsuarios;
+using AulaNosaApp.Util;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -59,16 +60,15 @@ namespace AulaNosaApp.Ventanas
             }
             // Si se ha introducido todo
             if (tbxNombreModificarUsuario.Text.Length > 0 && pwbContrasenaModificarUsuario.Password.Length > 0 && tbxEmailModificarUsuario.Text.Length > 0) {
-                int contUsuariosIguales = 0;
                 // Almacenar todos los usuarios actuales en una lista
                 client = new RestClient(Constantes.client);
                 request = new RestRequest("/api/usuario", Method.Get);
-                var response = client.Execute<List<Usuario>>(request);
+                var response = client.Execute<List<UsuarioDTO>>(request);
                 var apiResponse = response.Data;
                 // Ir al metodo Put para modificar usuarios
                 request = new RestRequest("/api/usuario", Method.Put);
                 // Crear objeto Usuario con todos los parametros
-                Usuario usuario = new Usuario();
+                UsuarioDTO usuario = new UsuarioDTO();
                 usuario.id = Statics.usuarioSeleccionado.id;
                 usuario.nombre = tbxNombreModificarUsuario.Text;
                 usuario.password = pwbContrasenaModificarUsuario.Password;
@@ -81,27 +81,8 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "ROLE_EDITOR";
                 }
-                // Comparar si el nombre de usuario que se ha puesto esta en la BBDD
-                // (si solo hay uno, es el usuario que estas modificando, es decir, toma el Usuario actual antes de modificarlo)
-                for (int i = 0; i < apiResponse.Count; i++)
-                {
-                    if (apiResponse[i].nombre.Equals(usuario.nombre))
-                    {
-                        contUsuariosIguales += 1;
-                    }
-                }
-                // Si hay mas de uno que se llamaria igual, mostrara un error
-                if (contUsuariosIguales > 1)
-                {
-                    MessageBox.Show("Error: ya existe usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    // Si hay uno o cero, se actualiza
-                    request.AddJsonBody(usuario);
-                    client.Execute<Usuario>(request);
-                    MessageBox.Show("Usuario modificado", "Exito", MessageBoxButton.OK);
-                }
+                // Funcion de modificar usuario
+                AdmUsuariosAPI.modificarUsuario(usuario);
             }
         }
 

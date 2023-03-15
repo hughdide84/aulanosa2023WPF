@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Util
 {
-    public class Usuario
+    public class UsuarioDTO
     {
         public int id { get; set; }
         public String nombre { get; set; }

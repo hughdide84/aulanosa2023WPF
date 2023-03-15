@@ -1,4 +1,5 @@
-﻿using AulaNosaApp.Util;
+﻿using AulaNosaApp.Servicios.AdministracionUsuarios;
+using AulaNosaApp.Util;
 using AulaNosaApp.Ventanas;
 using RestSharp;
 using System;
@@ -27,7 +28,7 @@ namespace AulaNosaApp.Paginas
         RestClient client;
         RestRequest request;
         // Lista de usuarios que se recoge de la API
-        List<Usuario> usuariosLista;
+        List<UsuarioDTO> usuariosLista;
 
         public UsuarioAdm()
         {
@@ -53,7 +54,7 @@ namespace AulaNosaApp.Paginas
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
             // Obtener el Usuario seleccionado
-            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
             if (usuarioSeleccionado == null)
             {
                 // Error al no seleccionar ningun usuario
@@ -72,7 +73,7 @@ namespace AulaNosaApp.Paginas
         private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
             // Obtener el Usuario seleccionado
-            var usuarioSeleccionado = dgvUsuarios.SelectedItem as Usuario;
+            var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
             if (usuarioSeleccionado == null)
             {
                 // Error al no seleccionar ningun usuario
@@ -85,8 +86,7 @@ namespace AulaNosaApp.Paginas
                 if (resultado == MessageBoxResult.Yes)
                 {
                     // Eliminar usuario
-                    request = new RestRequest("/api/usuario/"+usuarioSeleccionado.id, Method.Delete);
-                    var response = client.Execute(request);
+                    AdmUsuariosAPI.eliminarUsuario(usuarioSeleccionado.id);
                     // Refrescar DataGrid de usuarios
                     refrescarUsuarios();
                 }
@@ -110,9 +110,9 @@ namespace AulaNosaApp.Paginas
                 {
                     // Recoger por ID
                     request = new RestRequest("/api/usuario/"+tbxFiltroUsuario.Text, Method.Get);
-                    var response = client.Execute<Usuario>(request);
+                    var response = client.Execute<UsuarioDTO>(request);
                     var apiResponse = response.Data;
-                    List<Usuario> usuarioIdRetornado = new List<Usuario>();
+                    List<UsuarioDTO> usuarioIdRetornado = new List<UsuarioDTO>();
                     usuarioIdRetornado.Add(apiResponse);
                     // Mostrarlo en un DataGrid
                     dgvUsuarios.ItemsSource = null;
@@ -137,11 +137,7 @@ namespace AulaNosaApp.Paginas
         // Refresca el DataGrid de usuarios
         void refrescarUsuarios()
         {
-            client = new RestClient(Constantes.client);
-            request = new RestRequest("/api/usuario", Method.Get);
-            var response = client.Execute<List<Usuario>>(request);
-            var apiResponse = response.Data;
-            usuariosLista = apiResponse;
+            List<UsuarioDTO> usuariosLista = AdmUsuariosAPI.listarUsuarios();
             dgvUsuarios.ItemsSource = null;
             dgvUsuarios.Items.Clear();
             dgvUsuarios.ItemsSource = usuariosLista;

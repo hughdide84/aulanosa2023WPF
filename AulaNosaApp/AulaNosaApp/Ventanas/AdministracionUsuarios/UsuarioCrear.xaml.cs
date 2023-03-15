@@ -1,4 +1,5 @@
-﻿using AulaNosaApp.Util;
+﻿using AulaNosaApp.Servicios.AdministracionUsuarios;
+using AulaNosaApp.Util;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -48,16 +49,8 @@ namespace AulaNosaApp.Ventanas
             }
             // Si se ha introducido todo
             if (tbxNombreCrearUsuario.Text.Length > 0 && pwbContrasenaCrearUsuario.Password.Length > 0 && tbxEmailCrearUsuario.Text.Length > 0) {
-                bool existeUsuario = false;
-                // Almacenar todos los usuarios actuales en una lista
-                client = new RestClient(Constantes.client);
-                request = new RestRequest("/api/usuario", Method.Get);
-                var response = client.Execute<List<Usuario>>(request);
-                var apiResponse = response.Data;
-                // Ir al metodo Post para anadir usuarios
-                request = new RestRequest("/api/usuario", Method.Post);
                 // Crear objeto Usuario con todos los parametros
-                Usuario usuario = new Usuario();
+                UsuarioDTO usuario = new UsuarioDTO();
                 usuario.id = Statics.ultimoIdUsuario + 1;
                 usuario.nombre = tbxNombreCrearUsuario.Text;
                 usuario.password = pwbContrasenaCrearUsuario.Password;
@@ -66,32 +59,12 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "ROLE_ADMIN";
                 }
-                else
+                else 
                 {
                     usuario.rol = "ROLE_EDITOR";
                 }
-                // Comparar si el nombre de usuario que se ha puesto esta en la BBDD
-                for (int i=0; i<apiResponse.Count; i++)
-                {
-                    if (apiResponse[i].nombre.Equals(usuario.nombre))
-                    {
-                        existeUsuario = true;
-                    }
-                }
-                // Si esta, no se anade a la BBDD
-                if (existeUsuario)
-                {
-                    MessageBox.Show("Error: ya existe usuario", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                // Si no existe, se anade a la BBDD
-                else
-                {
-                    request.AddJsonBody(usuario);
-                    client.Execute<Usuario>(request);
-                    MessageBox.Show("Usuario creado", "Exito", MessageBoxButton.OK);
-                    Statics.ultimoIdUsuario += 1;
-                }
-                
+                // Funcion de crear usuario
+                AdmUsuariosAPI.crearUsuario(usuario);
             }
         }
 
