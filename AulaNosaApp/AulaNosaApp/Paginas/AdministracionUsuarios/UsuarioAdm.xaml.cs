@@ -55,6 +55,7 @@ namespace AulaNosaApp.Paginas
             }
             else
             {
+               Statics.usuarioSeleccionado = usuarioSeleccionado;
                UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
                usuarioModificarVentana.Show();
             }
@@ -90,7 +91,29 @@ namespace AulaNosaApp.Paginas
             }
             else
             {
+                if (cbbFiltroUsuario.SelectedIndex == 0)
+                {
+                    request = new RestRequest("/api/usuario/"+tbxFiltroUsuario.Text, Method.Get);
+                    var response = client.Execute<Usuario>(request);
+                    var apiResponse = response.Data;
+                    List<Usuario> usuarioIdRetornado = new List<Usuario>();
+                    usuarioIdRetornado.Add(apiResponse);
+                    dgvUsuarios.ItemsSource = null;
+                    dgvUsuarios.Items.Clear();
+                    dgvUsuarios.ItemsSource = usuarioIdRetornado;
+                }
+                else if(cbbFiltroUsuario.SelectedIndex == 1)
+                {
 
+                }
+                else if (cbbFiltroUsuario.SelectedIndex == 2)
+                {
+
+                }
+                else if (cbbFiltroUsuario.SelectedIndex == 3)
+                {
+
+                }
             }
         }
 
@@ -104,6 +127,7 @@ namespace AulaNosaApp.Paginas
             dgvUsuarios.ItemsSource = null;
             dgvUsuarios.Items.Clear();
             dgvUsuarios.ItemsSource = usuariosLista;
+            Statics.ultimoIdUsuario = usuariosLista[usuariosLista.Count - 1].id;
         }
     }
 }

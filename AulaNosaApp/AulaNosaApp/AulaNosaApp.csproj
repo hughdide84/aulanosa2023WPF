@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Servicios\Usuario.cs" />
     <Compile Include="Util\Constantes.cs" />
+    <Compile Include="Util\Statics.cs" />
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
       <DependentUpon>UsuarioCrear.xaml</DependentUpon>
     </Compile>
