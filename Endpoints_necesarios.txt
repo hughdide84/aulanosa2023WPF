@@ -2,7 +2,7 @@ Lista de endpoints necesarios:
 	-> Usuarios:
 	/usuarios/all
 	/usuarios/{id} (devolverá un resultado)
-	/usuarios/username/{username} (devolverá un resultado)
+	/usuarios/nombre/nombre(devolverá un resultado)
 	/usuarios/rol/{rol} (devolverá una lista)
 	/usuarios/email/{email} (devolverá una lista)
 	
@@ -19,4 +19,10 @@ Lista de endpoints necesarios:
     	/estudios/fct/{fct}
     	/estudios/pext/{pext}
     	
-    	/estudios/
+    	-> Alumnos Externos:
+	/alumnosexternos/all
+	/alumnosexternos/{id}
+	/alumnosexternos/idCurso/{idcurso} (devolverá los alumnos con en curso en concreto)
+	/alumnosexternos/email/{email} (devolverá una lista de alumnos externos)
+	/alumnosexternos/telefono/{telefono}
+	/alumnosexternos/titulacion/{titulacion}
