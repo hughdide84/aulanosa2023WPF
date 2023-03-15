@@ -75,11 +75,11 @@ namespace AulaNosaApp.Ventanas
                 usuario.email = tbxEmailModificarUsuario.Text;
                 if (cbbEdicionUsuarioRol.SelectedIndex == 0)
                 {
-                    usuario.rol = "ROLE_ADMIN";
+                    usuario.rol = "ADMIN";
                 }
                 else
                 {
-                    usuario.rol = "ROLE_EDITOR";
+                    usuario.rol = "EDITOR";
                 }
                 // Funcion de modificar usuario
                 AdmUsuariosAPI.modificarUsuario(usuario);
