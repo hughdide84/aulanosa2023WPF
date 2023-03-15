@@ -18,7 +18,7 @@
 
             <DockPanel Grid.Row="0">
                 <ToolBar Name="tbrDatos" Height="40">
-                    <Grid Width="540">
+                    <Grid Width="500">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -27,14 +27,16 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="3" Name="btnRefrescar" Content="Refrescar" Click="BtnRefrescar_Click"/>
-                        <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="BtnNuevo_Click"/>
-                        <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" Click="BtnModificar_Click"/>
-                        <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar"/>
+                        <Button Grid.Column="0" Margin="3" Name="btnRefrescar" Content="Refrescar" Click="btnRefrescar_Click"/>
+                        <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="btnNuevo_Click"/>
+                        <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" Click="btnModificar_Click"/>
+                        <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar" Click="btnEliminar_Click"/>
                         <Button Grid.Column="4" Margin="3" Name="btnConsultar" Content="Consultar" Click="btnConsultar_Click"/>
-                        <ComboBox Grid.Column="5" Name="cmbConsultar" Margin="3" Visibility="Hidden"/>
-                        <TextBox Grid.Column="6" Name="tbxConsultar" Margin="3" Visibility="Hidden"/>
+                        <ComboBox Grid.Column="5" Margin="3" Name="cmbConsultar" Visibility="Hidden"/>
+                        <TextBox Grid.Column="6" Margin="3" Name="tbxConsultar" Visibility="Hidden"/>
+                        <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden" Click="btnBuscar_Click"/>
                     </Grid>
                 </ToolBar>
             </DockPanel>

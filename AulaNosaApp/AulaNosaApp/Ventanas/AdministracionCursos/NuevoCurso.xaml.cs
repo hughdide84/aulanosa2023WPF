@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AulaNosaApp.DTO.AdministracionCursos;
+using AulaNosaApp.Servicios.AdministracionCursos;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +25,7 @@ namespace AulaNosaApp
         public NuevoCurso()
         {
             InitializeComponent();
+            cmbAñadirEstado.SelectedIndex = 0;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -31,13 +35,37 @@ namespace AulaNosaApp
 
         private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
-            if (tbxAñadirNombre.Text == "" || dtpAñadirInicio.Text == "" || dtpAñadirFin.Text == "" || cmbAñadirEstado.SelectedIndex == 0)
+            if (tbxAñadirNombre.Text == "" || dtpAñadirInicio.Text == "" || dtpAñadirFin.Text == "")
             {
                 MessageBox.Show("Alguno de los campos está vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                //Agregar a la lista de cursos el nuevo curso
+                tbkErrores.Visibility = Visibility.Collapsed;
+                CursoDTO cursoDTO = new CursoDTO();
+                cursoDTO.nombre = tbxAñadirNombre.Text;
+                cursoDTO.inicio = DateTime.Parse(dtpAñadirInicio.ToString());
+                cursoDTO.fin = DateTime.Parse(dtpAñadirFin.ToString());
+
+                if (cmbAñadirEstado.SelectedIndex == 0) {
+                    cursoDTO.estado = true;
+                }
+                else
+                {
+                    cursoDTO.estado = false;
+                }
+
+                string errores = CursosApi.AgregarCurso(cursoDTO);
+
+                if (!errores.Equals(""))
+                {
+                    tbkErrores.Text = errores;
+                    tbkErrores.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
     }

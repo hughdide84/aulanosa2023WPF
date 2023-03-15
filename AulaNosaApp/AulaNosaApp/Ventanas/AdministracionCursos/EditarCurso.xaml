@@ -16,7 +16,10 @@
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Name="tbkEditar" Text="Editar Curso" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Foreground="Red"/>
+        <Grid Grid.Row="0">
+            <TextBlock Name="tbkEditar" Text="Editar Curso" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Foreground="Red"/>
+            <TextBlock Name="tbkErrores" Text=""  Background="IndianRed" Visibility="Collapsed" Margin="10"/>
+        </Grid>
         <DockPanel Grid.Row="1" Height="50" Width="400">
             <Label Height="30" Width="65" Name="lblEditarNombre" VerticalContentAlignment="Center" Content="Nombre" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <TextBox Name="tbxEditarNombre" Text="" Height="30" Width="300"/>
