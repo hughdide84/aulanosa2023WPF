@@ -9,27 +9,30 @@
       Title="AlumnoExterno">
 
     <Grid>
-        <StackPanel>
+        <StackPanel Background="White">
+            <Label Content="01 - Alumnado" FontSize="35" Foreground="LightSeaGreen"/>
             <WrapPanel>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno" Name="CrearAlumnExt" Click="CrearAlumnExt_Click"/>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno"/>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno"/>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno"/>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno"/>
-                <Button Height="25" Width="125" Content="Crear Nuevo Alumno"/>
+                <Button Height="25" Width="175" Content="Crear Nuevo Alumno" Name="CrearAlumnExt" Click="CrearAlumnExt_Click"/>
+                <Button Height="25" Width="175" Content="Modificar Alumno" Name="ModifAlumnExt" Click="ModifAlumnExt_Click"/>
+                <Button Height="25" Width="175" Content="Borrar Alumno" Name="BorrarAlumnExt"/>
+                <Button Height="25" Width="175" Content="Buscar Alumno" Name="BuscarAlumnExt"/>
             </WrapPanel>
             <Label/>
             <WrapPanel>
-                <StackPanel Background="White">
-                    <Label Width="150" Height="30" Name="numeroAlmLbl"/>
-                    <Label Width="150" Height="25" Content="Datos"/>
-                    <Label Width="150" Height="20" Name="NomYApLbl"/>
-                    <Label Width="150" Height="20" Name="EmailLbl"/>
-                    <Label Width="150" Height="20" Name="TlfLbl"/>
-                    <Label Width="150" Height="20" Name="CentroLbl"/>
-                    <Label Width="150" Height="20" Name="TitulacionLbl"/>
-                    <Label Width="150" Height="20" Name="EspecialidadLbl"/>
-                    <Label Width="150" Height="20" Name="ComentariosLbl"/>
+                <StackPanel>
+                    <Label Width="150" Height="50" Name="numeroAlmLbl" Content="Alumno 1" FontSize="30"/>
+                    <Label Width="150" Height="30" Content="Datos" FontSize="15"/>
+                    <Label Width="150" Height="25" Name="NomYApLbl" Content="nombre y apellidos"/>
+                    <Label Width="150" Height="25" Name="EmailLbl" Content="Email"/>
+                    <Label Width="150" Height="25" Name="TlfLbl" Content="Teléfono"/>
+                    <Label Width="150" Height="25" Name="CentroLbl" Content="Centro"/>
+                    <Label Width="150" Height="25" Name="TitulacionLbl" Content="Titulación"/>
+                    <Label Width="150" Height="25" Name="EspecialidadLbl" Content="Especialidad"/>
+                    <Label Width="150" Height="25" Name="CursoLbl" Content="Curso"/>
+                    <Label Width="150" Height="25" Name="CVLbl" Content="CV"/>
+                    <Label Width="150" Height="25" Name="CONVENIOLbl" Content="Convenio"/>
+                    <Label Width="150" Height="25" Name="EVALUACIONLbl" Content="Evaluación"/>
+                    <Label Width="150" Height="25" Name="HORARIOLbl" Content="Horario"/>
                 </StackPanel>
             </WrapPanel>
         </StackPanel>

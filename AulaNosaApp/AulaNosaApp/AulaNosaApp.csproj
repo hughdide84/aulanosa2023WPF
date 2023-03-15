@@ -55,8 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\AlumnoExternoDTO.cs" />
+    <Compile Include="Servicios\AlumnoExterno.cs" />
     <Compile Include="Ventanas\CrearAlumnoExterno.xaml.cs">
       <DependentUpon>CrearAlumnoExterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\ModificarAlumnoExterno.xaml.cs">
+      <DependentUpon>ModificarAlumnoExterno.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -75,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\CrearAlumnoExterno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\ModificarAlumnoExterno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,8 +118,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="Servicios\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>

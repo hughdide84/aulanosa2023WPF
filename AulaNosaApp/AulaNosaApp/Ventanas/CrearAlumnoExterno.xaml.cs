@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AulaNosaApp.Servicios;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,22 @@ namespace AulaNosaApp.Ventanas
         private void btnSubirHorario_Click(object sender, RoutedEventArgs e)
         {
             SubirArchivo(btnSubirHorario);
+        }
+
+        private void Guardar_Click(object sender, RoutedEventArgs e)
+        {
+            AlumnoExterno alumno = new AlumnoExterno();
+            int Curso = int.Parse(txtCurso.Text);
+
+            alumno.Nombre = txtNombre.Text;
+            alumno.Email = txtCorreo.Text;
+            alumno.Telefono = txtTelefono.Text;
+            alumno.Universidad = txtUniversidad.Text;
+            alumno.Titulacion = txtTitulacion.Text;
+            alumno.Especialidad = txtEspecialidad.Text;
+            alumno.IdCurso = Curso;
+
+            // aquí puedes guardar los detalles del alumno en una base de datos o en otro almacenamiento de datos
         }
     }
 }

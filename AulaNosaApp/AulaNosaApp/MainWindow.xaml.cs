@@ -27,7 +27,7 @@ namespace AulaNosaApp
 
         private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
         {
-            
+            Frame1.Source = new Uri("Paginas/AlumnoExterno.xaml", UriKind.Relative);
         }
 
         private void Frame1_Navigated(object sender, NavigationEventArgs e)

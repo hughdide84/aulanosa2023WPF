@@ -9,13 +9,10 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="665">
             <Label Content="Crear Alumno Externo" FontSize="30" HorizontalAlignment="Center"/>
-            <TextBlock Text="Nombre:"/>
-                <TextBox Name="txtNombre"/>
+            <TextBlock Text="Nombre y apellidos:"/>
+            <TextBox Name="txtNombre"/>
 
-                <TextBlock Text="Apellidos:"/>
-                <TextBox Name="txtApellidos"/>
-
-                <TextBlock Text="Correo:"/>
+            <TextBlock Text="Correo:"/>
                 <TextBox Name="txtCorreo"/>
 
                 <TextBlock Text="Teléfono:"/>
@@ -30,20 +27,22 @@
                 <TextBlock Text="Especialidad:"/>
                 <TextBox Name="txtEspecialidad"/>
 
-                <TextBlock Text="Comentarios:"/>
-                <TextBox Name="txtComentarios"/>
+                <TextBlock Text="Curso:"/>
+                <TextBox Name="txtCurso"/>
             <WrapPanel Height="10"/>
             <WrapPanel>
                 <TextBlock Text="CV:" Margin="10"/>
                 <Button Name="btnSubirCV" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
                 <TextBlock Text="Convenio:" Margin="10"/>
-                <Button Name="btnSubirConvenio" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <Button Name="btnSubirConvenio" Click="btnSubirConvenio_Click" Content="Subir archivo" Width="100"/>
                 <TextBlock Text="Evaluación:" Margin="10"/>
-                <Button Name="btnSubirEvaluacion" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <Button Name="btnSubirEvaluacion" Click="btnSubirEvaluacion_Click" Content="Subir archivo" Width="100"/>
                 <TextBlock Text="Horario:" Margin="10"/>
-                <Button Name="btnSubirHorario" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <Button Name="btnSubirHorario" Click="btnSubirHorario_Click" Content="Subir archivo" Width="100"/>
             </WrapPanel>
-            </StackPanel>
+            <WrapPanel Height="20"/>
+            <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+        </StackPanel>
             
     </Grid>
 </Window>

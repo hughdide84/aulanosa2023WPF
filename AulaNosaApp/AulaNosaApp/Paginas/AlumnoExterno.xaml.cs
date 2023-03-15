@@ -31,5 +31,11 @@ namespace AulaNosaApp.Paginas
             CrearAlumnoExterno crearAlumnExt = new CrearAlumnoExterno();
             crearAlumnExt.Show();
         }
+
+        private void ModifAlumnExt_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarAlumnoExterno modificarAlumnoExterno = new ModificarAlumnoExterno();
+            modificarAlumnoExterno.Show();
+        }
     }
 }
