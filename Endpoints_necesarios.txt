@@ -24,5 +24,5 @@ Lista de endpoints necesarios:
 	/alumnosexternos/{id}
 	/alumnosexternos/idCurso/{idcurso} (devolverá los alumnos con en curso en concreto)
 	/alumnosexternos/email/{email} (devolverá una lista de alumnos externos)
-	/alumnosexternos/telefono/{telefono}
+	/alumnosexternos/telefono/{telefono} 
 	/alumnosexternos/titulacion/{titulacion}

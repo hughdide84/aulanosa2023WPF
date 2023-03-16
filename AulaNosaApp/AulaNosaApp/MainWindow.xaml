@@ -5,9 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="PantallaPrincipal" Height="650" Width="800" MinHeight="650" MinWidth="800">
+        Title="PantallaInicio" Height="650" Width="800" MinHeight="650" MinWidth="800">
 
     <Window.Resources>
+        <Style x:Key="StackPanelMenuIzqda" TargetType="StackPanel">
+            <Setter Property="DockPanel.Dock" Value="Left"/>
+            <Setter Property="Background" Value="#1A17A1"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+
+        <Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+
+        <Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <Style x:Key="BotonesCentrados" TargetType="StackPanel">
+            <Setter Property="Margin" Value="25,0,0,0"/>
+        </Style>
+
+        <Style x:Key="WrapPanelBarraSuperior" TargetType="WrapPanel">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style x:Key="GridBarraSuperior" TargetType="Grid">
+            <Setter Property="DockPanel.Dock" Value="Top"/>
+            <Setter Property="Height" Value="60"/>
+        </Style>
+
         <Style x:Key="BotonesMenuIzqda" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#1A17A1"/>
@@ -39,6 +68,7 @@
 
         <Style x:Key="TextBlockLogin" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
         </Style>
 
         <Style x:Key="TextBoxLogin" TargetType="TextBox">
@@ -56,39 +86,35 @@
             <Setter Property="Margin" Value="0,0,0,35"/>
         </Style>
 
-        <Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0,0,0,5"/>
-        </Style>
-
-        <Style x:Key="BotonesCentrados" TargetType="StackPanel">
-            <Setter Property="Margin" Value="25,0,0,0"/>
+        <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
+            <Setter Property="SelectedIndex" Value="0"/>
         </Style>
 
         <Style x:Key="ImagenesIconosMenuSup" TargetType="Image">
             <Setter Property="Width" Value="25"/>
         </Style>
 
-        <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
-            <Setter Property="SelectedIndex" Value="0"/>
+        <Style x:Key="LogoBarraSuperior" TargetType="Image">
+            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
         </Style>
 
-        <Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-        </Style>
+
     </Window.Resources>
 
     <DockPanel>
-        <StackPanel x:Name="spnMenuIzqda" DockPanel.Dock="Left" Background="#1A17A1" Width="200">
-            <StackPanel Margin="5">
-                <ComboBox Name="cbEstudios" SelectedIndex="0">
-                    <ComboBoxItem>Grado Básico</ComboBoxItem>
-                    <ComboBoxItem>Ciclo Medio</ComboBoxItem>
-                    <ComboBoxItem>Ciclo Superior</ComboBoxItem>
-                    <ComboBoxItem>AFD</ComboBoxItem>
-                    <ComboBoxItem>Máster Profesorado</ComboBoxItem>
-                    <ComboBoxItem>Otros externos</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
+        <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
+            <ComboBox Name="cbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}">
+                <ComboBoxItem>Grado Básico</ComboBoxItem>
+                <ComboBoxItem>Ciclo Medio</ComboBoxItem>
+                <ComboBoxItem>Ciclo Superior</ComboBoxItem>
+                <ComboBoxItem>AFD</ComboBoxItem>
+                <ComboBoxItem>Máster Profesorado</ComboBoxItem>
+                <ComboBoxItem>Otros externos</ComboBoxItem>
+            </ComboBox>
 
             <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
@@ -130,30 +156,30 @@
             </StackPanel>
         </StackPanel>
 
-        <Grid x:Name="grdMenuSuperior" DockPanel.Dock="Top" Height="60">
+        <Grid x:Name="grdMenuSuperior" Style="{StaticResource GridBarraSuperior}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="/Imagenes/aulanosa_logo.png" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0"/>
+            <Image Style="{StaticResource LogoBarraSuperior}"/>
 
-            <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <WrapPanel Style="{StaticResource WrapPanelBarraSuperior}">
                 <Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
-                    <StackPanel  Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Imagenes/home_icon.png" Width="25"/>
                         <TextBlock Text="Inicio"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="btnMensajeria" Style="{StaticResource BotonesBarraSuperior}">
-                    <StackPanel  Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
                         <Image Source="/Imagenes/message_icon.png" Width="25"/>
                         <TextBlock Text="Mensajería"/>
                     </StackPanel>
                 </Button>
 
-                <ComboBox x:Name="cbbUsuario" SelectedIndex="0">
+                <ComboBox x:Name="cbbUsuario" Style="{StaticResource ComboBoxPantallaPrincipal}">
                     <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagenes/user_icon.png" Width="45"/>
@@ -165,7 +191,6 @@
                     </ComboBoxItem>
                 </ComboBox>
             </WrapPanel>
-
         </Grid>
 
         <Grid>
