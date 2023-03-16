@@ -32,6 +32,16 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative));
         }
 
+        private void btnAlumnoEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Source = new Uri("/Paginas/AlumnoEmpresa/AlumEmpResumen.xaml", UriKind.Relative);
+        }
+
+        private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Source = new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative);
+        }
+
         private void btnAcceder_Click(object sender, RoutedEventArgs e)
         {
             spnMenuIzqda.Visibility = Visibility.Visible;
