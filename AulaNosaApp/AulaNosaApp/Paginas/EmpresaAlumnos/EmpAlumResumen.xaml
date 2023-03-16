@@ -1,0 +1,30 @@
+﻿<Page x:Class="AulaNosaApp.Paginas.EmpresaAlumnos.EmpAlumResumen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AulaNosaApp.Paginas.EmpresaAlumnos"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EmpAlumResumen">
+    <StackPanel Background="White">
+        <Label Content="Empresa - Alumnos" FontSize="18"/>
+        <ToolBarTray>
+            <ToolBar Band="1">
+                <Label Content="Buscar Registro"/>
+                <ComboBox Name="cbbFiltroAlumnoEmpresa">
+                    <ComboBoxItem>Usuario</ComboBoxItem>
+                    <ComboBoxItem>Empresa</ComboBoxItem>
+                </ComboBox>
+                <TextBox Width="100" MaxLength="100" Name="tbxFiltroAlumnoEmpresa"/>
+                <Button Content="Buscar" Name="btnBuscarFiltroAlumnoEmpresa"/>
+            </ToolBar>
+        </ToolBarTray>
+        <DataGrid Name="dgvAlumnoEmpresa" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Empresa"/>
+                <DataGridTextColumn Header="Alumnos"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Page>

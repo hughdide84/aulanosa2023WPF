@@ -130,6 +130,13 @@ namespace AulaNosaApp.Paginas
             }
         }
 
+
+        private void dgvUsuarios_Selected(object sender, RoutedEventArgs e)
+        {
+            btnEditarUsuario.Visibility = Visibility.Visible;
+            btnEliminarUsuario.Visibility = Visibility.Visible;
+        }
+
         // Refresca el DataGrid de usuarios
         void refrescarUsuarios()
         {

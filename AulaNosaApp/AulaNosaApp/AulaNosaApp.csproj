@@ -91,6 +91,12 @@
       <DependentUpon>UsuarioAdm.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTO\AdministracionUsuarios\UsuarioDTO.cs" />
+    <Compile Include="Paginas\AlumnoEmpresa\AlumEmpResumen.xaml.cs">
+      <DependentUpon>AlumEmpResumen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
+      <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\AdministracionUsuarios\AdmUsuariosAPI.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -113,6 +119,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Paginas\AdministracionUsuarios\UsuarioAdm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\AlumnoEmpresa\AlumEmpResumen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
