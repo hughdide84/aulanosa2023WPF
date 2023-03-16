@@ -27,10 +27,10 @@ Para poder ejecutar la aplicación, se requiere tener instalado .NET Framework 4
 
 ## Instalación ⚙️
 
-*Clona el repositorio: git clone https://github.com/hughdide84/aulanosa2023WPF
-*Abre la solución en Visual Studio.
-*Compila el proyecto.
-*Ejecuta la aplicación.
+* Clona el repositorio: git clone https://github.com/hughdide84/aulanosa2023WPF
+* Abre la solución en Visual Studio.
+* Compila el proyecto.
+* Ejecuta la aplicación.
 
 ## Wiki 📖
 
