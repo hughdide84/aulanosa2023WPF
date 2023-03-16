@@ -106,6 +106,21 @@
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioModificar.xaml.cs">
       <DependentUpon>UsuarioModificar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTO\AlumnoDTO.cs" />
+    <Compile Include="DTO\ErrorDTO.cs" />
+    <Compile Include="DTO\EstudioDTO.cs" />
+    <Compile Include="Paginas\investigacionCalendario.xaml.cs">
+      <DependentUpon>investigacionCalendario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\AlumnoApi.cs" />
+    <Compile Include="Servicios\EstudioApi.cs" />
+    <Compile Include="Servicios\Seguridad.cs" />
+    <Compile Include="Ventanas\EstudioAlta.xaml.cs">
+      <DependentUpon>EstudioAlta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\EstudioEditar.xaml.cs">
+      <DependentUpon>EstudioEditar.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,8 +153,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Paginas\CORE-Administración-de-estudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\investigacionCalendario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\EstudioAlta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\EstudioEditar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Paginas\CORE-Administración-de-estudios.xaml.cs">
+      <DependentUpon>CORE-Administración-de-estudios.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
