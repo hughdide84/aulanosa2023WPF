@@ -15,11 +15,11 @@ La aplicación cuenta con las siguientes funcionalidades:
 
 ## Construido con 🛠️
 
-Se ha desarrollado una aplicación en WPF que hace uso de un API de REST para el acceso a datos.
+Se ha desarrollado una aplicación en WPF que hace uso de un API REST para el acceso a datos.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+Se han includo las siguientes dependencias:
+
+* RestSharp - Para consumir el API REST
 
 ## Requisitos 🔧
 
