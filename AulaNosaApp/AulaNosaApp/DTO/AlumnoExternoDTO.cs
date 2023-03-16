@@ -12,7 +12,7 @@ namespace AulaNosaApp.DTO
     internal class AlumnoExternoDTO
     {
 
-        // Propiedades que corresponden a las columnas de la tabla Alumnos en la base de datos
+        // Propiedades que corresponden a las columnas de la tabla AlumnosExternos en la base de datos
         public int id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }

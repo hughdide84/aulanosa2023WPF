@@ -134,7 +134,7 @@ namespace AulaNosaApp.Ventanas
             string alumnoJson = JsonConvert.SerializeObject(alumno);
 
             // Crear un objeto HttpContent para enviar el objeto JSON en la solicitud POST
-            HttpContent contenido = new StringContent(alumnoJson, Encoding.UTF8, "application/json");
+            HttpContent contenido = new StringContent(alumnoJson, Encoding.UTF8, "application/ejemplo");
 
             // Enviar la solicitud HTTP POST a la API
             HttpResponseMessage respuesta = await httpClient.PostAsync("/ruta-de-la-api-para-insertar-alumnos-externos", contenido);

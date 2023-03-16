@@ -22,7 +22,7 @@ namespace AulaNosaApp.Servicios
                 BaseAddress = new Uri("https://ejemplo.com/api/") // URL de la API
             };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/ejemplo"));
         }
 
         // Método que devuelve una lista con todos los alumnos de la base de datos
@@ -61,7 +61,7 @@ namespace AulaNosaApp.Servicios
                 using (HttpClient clienteHttp = new HttpClient())
                 {
                     // 3. Agregar el encabezado "Accept" para indicar que se espera recibir una respuesta en formato JSON.
-                    clienteHttp.DefaultRequestHeaders.Add("Accept", "application/json");
+                    clienteHttp.DefaultRequestHeaders.Add("Accept", "application/ejemplo");
 
                     // 4. Enviar la solicitud GET al servidor y obtener la respuesta.
                     HttpResponseMessage respuesta = await clienteHttp.GetAsync(url);
@@ -152,7 +152,7 @@ namespace AulaNosaApp.Servicios
             {
                 var url = "https://tu-api.com/alumnos/" + alumnoModificado.id;
                 var json = JsonConvert.SerializeObject(alumnoModificado);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var content = new StringContent(json, Encoding.UTF8, "application/ejemplo");
 
                 var response = await httpClient.PutAsync(url, content);
 
