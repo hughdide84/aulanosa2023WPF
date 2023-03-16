@@ -223,7 +223,7 @@
                 <TextBlock Name="tbError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
 
-            <Frame x:Name="frmPrincipal"/>
+            <Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>
         </Grid>
 
 
