@@ -11,6 +11,62 @@ namespace AulaNosaApp.DTO
     {
         List<AlumnoExterno> listaAlumnos = new List<AlumnoExterno>();
 
+        // Propiedades que corresponden a las columnas de la tabla Alumnos en la base de datos
+        public int id { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
+        public string Universidad { get; set; }
+        public string Titulacion { get; set; }
+        public string Especialidad { get; set; }
+        public string IdCurso { get; set; }
+
+        // Constructor que toma todos los valores
+        public AlumnoExternoDTO(int Id, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, string idcurso)
+        {
+            id = Id;
+            Nombre = nombre;
+            Email = email;
+            Telefono = telefono;
+            Universidad = universidad;
+            Titulacion = titulacion;
+            Especialidad = especialidad;
+            IdCurso = idcurso;
+        }
+        // Constructor por defecto
+        public AlumnoExternoDTO()
+        {
+        }
+
+        // Método que modifica los datos de un alumno en la base de datos
+        public void ModificarAlumno(int idAlumno, string nombre, string correo, string telefono, string universidad, string titulacion, string especialidad, string curso)
+        {
+        // Código para modificar el alumno en la base de datos
+        }
+
+        // Método que devuelve una lista con todos los alumnos de la base de datos
+        public List<AlumnoExterno> ObtenerTodosLosAlumnos()
+        {
+        // Código para obtener la lista de alumnos de la base de datos
+        }
+
+        // Método que devuelve un alumno por su ID
+        public AlumnoExterno ObtenerAlumnoPorId(int id)
+        {
+            AlumnoExterno alumnoEncontrado = null;
+
+            foreach (AlumnoExterno alumno in listaAlumnos)
+            {
+                if (alumno.id == id)
+                {
+                    alumnoEncontrado = alumno;
+                    break;
+                }
+            }
+
+            return alumnoEncontrado;
+        }
+
         public int ObtenerIdAlumnoSiguiente(int idActual)
         {
             int idSiguiente = -1;
@@ -34,7 +90,6 @@ namespace AulaNosaApp.DTO
 
             return idSiguiente;
         }
-
         public int ObtenerIdAlumnoAnterior(int idActual)
         {
             int idAnterior = -1;
@@ -58,23 +113,6 @@ namespace AulaNosaApp.DTO
 
             return idAnterior;
         }
-
-        public AlumnoExterno ObtenerAlumnoPorId(int id)
-        {
-            AlumnoExterno alumnoEncontrado = null;
-
-            foreach (AlumnoExterno alumno in listaAlumnos)
-            {
-                if (alumno.id == id)
-                {
-                    alumnoEncontrado = alumno;
-                    break;
-                }
-            }
-
-            return alumnoEncontrado;
-        }
-
         public void ModificarAlumno(AlumnoExterno alumnoModificado)
         {
             foreach (AlumnoExterno alumno in listaAlumnos)
