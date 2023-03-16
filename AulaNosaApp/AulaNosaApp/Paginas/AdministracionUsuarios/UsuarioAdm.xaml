@@ -9,11 +9,9 @@
       Title="UsuarioAdm">
     <StackPanel Background="White">
         <Label Content="Administracion Usuarios" FontSize="18"/>
-        <ToolBarTray>
+        <ToolBarTray Height="30">
             <ToolBar Band="1">
-                <Button Content="Refrescar Pantalla" Name="btnRefrescarPantallaUsuarios" Click="btnRefrescarPantallaUsuarios_Click"/>
-                <Separator/>
-                <Button Content="Nuevo Usuario" Name="btnCrearNuevoUsuario" Click="btnCrearNuevoUsuario_Click"/>
+                <Button Content="Agregar Usuario" Name="btnCrearNuevoUsuario" Click="btnCrearNuevoUsuario_Click"/>
                 <Separator/>
                 <Button Content="Editar Usuario" Name="btnEditarUsuario" Click="btnEditarUsuario_Click"/>
                 <Separator/>
@@ -28,6 +26,9 @@
                 </ComboBox>
                 <TextBox Width="100" Name="tbxFiltroUsuario"/>
                 <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Click="btnBuscarFiltroUsuario_Click"/>
+                
+                <Button Content="Refrescar Pantalla" Name="btnRefrescarPantallaUsuarios"/>
+                
             </ToolBar>
         </ToolBarTray>
         <DataGrid>

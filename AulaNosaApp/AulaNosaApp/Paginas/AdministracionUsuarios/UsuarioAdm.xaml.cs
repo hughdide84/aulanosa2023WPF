@@ -27,10 +27,6 @@ namespace AulaNosaApp.Paginas
             cbbFiltroUsuario.SelectedIndex = 0;
         }
 
-        private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {

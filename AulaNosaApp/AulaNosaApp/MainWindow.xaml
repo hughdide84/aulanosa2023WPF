@@ -26,6 +26,13 @@
             <Setter Property="Margin" Value="25,0,0,0"/>
         </Style>
 
+        <Style x:Key="StackPanelAcceso" TargetType="StackPanel">
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="350"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
         <Style x:Key="WrapPanelBarraSuperior" TargetType="WrapPanel">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -94,6 +101,12 @@
             <Setter Property="Width" Value="25"/>
         </Style>
 
+        <Style x:Key="ImagenLogoAcceso" TargetType="Image">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
         <Style x:Key="LogoBarraSuperior" TargetType="Image">
             <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
             <Setter Property="Width" Value="60"/>
@@ -101,8 +114,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="15,0,0,0"/>
         </Style>
-
-
     </Window.Resources>
 
     <DockPanel>
@@ -120,8 +131,8 @@
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
-                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
+                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -167,25 +178,33 @@
             <WrapPanel Style="{StaticResource WrapPanelBarraSuperior}">
                 <Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
                     <StackPanel Orientation="Vertical">
-                        <Image Source="/Imagenes/home_icon.png" Width="25"/>
+                        <Image Source="/Imagenes/home_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
                         <TextBlock Text="Inicio"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="btnMensajeria" Style="{StaticResource BotonesBarraSuperior}">
                     <StackPanel Orientation="Vertical">
-                        <Image Source="/Imagenes/message_icon.png" Width="25"/>
+                        <Image Source="/Imagenes/message_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
                         <TextBlock Text="Mensajería"/>
                     </StackPanel>
                 </Button>
 
                 <ComboBox x:Name="cbbUsuario" Style="{StaticResource ComboBoxPantallaPrincipal}">
-                    <ComboBoxItem>
+                    <ComboBoxItem Visibility="Collapsed">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagenes/user_icon.png" Width="45"/>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="Nombre" FontSize="15" FontWeight="DemiBold"/>
-                                <TextBlock Text="Categoría"/>
+                                <TextBlock Name="txbNombreUsuarioLogueado" Text="Nombre" FontSize="15" FontWeight="DemiBold"/>
+                                <TextBlock Name="txbRolUsuarioLogueado" Text="Categoría"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Selected="ComboBoxItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Imagenes/user_icon.png" Width="45"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Cerrar Sesion" FontSize="15" FontWeight="DemiBold"/>
                             </StackPanel>
                         </StackPanel>
                     </ComboBoxItem>
@@ -194,8 +213,8 @@
         </Grid>
 
         <Grid>
-            <StackPanel Name="spnAcceso" Width="350" Height="350"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Source="/Imagenes/aulanosa_logo.png" Width="100" Margin="0,0,0,15"/>
+            <StackPanel Name="spnAcceso" Style="{StaticResource StackPanelAcceso}">
+                <Image Style="{StaticResource ImagenLogoAcceso}"/>
                 <TextBlock Text="Usuario" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <TextBox Text="Hugo" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
