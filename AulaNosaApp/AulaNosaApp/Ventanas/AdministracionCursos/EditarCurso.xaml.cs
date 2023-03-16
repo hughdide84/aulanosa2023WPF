@@ -24,6 +24,7 @@ namespace AulaNosaApp
         public EditarCurso(DTO.AdministracionCursos.CursoDTO cursoEditar)
         {
             InitializeComponent();
+            tbxEditarID.Text = cursoEditar.id.ToString();
             tbxEditarNombre.Text = cursoEditar.nombre;
             dtpEditarInicio.Text = cursoEditar.inicio.ToString();
             dtpEditarFin.Text = cursoEditar.fin.ToString();
@@ -45,17 +46,18 @@ namespace AulaNosaApp
             {
                 tbkErrores.Visibility = Visibility.Collapsed;
                 CursoDTO cursoDTO = new CursoDTO();
+                cursoDTO.id = int.Parse(tbxEditarID.Text);
                 cursoDTO.nombre = tbxEditarNombre.Text;
                 cursoDTO.inicio = DateTime.Parse(dtpEditarInicio.ToString());
                 cursoDTO.fin = DateTime.Parse(dtpEditarFin.ToString());
 
                 if (cmbEditarEstado.SelectedIndex == 0)
                 {
-                    cursoDTO.estado = true;
+                    cursoDTO.estado = 'a';
                 }
                 else
                 {
-                    cursoDTO.estado = false;
+                    cursoDTO.estado = 'b';
                 }
 
                 string errores = CursosApi.EditarCurso(cursoDTO);

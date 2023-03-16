@@ -47,12 +47,13 @@ namespace AulaNosaApp
                 cursoDTO.inicio = DateTime.Parse(dtpAñadirInicio.ToString());
                 cursoDTO.fin = DateTime.Parse(dtpAñadirFin.ToString());
 
-                if (cmbAñadirEstado.SelectedIndex == 0) {
-                    cursoDTO.estado = true;
+                if (cmbAñadirEstado.SelectedIndex == 0) 
+                {
+                    cursoDTO.estado = 'a';
                 }
                 else
                 {
-                    cursoDTO.estado = false;
+                    cursoDTO.estado = 'b';
                 }
 
                 string errores = CursosApi.AgregarCurso(cursoDTO);

@@ -17,19 +17,15 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             List<CursoDTO> lista = new List<CursoDTO>();
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/", Method.Get);
+            var request = new RestRequest("/api/curso", Method.Get);
             var response = client.Execute(request);
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
+                var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
+                if (resultado != null)
                 {
-                    var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
-                    if (resultado != null)
-                    {
-                        lista = resultado;
-                    }
-                    Console.WriteLine(response.Content);
+                    lista = resultado;
                 }
             }
 
@@ -41,29 +37,23 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/", Method.Post);
+            var request = new RestRequest("/api/curso", Method.Post);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(cursoDTO));
             var response = client.Execute(request);
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
-                {
-                    if (resultado != null)
-                    {
-                        resultado = "";
-                    }
-                    else 
-                    {
-                        //  Temporal - Falta que WS devuelva un ErrorDTO
-                        //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                        //  if ((error != null) && (error.mensaje != null))
-                        //  {
-                        resultado = "Se ha producido un error";
-                        //  }
-                    }
-                }
+                resultado = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                resultado = "Se ha producido un error";
+                //  }
             }
 
             return resultado;
@@ -74,26 +64,23 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/", Method.Put);
+            var request = new RestRequest("/api/curso", Method.Put);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(cursoDTO));
             var response = client.Execute(request);
 
-            if ((response != null) && (response.Content != null))
+            if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK))
-                {
-                    resultado = "";
-                }
-                else
-                {
-                    //  Temporal - Falta que WS devuelva un ErrorDTO
-                    //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                    //  if ((error != null) && (error.mensaje != null))
-                    //  {
-                    resultado = "Se ha producido un error";
-                    //  }
-                }
+                resultado = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                resultado = "Se ha producido un error";
+                //  }
             }
 
             return resultado;
@@ -104,23 +91,21 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/" + id.ToString(), Method.Delete);
+            var request = new RestRequest("/api/curso/" + id.ToString(), Method.Delete);
             var response = client.Execute(request);
 
-            if ((response != null) && (response.Content != null))
+            if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK))
-                {
-                    resultado = "";
-                }
-                else
-                {
-                    //ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                    //if ((error != null) && (error.mensaje != null))
-                    //{
-                    //    resultado = error.mensaje;
-                    //}
-                }
+                resultado = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                resultado = "Se ha producido un error";
+                //  }
             }
 
             return resultado;
@@ -131,19 +116,15 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             CursoDTO objeto = new CursoDTO();
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/id/" + id.ToString(), Method.Get);
+            var request = new RestRequest("/api/curso/" + id.ToString(), Method.Get);
             var response = client.Execute(request);
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
+                var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
+                if (resultado != null)
                 {
-                    var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
-                    if (resultado != null)
-                    {
-                        objeto = resultado;
-                    }
-                    Console.WriteLine(response.Content);
+                    objeto = resultado;
                 }
             }
 
@@ -160,21 +141,17 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
+                var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
+                if (resultado != null)
                 {
-                    var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
-                    if (resultado != null)
-                    {
-                        objeto = resultado;
-                    }
-                    Console.WriteLine(response.Content);
+                    objeto = resultado;
                 }
             }
 
             return objeto;
         }
 
-        public static List<CursoDTO> ListarCursoPorEstado(String estado)
+        public static List<CursoDTO> ListarCursoPorEstado(char estado)
         {
             List<CursoDTO> lista = new List<CursoDTO>();
             var client = new RestClient("http://localhost:8080");
@@ -184,14 +161,10 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
+                var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
+                if (resultado != null)
                 {
-                    var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
-                    if (resultado != null)
-                    {
-                        lista = resultado;
-                    }
-                    Console.WriteLine(response.Content);
+                    lista = resultado;
                 }
             }
 

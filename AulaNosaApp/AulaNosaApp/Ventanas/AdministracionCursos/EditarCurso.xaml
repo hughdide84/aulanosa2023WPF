@@ -9,10 +9,11 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
 
@@ -21,26 +22,30 @@
             <TextBlock Name="tbkErrores" Text=""  Background="IndianRed" Visibility="Collapsed" Margin="10"/>
         </Grid>
         <DockPanel Grid.Row="1" Height="50" Width="400">
+            <Label Height="30" Width="65" Name="lblEditarID" VerticalContentAlignment="Center" Content="ID" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
+            <TextBox Name="tbxEditarID" IsEnabled="False" Text="" Height="30" Width="300"/>
+        </DockPanel>
+        <DockPanel Grid.Row="2" Height="50" Width="400">
             <Label Height="30" Width="65" Name="lblEditarNombre" VerticalContentAlignment="Center" Content="Nombre" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <TextBox Name="tbxEditarNombre" Text="" Height="30" Width="300"/>
         </DockPanel>
-        <DockPanel Grid.Row="2" Height="50" Width="400">
+        <DockPanel Grid.Row="3" Height="50" Width="400">
             <Label Width="65" Name="lblEditarInicio" VerticalContentAlignment="Center" Content="Inicio" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <DatePicker Name="dtpEditarInicio" SelectedDateFormat="Long" Height="30" Width="300"/>
         </DockPanel>
-        <DockPanel Grid.Row="3" Height="50" Width="400">
+        <DockPanel Grid.Row="4" Height="50" Width="400">
             <Label Width="65" Name="lblEditarFin" VerticalContentAlignment="Center" Content="Fin" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <DatePicker Name="dtpEditarFin" SelectedDateFormat="Long" Height="30" Width="300"/>
         </DockPanel>
-        <DockPanel Grid.Row="4" Height="50" Width="400">
+        <DockPanel Grid.Row="5" Height="50" Width="400">
             <Label Width="65" Name="lblEditarEstado" VerticalContentAlignment="Center" Content="Estado" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <ComboBox Name="cmbEditarEstado" Height="30" Width="300" IsReadOnly="True">
-                <ComboBoxItem>Iniciado</ComboBoxItem>
-                <ComboBoxItem>Finalizado</ComboBoxItem>
+                <ComboBoxItem>a</ComboBoxItem>
+                <ComboBoxItem>b</ComboBoxItem>
             </ComboBox>
         </DockPanel>
 
-        <DockPanel Grid.Row="5" Margin="205,30,220,30">
+        <DockPanel Grid.Row="6" Margin="205,30,220,30">
             <Button Height="40" Width="100" Name="btnCancelar" Content="Cancelar" FontSize="14" Click="btnCancelar_Click"/>
             <Button Height="40" Width="100" Name="btnEditar" Content="Editar" HorizontalAlignment="Right" FontSize="14" Click="btnEditar_Click"/>
         </DockPanel>

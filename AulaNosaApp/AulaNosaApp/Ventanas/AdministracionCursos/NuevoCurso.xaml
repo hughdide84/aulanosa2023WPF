@@ -36,8 +36,8 @@
         <DockPanel Grid.Row="4" Height="50" Width="400">
             <Label Width="65" Name="lblAñadirEstado" VerticalContentAlignment="Center" Content="Estado" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
             <ComboBox Name="cmbAñadirEstado" Height="30" Width="300" IsReadOnly="True">
-                <ComboBoxItem>Iniciado</ComboBoxItem>
-                <ComboBoxItem>Finalizado</ComboBoxItem>
+                <ComboBoxItem>a</ComboBoxItem>
+                <ComboBoxItem>b</ComboBoxItem>
             </ComboBox>
         </DockPanel>
 

@@ -41,7 +41,7 @@
                 </ToolBar>
             </DockPanel>
 
-            <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False" DataGridCell.Selected="dtgListado_Selected">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>

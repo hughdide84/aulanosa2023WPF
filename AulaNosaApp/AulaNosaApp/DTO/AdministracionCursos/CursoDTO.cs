@@ -12,6 +12,6 @@ namespace AulaNosaApp.DTO.AdministracionCursos
         public string nombre { get; set; }
         public DateTime? inicio { get; set; }
         public DateTime? fin { get; set; }
-        public bool estado { get; set; }
+        public char estado { get; set; }
     }
 }

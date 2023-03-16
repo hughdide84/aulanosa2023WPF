@@ -33,6 +33,8 @@ namespace AulaNosaApp
 
         private void RefrescarDatos()
         {
+            btnModificar.IsEnabled = false;
+            btnEliminar.IsEnabled = false;
             cmbConsultar.Visibility = Visibility.Hidden;
             tbxConsultar.Visibility = Visibility.Hidden;
             btnBuscar.Visibility = Visibility.Hidden;
@@ -40,11 +42,13 @@ namespace AulaNosaApp
             dtgListado.ItemsSource = lista;
         }
 
+        //Actualiza los registros
         private void btnRefrescar_Click(object sender, RoutedEventArgs e)
         {
             RefrescarDatos();
         }
 
+        //Crear un registro
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
             NuevoCurso nuevocurso = new NuevoCurso();
@@ -52,6 +56,7 @@ namespace AulaNosaApp
             RefrescarDatos();
         }
 
+        //Modificar un registro
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             CursoDTO productoSel = dtgListado.SelectedItem as CursoDTO;
@@ -67,6 +72,7 @@ namespace AulaNosaApp
             }
         }
 
+        //Eliminar un registro
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             CursoDTO productoSel = dtgListado.SelectedItem as CursoDTO;
@@ -81,6 +87,7 @@ namespace AulaNosaApp
             }
         }
 
+        //Habilitar búsqueda
         private void btnConsultar_Click(object sender, RoutedEventArgs e)
         {
             cmbConsultar.Items.Clear();
@@ -122,22 +129,29 @@ namespace AulaNosaApp
             else if (cmbConsultar.SelectedIndex == 2)
             {
                 lista.Clear();
-                lista = CursosApi.ListarCursoPorEstado(tbxConsultar.Text);
+                lista = CursosApi.ListarCursoPorEstado(Char.Parse(tbxConsultar.Text));
                 dtgListado.ItemsSource = lista;
             }
         }
 
+        //Filtrar registros
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text != "")
             {
-                MessageBox.Show("No existe nada de momento en BBDD", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 filtrar();
             }
             else if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text == "")
             {
                 MessageBox.Show("El buscador no puede estar vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        //Permitir modificar o eliminar un registro
+        private void dtgListado_Selected(object sender, RoutedEventArgs e)
+        {
+            btnModificar.IsEnabled = true;
+            btnEliminar.IsEnabled = true;
         }
     }
 }

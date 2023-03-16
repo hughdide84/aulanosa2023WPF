@@ -95,7 +95,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="AdminCursos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -111,8 +111,8 @@
     <Compile Include="Ventanas\AdministracionCursos\EditarCurso.xaml.cs">
       <DependentUpon>EditarCurso.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="AdminCursos.xaml.cs">
+      <DependentUpon>AdminCursos.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Ventanas\AdministracionCursos\NuevoCurso.xaml">
