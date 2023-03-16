@@ -31,7 +31,7 @@
         </Style>
 
         <Style x:Key="StackPanelDatosForm" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Margin" Value="0,0,0,25"/>
         </Style>
 
         <Style x:Key="BotonesFormularios" TargetType="Button">
@@ -60,8 +60,8 @@
         </Style>
 
         <Style x:Key="StackPanelFilaForm" TargetType="StackPanel">
-            <Setter Property="Width" Value="400"/>
-            <Setter Property="Height" Value="400"/>
+            <Setter Property="Width" Value="370"/>
+            <Setter Property="Height" Value="300"/>
         </Style>
 
         <Style x:Key="StackPanelBotonesForm" TargetType="StackPanel">
@@ -69,5 +69,7 @@
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="30"/>
         </Style>
+
+
     </Application.Resources>
 </Application>

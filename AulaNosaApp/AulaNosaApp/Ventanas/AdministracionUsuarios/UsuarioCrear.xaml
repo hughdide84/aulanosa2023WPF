@@ -5,45 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
-       Title="UsuarioCrear" Height="650" Width="800" MinHeight="650" MinWidth="800">
+        Title="UsuarioCrear" Height="650" Width="800" MinHeight="650" MinWidth="800">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <Grid Background="#F0F4F7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+
             <Image Style="{StaticResource ImagenLogoFormularios}"/>
             <Label Grid.Column="1" Content="Registro de usuarios" Style="{StaticResource LabelTituloFormularios}"/>
+
         </Grid>
+
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
+
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelFilaForm}">
-            <StackPanel Orientation="Vertical" Style="{StaticResource StackPanelDatosForm}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}" MaxHeight="50"/>
-                </StackPanel>
-                <Label Name="lblNombreEstado"/>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Style="{StaticResource StackPanelDatosForm}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
-                    <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}" MaxHeight="100"/>
-                </StackPanel>
-                <Label Name="lblContrasenaEstado"/>
+
+            <StackPanel Orientation="Horizontal"  Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
+                <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Style="{StaticResource StackPanelDatosForm}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}" MaxHeight="50"/>
-                </StackPanel>
-                <Label Name="lblEmailEstado"/>
+
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
             </StackPanel>
+
             <StackPanel Orientation="Horizontal" Margin="0,0,0,50" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Rol" Style="{StaticResource TextBlockFormularios}"/>
                 <ComboBox Name="cbbCreacionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
@@ -51,9 +50,10 @@
                     <ComboBoxItem>Editor</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
+
             <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
-                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
-                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnRegistrar_Click"/>
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}"/>
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
             </StackPanel>
         </StackPanel>
     </Grid>
