@@ -17,21 +17,27 @@
                 <Separator/>
                 <Button Content="Editar Usuario" Name="btnEditarUsuario" Click="btnEditarUsuario_Click"/>
                 <Separator/>
-                <Button Content="Eliminar" Name="btnEliminarUsuario" Click="btnEliminarUsuario_Click"/>
+                <Button Content="Eliminar Usuario" Name="btnEliminarUsuario" Click="btnEliminarUsuario_Click"/>
                 <Separator/>
-                <Label Content="Buscar Usuario"/>
+                <Label Content="Buscar Usuario" Name="lblBuscarUsuario"/>
                 <ComboBox Name="cbbFiltroUsuario">
                     <ComboBoxItem>ID</ComboBoxItem>
                     <ComboBoxItem>Usuario</ComboBoxItem>
                     <ComboBoxItem>Rol</ComboBoxItem>
                     <ComboBoxItem>Email</ComboBoxItem>
                 </ComboBox>
-                <TextBox Width="100" Name="tbxFiltroUsuario"/>
+                <TextBox Width="100" Name="tbxFiltroUsuario" MaxLength="100"/>
                 <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Click="btnBuscarFiltroUsuario_Click"/>
             </ToolBar>
         </ToolBarTray>
-        <DataGrid>
-
+        <DataGrid Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding password}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding rol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </Page>
