@@ -12,6 +12,8 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
 {
     public class CursosApi
     {
+
+        //Listar todos los cursos
         public static List<CursoDTO> ListarCursos()
         {
             List<CursoDTO> lista = new List<CursoDTO>();
@@ -32,6 +34,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return lista;
         }
 
+        //Crear un registro
         public static string AgregarCurso(CursoDTO cursoDTO)
         {
             string resultado = "Se ha producido un error no controlado";
@@ -59,6 +62,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return resultado;
         }
 
+        //Modificar un registro
         public static string EditarCurso(CursoDTO cursoDTO)
         {
             string resultado = "Se ha producido un error no controlado";
@@ -86,6 +90,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return resultado;
         }
 
+        //Eliminar un registro
         public static string EliminarCurso(int id)
         {
             string resultado = "Se ha producido un error no controlado";
@@ -111,6 +116,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return resultado;
         }
 
+        //Buscar curso por ID
         public static CursoDTO ListarCursoPorId(int id)
         {
             CursoDTO objeto = new CursoDTO();
@@ -131,6 +137,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return objeto;
         }
 
+        //Buscar curso por Nombre
         public static CursoDTO ListarCursoPorNombre(String nombre)
         {
             CursoDTO objeto = new CursoDTO();
@@ -151,6 +158,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return objeto;
         }
 
+        //Buscar cursos por estado
         public static List<CursoDTO> ListarCursoPorEstado(char estado)
         {
             List<CursoDTO> lista = new List<CursoDTO>();

@@ -38,13 +38,21 @@ namespace AulaNosaApp
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            tbkErrores.Text = "";
+            tbkErrores.Visibility = Visibility.Collapsed;
             if (tbxEditarNombre.Text == "" || dtpEditarInicio.Text == "" || dtpEditarFin.Text == "")
             {
-                MessageBox.Show("Alguno de los campos está vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                tbkErrores.Text += "Alguno de los campos está vacío\n";
+                tbkErrores.Visibility = Visibility.Visible;
             }
-            else
+            if (tbxEditarNombre.Text.Length > 50)
             {
-                tbkErrores.Visibility = Visibility.Collapsed;
+                tbkErrores.Text += "El nombre excede el límite de caracteres\n";
+                tbkErrores.Visibility = Visibility.Visible;
+            }
+
+            if (tbkErrores.Visibility != Visibility.Visible)
+            {
                 CursoDTO cursoDTO = new CursoDTO();
                 cursoDTO.id = int.Parse(tbxEditarID.Text);
                 cursoDTO.nombre = tbxEditarNombre.Text;
