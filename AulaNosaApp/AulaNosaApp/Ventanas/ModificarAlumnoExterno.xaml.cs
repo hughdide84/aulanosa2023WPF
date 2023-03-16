@@ -22,7 +22,6 @@ namespace AulaNosaApp.Ventanas
     public partial class ModificarAlumnoExterno : Window
     {
         AlumnoExternoService _AlumnoExternoService;
-        AlumnoExternoDTO alumnoExternoDTO = new AlumnoExternoDTO();
         public int idAlumno = 1;
         public async Task asyncModificarAlumnoExterno(int idAlumno)
         {
