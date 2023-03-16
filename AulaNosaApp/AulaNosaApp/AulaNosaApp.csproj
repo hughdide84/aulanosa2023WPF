@@ -90,14 +90,14 @@
     <Compile Include="Paginas\AdministracionUsuarios\UsuarioAdm.xaml.cs">
       <DependentUpon>UsuarioAdm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DTO\AdministracionUsuarios\UsuarioDTO.cs" />
+    <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Paginas\AlumnoEmpresa\AlumEmpResumen.xaml.cs">
       <DependentUpon>AlumEmpResumen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Servicios\AdministracionUsuarios\AdmUsuariosAPI.cs" />
+    <Compile Include="Servicios\AdmUsuariosAPI.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
@@ -133,7 +133,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="DTO\AdministracionCursos\CursoDTO.cs" />
+    <Compile Include="DTO\CursoDTO.cs" />
     <Compile Include="Paginas\AdministracionCursos\AdministracionCursos.xaml.cs">
       <DependentUpon>AdministracionCursos.xaml</DependentUpon>
     </Compile>
@@ -141,7 +141,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Servicios\AdministracionCursos\CursosApi.cs" />
+    <Compile Include="Servicios\CursosApi.cs" />
     <Compile Include="Ventanas\AdministracionCursos\EditarCurso.xaml.cs">
       <DependentUpon>EditarCurso.xaml</DependentUpon>
     </Compile>
@@ -184,7 +184,7 @@
     <Page Include="Ventanas\EstudioEditar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>      
+    </Page>
     <Page Include="Ventanas\AdministracionCursos\NuevoCurso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,7 +193,7 @@
   <ItemGroup>
     <Compile Include="Paginas\CORE-Administración-de-estudios.xaml.cs">
       <DependentUpon>CORE-Administración-de-estudios.xaml</DependentUpon>
-    </Compile>      
+    </Compile>
     <Compile Include="Ventanas\AdministracionCursos\NuevoCurso.xaml.cs">
       <DependentUpon>NuevoCurso.xaml</DependentUpon>
     </Compile>
@@ -223,9 +223,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
   </ItemGroup>

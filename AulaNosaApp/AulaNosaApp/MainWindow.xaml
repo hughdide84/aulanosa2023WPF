@@ -132,7 +132,7 @@
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
                     <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
                 </StackPanel>
             </StackPanel>
 
@@ -162,7 +162,7 @@
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioPext_Click"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

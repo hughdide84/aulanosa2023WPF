@@ -63,5 +63,15 @@ namespace AulaNosaApp
         {
             frmPrincipal.Source = new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative);
         }
+
+        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Source = new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative);
+        }
+
+        private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Source = new Uri("/Paginas/investigacionCalendario.xaml", UriKind.Relative);
+        }
     }
 }
