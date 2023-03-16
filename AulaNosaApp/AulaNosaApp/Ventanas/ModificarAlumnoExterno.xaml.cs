@@ -22,16 +22,18 @@ namespace AulaNosaApp.Ventanas
     /// </summary>
     public partial class ModificarAlumnoExterno : Window
     {
+        AlumnoExternoService _AlumnoExternoService;
         AlumnoExternoDTO alumnoExternoDTO = new AlumnoExternoDTO();
         public int idAlumno = 1;
-        public ModificarAlumnoExterno(int idAlumno)
+        public async Task asyncModificarAlumnoExterno(int idAlumno)
         {
             InitializeComponent();
 
             this.idAlumno = idAlumno;
 
             // Cargar los datos del alumno con el id proporcionado
-            AlumnoExterno alumno = alumnoExternoDTO.ObtenerAlumnoPorId(idAlumno);
+            //AlumnoExterno alumno = alumnoExternoDTO.ObtenerAlumnoPorId(idAlumno);
+            AlumnoExterno alumno = await _AlumnoExternoService.ObtenerAlumnoPorId(idAlumno);
             if (alumno != null)
             {
                 txtNombre.Text = alumno.Nombre;
@@ -48,10 +50,9 @@ namespace AulaNosaApp.Ventanas
         {
         }
 
-        private void Guardar_Click(object sender, RoutedEventArgs e)
+        private async void Guardar_ClickAsync(object sender, RoutedEventArgs e)
         {
-            AlumnoExterno alumnoAModificar = alumnoExternoDTO.ObtenerAlumnoPorId(idAlumno);
-
+            AlumnoExterno alumnoAModificar = await _AlumnoExternoService.ObtenerAlumnoPorId(idAlumno);
             if (alumnoAModificar != null)
             {
                 // Crear un nuevo objeto Alumno con los valores de los controles de la ventana
@@ -68,7 +69,7 @@ namespace AulaNosaApp.Ventanas
                 };
 
                 // Modificar los datos del alumno en la lista de alumnos
-                alumnoExternoDTO.ModificarAlumno(alumnoModificado);
+                _AlumnoExternoService.ModificarAlumno(alumnoModificado);
             }
 
             // Cerrar la ventana de modificación
@@ -81,13 +82,13 @@ namespace AulaNosaApp.Ventanas
             int idActual = idAlumno;
 
             // Obtener el id del alumno anterior
-            int idAnterior = alumnoExternoDTO.ObtenerIdAlumnoAnterior(idActual);
+            int idAnterior = _AlumnoExternoService.ObtenerIdAlumnoAnterior(idActual);
 
             // Si no hay alumno anterior, salir del método
             if (idAnterior == -1) return;
 
             // Cargar los datos del alumno anterior
-            alumnoExternoDTO.ObtenerAlumnoPorId(idAnterior);
+            _AlumnoExternoService.ObtenerAlumnoPorId(idAnterior);
         }
 
         private void btnAdelante_Click(object sender, RoutedEventArgs e)
@@ -96,13 +97,13 @@ namespace AulaNosaApp.Ventanas
             int idActual = idAlumno;
 
             // Obtener el id del alumno siguiente
-            int idSiguiente = alumnoExternoDTO.ObtenerIdAlumnoSiguiente(idActual);
+            int idSiguiente = _AlumnoExternoService.ObtenerIdAlumnoSiguiente(idActual);
 
             // Si no hay alumno siguiente, salir del método
             if (idSiguiente == -1) return;
 
             // Cargar los datos del alumno anterior
-            alumnoExternoDTO.ObtenerAlumnoPorId(idSiguiente);
+            _AlumnoExternoService.ObtenerAlumnoPorId(idSiguiente);
         }
         
     }

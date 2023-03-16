@@ -30,7 +30,7 @@
             <TextBlock Text="Curso:"/>
             <TextBox Name="txtCurso"/>
             <WrapPanel Height="30"/>
-            <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+            <Button Content="Guardar" Click="Guardar_ClickAsync" Height="25"/>
             <WrapPanel Height="30"/>
             <WrapPanel>
                 <Button Name="btnAtras" Content="Atrás" Click="btnAtras_Click" Width="150" Height="30" Margin="0,0,365,0"/>

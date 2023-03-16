@@ -24,18 +24,49 @@ namespace AulaNosaApp.Paginas
         public AlumnoExterno()
         {
             InitializeComponent();
+            cbbFiltroAlumnExt.SelectedIndex = 0;
         }
 
-        private void CrearAlumnExt_Click(object sender, RoutedEventArgs e)
+        private void btnRefrescarPantallaAlumnExt_Click(object sender, RoutedEventArgs e)
         {
-            CrearAlumnoExterno crearAlumnExt = new CrearAlumnoExterno();
-            crearAlumnExt.Show();
+
         }
 
-        private void ModifAlumnExt_Click(object sender, RoutedEventArgs e)
+        private void btnCrearNuevoAlumnExt_Click(object sender, RoutedEventArgs e)
+        {
+            CrearAlumnoExterno crearAlumnoExterno = new CrearAlumnoExterno();
+            crearAlumnoExterno.Show();
+        }
+
+        private void btnEditarAlumnExt_Click(object sender, RoutedEventArgs e)
         {
             ModificarAlumnoExterno modificarAlumnoExterno = new ModificarAlumnoExterno();
             modificarAlumnoExterno.Show();
+        }
+
+        private void btnEliminarAlumnExt_Click(object sender, RoutedEventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Desea eliminar este alumno?", "Eliminar Alumno", MessageBoxButton.YesNo);
+            if (resultado == MessageBoxResult.Yes)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnBuscarFiltroAlumnExt_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbxFiltroAlumnExt.Text.Length == 0)
+            {
+                MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+
+            }
         }
     }
 }
