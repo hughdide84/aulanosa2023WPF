@@ -1,6 +1,6 @@
 # Gestión de Centro de Formación Profesional
 
-Este es un proyecto de software desarrollado en WPF para la gestión de un centro de formación profesional. La aplicación permite la gestión de prácticas en empresas de los alumnos, la gestión de proyectos de fin de ciclo, la gestión de alumnos externos que realicen prácticas en el centro y la gestión de matrículas y cobro de pagos. Además, se cuenta con una sección para la gestión de usuarios de la aplicación, cursos y estudios.
+Este es un proyecto de software desarrollado en WPF para la gestión de un Centro de Formación Profesional. La aplicación permite la gestión de prácticas en empresas de los alumnos, la gestión de proyectos de fin de ciclo, la gestión de alumnos externos que realicen prácticas en el centro y la gestión de matrículas y cobro de pagos. Además, se cuenta con una sección para la gestión de usuarios de la aplicación, cursos y estudios.
 
 ## Funcionalidades 📋
 
