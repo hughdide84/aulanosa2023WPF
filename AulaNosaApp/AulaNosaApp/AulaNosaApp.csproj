@@ -93,7 +93,9 @@
     <Compile Include="Paginas\investigacionCalendario.xaml.cs">
       <DependentUpon>investigacionCalendario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\AlumnoApi.cs" />
     <Compile Include="Servicios\EstudioApi.cs" />
+    <Compile Include="Servicios\Seguridad.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Ventanas\EstudioAlta.xaml.cs">
       <DependentUpon>EstudioAlta.xaml</DependentUpon>

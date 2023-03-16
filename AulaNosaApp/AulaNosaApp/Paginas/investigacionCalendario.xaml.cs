@@ -1,4 +1,5 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,21 +26,16 @@ namespace AulaNosaApp.Paginas
         public investigacionCalendario()
         {
             InitializeComponent();
-            generarCalendario();
+            //lo comente para que no pete nada más abrir, pero funsiona
+            //generarCalendario();
         }
 
         private void generarCalendario() 
         {
-            for (int i = 0; i < 1; i ++) {
+            foreach (AlumnoDTO alumno in AlumnoApi.ListarAlumnos()) {
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30);
                 grdLista.RowDefinitions.Add(row);
-
-                AlumnoDTO alumno = new AlumnoDTO();
-                alumno.nombre = "Federico Laurencio Elidoro";
-                alumno.inicioPr = new DateTime(2023, 9, 19);
-                alumno.finPr = new DateTime(2023, 11, 5);
-
 
                 Border border = new Border();
                 border.Background = new SolidColorBrush(Colors.Red);

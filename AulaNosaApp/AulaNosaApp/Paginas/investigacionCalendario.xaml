@@ -13,10 +13,14 @@
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <Style x:Key="Meses" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
     </Page.Resources>
     <Grid Background="White">
         <ScrollViewer HorizontalScrollBarVisibility="Visible">
-            <Grid>
+            <Grid MaxWidth="2400" Margin="10,0,10,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
@@ -34,22 +38,20 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Column="1" Content="Septiembre"  VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="2" Content="Octubre"  VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="3" Content="Noviembre" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="4" Content="Diciembre" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="5" Content="Enero" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="6" Content="Febrero" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="7" Content="Marzo" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="8" Content="Abril" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="9" Content="Mayo" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="10" Content="Junio" VerticalAlignment="Bottom" FontSize="20"/>
-                    <Button Grid.Column="11" Content="Julio" VerticalAlignment="Bottom" FontSize="20"/>
-
-                    <TextBlock Grid.Row="1" Text="Pepe primero Agusto" TextAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Text="Septiembre" Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="1" Text="Octubre"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="2" Text="Noviembre"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="3" Text="Diciembre"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="4" Text="Enero"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="5" Text="Febrero"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="6" Text="Marzo"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="7" Text="Abril"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="8" Text="Mayo"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="9" Text="Junio"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="10" Text="Julio"  Style="{StaticResource Meses}"/>
+                    <TextBlock Grid.Column="11" Text="Agosto"  Style="{StaticResource Meses}"/>
 
                 </Grid>
                 <Grid x:Name="grdLista">
@@ -61,11 +63,8 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-
-                    <!-- supuesta fecha  9 de febrero inicio: margin (((mesInicio - 7).siemprePositivo * 200) + ((100 * diaInicio)  / dias que tiene el mes) * 2) final: width ((200 - ((100 * diaInicio)  / dias que tiene el mes) * 2)) + ((mesFinal - mesInicio) -1 * 200))-->
-                    <!--                                                (2-7) = -5 >> 5 * 200 = 1000            900 / 29 = 31 >> 31 * 2 = 62 >> 1000 + 62                                                                                         -->
-                    <!--                                                                                                                                                                              -->
-                    <Border Grid.Row="1" Grid.Column="1" Background="#732487" CornerRadius="15" Margin="1444,3,0,3" Width="200" HorizontalAlignment="Left">
+                    
+                    <Border Grid.Row="1" Grid.Column="1" Background="#732487" CornerRadius="15" Margin="1444,3,0,3" Width="2000" HorizontalAlignment="Left">
                         <Grid VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>

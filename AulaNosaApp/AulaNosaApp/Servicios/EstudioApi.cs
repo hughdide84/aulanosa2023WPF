@@ -14,11 +14,11 @@ namespace AulaNosaApp.Servicios
     {
         public static string AltaEstudio(EstudioDTO estudio)
         {
-            //pendiente de modificar
+
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient(Constantes.baseApi);
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudio", Method.Post);
+           // client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/estudios", Method.Post);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = client.Execute(request);
@@ -44,11 +44,10 @@ namespace AulaNosaApp.Servicios
 
         public static List<EstudioDTO> ListarEstudios() {
 
-            //pendiente de modificar
             List<EstudioDTO> estudios = new List<EstudioDTO>();
             var cliente = new RestClient(Constantes.baseApi);
-            cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudio", Method.Get);
+            //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/estudios/all", Method.Get);
             var response = cliente.Execute(request);
 
             if (response != null) {
@@ -68,11 +67,11 @@ namespace AulaNosaApp.Servicios
 
         public static string EditarEstudio(EstudioDTO estudio)
         {
-            //pendiente de modificar
+
             string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.baseApi);
-            cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudio", Method.Put);
+            //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/estudios/update", Method.Put);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = cliente.Execute(request);
@@ -81,7 +80,7 @@ namespace AulaNosaApp.Servicios
             {
                 if ((response.StatusCode == System.Net.HttpStatusCode.OK))
                 {
-                    resultado = "Estudio editado";
+                    resultado = "";
                 }
                 else
                 {
@@ -99,18 +98,18 @@ namespace AulaNosaApp.Servicios
 
         public static string EliminarEstudio(int id)
         {
-            //pendiente de modificar
+
             string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.baseApi);
-            cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudio/" + id.ToString(), Method.Delete);
+            //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/estudios/delete/" + id.ToString(), Method.Delete);
             var response = cliente.Execute(request);
 
             if ((response != null) && (response.Content != null))
             {
                 if ((response.StatusCode == System.Net.HttpStatusCode.OK))
                 {
-                    resultado = "Estudio eliminado";
+                    resultado = "";
                 }
                 else
                 {

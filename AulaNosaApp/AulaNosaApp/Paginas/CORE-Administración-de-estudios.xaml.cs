@@ -30,7 +30,7 @@ namespace AulaNosaApp.Paginas
         public CORE_Administración_de_estudios()
         {
             InitializeComponent();
-            
+            RefrescarDatos();
         }
 
         private void RefrescarDatos() {
