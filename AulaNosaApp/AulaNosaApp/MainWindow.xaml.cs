@@ -1,5 +1,4 @@
-﻿using AulaNosaApp.Paginas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,14 +59,9 @@ namespace AulaNosaApp
             spnAcceso.Visibility = Visibility.Visible;
         }
 
-        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        private void btnCursos_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Source = new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative);
-        }
-
-        private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/investigacionCalendario.xaml", UriKind.Relative);
+            frmPrincipal.Source = new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative);
         }
     }
 }

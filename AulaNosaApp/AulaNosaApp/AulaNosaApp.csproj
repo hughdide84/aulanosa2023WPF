@@ -121,13 +121,29 @@
     <Compile Include="Ventanas\EstudioEditar.xaml.cs">
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
     </Compile>
+    <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\AdministracionCursos\EditarCurso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="DTO\AdministracionCursos\CursoDTO.cs" />
+    <Compile Include="Paginas\AdministracionCursos\AdministracionCursos.xaml.cs">
+      <DependentUpon>AdministracionCursos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Servicios\AdministracionCursos\CursosApi.cs" />
+    <Compile Include="Ventanas\AdministracionCursos\EditarCurso.xaml.cs">
+      <DependentUpon>EditarCurso.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -168,11 +184,18 @@
     <Page Include="Ventanas\EstudioEditar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>      
+    <Page Include="Ventanas\AdministracionCursos\NuevoCurso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Paginas\CORE-Administración-de-estudios.xaml.cs">
       <DependentUpon>CORE-Administración-de-estudios.xaml</DependentUpon>
+    </Compile>      
+    <Compile Include="Ventanas\AdministracionCursos\NuevoCurso.xaml.cs">
+      <DependentUpon>NuevoCurso.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -200,7 +223,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Util\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
   </ItemGroup>

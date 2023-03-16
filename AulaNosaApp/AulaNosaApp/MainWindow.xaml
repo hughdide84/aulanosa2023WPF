@@ -131,8 +131,8 @@
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
-                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
+                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -141,7 +141,7 @@
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnEmpresas" Content="Empresas" Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnAlumnado" Content="Alumnado"  Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnCalendarioFct" Content="Calendario"  Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioFct_Click"/>
+                    <Button x:Name="btnCalendarioFct" Content="Calendario"  Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnEmpresaAlumno" Content="Empresa - Alumno"  Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}"/>
