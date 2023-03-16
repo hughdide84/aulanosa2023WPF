@@ -18,9 +18,9 @@ namespace AulaNosaApp
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class AdminCursos : Window
+    public partial class MainWindow : Window
     {
-        public AdminCursos()
+        public MainWindow()
         {
             InitializeComponent();
         }
