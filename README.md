@@ -42,4 +42,4 @@ Proyecto realizado por alumnos del Ciclo Superior de Desarrollo de Aplicaciones 
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.txt](LICENSE.txt) para detalles
