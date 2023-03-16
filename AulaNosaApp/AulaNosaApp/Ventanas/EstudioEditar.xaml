@@ -6,6 +6,38 @@
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
         Title="EstudioEditar" Height="300" Width="500">
+    <Window.Resources>
+        <Style x:Key="texto" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+        <Style x:Key="textoId" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+        <Style x:Key="camposTbx" TargetType="TextBox">
+            <Setter Property="Margin" Value="5,0,0,10"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="camposChb" TargetType="CheckBox">
+            <Setter Property="Margin" Value="5,0,0,10"/>
+        </Style>
+        <Style x:Key="error" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="20,0,20,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+        </Style>
+        <Style x:Key="botones" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <TextBlock Text="Editar Estudio" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0,0,0,15"/>
@@ -21,22 +53,22 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Id" TextAlignment="Right" Margin="10,0,10,0"/>
-                <TextBlock x:Name="tbkId" Grid.Column="1"  Margin="5,0,0,10"/>
+                <TextBlock Text="Id" Style="{StaticResource texto}"/>
+                <TextBlock x:Name="tbkId" Grid.Column="1"  Style="{StaticResource textoId}"/>
 
-                <TextBlock Text="Nombre" Grid.Row="1" TextAlignment="Right" Margin="10,0,10,0"/>
-                <TextBox x:Name="tbxNombre"  Grid.Row="1" Grid.Column="1" Width="200" Margin="5,0,0,10" HorizontalAlignment="Left"/>
+                <TextBlock Text="Nombre" Grid.Row="1" Style="{StaticResource texto}"/>
+                <TextBox x:Name="tbxNombre"  Grid.Row="1" Grid.Column="1" Style="{StaticResource camposTbx}"/>
 
-                <TextBlock Text="FCT" Grid.Row="2" TextAlignment="Right" Margin="10,0,10,0"/>
-                <CheckBox x:Name="chbFct" Grid.Row="2" Grid.Column="1" Margin="5,0,0,10" HorizontalAlignment="Left"/>
+                <TextBlock Text="FCT" Grid.Row="2" Style="{StaticResource texto}"/>
+                <CheckBox x:Name="chbFct" Grid.Row="2" Grid.Column="1" Style="{StaticResource camposChb}"/>
 
-                <TextBlock Text="PEXT" Grid.Row="3" TextAlignment="Right" Margin="10,0,10,0"/>
-                <CheckBox x:Name="chbPext" Grid.Row="3" Grid.Column="1" Margin="5,0,0,10"/>
+                <TextBlock Text="PEXT" Grid.Row="3" Style="{StaticResource texto}"/>
+                <CheckBox x:Name="chbPext" Grid.Row="3" Grid.Column="1"  Style="{StaticResource camposChb}"/>
 
             </Grid>
-            <TextBlock x:Name="tbkErrores" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" Visibility="Hidden"/>
+            <TextBlock x:Name="tbkErrores" Style="{StaticResource error}"/>
         </StackPanel>
-        <Button Content="Aceptar" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Click="Aceptar"/>
-        <Button Content="Cancelar" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Click="Cancelar"/>
+        <Button Content="Aceptar" HorizontalAlignment="Right" Style="{StaticResource botones}" Click="Aceptar"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Style="{StaticResource botones}" Click="Cancelar"/>
     </Grid>
 </Window>
