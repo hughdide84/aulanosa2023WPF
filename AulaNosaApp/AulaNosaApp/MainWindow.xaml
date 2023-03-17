@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="PantallaInicio" Height="650" Width="800" MinHeight="650" MinWidth="800">
+        Title="PantallaInicio" Height="700" Width="950" MinHeight="650" MinWidth="800">
 
     <Window.Resources>
         <Style x:Key="StackPanelMenuIzqda" TargetType="StackPanel">
@@ -73,6 +73,12 @@
             <Setter Property="Foreground" Value="Gray"/>
         </Style>
 
+        <Style x:Key="TextBlockMenuIzqda" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+
         <Style x:Key="TextBlockLogin" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="0,0,0,4"/>
@@ -118,14 +124,26 @@
 
     <DockPanel>
         <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
-            <ComboBox Name="cbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}">
-                <ComboBoxItem>Grado Básico</ComboBoxItem>
-                <ComboBoxItem>Ciclo Medio</ComboBoxItem>
-                <ComboBoxItem>Ciclo Superior</ComboBoxItem>
-                <ComboBoxItem>AFD</ComboBoxItem>
-                <ComboBoxItem>Máster Profesorado</ComboBoxItem>
-                <ComboBoxItem>Otros externos</ComboBoxItem>
-            </ComboBox>
+            <StackPanel>
+                <TextBlock x:Name="tbkCursosActivos" Text="Cursos Activos" Style="{StaticResource TextBlockMenuIzqda}"/>
+                <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}">
+                    <ComboBoxItem>Curso 1</ComboBoxItem>
+                    <ComboBoxItem>Curso 2</ComboBoxItem>
+                    <ComboBoxItem>Curso 3</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="0,5,0,0">
+                <TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
+                <ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}">
+                    <ComboBoxItem>Grado Básico</ComboBoxItem>
+                    <ComboBoxItem>Ciclo Medio</ComboBoxItem>
+                    <ComboBoxItem>Ciclo Superior</ComboBoxItem>
+                    <ComboBoxItem>AFD</ComboBoxItem>
+                    <ComboBoxItem>Máster Profesorado</ComboBoxItem>
+                    <ComboBoxItem>Otros externos</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
 
             <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>

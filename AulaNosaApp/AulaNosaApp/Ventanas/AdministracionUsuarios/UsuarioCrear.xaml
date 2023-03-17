@@ -16,7 +16,7 @@
         <Grid Background="#F0F4F7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -27,13 +27,13 @@
 
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
 
-        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelFilaForm}">
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
                 <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal"  Style="{StaticResource StackPanelDatosForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
                 <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
             </StackPanel>
@@ -52,8 +52,8 @@
             </StackPanel>
 
             <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
-                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}"/>
-                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" />
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
             </StackPanel>
         </StackPanel>
     </Grid>

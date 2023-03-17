@@ -4,6 +4,28 @@
              xmlns:local="clr-namespace:AulaNosaApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
+        <!-- Estilos para componentes de pantallas de inserción y modificación de datos-->
+        <Style x:Key="ImagenLogoFormularios" TargetType="Image">
+            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        
+        <Style x:Key="LabelTituloFormularios" TargetType="Label">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+
+        <Style x:Key="BordeEncabezadoForm" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
+        
         <Style x:Key="TextBlockFormularios" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
@@ -16,6 +38,14 @@
             <Setter Property="Width" Value="250"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="DatePickerFormularios" TargetType="DatePicker">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="SelectedDateFormat" Value="Short"/>
         </Style>
 
         <Style x:Key="PasswordBoxFormularios" TargetType="PasswordBox">
@@ -39,29 +69,9 @@
             <Setter Property="Width" Value="100"/>
         </Style>
 
-        <Style x:Key="ImagenLogoFormularios" TargetType="Image">
-            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-        </Style>
-
-        <Style x:Key="LabelTituloFormularios" TargetType="Label">
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="Height" Value="70"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-        </Style>
-
-        <Style x:Key="BordeEncabezadoForm" TargetType="Border">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-        </Style>
-
-        <Style x:Key="StackPanelFilaForm" TargetType="StackPanel">
-            <Setter Property="Width" Value="370"/>
-            <Setter Property="Height" Value="300"/>
+        <Style x:Key="StackPanelForm" TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="StackPanelBotonesForm" TargetType="StackPanel">

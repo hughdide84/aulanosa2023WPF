@@ -9,60 +9,77 @@
       Title="AdministracionCursos">
 
     <Page.Resources>
-        <Style x:Key="BgColorStackPanelAdm" TargetType="StackPanel">
-            <Setter Property="Background" Value="White"/>
+        <Style x:Key="BgColorGridRowTituloAdm" TargetType="Rectangle">
+            <Setter Property="Fill" Value="#F0F4F7"/>
+            <Setter Property="Grid.Row" Value="0"/>
         </Style>
 
-        <Style x:Key="TextBlockTituloAdm" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="30"/>
-            
+        <Style x:Key="TextBlockTituloAdministracion" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
         </Style>
 
+        <Style x:Key="BotonesAdministracion" TargetType="Button">
+            <Setter Property="Background" Value="#1A17A1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+
+        <Style x:Key="ComboBoxAdministracion" TargetType="ComboBox">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+        </Style>
+
+        <Style x:Key="TextBoxAdministracion" TargetType="TextBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+        </Style>
+
+        <Style x:Key="DataGridAdministracion" TargetType="DataGrid">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
     </Page.Resources>
 
-    <StackPanel Background="White">
-        <TextBlock Name="tbkTitulo" Text="Administración de cursos" HorizontalAlignment="Center" Foreground="Blue" FontSize="30" FontWeight="Bold"/>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <DockPanel Grid.Row="0">
-                <ToolBar Name="tbrDatos" Height="40">
-                    <Grid Width="500">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="3" Name="btnRefrescar" Content="Refrescar" Click="btnRefrescar_Click"/>
-                        <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="btnNuevo_Click"/>
-                        <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" IsEnabled="False" Click="btnModificar_Click"/>
-                        <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar" IsEnabled="False" Click="btnEliminar_Click"/>
-                        <Button Grid.Column="4" Margin="3" Name="btnConsultar" Content="Consultar" Click="btnConsultar_Click"/>
-                        <ComboBox Grid.Column="5" Margin="3" Name="cmbConsultar" Visibility="Hidden"/>
-                        <TextBox Grid.Column="6" Margin="3" Name="tbxConsultar" Visibility="Hidden"/>
-                        <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden" Click="btnBuscar_Click"/>
-                    </Grid>
-                </ToolBar>
-            </DockPanel>
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Administración de cursos" Style="{StaticResource TextBlockTituloAdministracion}"/>
 
-            <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False" DataGridCell.Selected="dtgListado_Selected">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                    <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
-                    <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
-                    <DataGridTextColumn Header="Estado" Binding="{Binding estado}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-    </StackPanel>
+        <ToolBar Grid.Row="1" Name="tbrCursos">
+            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
+            <Button Name="btnNuevo" Content="Nuevo" Style="{StaticResource BotonesAdministracion}" Click="btnNuevo_Click"/>
+            <Button Name="btnModificar" Content="Editar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnModificar_Click"/>
+            <Button Name="btnEliminar" Content="Eliminar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEliminar_Click"/>
+            <Button Name="btnConsultar" Content="Consultar" Style="{StaticResource BotonesAdministracion}" Click="btnConsultar_Click"/>
+            <ComboBox Name="cmbConsultar" Style="{StaticResource ComboBoxAdministracion}"/>
+            <TextBox Name="tbxConsultar" Style="{StaticResource TextBoxAdministracion}"/>
+            <Button Name="btnBuscar" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Hidden" Click="btnBuscar_Click"/>
+        </ToolBar>
+
+        <DataGrid Grid.Row="2" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"
+                  Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dtgListado_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
 </Page>
