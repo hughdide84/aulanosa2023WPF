@@ -15,8 +15,76 @@ namespace AulaNosaApp.Servicios
 {
     public class AlumnoExternoService
     {
-        List<AlumnoExternoDTO> listaAlumnos = new List<AlumnoExternoDTO>();
 
+        internal static List<AlumnoExternoDTO> ListarAlumnosExternos()
+        {
+            List<AlumnoExternoDTO> lista = new List<AlumnoExternoDTO>();
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/alumnoExterno/", Method.Get);
+            var response = client.Execute<List<AlumnoExternoDTO>>(request);
+
+            if (response != null)
+            {
+                var resultado = JsonSerializer.Deserialize<List<AlumnoExternoDTO>>(response.Content);
+                if (resultado != null)
+                {
+                    lista = resultado;
+                }
+            }
+
+            return lista;
+        }
+        public static string EliminarAlumnoExterno(int id)
+        {
+            string controlEliminar = "Se ha producido un error no controlado";
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/alumnoExterno/" + id.ToString(), Method.Delete);
+            var response = client.Execute(request);
+
+            if (response != null)
+            {
+                controlEliminar = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                controlEliminar = "Se ha producido un error";
+                //  }
+            }
+
+            return controlEliminar;
+        }
+        public static string EditarCurso(AlumnoExternoDTO cursoDTO)
+        {
+            string controlEditar = "Se ha producido un error no controlado";
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/curso", Method.Put);
+            request.RequestFormat = RestSharp.DataFormat.Json;
+            request.AddBody(JsonSerializer.Serialize(cursoDTO));
+            var response = client.Execute(request);
+
+            if (response != null)
+            {
+                controlEditar = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                controlEditar = "Se ha producido un error";
+                //  }
+            }
+
+            return controlEditar;
+        }
         internal static string AgregarAlumnoExterno(AlumnoExternoDTO alumnoextDTO)
         {
             string resultado = "Se ha producido un error no controlado";

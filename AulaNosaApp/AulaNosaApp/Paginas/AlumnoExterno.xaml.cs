@@ -1,4 +1,5 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
 using AulaNosaApp.Ventanas;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace AulaNosaApp.Paginas
             cmbConsultar.Visibility = Visibility.Hidden;
             tbxConsultar.Visibility = Visibility.Hidden;
             btnBuscar.Visibility = Visibility.Hidden;
-           // lista = CursosApi.ListarCursos();
+            lista = AlumnoExternoService.ListarAlumnosExternos();
             dtgListado.ItemsSource = lista;
         }
 
@@ -78,7 +79,7 @@ namespace AulaNosaApp.Paginas
             AlumnoExternoDTO productoSel = dtgListado.SelectedItem as AlumnoExternoDTO;
             if (productoSel != null)
             {
-                CursosApi.EliminarCurso(productoSel.id);
+                AlumnoExternoService.EliminarAlumnoExterno(productoSel.id);
                 RefrescarDatos();
             }
             else
@@ -125,12 +126,6 @@ namespace AulaNosaApp.Paginas
                 lista.Clear();
                 AlumnoExternoDTO coincidencia = CursosApi.ListarCursoPorNombre(tbxConsultar.Text);
                 lista.Add(coincidencia);
-                dtgListado.ItemsSource = lista;
-            }
-            else if (cmbConsultar.SelectedIndex == 2)
-            {
-                lista.Clear();
-                lista = CursosApi.ListarCursoPorEstado(Char.Parse(tbxConsultar.Text));
                 dtgListado.ItemsSource = lista;
             }
         }
