@@ -8,31 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AlumnoExterno">
 
-    <Grid>
-        <StackPanel Background="White">
-            <Label Content="Administracion Alumnos Externos" FontSize="18"/>
-            <ToolBarTray>
-                <ToolBar Band="1">
-                    <Button Content="Refrescar Pantalla" Name="btnRefrescarPantallaAlumnExt" Click="btnRefrescarPantallaAlumnExt_Click"/>
-                    <Separator/>
-                    <Button Content="Nuevo Alumno Externo" Name="btnCrearNuevoAlumnExt" Click="btnCrearNuevoAlumnExt_Click"/>
-                    <Separator/>
-                    <Button Content="Editar Alumno Externo" Name="btnEditarAlumnExt" Click="btnEditarAlumnExt_Click"/>
-                    <Separator/>
-                    <Button Content="Eliminar" Name="btnEliminarElimnExt" Click="btnEliminarAlumnExt_Click"/>
-                    <Separator/>
-                    <Label Content="Buscar Alumno Externo"/>
-                    <ComboBox Name="cbbFiltroAlumnExt">
-                        <ComboBoxItem>ID</ComboBoxItem>
-                        <ComboBoxItem>Nombre</ComboBoxItem>
-                    </ComboBox>
-                    <TextBox Width="100" Name="tbxFiltroAlumnExt"/>
-                    <Button Content="Buscar" Name="btnBuscarFiltroAlumnExt" Click="btnBuscarFiltroAlumnExt_Click"/>
-                </ToolBar>
-            </ToolBarTray>
-            <DataGrid>
+    <StackPanel Background="White">
+    <TextBlock Name="tbkTitulo" Text="ADMINISTRACIÓN DE ALUMNOS EXTERNOS" HorizontalAlignment="Center" Foreground="Blue" FontSize="36" FontWeight="Bold" Margin="10"/>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            </DataGrid>
-        </StackPanel>
+        <DockPanel Grid.Row="0">
+            <ToolBar Name="tbrDatos" Height="40">
+                <Grid Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="3" Name="btnRefrescar" Content="Refrescar" Click="BtnRefrescar_Click"/>
+                    <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="BtnNuevo_Click"/>
+                    <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" IsEnabled="False" Click="BtnModificar_Click"/>
+                    <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar" IsEnabled="False" Click="BtnEliminar_Click"/>
+                    <Button Grid.Column="4" Margin="3" Name="btnConsultar" Content="Consultar" Click="BtnConsultar_Click"/>
+                    <ComboBox Grid.Column="5" Margin="3" Name="cmbConsultar" Visibility="Hidden"/>
+                    <TextBox Grid.Column="6" Margin="3" Name="tbxConsultar" Visibility="Hidden"/>
+                    <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden" Click="BtnBuscar_Click"/>
+                </Grid>
+            </ToolBar>
+        </DockPanel>
+
+        <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="DtgListado_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
+    </StackPanel>
 </Page>

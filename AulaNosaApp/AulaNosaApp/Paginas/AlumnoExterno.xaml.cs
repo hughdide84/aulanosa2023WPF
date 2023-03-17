@@ -1,7 +1,9 @@
-﻿using AulaNosaApp.Ventanas;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Ventanas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,52 +23,136 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class AlumnoExterno : Page
     {
+        List<AlumnoExternoDTO> lista = null;
         public AlumnoExterno()
         {
             InitializeComponent();
-            cbbFiltroAlumnExt.SelectedIndex = 0;
+            RefrescarDatos();
         }
 
-        private void btnRefrescarPantallaAlumnExt_Click(object sender, RoutedEventArgs e)
+        //Refrescar datos del DataGrid
+        private void RefrescarDatos()
         {
-
+            btnModificar.IsEnabled = false;
+            btnEliminar.IsEnabled = false;
+            cmbConsultar.Visibility = Visibility.Hidden;
+            tbxConsultar.Visibility = Visibility.Hidden;
+            btnBuscar.Visibility = Visibility.Hidden;
+           // lista = CursosApi.ListarCursos();
+            dtgListado.ItemsSource = lista;
         }
 
-        private void btnCrearNuevoAlumnExt_Click(object sender, RoutedEventArgs e)
+        //Actualiza los registros
+        private void BtnRefrescar_Click(object sender, RoutedEventArgs e)
         {
-            CrearAlumnoExterno crearAlumnoExterno = new CrearAlumnoExterno();
-            crearAlumnoExterno.Show();
+            RefrescarDatos();
         }
 
-        private void btnEditarAlumnExt_Click(object sender, RoutedEventArgs e)
+        //Crear un registro
+        private void BtnNuevo_Click(object sender, RoutedEventArgs e)
         {
-            ModificarAlumnoExterno modificarAlumnoExterno = new ModificarAlumnoExterno();
-            modificarAlumnoExterno.Show();
+            CrearAlumnoExterno nuevoalumnoext = new CrearAlumnoExterno();
+            nuevoalumnoext.ShowDialog();
+            RefrescarDatos();
         }
 
-        private void btnEliminarAlumnExt_Click(object sender, RoutedEventArgs e)
+        //Modificar un registro
+        private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
-            var resultado = MessageBox.Show("¿Desea eliminar este alumno?", "Eliminar Alumno", MessageBoxButton.YesNo);
-            if (resultado == MessageBoxResult.Yes)
+            AlumnoExternoDTO productoSel = dtgListado.SelectedItem as AlumnoExternoDTO;
+            if (productoSel != null)
             {
-
+                ModificarAlumnoExterno editaralumnoext = new ModificarAlumnoExterno(productoSel);
+                editaralumnoext.ShowDialog();
+                RefrescarDatos();
             }
             else
             {
-
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void btnBuscarFiltroAlumnExt_Click(object sender, RoutedEventArgs e)
+        //Eliminar un registro
+        private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            if (tbxFiltroAlumnExt.Text.Length == 0)
+            AlumnoExternoDTO productoSel = dtgListado.SelectedItem as AlumnoExternoDTO;
+            if (productoSel != null)
             {
-                MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                CursosApi.EliminarCurso(productoSel.id);
+                RefrescarDatos();
             }
             else
             {
-
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        //Habilitar búsqueda
+        private void BtnConsultar_Click(object sender, RoutedEventArgs e)
+        {
+            cmbConsultar.Items.Clear();
+            cmbConsultar.Items.Add("Id");
+            cmbConsultar.Items.Add("Nombre");
+            cmbConsultar.Items.Add("Estado");
+            cmbConsultar.SelectedIndex = 0;
+
+            if (cmbConsultar.Visibility == Visibility.Visible)
+            {
+                cmbConsultar.Visibility = Visibility.Hidden;
+                tbxConsultar.Visibility = Visibility.Hidden;
+                btnBuscar.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                cmbConsultar.Visibility = Visibility.Visible;
+                tbxConsultar.Visibility = Visibility.Visible;
+                btnBuscar.Visibility = Visibility.Visible;
+            }
+        }
+
+        //Filtrar los datos
+        private void Filtrar()
+        {
+            if (cmbConsultar.SelectedIndex == 0)
+            {
+                lista.Clear();
+                AlumnoExternoDTO coincidencia = CursosApi.ListarCursoPorId((int)BigInteger.Parse(tbxConsultar.Text));
+                lista.Add(coincidencia);
+                dtgListado.ItemsSource = lista;
+            }
+            else if (cmbConsultar.SelectedIndex == 1)
+            {
+                lista.Clear();
+                AlumnoExternoDTO coincidencia = CursosApi.ListarCursoPorNombre(tbxConsultar.Text);
+                lista.Add(coincidencia);
+                dtgListado.ItemsSource = lista;
+            }
+            else if (cmbConsultar.SelectedIndex == 2)
+            {
+                lista.Clear();
+                lista = CursosApi.ListarCursoPorEstado(Char.Parse(tbxConsultar.Text));
+                dtgListado.ItemsSource = lista;
+            }
+        }
+
+        //Filtrar registros
+        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text != "")
+            {
+                Filtrar();
+            }
+            else if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text == "")
+            {
+                MessageBox.Show("El buscador no puede estar vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        //Permitir modificar o eliminar un registro
+        private void DtgListado_Selected(object sender, RoutedEventArgs e)
+        {
+            btnModificar.IsEnabled = true;
+            btnEliminar.IsEnabled = true;
         }
     }
 }

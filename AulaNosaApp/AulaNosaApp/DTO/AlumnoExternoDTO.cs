@@ -30,7 +30,7 @@ namespace AulaNosaApp.DTO
         public int idCurso { get; set; }
 
         // Constructor que toma todos los valores
-        public AlumnoExternoDTO(int id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, string inicio, string fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
+        internal AlumnoExternoDTO(int id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, string inicio, string fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
         {
             this.id = id;
             this.tipo = tipo;
