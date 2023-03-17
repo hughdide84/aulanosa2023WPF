@@ -19,15 +19,6 @@ namespace AulaNosaApp.Servicios
 
         private readonly HttpClient _httpClient;
 
-        public AlumnoExternoService()
-        {
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("https://ejemplo.com/api/") // URL de la API
-            };
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
 
         // Método que devuelve una lista con todos los alumnos de la base de datos
         /* public List<AlumnoExterno> ObtenerTodosLosAlumnos()
@@ -133,7 +124,7 @@ namespace AulaNosaApp.Servicios
 
             return idAnterior;
         }
-        internal async void ModificarAlumno(AlumnoExterno alumnoModificado)
+        internal async void ModificarAlumnoExterno(AlumnoExterno alumnoModificado)
         {
             foreach (AlumnoExterno alumno in listaAlumnos)
             {
@@ -170,7 +161,7 @@ namespace AulaNosaApp.Servicios
         {
             string resultado = "Se ha producido un error no controlado";
             var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            //client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("/api/alumnoExterno/", Method.Post);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(cursoDTO));

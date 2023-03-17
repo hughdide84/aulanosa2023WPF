@@ -14,39 +14,39 @@ namespace AulaNosaApp.DTO
 
         // Propiedades que corresponden a las columnas de la tabla AlumnosExternos en la base de datos
         public int id { get; set; }
-        public string Tipo { get; set; }
-        public string Nombre { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
-        public string Universidad { get; set; }
-        public string Titulacion { get; set; }
-        public string Especialidad { get; set; }
-        public DateTime Inicio { get; set; }
-        public DateTime Fin { get; set; }
-        public string Cv { get; set; }
-        public string Convenio { get; set; }
-        public string Evaluacion { get; set; }
-        public string Horario { get; set; }
-        public int IdCurso { get; set; }
+        public string tipo { get; set; }
+        public string nombre { get; set; }
+        public string email { get; set; }
+        public string telefono { get; set; }
+        public string universidad { get; set; }
+        public string titulacion { get; set; }
+        public string especialidad { get; set; }
+        public string inicio { get; set; }
+        public string fin { get; set; }
+        public string cv { get; set; }
+        public string convenio { get; set; }
+        public string evaluacion { get; set; }
+        public string horario { get; set; }
+        public int idCurso { get; set; }
 
         // Constructor que toma todos los valores
-        public AlumnoExternoDTO(int Id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, DateTime inicio, DateTime fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
+        public AlumnoExternoDTO(int id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, string inicio, string fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
         {
-            id = Id;
-            Tipo = tipo;
-            Nombre = nombre;
-            Email = email;
-            Telefono = telefono;
-            Universidad = universidad;
-            Titulacion = titulacion;
-            Especialidad = especialidad;
-            Inicio = inicio;
-            Fin = fin;
-            Cv = cv;
-            Evaluacion = evaluacion;
-            Convenio = convenio;
-            Horario = horario;
-            IdCurso = idcurso;
+            this.id = id;
+            this.tipo = tipo;
+            this.nombre = nombre;
+            this.email = email;
+            this.telefono = telefono;
+            this.universidad = universidad;
+            this.titulacion = titulacion;
+            this.especialidad = especialidad;
+            this.inicio = inicio;
+            this.fin = fin;
+            this.cv = cv;
+            this.evaluacion = evaluacion;
+            this.convenio = convenio;
+            this.horario = horario;
+            this.idCurso = idcurso;
         }
         // Constructor por defecto
         public AlumnoExternoDTO()

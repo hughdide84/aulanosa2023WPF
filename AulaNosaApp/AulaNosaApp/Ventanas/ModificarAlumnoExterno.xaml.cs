@@ -67,7 +67,7 @@ namespace AulaNosaApp.Ventanas
                 };
 
                 // Modificar los datos del alumno en la lista de alumnos
-                _AlumnoExternoService.ModificarAlumno(alumnoModificado);
+                _AlumnoExternoService.ModificarAlumnoExterno(alumnoModificado);
             }
 
             // Cerrar la ventana de modificación

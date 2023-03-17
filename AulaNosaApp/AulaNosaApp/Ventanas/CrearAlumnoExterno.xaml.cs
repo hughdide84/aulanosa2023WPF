@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using AulaNosaApp.DTO;
+using System.Runtime.CompilerServices;
 
 namespace AulaNosaApp.Ventanas
 {
@@ -47,16 +48,16 @@ namespace AulaNosaApp.Ventanas
                 switch (tipoArchivo)
                 {
                     case "cv":
-                        alumno.Cv = fileName;
+                        alumno.cv = "";
                         break;
                     case "convenio":
-                        alumno.Convenio = fileName;
+                        alumno.convenio = "";
                         break;
                     case "evaluacion":
-                        alumno.Evaluacion = fileName;
+                        alumno.evaluacion = "";
                         break;
                     case "horario":
-                        alumno.Horario = fileName;
+                        alumno.horario = "";
                         break;
                     default:
                         break;
@@ -96,17 +97,17 @@ namespace AulaNosaApp.Ventanas
                 MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                 return;
             }
-            alumno.Nombre = txtNombre.Text;
-            alumno.Tipo = txtTipo.Text;
-            alumno.Email = txtCorreo.Text;
-            alumno.Telefono = txtTelefono.Text;
-            alumno.Universidad = txtUniversidad.Text;
-            alumno.Titulacion = txtTitulacion.Text;
-            alumno.Especialidad = txtEspecialidad.Text;
+            alumno.nombre = txtNombre.Text;
+            alumno.tipo = txtTipo.Text;
+            alumno.email = txtCorreo.Text;
+            alumno.telefono = txtTelefono.Text;
+            alumno.universidad = txtUniversidad.Text;
+            alumno.titulacion = txtTitulacion.Text;
+            alumno.especialidad = txtEspecialidad.Text;
             try
             {
-                alumno.Inicio = DateTime.Parse(DPInicio.ToString());
-                alumno.Fin = DateTime.Parse(DPFinal.ToString());
+                alumno.inicio = "2022-04-22T22:00:00.000+00:00";
+                alumno.fin = "2022-04-22T22:00:00.000+00:00";
             }
             catch (FormatException ex)
             {
@@ -116,52 +117,52 @@ namespace AulaNosaApp.Ventanas
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            alumno.IdCurso = Curso;
+            alumno.idCurso = Curso;
 
 
 
-            if (string.IsNullOrEmpty(alumno.Nombre))
+            if (string.IsNullOrEmpty(alumno.nombre))
             {
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrEmpty(alumno.Tipo))
+            if (string.IsNullOrEmpty(alumno.tipo))
             {
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(alumno.Email))
+            if (string.IsNullOrEmpty(alumno.email))
             {
                 // Mostrar un mensaje de error indicando que el email del alumno es obligatorio
                 MessageBox.Show("El email del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(alumno.Telefono))
+            if (string.IsNullOrEmpty(alumno.telefono))
             {
                 // Mostrar un mensaje de error indicando que el teléfono del alumno es obligatorio
                 MessageBox.Show("El teléfono del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(alumno.Universidad))
+            if (string.IsNullOrEmpty(alumno.universidad))
             {
                 // Mostrar un mensaje de error indicando que la universidad del alumno es obligatoria
                 MessageBox.Show("La universidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(alumno.Titulacion))
+            if (string.IsNullOrEmpty(alumno.titulacion))
             {
                 // Mostrar un mensaje de error indicando que la titulación del alumno es obligatoria
                 MessageBox.Show("La titulación del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(alumno.Especialidad))
+            if (string.IsNullOrEmpty(alumno.especialidad))
             {
                 // Mostrar un mensaje de error indicando que la especialidad del alumno es obligatoria
                 MessageBox.Show("La especialidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -192,9 +193,8 @@ namespace AulaNosaApp.Ventanas
             {
                 MessageBox.Show("Error al guardar el alumno externo. Código de estado: " + respuesta.StatusCode);
             }*/
+            this.Close();
         }
 
-        
-       
     }
 }
