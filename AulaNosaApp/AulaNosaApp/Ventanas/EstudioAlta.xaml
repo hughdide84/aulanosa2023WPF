@@ -6,59 +6,47 @@
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
         Title="EstudioAlta" Height="650" Width="800">
-    <Window.Resources>
-        <Style x:Key="texto" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="10,0,10,0"/>
-        </Style>
-        <Style x:Key="camposTbx" TargetType="TextBox">
-            <Setter Property="Margin" Value="5,0,0,10"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-        </Style>
-        <Style x:Key="camposChb" TargetType="CheckBox">
-            <Setter Property="Margin" Value="5,0,0,10"/>
-        </Style>
-        <Style x:Key="error" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Red"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="20,0,20,0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-        <Style x:Key="botones" TargetType="Button">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Margin" Value="20"/>
-        </Style>
-    </Window.Resources>
+
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Nuevo Estudio" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0,0,0,15"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Nombre" Style="{StaticResource texto}"/>
-                <TextBox x:Name="tbxNombre" Grid.Column="1" Style="{StaticResource camposTbx}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                <TextBlock Text="FCT" Grid.Row="1" Style="{StaticResource texto}"/>
-                <CheckBox x:Name="chbFct" Grid.Row="1" Grid.Column="1" Style="{StaticResource camposChb}"/>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Text="PEXT" Grid.Row="2" Style="{StaticResource texto}"/>
-                <CheckBox x:Name="chbPext" Grid.Row="2" Grid.Column="1" Style="{StaticResource camposChb}"/>
-            </Grid>
-            <TextBlock x:Name="tbkErrores" Style="{StaticResource error}"/>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Añadir estudio" Style="{StaticResource LabelTituloFormularios}"/>
+
+        </Grid>
+
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox x:Name="tbxAñadirNombre" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="FCT" Style="{StaticResource TextBlockFormularios}"/>
+                <CheckBox x:Name="chbFct" Style="{StaticResource CheckBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="PEXT" Style="{StaticResource TextBlockFormularios}"/>
+                <CheckBox x:Name="chbPext" Style="{StaticResource CheckBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelBotonesForm}">
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}"/>
+                <Button Name="btnAñadir" Content="Añadir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+            </StackPanel>
+
+            <TextBlock Name="tbkErrores" Text=""  Background="Red" Visibility="Collapsed" Margin="10"/>
         </StackPanel>
-        <Button Content="Aceptar" HorizontalAlignment="Right" Style="{StaticResource botones}" Click="Aceptar"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Style="{StaticResource botones}" Click="Cancelar"/>
     </Grid>
+
 </Window>

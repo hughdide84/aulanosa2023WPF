@@ -5,70 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
-        Title="EstudioEditar" Height="300" Width="500">
-    <Window.Resources>
-        <Style x:Key="texto" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="10,0,10,0"/>
-        </Style>
-        <Style x:Key="textoId" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="10,0,10,0"/>
-        </Style>
-        <Style x:Key="camposTbx" TargetType="TextBox">
-            <Setter Property="Margin" Value="5,0,0,10"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-        </Style>
-        <Style x:Key="camposChb" TargetType="CheckBox">
-            <Setter Property="Margin" Value="5,0,0,10"/>
-        </Style>
-        <Style x:Key="error" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Red"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="20,0,20,0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-        <Style x:Key="botones" TargetType="Button">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Margin" Value="20"/>
-        </Style>
-    </Window.Resources>
+        Title="EstudioEditar" Height="650" Width="800">
+
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Editar Estudio" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0,0,0,15"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                <TextBlock Text="Id" Style="{StaticResource texto}"/>
-                <TextBlock x:Name="tbkId" Grid.Column="1"  Style="{StaticResource textoId}"/>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Nombre" Grid.Row="1" Style="{StaticResource texto}"/>
-                <TextBox x:Name="tbxNombre"  Grid.Row="1" Grid.Column="1" Style="{StaticResource camposTbx}"/>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Editar estudio" Style="{StaticResource LabelTituloFormularios}"/>
 
-                <TextBlock Text="FCT" Grid.Row="2" Style="{StaticResource texto}"/>
-                <CheckBox x:Name="chbFct" Grid.Row="2" Grid.Column="1" Style="{StaticResource camposChb}"/>
+        </Grid>
 
-                <TextBlock Text="PEXT" Grid.Row="3" Style="{StaticResource texto}"/>
-                <CheckBox x:Name="chbPext" Grid.Row="3" Grid.Column="1"  Style="{StaticResource camposChb}"/>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
 
-            </Grid>
-            <TextBlock x:Name="tbkErrores" Style="{StaticResource error}"/>
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Id" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox x:Name="tbkId" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox x:Name="tbxEditarNombre" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="FCT" Style="{StaticResource TextBlockFormularios}"/>
+                <CheckBox x:Name="chbFCT" Style="{StaticResource CheckBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Text="PEXT" Style="{StaticResource TextBlockFormularios}"/>
+                <CheckBox x:Name="chbPEXT" Style="{StaticResource CheckBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelBotonesForm}">
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}"/>
+                <Button Name="btnEditar" Content="Editar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+            </StackPanel>
+
+            <TextBlock Name="tbkErrores" Text=""  Background="Red" Visibility="Collapsed" Margin="10"/>
         </StackPanel>
-        <Button Content="Aceptar" HorizontalAlignment="Right" Style="{StaticResource botones}" Click="Aceptar"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Style="{StaticResource botones}" Click="Cancelar"/>
     </Grid>
+
 </Window>

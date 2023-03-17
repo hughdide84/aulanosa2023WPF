@@ -8,48 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CORE_Administración_de_estudios">
 
-    <Page.Resources>
-        <Style x:Key="BgColorGridRowTituloAdm" TargetType="Rectangle">
-            <Setter Property="Fill" Value="#F0F4F7"/>
-            <Setter Property="Grid.Row" Value="0"/>
-        </Style>
-
-        <Style x:Key="TextBlockTituloAdministracion" TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-        </Style>
-
-        <Style x:Key="BotonesAdministracion" TargetType="Button">
-            <Setter Property="Background" Value="#1A17A1"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="Height" Value="30"/>
-        </Style>
-
-        <Style x:Key="ComboBoxAdministracion" TargetType="ComboBox">
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-
-        <Style x:Key="TextBoxAdministracion" TargetType="TextBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-
-        <Style x:Key="DataGridAdministracion" TargetType="DataGrid">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-        </Style>
-
-    </Page.Resources>
-
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -61,10 +19,14 @@
         <TextBlock Name="tbkTitulo" Text="Administración de estudios" Style="{StaticResource TextBlockTituloAdministracion}"/>
 
         <ToolBar Grid.Row="1">
-            <Button Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
-            <Button Content="Nuevo" Style="{StaticResource BotonesAdministracion}" Click="btnNuevo_Click"/>
-            <Button Content="Editar" Style="{StaticResource BotonesAdministracion}" Click="btnEditar_Click"/>
-            <Button Content="Eliminar" Style="{StaticResource BotonesAdministracion}" Click="btnEliminar_Click"/>
+            <Button Content="Refrescar" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Content="Nuevo" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Content="Editar" IsEnabled="False" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Content="Eliminar" IsEnabled="False" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Name="btnConsultar" Content="Consultar" Style="{StaticResource BotonesAdministracion}"/>
+            <ComboBox Name="cmbConsultar" Style="{StaticResource ComboBoxAdministracion}"/>
+            <TextBox Name="tbxConsultar" Style="{StaticResource TextBoxAdministracion}"/>
+            <Button Name="btnBuscar" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Hidden"/>
         </ToolBar>
 
         <DataGrid Grid.Row="2" x:Name="dgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False" Style="{StaticResource DataGridAdministracion}">

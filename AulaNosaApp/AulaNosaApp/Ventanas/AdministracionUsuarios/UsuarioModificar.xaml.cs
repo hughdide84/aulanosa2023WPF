@@ -24,30 +24,5 @@ namespace AulaNosaApp.Ventanas
             InitializeComponent();
             cbbEdicionUsuarioRol.SelectedIndex = 0;
         }
-
-        private void btnUsuarioModificar_Click(object sender, RoutedEventArgs e)
-        {
-            if (tbxNombreModificarUsuario.Text.Length == 0)
-            {
-                MessageBox.Show("Nombre de usuario vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            if (pwbContrasenaModificarUsuario.Password.Length == 0)
-            {
-                MessageBox.Show("Contraseña vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            if (tbxEmailModificarUsuario.Text.Length == 0)
-            {
-                MessageBox.Show("Email vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            if (tbxNombreModificarUsuario.Text.Length > 0 && pwbContrasenaModificarUsuario.Password.Length > 0 && tbxEmailModificarUsuario.Text.Length > 0) { }
-        }
-
-        private void btnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
     }
 }

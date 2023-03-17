@@ -26,52 +26,5 @@ namespace AulaNosaApp
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
         }
-
-        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative));
-        }
-
-        private void btnCursos_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative));
-        }
-
-        private void btnEstudios_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative));
-        }
-
-        private void btnAlumnoEmpresa_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/AlumnoEmpresa/AlumEmpResumen.xaml", UriKind.Relative));
-        }
-
-        private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative));
-        }
-
-        private void btnAcceder_Click(object sender, RoutedEventArgs e)
-        {
-            spnMenuIzqda.Visibility = Visibility.Visible;
-            grdMenuSuperior.Visibility = Visibility.Visible;
-            spnAcceso.Visibility = Visibility.Hidden;
-            txbNombreUsuarioLogueado.Text = tbUsuario.Text;
-            txbRolUsuarioLogueado.Text = "Admin";
-            cbbUsuario.SelectedIndex = 0;
-        }
-
-        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-            spnMenuIzqda.Visibility = Visibility.Collapsed;
-            grdMenuSuperior.Visibility = Visibility.Collapsed;
-            spnAcceso.Visibility = Visibility.Visible;
-        }
-
-        private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/investigacionCalendario.xaml", UriKind.Relative);
-        }
     }
 }

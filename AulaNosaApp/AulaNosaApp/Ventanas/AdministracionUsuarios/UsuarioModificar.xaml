@@ -25,7 +25,7 @@
 
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
 
-        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelFilaForm}">
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
                 <TextBox Name="tbxNombreModificarUsuario" Style="{StaticResource TextBoxFormularios}"/>

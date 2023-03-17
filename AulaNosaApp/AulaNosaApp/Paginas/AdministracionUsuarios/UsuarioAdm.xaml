@@ -8,47 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UsuarioAdm">
 
-    <Page.Resources>
-        <Style x:Key="BgColorGridRowTituloAdm" TargetType="Rectangle">
-            <Setter Property="Fill" Value="#F0F4F7"/>
-            <Setter Property="Grid.Row" Value="0"/>
-        </Style>
-
-        <Style x:Key="TextBlockTituloAdministracion" TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-        </Style>
-
-        <Style x:Key="BotonesAdministracion" TargetType="Button">
-            <Setter Property="Background" Value="#1A17A1"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="Height" Value="30"/>
-        </Style>
-
-        <Style x:Key="ComboBoxAdministracion" TargetType="ComboBox">
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-
-        <Style x:Key="TextBoxAdministracion" TargetType="TextBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-
-        <Style x:Key="DataGridAdministracion" TargetType="DataGrid">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-        </Style>
-    </Page.Resources>
-
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -60,10 +19,10 @@
         <TextBlock Name="tbkTitulo" Text="Administración de usuarios" Style="{StaticResource TextBlockTituloAdministracion}"/>
 
         <ToolBar Grid.Row="1" Name="tbrUsuarios">
-            <Button Content="Refrescar" Name="btnRefrescarPantallaUsuarios" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescarPantallaUsuarios_Click"/>
-            <Button Content="Nuevo" Name="btnCrearNuevoUsuario" Style="{StaticResource BotonesAdministracion}" Click="btnCrearNuevoUsuario_Click"/>
-            <Button Content="Editar" Name="btnEditarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEditarUsuario_Click"/>
-            <Button Content="Eliminar" Name="btnEliminarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEliminarUsuario_Click"/>
+            <Button Content="Refrescar" Name="btnRefrescarPantallaUsuarios" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Content="Nuevo" Name="btnCrearNuevoUsuario" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Content="Editar" Name="btnEditarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False"/>
+            <Button Content="Eliminar" Name="btnEliminarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False"/>
             <Button Content="Buscar" Name="btnBuscarUsuario" Style="{StaticResource BotonesAdministracion}"/>
             <ComboBox Name="cbbFiltroUsuario" Style="{StaticResource ComboBoxAdministracion}">
                 <ComboBoxItem>ID</ComboBoxItem>
@@ -72,11 +31,11 @@
                 <ComboBoxItem>Email</ComboBoxItem>
             </ComboBox>
             <TextBox Width="100" Name="tbxFiltroUsuario" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
-            <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="btnBuscarFiltroUsuario_Click"/>
+            <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}"/>
         </ToolBar>
 
         <DataGrid Grid.Row="2" Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvUsuarios_Selected">
+                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>

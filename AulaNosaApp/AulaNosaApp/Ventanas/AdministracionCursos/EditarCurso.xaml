@@ -52,8 +52,8 @@
             </StackPanel>
 
             <StackPanel Style="{StaticResource StackPanelBotonesForm}">
-                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}" Click="btnCancelar_Click"/>
-                <Button Name="btnEditar" Content="Editar" Style="{StaticResource BotonesFormularios}" Click="btnEditar_Click" Margin="50,0,0,0"/>
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}"/>
+                <Button Name="btnEditar" Content="Editar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
             </StackPanel>
 
             <TextBlock Name="tbkErrores" Text=""  Background="IndianRed" Visibility="Collapsed" Margin="10"/>

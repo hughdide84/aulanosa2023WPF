@@ -148,9 +148,9 @@
             <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
-                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
+                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -180,7 +180,7 @@
                 <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioPext_Click"/>
+                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -218,7 +218,7 @@
                             </StackPanel>
                         </StackPanel>
                     </ComboBoxItem>
-                    <ComboBoxItem Selected="ComboBoxItem_Selected">
+                    <ComboBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Imagenes/user_icon.png" Width="45"/>
                             <StackPanel VerticalAlignment="Center">
@@ -237,7 +237,7 @@
                 <TextBox Text="Hugo" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
+                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}"/>
                 <TextBlock Name="tbError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
 

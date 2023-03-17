@@ -25,40 +25,5 @@ namespace AulaNosaApp.Ventanas
         {
             InitializeComponent();
         }
-
-        private void Cancelar(object sender, RoutedEventArgs e)
-        {
-            string mensaje = "Va a abandonar la pantalla sin guardar las modificaciones, ¿está seguro?";
-            string titulo = "Confirmación";
-            if (!tbxNombre.Text.Equals(""))
-            {
-                if (MessageBox.Show(mensaje, titulo, MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
-                    this.Close();
-            }
-            else
-            {
-                this.Close();
-            }
-        }
-
-        private void Aceptar(object sender, RoutedEventArgs e)
-        {
-            tbkErrores.Visibility = Visibility.Hidden;
-            EstudioDTO estudio = new EstudioDTO();
-            estudio.nombre = tbxNombre.Text;
-            estudio.fct = (bool)chbFct.IsChecked ? true : false;
-            estudio.pext = (bool)chbPext.IsChecked ? true : false;
-            string errores = EstudioApi.AltaEstudio(estudio);
-
-            if (!errores.Equals(""))
-            {
-                tbkErrores.Text = errores;
-                tbkErrores.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Close();
-            }
-        }
     }
 }

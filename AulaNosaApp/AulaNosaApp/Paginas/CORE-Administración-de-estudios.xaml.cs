@@ -24,60 +24,12 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class CORE_Administración_de_estudios : Page
     {
-        public List<EstudioDTO> lista;
-        public ObservableCollection<EstudioDTO> listaGrid { get; set; }
-
         public CORE_Administración_de_estudios()
         {
             InitializeComponent();
-            RefrescarDatos();
+
         }
 
-        private void RefrescarDatos() {
-            lista = EstudioApi.ListarEstudios();
-            this.dgListado.ItemsSource = lista;
-        }
 
-        private void btnRefrescar_Click(object sender, RoutedEventArgs e)
-        {
-            RefrescarDatos();
-        }
-
-        private void btnNuevo_Click(object sender, RoutedEventArgs e)
-        {
-            EstudioAlta pantalla = new EstudioAlta();
-            pantalla.ShowDialog();
-            RefrescarDatos();
-        }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-            EstudioDTO estudio = dgListado.SelectedItem as EstudioDTO;
-
-            if (estudio != null) {
-                EstudioEditar pantalla = new EstudioEditar(estudio);
-                pantalla.ShowDialog();
-                RefrescarDatos();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un estudio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            EstudioDTO estudio = dgListado.SelectedItem as EstudioDTO;
-
-            if (estudio != null)
-            {
-                EstudioApi.EliminarEstudio(estudio.id);
-                RefrescarDatos();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un estudio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
     }
 }
