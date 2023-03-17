@@ -1,11 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using AulaNosaApp.DTO;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace AulaNosaApp.Servicios
 {
@@ -22,7 +26,7 @@ namespace AulaNosaApp.Servicios
                 BaseAddress = new Uri("https://ejemplo.com/api/") // URL de la API
             };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/ejemplo"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         // Método que devuelve una lista con todos los alumnos de la base de datos
@@ -161,6 +165,32 @@ namespace AulaNosaApp.Servicios
                     throw new Exception("Error al modificar el alumno en la base de datos");
                 }
             }
+        }
+        internal static string AgregarAlumnoExterno(AlumnoExternoDTO cursoDTO)
+        {
+            string resultado = "Se ha producido un error no controlado";
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/alumnoExterno/", Method.Post);
+            request.RequestFormat = RestSharp.DataFormat.Json;
+            request.AddBody(JsonSerializer.Serialize(cursoDTO));
+            var response = client.Execute(request);
+
+            if (response != null)
+            {
+                resultado = "";
+            }
+            else
+            {
+                //  Temporal - Falta que WS devuelva un ErrorDTO
+                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
+                //  if ((error != null) && (error.mensaje != null))
+                //  {
+                resultado = "Se ha producido un error";
+                //  }
+            }
+
+            return resultado;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
-        Title="CrearAlumnoExterno" Height="450" Width="800">
+        Title="CrearAlumnoExterno" Height="550" Width="900">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="665">
             <Label Content="Crear Alumno Externo" FontSize="30" HorizontalAlignment="Center"/>
@@ -29,6 +29,16 @@
 
                 <TextBlock Text="Curso:"/>
                 <TextBox Name="txtCurso"/>
+            
+                <TextBlock Text="Tipo:"/>
+                <TextBox Name="txtTipo"/>
+
+            <TextBlock Text="Inicio:"/>
+            <DatePicker Name="DPInicio"/>
+
+            <TextBlock Text="Final:"/>
+            <DatePicker Name="DPFinal"/>
+            
             <WrapPanel Height="10"/>
             <WrapPanel>
                 <TextBlock Text="CV:" Margin="10"/>

@@ -17,6 +17,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.Json;
 using Newtonsoft.Json;
+using RestSharp;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+using AulaNosaApp.DTO;
 
 namespace AulaNosaApp.Ventanas
 {
@@ -29,8 +32,9 @@ namespace AulaNosaApp.Ventanas
         {
             InitializeComponent();
         }
+        AlumnoExternoDTO alumno = new AlumnoExternoDTO();
 
-        private void SubirArchivo(Button boton)
+        private void SubirArchivo(Button boton, string tipoArchivo)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
@@ -40,6 +44,24 @@ namespace AulaNosaApp.Ventanas
                 string fileName = openFileDialog.FileName;
                 // aquí puedes guardar el archivo en algún lugar o almacenarlo en una base de datos
 
+                switch (tipoArchivo)
+                {
+                    case "cv":
+                        alumno.Cv = fileName;
+                        break;
+                    case "convenio":
+                        alumno.Convenio = fileName;
+                        break;
+                    case "evaluacion":
+                        alumno.Evaluacion = fileName;
+                        break;
+                    case "horario":
+                        alumno.Horario = fileName;
+                        break;
+                    default:
+                        break;
+                }
+
                 boton.Content = "Archivo subido";
                 boton.IsEnabled = false;
             }
@@ -47,27 +69,27 @@ namespace AulaNosaApp.Ventanas
 
         private void btnSubirCV_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirCV);
+            SubirArchivo(btnSubirCV, "cv");
         }
 
         private void btnSubirConvenio_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirConvenio);
+            SubirArchivo(btnSubirConvenio, "convenio");
         }
 
         private void btnSubirEvaluacion_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirEvaluacion);
+            SubirArchivo(btnSubirEvaluacion, "evaluacion");
         }
 
         private void btnSubirHorario_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirHorario);
+            SubirArchivo(btnSubirHorario, "horario");
         }
+
 
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
-            AlumnoExterno alumno = new AlumnoExterno();
             int Curso;
             if (!int.TryParse(txtCurso.Text, out Curso))
             {
@@ -75,11 +97,25 @@ namespace AulaNosaApp.Ventanas
                 return;
             }
             alumno.Nombre = txtNombre.Text;
+            alumno.Tipo = txtTipo.Text;
             alumno.Email = txtCorreo.Text;
             alumno.Telefono = txtTelefono.Text;
             alumno.Universidad = txtUniversidad.Text;
             alumno.Titulacion = txtTitulacion.Text;
             alumno.Especialidad = txtEspecialidad.Text;
+            try
+            {
+                alumno.Inicio = DateTime.Parse(DPInicio.ToString());
+                alumno.Fin = DateTime.Parse(DPFinal.ToString());
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Formato incorrecto: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
             alumno.IdCurso = Curso;
 
 
@@ -88,6 +124,12 @@ namespace AulaNosaApp.Ventanas
             {
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(alumno.Tipo))
+            {
+                // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
+                MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -126,18 +168,20 @@ namespace AulaNosaApp.Ventanas
                 return;
             }
 
+            string v = AlumnoExternoService.AgregarAlumnoExterno(alumno);
+            /*
             // aquí puedes guardar los detalles del alumno en una base de datos
             HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://url-de-tu-api.com");
+            httpClient.BaseAddress = new Uri("https://localhost:8080");
 
             // Convertir el objeto alumno a formato JSON
             string alumnoJson = JsonConvert.SerializeObject(alumno);
 
             // Crear un objeto HttpContent para enviar el objeto JSON en la solicitud POST
-            HttpContent contenido = new StringContent(alumnoJson, Encoding.UTF8, "application/ejemplo");
+            HttpContent contenido = new StringContent(alumnoJson, Encoding.UTF8, "application/json");
 
             // Enviar la solicitud HTTP POST a la API
-            HttpResponseMessage respuesta = await httpClient.PostAsync("/ruta-de-la-api-para-insertar-alumnos-externos", contenido);
+            HttpResponseMessage respuesta = await httpClient.PostAsync("/api/alumnoExterno/", contenido);
 
             // Verificar si la solicitud fue exitosa
             if (respuesta.IsSuccessStatusCode)
@@ -147,7 +191,10 @@ namespace AulaNosaApp.Ventanas
             else
             {
                 MessageBox.Show("Error al guardar el alumno externo. Código de estado: " + respuesta.StatusCode);
-            }
+            }*/
         }
+
+        
+       
     }
 }
