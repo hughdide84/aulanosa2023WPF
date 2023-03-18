@@ -7,65 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AulaNosaApp.Servicios
 {
     public class EstudioApi
     {
-        public static string AltaEstudio(EstudioDTO estudio)
+        // Listar estudios
+        public static List<EstudioDTO> ListarEstudios()
         {
+            var cliente = new RestClient(Constantes.client);
+            //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("api/estudios/all", Method.Get);
+            var response = cliente.Execute<List<EstudioDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
 
-            string resultado = "Se ha producido un error no controlado";
+        // Crear estudio
+        public static void AltaEstudio(EstudioDTO estudio)
+        {
             var client = new RestClient(Constantes.client);
            // client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("api/estudios", Method.Post);
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = client.Execute(request);
-
-            if ((response != null) && (response.Content != null))
-            {
-                if ((response.StatusCode == System.Net.HttpStatusCode.Created))
-                {
-                    resultado = "";
-                }
-                else
-                {
-                    ErrorDTO error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                    if ((error != null) && (error.mensaje != null))
-                    {
-                        resultado = error.mensaje;
-                    }
-                }
-            }
-
-            return resultado;
+            MessageBox.Show("Estudio creado", "Exito", MessageBoxButton.OK);
         }
 
-        public static List<EstudioDTO> ListarEstudios() {
-
-            List<EstudioDTO> estudios = new List<EstudioDTO>();
-            var cliente = new RestClient(Constantes.client);
-            //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/estudios/all", Method.Get);
-            var response = cliente.Execute(request);
-
-            if (response != null) {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null)) {
-
-                    var resultado = JsonSerializer.Deserialize<List<EstudioDTO>>(response.Content);
-                    if (resultado != null)
-                    {
-                        estudios = resultado;
-                    }
-                    Console.WriteLine(response.Content);
-                }
-            }
-
-            return estudios;
-        }
-
-        public static string EditarEstudio(EstudioDTO estudio)
+        // Editar estudio
+        public static void EditarEstudio(EstudioDTO estudio)
         {
 
             string resultado = "Se ha producido un error no controlado";
@@ -75,54 +47,26 @@ namespace AulaNosaApp.Servicios
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddBody(JsonSerializer.Serialize(estudio));
             var response = cliente.Execute(request);
-
-            if ((response != null) && (response.Content != null))
-            {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK))
-                {
-                    resultado = "";
-                }
-                else
-                {
-
-                    ErrorDTO error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                    if ((error != null) && (error.mensaje != null))
-                    {
-                        resultado = "Se ha producido un error";
-                    }
-                }
-            }
-
-            return resultado;
+            MessageBox.Show("Estudio modificado", "Exito", MessageBoxButton.OK);
         }
 
-        public static string EliminarEstudio(int id)
+        // Eliminar estudio
+        public static void EliminarEstudio(int id)
         {
-
-            string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.client);
             //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("api/estudios/delete/" + id.ToString(), Method.Delete);
             var response = cliente.Execute(request);
-
-            if ((response != null) && (response.Content != null))
-            {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK))
-                {
-                    resultado = "";
-                }
-                else
-                {
-                    ErrorDTO error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                    if ((error != null) && (error.mensaje != null))
-                    {
-                        resultado = error.mensaje;
-                    }
-                }
-            }
-
-            return resultado;
         }
 
+        // Filtros
+        public static EstudioDTO filtrarEstudioId(String filtro)
+        {
+            var client = new RestClient(Constantes.client);
+            var request = new RestRequest("/api/estudios/" + filtro, Method.Get);
+            var response = client.Execute<EstudioDTO>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
     }
 }

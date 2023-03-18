@@ -27,55 +27,5 @@ namespace AulaNosaApp
             InitializeComponent();
             cmbAñadirEstado.SelectedIndex = 0;
         }
-
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void btnAñadir_Click(object sender, RoutedEventArgs e)
-        {
-            tbkErrores.Text = "";
-            tbkErrores.Visibility = Visibility.Collapsed;
-            if (tbxAñadirNombre.Text == "" || dtpAñadirInicio.Text == "" || dtpAñadirFin.Text == "")
-            {
-                tbkErrores.Text += "Alguno de los campos está vacío\n";
-                tbkErrores.Visibility = Visibility.Visible;
-            }
-            if (tbxAñadirNombre.Text.Length > 50) 
-            {
-                tbkErrores.Text += "El nombre excede el límite de caracteres\n";
-                tbkErrores.Visibility = Visibility.Visible;
-            }
-
-            if (tbkErrores.Visibility != Visibility.Visible)
-            {
-                CursoDTO cursoDTO = new CursoDTO();
-                cursoDTO.nombre = tbxAñadirNombre.Text;
-                cursoDTO.inicio = DateTime.Parse(dtpAñadirInicio.ToString());
-                cursoDTO.fin = DateTime.Parse(dtpAñadirFin.ToString());
-
-                if (cmbAñadirEstado.SelectedIndex == 0) 
-                {
-                    cursoDTO.estado = 'a';
-                }
-                else
-                {
-                    cursoDTO.estado = 'b';
-                }
-
-                string errores = CursosApi.AgregarCurso(cursoDTO);
-
-                if (!errores.Equals(""))
-                {
-                    tbkErrores.Text += errores;
-                    tbkErrores.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    Close();
-                }
-            }
-        }
     }
 }

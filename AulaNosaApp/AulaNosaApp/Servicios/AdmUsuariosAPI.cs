@@ -102,11 +102,11 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         }
 
 
-        // Filtros (primera version no disponibles aun) (aun no terminados)
+        // Filtros
         public static UsuarioDTO filtrarUsuarioId(String filtro)
         {
             client = new RestClient(Constantes.client);
-            request = new RestRequest("/api/usuario/"+filtro, Method.Get);
+            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
             var response = client.Execute<UsuarioDTO>(request);
             var apiResponse = response.Data;
             return apiResponse;
@@ -115,7 +115,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         public static List<UsuarioDTO> filtrarUsuarioNombre(String filtro)
         {
             client = new RestClient(Constantes.client);
-            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            request = new RestRequest("/api/usuario/nombreContiene/" + filtro, Method.Get);
             var response = client.Execute<List<UsuarioDTO>>(request);
             var apiResponse = response.Data;
             return apiResponse;
@@ -124,7 +124,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         public static List<UsuarioDTO> filtrarUsuarioRol(String filtro)
         {
             client = new RestClient(Constantes.client);
-            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            request = new RestRequest("/api/usuario/rolEs/" + filtro, Method.Get);
             var response = client.Execute<List<UsuarioDTO>>(request);
             var apiResponse = response.Data;
             return apiResponse;
@@ -133,7 +133,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         public static List<UsuarioDTO> filtrarUsuarioEmail(String filtro)
         {
             client = new RestClient(Constantes.client);
-            request = new RestRequest("/api/usuario/" + filtro, Method.Get);
+            request = new RestRequest("/api/usuario/emailContiene/" + filtro, Method.Get);
             var response = client.Execute<List<UsuarioDTO>>(request);
             var apiResponse = response.Data;
             return apiResponse;

@@ -16,7 +16,7 @@
         <Grid Background="#F0F4F7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -27,23 +27,32 @@
 
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
 
-        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelFilaForm}">
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
-            </StackPanel>
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+			<StackPanel Orientation="Vertical">
+				<StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+					<TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+					<TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+				</StackPanel>
+				<Label Name="lblErrorNombre" Content=""/>
+			</StackPanel>
 
-            <StackPanel Orientation="Horizontal"  Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
-                <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
-            </StackPanel>
+			<StackPanel Orientation="Vertical">
+				<StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+					<TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
+					<PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
+				</StackPanel>
+				<Label Name="lblErrorContrasena" Content=""/>
+			</StackPanel>
 
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
-            </StackPanel>
+			<StackPanel Orientation="Vertical">
+				<StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+					<TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
+					<TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+				</StackPanel>
+				<Label Name="lblErrorEmail" Content=""/>
+			</StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,50" Style="{StaticResource StackPanelDatosForm}">
+			<StackPanel Orientation="Horizontal" Margin="0,0,0,50" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Rol" Style="{StaticResource TextBlockFormularios}"/>
                 <ComboBox Name="cbbCreacionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
                     <ComboBoxItem>Administrador</ComboBoxItem>
@@ -52,8 +61,8 @@
             </StackPanel>
 
             <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
-                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}"/>
-                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnRegistrar_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

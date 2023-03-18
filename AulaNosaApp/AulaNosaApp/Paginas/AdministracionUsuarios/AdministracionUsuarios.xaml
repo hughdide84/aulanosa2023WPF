@@ -1,0 +1,48 @@
+﻿<Page x:Class="AulaNosaApp.Paginas.UsuarioAdm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AulaNosaApp.Paginas"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsuarioAdm">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Administración de usuarios" Style="{StaticResource TextBlockTituloAdministracion}"/>
+
+        <ToolBar Grid.Row="1" Name="tbrUsuarios">
+            <Button Content="Refrescar" Name="btnRefrescarPantallaUsuarios" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescarPantallaUsuarios_Click"/>
+            <Button Content="Nuevo" Name="btnCrearNuevoUsuario" Style="{StaticResource BotonesAdministracion}" Click="btnCrearNuevoUsuario_Click"/>
+            <Button Content="Editar" Name="btnEditarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEditarUsuario_Click"/>
+            <Button Content="Eliminar" Name="btnEliminarUsuario" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEliminarUsuario_Click"/>
+            <Button Content="Consultar" Name="btnConsultaUsuario" Style="{StaticResource BotonesAdministracion}" Click="btnConsultaUsuario_Click"/>
+            <ComboBox Name="cbbFiltroUsuario" Style="{StaticResource ComboBoxAdministracion}">
+                <ComboBoxItem>ID</ComboBoxItem>
+                <ComboBoxItem>Usuario</ComboBoxItem>
+                <ComboBoxItem>Rol</ComboBoxItem>
+                <ComboBoxItem>Email</ComboBoxItem>
+            </ComboBox>
+            <TextBox Width="100" Name="tbxFiltroUsuario" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
+			<Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="btnBuscarFiltroUsuario_Click"/>
+        </ToolBar>
+
+        <DataGrid Grid.Row="2" Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvUsuarios_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding password}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding rol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

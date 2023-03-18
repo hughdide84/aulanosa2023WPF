@@ -25,53 +25,53 @@ namespace AulaNosaApp
             InitializeComponent();
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/UsuarioAdm.xaml", UriKind.Relative));
-        }
-
-        private void btnAlumnoEmpresa_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/AlumnoEmpresa/AlumEmpResumen.xaml", UriKind.Relative);
-        }
-
-        private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative);
+            cbbUsuario.SelectedIndex = 0;
         }
 
         private void btnAcceder_Click(object sender, RoutedEventArgs e)
         {
+            spnAcceso.Visibility = Visibility.Hidden;
             spnMenuIzqda.Visibility = Visibility.Visible;
             grdMenuSuperior.Visibility = Visibility.Visible;
-            spnAcceso.Visibility = Visibility.Hidden;
+            frmPrincipal.Visibility = Visibility.Visible;
+            frmPrincipal.Source = null;
+            cbbUsuario.SelectedIndex = 0;
             txbNombreUsuarioLogueado.Text = tbUsuario.Text;
             txbRolUsuarioLogueado.Text = "Admin";
+        }
+
+		private void btnCerrarSesion_Selected(object sender, RoutedEventArgs e)
+		{
+            spnAcceso.Visibility = Visibility.Visible;
+            spnMenuIzqda.Visibility = Visibility.Collapsed;
+            grdMenuSuperior.Visibility = Visibility.Collapsed;
+            frmPrincipal.Visibility = Visibility.Hidden;
             cbbUsuario.SelectedIndex = 0;
         }
 
-        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-            spnMenuIzqda.Visibility = Visibility.Collapsed;
-            grdMenuSuperior.Visibility = Visibility.Collapsed;
-            spnAcceso.Visibility = Visibility.Visible;
+		private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+		{
+            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/AdministracionUsuarios.xaml", UriKind.Relative));
         }
 
-        private void btnCursos_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative);
+		private void btnCursos_Click(object sender, RoutedEventArgs e)
+		{
+            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative));
         }
 
-        private void btnEstudios_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/CORE-Administración-de-estudios.xaml", UriKind.Relative);
+		private void btnEstudios_Click(object sender, RoutedEventArgs e)
+		{
+            frmPrincipal.Navigate(new Uri("/Paginas/AdministracionEstudios/AdministracionEstudios.xaml", UriKind.Relative));
         }
 
-        private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Source = new Uri("/Paginas/investigacionCalendario.xaml", UriKind.Relative);
+		private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
+		{
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
-    }
+
+		private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
+		{
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
+        }
+	}
 }

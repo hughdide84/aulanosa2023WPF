@@ -5,45 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="NuevoCurso" Height="450" Width="800" ResizeMode="NoResize">
+        Title="NuevoCurso" Height="650" Width="800">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <TextBlock Name="tbkAñadir" Text="Añadir Curso" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Foreground="Red"/>
-            <TextBlock Name="tbkErrores" Text=""  Background="IndianRed" Visibility="Collapsed" Margin="10"/>
-        </Grid>
-        <DockPanel Grid.Row="1" Height="50" Width="400">
-            <Label Width="65" Name="lblAñadirNombre" VerticalContentAlignment="Center" Content="Nombre" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
-            <TextBox Name="tbxAñadirNombre" Text="" Height="30" Width="300"/>
-        </DockPanel>
-        <DockPanel Grid.Row="2" Height="50" Width="400">
-            <Label Width="65" Name="lblAñadirInicio" VerticalContentAlignment="Center" Content="Inicio" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
-            <DatePicker Name="dtpAñadirInicio" SelectedDateFormat="Long" Height="30" Width="300"/>
-        </DockPanel>
-        <DockPanel Grid.Row="3" Height="50" Width="400">
-            <Label Width="65" Name="lblAñadirFin" VerticalContentAlignment="Center" Content="Fin" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
-            <DatePicker Name="dtpAñadirFin" SelectedDateFormat="Long" Height="30" Width="300"/>
-        </DockPanel>
-        <DockPanel Grid.Row="4" Height="50" Width="400">
-            <Label Width="65" Name="lblAñadirEstado" VerticalContentAlignment="Center" Content="Estado" HorizontalAlignment="Center" FontSize="14" Foreground="Green"/>
-            <ComboBox Name="cmbAñadirEstado" Height="30" Width="300" IsReadOnly="True">
-                <ComboBoxItem>a</ComboBoxItem>
-                <ComboBoxItem>b</ComboBoxItem>
-            </ComboBox>
-        </DockPanel>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Row="5" Margin="205,30,220,30">
-            <Button Height="40" Width="100" Name="btnCancelar" Content="Cancelar" FontSize="14" Click="btnCancelar_Click"/>
-            <Button Height="40" Width="100" Name="btnAñadir" Content="Añadir" HorizontalAlignment="Right" FontSize="14" Click="btnAñadir_Click"/>
-        </DockPanel>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Añadir curso" Style="{StaticResource LabelTituloFormularios}"/>
+
+        </Grid>
+
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Name="tbkAñadirNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxAñadirNombre" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Name="tbkAñadirInicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
+                <DatePicker Name="dtpAñadirInicio" Style="{StaticResource DatePickerFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Name="lblAñadirFin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
+                <DatePicker Name="dtpAñadirFin" Style="{StaticResource DatePickerFormularios}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Name="tbkAñadirEstado" Text="Estado" Style="{StaticResource TextBlockFormularios}"/>
+                <ComboBox Name="cmbAñadirEstado" Style="{StaticResource ComboBoxFormularios}" IsReadOnly="True">
+                    <ComboBoxItem>a</ComboBoxItem>
+                    <ComboBoxItem>b</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource StackPanelBotonesForm}">
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}"/>
+                <Button Name="btnAñadir" Content="Añadir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+            </StackPanel>
+
+            <TextBlock Name="tbkErrores" Text=""  Background="Red" Visibility="Collapsed" Margin="10"/>
+        </StackPanel>
+
     </Grid>
 </Window>
