@@ -29,7 +29,6 @@ namespace AulaNosaApp.Ventanas
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            // Verificar que se ha introducido el nombre de usuario
             if (tbxNombreCrearUsuario.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de usuario vacio";
@@ -42,7 +41,6 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorNombre.Content = "";
             }
-            // Verificar que se ha introducido la contrasena
             if (pwbContrasenaCrearUsuario.Password.Length == 0)
             {
                 lblErrorContrasena.Content = "Contraseña vacia";
@@ -55,7 +53,6 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorContrasena.Content = "";
             }
-            // Verificar que se ha introducido el email
             if (tbxEmailCrearUsuario.Text.Length == 0)
             {
                 lblErrorEmail.Content = "Email vacio";
@@ -68,12 +65,10 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorEmail.Content = "";
             }
-            // Si se ha introducido todo
             if ((tbxNombreCrearUsuario.Text.Length > 0 && !tbxNombreCrearUsuario.Text.Contains("@")) && pwbContrasenaCrearUsuario.Password.Length > 3 && (tbxEmailCrearUsuario.Text.Length > 0 && tbxEmailCrearUsuario.Text.Contains("@")))
             {
-                // Crear objeto Usuario con todos los parametros
                 UsuarioDTO usuario = new UsuarioDTO();
-                usuario.id = Statics.ultimoIdUsuario + 1;
+                usuario.id = 1;
                 usuario.nombre = tbxNombreCrearUsuario.Text;
                 usuario.password = pwbContrasenaCrearUsuario.Password;
                 usuario.email = tbxEmailCrearUsuario.Text;
@@ -85,14 +80,11 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "EDITOR";
                 }
-                // Funcion de crear usuario
-                AdmUsuariosAPI.crearUsuario(usuario);
-                // Cerrar ventana
+                UsuariosApi.crearUsuario(usuario);
                 Close();
             }
         }
 
-        // Cerrar ventana
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();

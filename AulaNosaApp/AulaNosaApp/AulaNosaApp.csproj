@@ -97,7 +97,7 @@
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Servicios\AdmUsuariosAPI.cs" />
+    <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">

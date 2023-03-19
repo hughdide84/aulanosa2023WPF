@@ -54,20 +54,16 @@ namespace AulaNosaApp.Ventanas
             else
             {
                 lblErrorNombreEstudio.Content = "";
-                // Modificar objeto Estudio
                 Statics.estudioSeleccionado.nombre = tbxEditarNombre.Text;
                 Statics.estudioSeleccionado.fct = (bool)chbFCT.IsChecked ? true : false;
                 Statics.estudioSeleccionado.pext = (bool)chbPEXT.IsChecked ? true : false;
-                // Funcion de crear usuario
                 EstudioApi.EditarEstudio(Statics.estudioSeleccionado);
-                // Cerrar ventana
                 Close();
             }
         }
 
         private void btnCancelarEstudio_Click(object sender, RoutedEventArgs e)
         {
-            // Cerrar ventana
             Close();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using AulaNosaApp.DTO.AdministracionCursos;
+using AulaNosaApp.Util;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -7,176 +8,82 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AulaNosaApp.Servicios.AdministracionCursos
 {
     public class CursosApi
     {
+        static RestClient client;
+        static RestRequest request;
 
-        //Listar todos los cursos
-        public static List<CursoDTO> ListarCursos()
+        public static List<CursoDTO> listarCursos()
         {
-            List<CursoDTO> lista = new List<CursoDTO>();
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/api/curso", Method.Get);
-            var response = client.Execute(request);
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso/all", Method.Get);
+            var response = client.Execute<List<CursoDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
 
-            if (response != null && response.Content !=null)
+        public static void crearCurso(CursoDTO curso)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso", Method.Post);
+            request.AddJsonBody(curso);
+            client.Execute<CursoDTO>(request);
+            MessageBox.Show("Curso creado", "Exito", MessageBoxButton.OK);
+        }
+
+        public static void editarCurso(CursoDTO curso)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso", Method.Put);
+            request.AddJsonBody(curso);
+            client.Execute<CursoDTO>(request);
+            MessageBox.Show("Curso modificado", "Exito", MessageBoxButton.OK);
+        }
+
+        public static void eliminarCurso(int idCursoSeleccionado)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso/"+idCursoSeleccionado, Method.Delete);
+            var response = client.Execute(request);
+        }
+
+        public static CursoDTO filtrarCursoId(String filtro)
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso/" + filtro, Method.Get);
+            var response = client.Execute<CursoDTO>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
+
+        public static List<CursoDTO> listarCursosActivos()
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso/cursosActivos", Method.Get);
+            var response = client.Execute<List<CursoDTO>>(request);
+            var apiResponse = response.Data;
+            return apiResponse;
+        }
+
+        public static List<CursoDTO> listarCursosFinalizados()
+        {
+            client = new RestClient(Constantes.client);
+            request = new RestRequest("/api/curso/all", Method.Get);
+            var response = client.Execute<List<CursoDTO>>(request);
+            var apiResponse = response.Data;
+            List<CursoDTO> cursosNoActivos = new List<CursoDTO>();
+            for (int i = 0; i<apiResponse.Count; i++)
             {
-                var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
-                if (resultado != null)
+                if (apiResponse[i].estado == 'B' || apiResponse[i].estado == 'b')
                 {
-                    lista = resultado;
+                    cursosNoActivos.Add(apiResponse[i]);
                 }
             }
-
-            return lista;
-        }
-
-        //Crear un registro
-        public static string AgregarCurso(CursoDTO cursoDTO)
-        {
-            string resultado = "Se ha producido un error no controlado";
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/api/curso", Method.Post);
-            request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddBody(JsonSerializer.Serialize(cursoDTO));
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                resultado = "";
-            }
-            else
-            {
-                //  Temporal - Falta que WS devuelva un ErrorDTO
-                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                //  if ((error != null) && (error.mensaje != null))
-                //  {
-                resultado = "Se ha producido un error";
-                //  }
-            }
-
-            return resultado;
-        }
-
-        //Modificar un registro
-        public static string EditarCurso(CursoDTO cursoDTO)
-        {
-            string resultado = "Se ha producido un error no controlado";
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/api/curso", Method.Put);
-            request.RequestFormat = RestSharp.DataFormat.Json;
-            request.AddBody(JsonSerializer.Serialize(cursoDTO));
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                resultado = "";
-            }
-            else
-            {
-                //  Temporal - Falta que WS devuelva un ErrorDTO
-                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                //  if ((error != null) && (error.mensaje != null))
-                //  {
-                resultado = "Se ha producido un error";
-                //  }
-            }
-
-            return resultado;
-        }
-
-        //Eliminar un registro
-        public static string EliminarCurso(int id)
-        {
-            string resultado = "Se ha producido un error no controlado";
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/api/curso/" + id.ToString(), Method.Delete);
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                resultado = "";
-            }
-            else
-            {
-                //  Temporal - Falta que WS devuelva un ErrorDTO
-                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                //  if ((error != null) && (error.mensaje != null))
-                //  {
-                resultado = "Se ha producido un error";
-                //  }
-            }
-
-            return resultado;
-        }
-
-        //Buscar curso por ID
-        public static CursoDTO ListarCursoPorId(int id)
-        {
-            CursoDTO objeto = new CursoDTO();
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/api/curso/" + id.ToString(), Method.Get);
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
-                if (resultado != null)
-                {
-                    objeto = resultado;
-                }
-            }
-
-            return objeto;
-        }
-
-        //Buscar curso por Nombre
-        public static CursoDTO ListarCursoPorNombre(String nombre)
-        {
-            CursoDTO objeto = new CursoDTO();
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/nombre/" + nombre, Method.Get);
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                var resultado = JsonSerializer.Deserialize<CursoDTO>(response.Content);
-                if (resultado != null)
-                {
-                    objeto = resultado;
-                }
-            }
-
-            return objeto;
-        }
-
-        //Buscar cursos por estado
-        public static List<CursoDTO> ListarCursoPorEstado(char estado)
-        {
-            List<CursoDTO> lista = new List<CursoDTO>();
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/estado/" + estado, Method.Get);
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                var resultado = JsonSerializer.Deserialize<List<CursoDTO>>(response.Content);
-                if (resultado != null)
-                {
-                    lista = resultado;
-                }
-            }
-
-            return lista;
+            return cursosNoActivos;
         }
     }
 }

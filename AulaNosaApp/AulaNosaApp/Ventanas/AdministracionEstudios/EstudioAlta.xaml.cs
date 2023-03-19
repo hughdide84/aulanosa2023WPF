@@ -35,14 +35,11 @@ namespace AulaNosaApp.Ventanas
             else
             {
                 lblErrorNombreEstudio.Content = "";
-                // Crear objeto Estudio
                 EstudioDTO estudio = new EstudioDTO();
                 estudio.nombre = tbxNombre.Text;
                 estudio.fct = (bool)chbFct.IsChecked ? true : false;
                 estudio.pext = (bool)chbPext.IsChecked ? true : false;
-                // Funcion de crear usuario
                 EstudioApi.AltaEstudio(estudio);
-                // Cerrar ventana
                 Close();
             }
         }

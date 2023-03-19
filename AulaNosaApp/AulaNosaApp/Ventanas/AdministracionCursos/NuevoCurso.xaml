@@ -6,55 +6,54 @@
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
         Title="NuevoCurso" Height="650" Width="800">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid Background="#F0F4F7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
             <Image Style="{StaticResource ImagenLogoFormularios}"/>
             <Label Grid.Column="1" Content="Añadir curso" Style="{StaticResource LabelTituloFormularios}"/>
-
         </Grid>
-
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
-
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Name="tbkAñadirNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxAñadirNombre" Style="{StaticResource TextBoxFormularios}"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbkAñadirNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxAñadirNombre" Style="{StaticResource TextBoxFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorNombre" Content=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Name="tbkAñadirInicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
-                <DatePicker Name="dtpAñadirInicio" Style="{StaticResource DatePickerFormularios}"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbkAñadirInicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="dtpAñadirInicio" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorFechaInicio" Content=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Name="lblAñadirFin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
-                <DatePicker Name="dtpAñadirFin" Style="{StaticResource DatePickerFormularios}"/>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="lblAñadirFin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="dtpAñadirFin" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorFechaFin" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Name="tbkAñadirEstado" Text="Estado" Style="{StaticResource TextBlockFormularios}"/>
-                <ComboBox Name="cmbAñadirEstado" Style="{StaticResource ComboBoxFormularios}" IsReadOnly="True">
-                    <ComboBoxItem>a</ComboBoxItem>
-                    <ComboBoxItem>b</ComboBoxItem>
+                <ComboBox Name="cbbAñadirEstado" Style="{StaticResource ComboBoxFormularios}" IsReadOnly="True">
+                    <ComboBoxItem>Activo</ComboBoxItem>
+                    <ComboBoxItem>Finalizado</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-
             <StackPanel Style="{StaticResource StackPanelBotonesForm}">
-                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}"/>
-                <Button Name="btnAñadir" Content="Añadir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0"/>
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}" Click="btnCancelar_Click"/>
+                <Button Name="btnAñadir" Content="Añadir" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnAñadir_Click"/>
             </StackPanel>
-
-            <TextBlock Name="tbkErrores" Text=""  Background="Red" Visibility="Collapsed" Margin="10"/>
         </StackPanel>
-
     </Grid>
 </Window>

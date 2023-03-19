@@ -9,7 +9,7 @@ namespace AulaNosaApp.DTO.AdministracionCursos
     public class CursoDTO
     {
         public int id { get; set; }
-        public string nombre { get; set; }
+        public String nombre { get; set; }
         public DateTime? inicio { get; set; }
         public DateTime? fin { get; set; }
         public char estado { get; set; }

@@ -22,69 +22,56 @@ namespace AulaNosaApp.Paginas
     /// <summary>
     /// Lógica de interacción para UsuarioAdm.xaml
     /// </summary>
-    public partial class UsuarioAdm : Page
+    public partial class AdministracionUsuarios : Page
     {
 
         RestClient client;
         RestRequest request;
+        List<UsuarioDTO> usuariosLista;
         bool filtrosActivados = false;
 
-        public UsuarioAdm()
+        public AdministracionUsuarios()
         {
             InitializeComponent();
             cbbFiltroUsuario.SelectedIndex = 0;
             refrescarUsuarios();
         }
 
-        // Boton refrescar pantalla
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
         {
             refrescarUsuarios();
         }
 
-        // Crear usuario
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
-            // Ventana de creacion de usuario
             UsuarioCrear usuarioCrearVentana = new UsuarioCrear();
             usuarioCrearVentana.Show();
         }
 
-        // Editar usuario
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
-           // Obtener el Usuario seleccionado
            var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
-           // Almacenar el usuario seleccionado y abrir la ventana de modificacion de usuario
            Statics.usuarioSeleccionado = usuarioSeleccionado;
            UsuarioModificar usuarioModificarVentana = new UsuarioModificar();
            usuarioModificarVentana.Show();
-           // Deseleccionar seleccion
            btnEditarUsuario.IsEnabled = false;
            btnEliminarUsuario.IsEnabled = false;
            dgvUsuarios.SelectedItem = null;
         }
 
-        // Eliminar usuario
         private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            // Obtener el Usuario seleccionado
             var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
-            // Mostrar ventana de confirmacion de si quiere eliminar el usuario
             var resultado = MessageBox.Show("¿Desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButton.YesNo);
             if (resultado == MessageBoxResult.Yes)
             {
-              // Eliminar usuario
-              AdmUsuariosAPI.eliminarUsuario(usuarioSeleccionado.id);
-              // Refrescar DataGrid de usuarios
+              UsuariosApi.eliminarUsuario(usuarioSeleccionado.id);
               refrescarUsuarios();
-              // Deseleccionar seleccion
               btnEditarUsuario.IsEnabled = false;
               btnEliminarUsuario.IsEnabled = false;
               dgvUsuarios.SelectedItem = null;
             }else
             {
-             // Refrescar DataGrid de usuarios
              refrescarUsuarios();
             }
         }
@@ -93,48 +80,39 @@ namespace AulaNosaApp.Paginas
         {
             if (tbxFiltroUsuario.Text.Length == 0)
             {
-                // Error al hacer una busqueda vacia
                 MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
                 if (cbbFiltroUsuario.SelectedIndex == 0)
                 {
-                    // Recoger por ID
-                    UsuarioDTO usuarioId = AdmUsuariosAPI.filtrarUsuarioId(tbxFiltroUsuario.Text);
+                    UsuarioDTO usuarioId = UsuariosApi.filtrarUsuarioId(tbxFiltroUsuario.Text);
                     List<UsuarioDTO> usuarioIdRetornado = new List<UsuarioDTO>();
                     if(usuarioId != null)
                     {
                         usuarioIdRetornado.Add(usuarioId);
                     }
-                    // Mostrarlo en un DataGrid
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
                     dgvUsuarios.ItemsSource = usuarioIdRetornado;
                 }
                 else if (cbbFiltroUsuario.SelectedIndex == 1)
                 {
-                    // Recoger Nombre
-                    List<UsuarioDTO> usuariosListaNombre = AdmUsuariosAPI.filtrarUsuarioNombre(tbxFiltroUsuario.Text);
-                    // Mostrarlo en un DataGrid
+                    List<UsuarioDTO> usuariosListaNombre = UsuariosApi.filtrarUsuarioNombre(tbxFiltroUsuario.Text);
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
                     dgvUsuarios.ItemsSource = usuariosListaNombre;
                 }
                 else if (cbbFiltroUsuario.SelectedIndex == 2)
                 {
-                    // Recoger Rol
-                    List<UsuarioDTO> usuariosListaRol = AdmUsuariosAPI.filtrarUsuarioRol(tbxFiltroUsuario.Text);
-                    // Mostrarlo en un DataGrid
+                    List<UsuarioDTO> usuariosListaRol = UsuariosApi.filtrarUsuarioRol(tbxFiltroUsuario.Text);
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
                     dgvUsuarios.ItemsSource = usuariosListaRol;
                 }
                 else if (cbbFiltroUsuario.SelectedIndex == 3)
                 {
-                    // Recoger Rol
-                    List<UsuarioDTO> usuariosListaEmail = AdmUsuariosAPI.filtrarUsuarioEmail(tbxFiltroUsuario.Text);
-                    // Mostrarlo en un DataGrid
+                    List<UsuarioDTO> usuariosListaEmail = UsuariosApi.filtrarUsuarioEmail(tbxFiltroUsuario.Text);
                     dgvUsuarios.ItemsSource = null;
                     dgvUsuarios.Items.Clear();
                     dgvUsuarios.ItemsSource = usuariosListaEmail;
@@ -142,24 +120,18 @@ namespace AulaNosaApp.Paginas
             }
         }
 
-        // Habilitar los botones de editar y eliminar al clickear un registro del DataGrid
         private void dgvUsuarios_Selected(object sender, RoutedEventArgs e)
         {
             btnEditarUsuario.IsEnabled = true;
             btnEliminarUsuario.IsEnabled = true;
         }
 
-        // Refresca el DataGrid de usuarios
         void refrescarUsuarios()
         {
-            Statics.usuariosLista = AdmUsuariosAPI.listarUsuarios();
+            usuariosLista = UsuariosApi.listarUsuarios();
             dgvUsuarios.ItemsSource = null;
             dgvUsuarios.Items.Clear();
-            dgvUsuarios.ItemsSource = Statics.usuariosLista;
-            if (Statics.usuariosLista != null)
-            {
-                Statics.ultimoIdUsuario = Statics.usuariosLista[Statics.usuariosLista.Count - 1].id;
-            }
+            dgvUsuarios.ItemsSource = usuariosLista;
         }
 
 		private void btnConsultaUsuario_Click(object sender, RoutedEventArgs e)

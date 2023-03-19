@@ -44,7 +44,6 @@ namespace AulaNosaApp.Ventanas
 
         private void btnUsuarioModificar_Click(object sender, RoutedEventArgs e)
         {
-            // Verificar que se ha introducido el nombre de usuario
             if (tbxNombreModificarUsuario.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de usuario vacio";
@@ -57,7 +56,6 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorNombre.Content = "";
             }
-            // Verificar que se ha introducido la contrasena
             if (pwbContrasenaModificarUsuario.Password.Length == 0)
             {
                 lblErrorContrasena.Content = "Contraseña vacia";
@@ -70,7 +68,6 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorContrasena.Content = "";
             }
-            // Verificar que se ha introducido el email
             if (tbxEmailModificarUsuario.Text.Length == 0)
             {
                 lblErrorEmail.Content = "Email vacio";
@@ -83,17 +80,13 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorEmail.Content = "";
             }
-            // Si se ha introducido todo
             if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@")) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@")))
             {
-                // Almacenar todos los usuarios actuales en una lista
                 client = new RestClient(Constantes.client);
                 request = new RestRequest("/api/usuario", Method.Get);
                 var response = client.Execute<List<UsuarioDTO>>(request);
                 var apiResponse = response.Data;
-                // Ir al metodo Put para modificar usuarios
                 request = new RestRequest("/api/usuario", Method.Put);
-                // Crear objeto Usuario con todos los parametros
                 UsuarioDTO usuario = new UsuarioDTO();
                 usuario.id = Statics.usuarioSeleccionado.id;
                 usuario.nombre = tbxNombreModificarUsuario.Text;
@@ -107,9 +100,7 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "EDITOR";
                 }
-                // Funcion de modificar usuario
-                AdmUsuariosAPI.modificarUsuario(usuario);
-                // Cerrar ventana
+                UsuariosApi.modificarUsuario(usuario);
                 Close();
             }
         }

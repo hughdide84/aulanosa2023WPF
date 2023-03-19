@@ -25,13 +25,13 @@ namespace AulaNosaApp.Paginas
     /// <summary>
     /// Lógica de interacción para CORE_Administración_de_estudios.xaml
     /// </summary>
-    public partial class CORE_Administración_de_estudios : Page
+    public partial class AdministracionEstudios : Page
     {
         public List<EstudioDTO> lista;
         public ObservableCollection<EstudioDTO> listaGrid { get; set; }
         bool filtrosActivados = false;
 
-        public CORE_Administración_de_estudios()
+        public AdministracionEstudios()
         {
             InitializeComponent();
             RefrescarDatos();
@@ -68,18 +68,14 @@ namespace AulaNosaApp.Paginas
             var resultado = MessageBox.Show("¿Desea eliminar este estudio?", "Eliminar Estudio", MessageBoxButton.YesNo);
             if (resultado == MessageBoxResult.Yes)
             {
-                // Eliminar estudios
                 EstudioApi.EliminarEstudio(Statics.estudioSeleccionado.id);
-                // Refrescar DataGrid de estudios
                 RefrescarDatos();
-                // Deseleccionar seleccion
                 btnEditarEstudios.IsEnabled = false;
                 btnEliminarEstudios.IsEnabled = false;
                 dgListado.SelectedItem = null;
             }
             else
             {
-                // Refrescar DataGrid de estudios
                 RefrescarDatos();
             }
         }
@@ -104,14 +100,12 @@ namespace AulaNosaApp.Paginas
 
         private void btnBuscarEstudios_Click(object sender, RoutedEventArgs e)
         {
-            // Recoger por ID
             EstudioDTO estudioID = EstudioApi.filtrarEstudioId(tbxConsultarEstudios.Text);
             List<EstudioDTO> estudioIdRetornado = new List<EstudioDTO>();
             if (estudioID != null)
             {
                 estudioIdRetornado.Add(estudioID);
             }
-            // Mostrarlo en un DataGrid
             dgListado.ItemsSource = null;
             dgListado.Items.Clear();
             dgListado.ItemsSource = estudioIdRetornado;
