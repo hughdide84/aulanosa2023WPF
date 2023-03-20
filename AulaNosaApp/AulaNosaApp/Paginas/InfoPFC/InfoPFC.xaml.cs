@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,6 +25,18 @@ namespace AulaNosaApp.Paginas.InfoPFC
         public InfoPFC()
         {
             InitializeComponent();
+        }
+
+        private void btnSubirPDF_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                btnSubirPDF.Content = "Archivo subido";
+                btnSubirPDF.IsEnabled = false;
+            }
         }
     }
 }

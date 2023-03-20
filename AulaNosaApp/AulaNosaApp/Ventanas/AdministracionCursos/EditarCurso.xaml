@@ -21,14 +21,11 @@
             <Label Grid.Column="1" Name="lblEditar" Content="Editar Curso" Style="{StaticResource LabelTituloFormularios}"/>
         </Grid>
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
-
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
-
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Name="tbkEditarID" Text="ID" Style="{StaticResource TextBlockFormularios}"/>
                 <TextBox Name="tbxEditarID" IsEnabled="False" Style="{StaticResource TextBoxFormularios}"/>
             </StackPanel>
-
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Name="tbkEditarNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
@@ -68,7 +65,7 @@
 
 
 
-
+    
 
 
 </Window>

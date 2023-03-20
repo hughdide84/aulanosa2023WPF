@@ -106,6 +106,9 @@
     <Compile Include="Paginas\GestionEmpresas\GestionEmpresas.xaml.cs">
       <DependentUpon>GestionEmpresas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\GestionNotas\GestionNotas.xaml.cs">
+      <DependentUpon>GestionNotas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\InfExposiciones\InfExposiciones.xaml.cs">
       <DependentUpon>InfExposiciones.xaml</DependentUpon>
     </Compile>
@@ -123,9 +126,6 @@
     </Compile>
     <Compile Include="Paginas\InfEmpresas\InfEmpresas.xaml.cs">
       <DependentUpon>InfEmpresas.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Paginas\InfNotas\InfNotas.xaml.cs">
-      <DependentUpon>InfNotas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\InfoPFC\InfoPFC.xaml.cs">
       <DependentUpon>InfoPFC.xaml</DependentUpon>
@@ -173,6 +173,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Paginas\GestionNotas\GestionNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Paginas\InfExposiciones\InfExposiciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,10 +198,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\InfEmpresas\InfEmpresas.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Paginas\InfNotas\InfNotas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
