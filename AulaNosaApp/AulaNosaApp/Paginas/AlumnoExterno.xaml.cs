@@ -89,7 +89,7 @@ namespace AulaNosaApp.Paginas
         }
 
         //Habilitar búsqueda
-        private void BtnConsultar_Click(object sender, RoutedEventArgs e)
+    /*    private void BtnConsultar_Click(object sender, RoutedEventArgs e)
         {
             cmbConsultar.Items.Clear();
             cmbConsultar.Items.Add("Id");
@@ -108,10 +108,10 @@ namespace AulaNosaApp.Paginas
                 tbxConsultar.Visibility = Visibility.Visible;
                 btnBuscar.Visibility = Visibility.Visible;
             }
-        }
+        }*/
 
         //Filtrar los datos
-        private void Filtrar()
+      /*  private void Filtrar()
         {
             if (cmbConsultar.SelectedIndex == 0)
             {
@@ -127,10 +127,10 @@ namespace AulaNosaApp.Paginas
                 lista.Add(coincidencia);
                 dtgListado.ItemsSource = lista;
             }
-        }
+        }*/
 
         //Filtrar registros
-        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
+      /*  private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
             if (tbxConsultar.Visibility == Visibility.Visible && tbxConsultar.Text != "")
             {
@@ -140,7 +140,7 @@ namespace AulaNosaApp.Paginas
             {
                 MessageBox.Show("El buscador no puede estar vacío", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
+        }*/
 
         //Permitir modificar o eliminar un registro
         private void DtgListado_Selected(object sender, RoutedEventArgs e)

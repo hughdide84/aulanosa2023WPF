@@ -133,6 +133,11 @@ namespace AulaNosaApp.Ventanas
                 MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if(alumno.tipo.Length > 1)
+            {
+                MessageBox.Show("El tipo del alumno no puede tener más de un caracter", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (string.IsNullOrEmpty(alumno.email))
             {
@@ -170,6 +175,8 @@ namespace AulaNosaApp.Ventanas
             }
 
             string v = AlumnoExternoService.AgregarAlumnoExterno(alumno);
+
+            this.Close();
 
         }
 

@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
-        Title="ModificarAlumnoExterno" Height="450" Width="800">
+        Title="ModificarAlumnoExterno" Height="600" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="665">
-            <Label Content="Modificar Alumno Externo" FontSize="30" HorizontalAlignment="Center"/>
+            <Label Content="Crear Alumno Externo" FontSize="30" HorizontalAlignment="Center"/>
             <TextBlock Text="Nombre y apellidos:"/>
             <TextBox Name="txtNombre"/>
 
@@ -29,10 +29,31 @@
 
             <TextBlock Text="Curso:"/>
             <TextBox Name="txtCurso"/>
-            <WrapPanel Height="30"/>
-            <Button Content="Guardar" Click="Guardar_ClickAsync" Height="25"/>
-            <WrapPanel Height="30"/>
-            <WrapPanel/>
+
+            <TextBlock Text="Tipo:"/>
+            <TextBox Name="txtTipo"/>
+
+            <TextBlock Text="Inicio:"/>
+            <DatePicker Name="DPInicio"/>
+
+            <TextBlock Text="Final:"/>
+            <DatePicker Name="DPFinal"/>
+
+            <WrapPanel Height="10"/>
+            <WrapPanel>
+                <TextBlock Text="CV:" Margin="10"/>
+                <Button Name="btnSubirCV" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Convenio:" Margin="10"/>
+                <Button Name="btnSubirConvenio" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Evaluación:" Margin="10"/>
+                <Button Name="btnSubirEvaluacion" Content="Subir archivo" Width="100"/>
+                <TextBlock Text="Horario:" Margin="10"/>
+                <Button Name="btnSubirHorario" Content="Subir archivo" Width="100"/>
+            </WrapPanel>
+            <WrapPanel Height="20"/>
+            <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+            <TextBox Name="lblid" Visibility="Hidden"/>
         </StackPanel>
+
     </Grid>
 </Window>

@@ -33,10 +33,10 @@
                     <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="BtnNuevo_Click"/>
                     <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" IsEnabled="False" Click="BtnModificar_Click"/>
                     <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar" IsEnabled="False" Click="BtnEliminar_Click"/>
-                    <Button Grid.Column="4" Margin="3" Name="btnConsultar" Content="Consultar" Click="BtnConsultar_Click"/>
+                    <Button Grid.Column="4" Margin="3" Name="btnConsultar" Content="Consultar"/>
                     <ComboBox Grid.Column="5" Margin="3" Name="cmbConsultar" Visibility="Hidden"/>
                     <TextBox Grid.Column="6" Margin="3" Name="tbxConsultar" Visibility="Hidden"/>
-                    <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden" Click="BtnBuscar_Click"/>
+                    <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden"/>
                 </Grid>
             </ToolBar>
         </DockPanel>
