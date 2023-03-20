@@ -104,23 +104,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    
-                    <Border Grid.Row="1" Grid.Column="1" Background="#732487" CornerRadius="15" Margin="1444,3,0,3" Width="2000" HorizontalAlignment="Left">
-                        <Grid VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="(9/2/2023)" Grid.Column="0" Margin="20,0,10,0" TextAlignment="Center" Foreground="White"/>
-                            <TextBlock Text="Pepe primero" Grid.Column="1" TextAlignment="Center" FontWeight="Bold" Foreground="White"/>
-                            <TextBlock Text="(20/4/2023)" Grid.Column="2"  Margin="10,0,20,0" TextAlignment="Center" Foreground="White"/>
-
-                        </Grid>
-                    </Border>
                 </Grid>
 
             </Grid>

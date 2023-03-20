@@ -26,7 +26,7 @@ namespace AulaNosaApp.Paginas
 
         private List<string> colores = new List<string>
         {
-            "#8B4513", "#B22222", "#00FF00"
+            "#20B2AA", "#008B8B", "#008080"
         }; 
         public investigacionCalendario()
         {
@@ -59,7 +59,6 @@ namespace AulaNosaApp.Paginas
             alumnos.Add(alumno2);
             alumnos.Add(alumno3);
 
-            prueba.Text = alumnos.Count.ToString();
             int nuncolor = 0;
             for (int i = 0; i < alumnos.Count; i ++ ) {
 
@@ -70,7 +69,7 @@ namespace AulaNosaApp.Paginas
                 grdLista.RowDefinitions.Add(row);
 
                 Border border = new Border();
-                border.Background = new SolidColorBrush(Colors.OrangeRed);
+                border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colores[nuncolor]));
                 nuncolor++;
                 if (nuncolor == colores.Count) { 
                     nuncolor = 0;
