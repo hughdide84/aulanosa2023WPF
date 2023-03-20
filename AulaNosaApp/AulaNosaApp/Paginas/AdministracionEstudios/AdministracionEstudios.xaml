@@ -25,12 +25,24 @@
             <TextBox Name="tbxConsultarEstudios" Style="{StaticResource TextBoxAdministracion}" Visibility="Collapsed" MaxLength="100"/>
             <Button Name="btnBuscarEstudios" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Collapsed" Click="btnBuscarEstudios_Click"/>
         </ToolBar>
-        <DataGrid Grid.Row="2" x:Name="dgListado" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgListado_Selected">
+        <DataGrid Grid.Row="2" x:Name="dgListado" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgListado_Selected">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                <DataGridTextColumn Header="FCT" Binding="{Binding fct}"/>
-                <DataGridTextColumn Header="PEXT" Binding="{Binding pext}"/>
+                <DataGridTemplateColumn Header="FCT">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding fct, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="PEXT">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding pext, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
