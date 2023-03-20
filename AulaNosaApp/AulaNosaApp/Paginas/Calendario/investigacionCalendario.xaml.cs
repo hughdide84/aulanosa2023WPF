@@ -23,22 +23,58 @@ namespace AulaNosaApp.Paginas
     /// </summary>
     public partial class investigacionCalendario : Page
     {
+
+        private List<string> colores = new List<string>
+        {
+            "#8B4513", "#B22222", "#00FF00"
+        }; 
         public investigacionCalendario()
         {
             InitializeComponent();
             //lo comente para que no pete nada más abrir, pero funsiona
-            //generarCalendario();
+            generarCalendario();
         }
 
         private void generarCalendario() 
         {
-            foreach (AlumnoDTO alumno in AlumnoApi.ListarAlumnos()) {
+            List<AlumnoDTO> alumnos = AlumnoApi.ListarAlumnos();
+            alumnos.Clear();
+
+            AlumnoDTO alumno1 = new AlumnoDTO();
+            alumno1.inicioPr = new DateTime(2018,1,13);
+            alumno1.finPr = new DateTime(2018,2,10);
+            alumno1.nombre = "Pepe";
+
+            AlumnoDTO alumno2 = new AlumnoDTO();
+            alumno2.inicioPr = new DateTime(2017, 10, 10);
+            alumno2.finPr = new DateTime(2018, 2, 23);
+            alumno2.nombre = "Lurencio";
+
+            AlumnoDTO alumno3 = new AlumnoDTO();
+            alumno3.inicioPr = new DateTime(2018, 3, 20);
+            alumno3.finPr = new DateTime(2018, 5, 10);
+            alumno3.nombre = "Parafleudio";
+
+            alumnos.Add(alumno1);
+            alumnos.Add(alumno2);
+            alumnos.Add(alumno3);
+
+            prueba.Text = alumnos.Count.ToString();
+            int nuncolor = 0;
+            for (int i = 0; i < alumnos.Count; i ++ ) {
+
+                AlumnoDTO alumno = alumnos[i];
+
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30);
                 grdLista.RowDefinitions.Add(row);
 
                 Border border = new Border();
-                border.Background = new SolidColorBrush(Colors.Red);
+                border.Background = new SolidColorBrush(Colors.OrangeRed);
+                nuncolor++;
+                if (nuncolor == colores.Count) { 
+                    nuncolor = 0;
+                }
                 border.CornerRadius = new CornerRadius(15);
                 border.Margin = new Thickness(calcularComienzo(alumno),3,0,3);
                 border.Width = calcularFinal(alumno);
@@ -84,8 +120,7 @@ namespace AulaNosaApp.Paginas
 
                 border.Child = grid;
 
-                Grid.SetColumn(border, 1);
-                Grid.SetRow(border, 2);
+                Grid.SetRow(border, i +1);
 
                 grdLista.Children.Add(border);
             }

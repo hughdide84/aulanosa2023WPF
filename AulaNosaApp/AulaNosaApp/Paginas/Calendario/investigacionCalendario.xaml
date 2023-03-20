@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AulaNosaApp.Paginas"
       mc:Ignorable="d" 
       d:DesignHeight="450"
-      Title="investigacionCalendario" Width="800">
+      Title="investigacionCalendario">
 
     <Page.Resources>
         <Style x:Key="fechasNombre" TargetType="TextBlock">
@@ -48,7 +48,7 @@
                     </Grid.RowDefinitions>
 
                     <Border Grid.Column="0" Style="{StaticResource lineas}">
-                        <TextBlock Text="Septiembre" Style="{StaticResource meses}"/>
+                        <TextBlock Text="Septiembre" Style="{StaticResource meses}" x:Name="prueba"/>
                     </Border>
                     <Border Grid.Column="1" Style="{StaticResource lineas}">
                         <TextBlock Text="Octubre"  Style="{StaticResource meses}"/>
@@ -100,7 +100,6 @@
                 </Grid>
                 <Grid x:Name="grdLista">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
