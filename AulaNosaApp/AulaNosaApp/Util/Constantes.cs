@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace AulaNosaApp.Util
 {
-    internal class Constantes
+    // Clase para almacenar las variables constantes
+    public class Constantes
     {
-        // Clase estatica para almacenar las variables
         public const String client = "http://localhost:8080"; // Cliente de la API
     }
 }

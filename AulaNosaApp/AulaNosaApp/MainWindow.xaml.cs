@@ -23,23 +23,29 @@ namespace AulaNosaApp
         public MainWindow()
         {
             InitializeComponent();
+            // Ocultar paneles de gestion para mostrar solo el menu de acceso
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
-            cbbUsuario.SelectedIndex = 0;
         }
 
+        // Accion del boton de iniciar sesion
         private void btnAcceder_Click(object sender, RoutedEventArgs e)
         {
+            // Ocultar menu de acceso
             spnAcceso.Visibility = Visibility.Hidden;
+            // Mostrar paneles de gestion
             spnMenuIzqda.Visibility = Visibility.Visible;
             grdMenuSuperior.Visibility = Visibility.Visible;
             frmPrincipal.Visibility = Visibility.Visible;
             frmPrincipal.Source = null;
+            // Pestaña de informacion usuario/cerrar sesion
             cbbUsuario.SelectedIndex = 0;
+            // Mostrar nombre y rol del usuario
             txbNombreUsuarioLogueado.Text = tbUsuario.Text;
             txbRolUsuarioLogueado.Text = "Admin";
         }
 
+        // Accion del boton de cerrar sesion
 		private void btnCerrarSesion_Selected(object sender, RoutedEventArgs e)
 		{
             spnAcceso.Visibility = Visibility.Visible;
@@ -49,26 +55,31 @@ namespace AulaNosaApp
             cbbUsuario.SelectedIndex = 0;
         }
 
+        // Panel de usuarios
 		private void btnUsuarios_Click(object sender, RoutedEventArgs e)
 		{
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/AdministracionUsuarios.xaml", UriKind.Relative));
         }
 
+        // Panel de cursos
 		private void btnCursos_Click(object sender, RoutedEventArgs e)
 		{
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative));
         }
 
+        // Panel de estudios
 		private void btnEstudios_Click(object sender, RoutedEventArgs e)
 		{
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionEstudios/AdministracionEstudios.xaml", UriKind.Relative));
         }
 
+        // Panel del calendario FCT
 		private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
 		{
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
+        // Panel del calendario PEXT
 		private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
 		{
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));

@@ -37,17 +37,20 @@ namespace AulaNosaApp.Paginas
             refrescarUsuarios();
         }
 
+        // Boton de refrescar usuarios
         private void btnRefrescarPantallaUsuarios_Click(object sender, RoutedEventArgs e)
         {
             refrescarUsuarios();
         }
 
+        // Boton de crear usuario (abre ventana de creacion de usuario)
         private void btnCrearNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
             UsuarioCrear usuarioCrearVentana = new UsuarioCrear();
             usuarioCrearVentana.Show();
         }
 
+        // Boton de editar usuario (abre ventana de editar de usuario)
         private void btnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
            var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
@@ -59,6 +62,7 @@ namespace AulaNosaApp.Paginas
            dgvUsuarios.SelectedItem = null;
         }
 
+        // Boton de eliminar usuario
         private void btnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
             var usuarioSeleccionado = dgvUsuarios.SelectedItem as UsuarioDTO;
@@ -76,6 +80,26 @@ namespace AulaNosaApp.Paginas
             }
         }
 
+        // Mostrar/Ocultar el panel de filtros
+        private void btnConsultaUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            if (!filtrosActivados)
+            {
+                cbbFiltroUsuario.Visibility = Visibility.Visible;
+                tbxFiltroUsuario.Visibility = Visibility.Visible;
+                btnBuscarFiltroUsuario.Visibility = Visibility.Visible;
+                filtrosActivados = true;
+            }
+            else
+            {
+                cbbFiltroUsuario.Visibility = Visibility.Collapsed;
+                tbxFiltroUsuario.Visibility = Visibility.Collapsed;
+                btnBuscarFiltroUsuario.Visibility = Visibility.Collapsed;
+                filtrosActivados = false;
+            }
+        }
+
+        // Boton de hacer la busqueda del filtro de usuario
         private void btnBuscarFiltroUsuario_Click(object sender, RoutedEventArgs e)
         {
             if (tbxFiltroUsuario.Text.Length == 0)
@@ -120,33 +144,20 @@ namespace AulaNosaApp.Paginas
             }
         }
 
+        // Habilitar botones de editar y eliminar usuario al clickear uno
         private void dgvUsuarios_Selected(object sender, RoutedEventArgs e)
         {
             btnEditarUsuario.IsEnabled = true;
             btnEliminarUsuario.IsEnabled = true;
         }
 
+        // Refrescar lista de usuarios
         void refrescarUsuarios()
         {
             usuariosLista = UsuariosApi.listarUsuarios();
             dgvUsuarios.ItemsSource = null;
             dgvUsuarios.Items.Clear();
             dgvUsuarios.ItemsSource = usuariosLista;
-        }
-
-		private void btnConsultaUsuario_Click(object sender, RoutedEventArgs e)
-		{
-            if (!filtrosActivados) {
-                cbbFiltroUsuario.Visibility = Visibility.Visible;
-                tbxFiltroUsuario.Visibility = Visibility.Visible;
-                btnBuscarFiltroUsuario.Visibility = Visibility.Visible;
-                filtrosActivados = true;
-            } else {
-                cbbFiltroUsuario.Visibility = Visibility.Collapsed;
-                tbxFiltroUsuario.Visibility = Visibility.Collapsed;
-                btnBuscarFiltroUsuario.Visibility = Visibility.Collapsed;
-                filtrosActivados = false;
-            }
         }
 	}
 }

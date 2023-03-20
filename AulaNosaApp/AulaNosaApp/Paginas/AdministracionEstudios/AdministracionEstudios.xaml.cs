@@ -37,23 +37,27 @@ namespace AulaNosaApp.Paginas
             RefrescarDatos();
         }
 
+        // Refrescar lista de estudios
         private void RefrescarDatos()
         {
             lista = EstudioApi.ListarEstudios();
             this.dgListado.ItemsSource = lista;
         }
 
+        // Boton de refrescar estudios
         private void btnRefrescarEstudios_Click(object sender, RoutedEventArgs e)
         {
             RefrescarDatos();
         }
 
+        // Boton de crear estudio (abre ventana de creacion de usuario)
         private void btnNuevoEstudios_Click(object sender, RoutedEventArgs e)
         {
             EstudioAlta pantalla = new EstudioAlta();
             pantalla.Show();
         }
 
+        // Boton de editar estudio (abre ventana de edicion de usuario)
         private void btnEditarEstudios_Click(object sender, RoutedEventArgs e)
         {
             btnEditarEstudios.IsEnabled = false;
@@ -63,6 +67,7 @@ namespace AulaNosaApp.Paginas
             pantalla.Show();
         }
 
+        // Boton de eliminar estudio
         private void btnEliminarEstudios_Click(object sender, RoutedEventArgs e)
         {
             var resultado = MessageBox.Show("¿Desea eliminar este estudio?", "Eliminar Estudio", MessageBoxButton.YesNo);
@@ -80,6 +85,7 @@ namespace AulaNosaApp.Paginas
             }
         }
 
+        // Mostrar/Ocultar el panel de filtros
         private void btnConsultarEstudios_Click(object sender, RoutedEventArgs e)
         {
             if (!filtrosActivados)
@@ -98,19 +104,28 @@ namespace AulaNosaApp.Paginas
             }
         }
 
+        // Boton de hacer la busqueda del filtro de usuario por ID
         private void btnBuscarEstudios_Click(object sender, RoutedEventArgs e)
         {
-            EstudioDTO estudioID = EstudioApi.filtrarEstudioId(tbxConsultarEstudios.Text);
-            List<EstudioDTO> estudioIdRetornado = new List<EstudioDTO>();
-            if (estudioID != null)
+            if (tbxConsultarEstudios.Text.Length == 0)
             {
-                estudioIdRetornado.Add(estudioID);
+                MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            dgListado.ItemsSource = null;
-            dgListado.Items.Clear();
-            dgListado.ItemsSource = estudioIdRetornado;
+            else
+            {
+                EstudioDTO estudioID = EstudioApi.filtrarEstudioId(tbxConsultarEstudios.Text);
+                List<EstudioDTO> estudioIdRetornado = new List<EstudioDTO>();
+                if (estudioID != null)
+                {
+                    estudioIdRetornado.Add(estudioID);
+                }
+                dgListado.ItemsSource = null;
+                dgListado.Items.Clear();
+                dgListado.ItemsSource = estudioIdRetornado;
+            }
         }
 
+        // Habilitar botones de editar y eliminar usuario al clickear uno
         private void dgListado_Selected(object sender, RoutedEventArgs e)
         {
             btnEditarEstudios.IsEnabled = true;

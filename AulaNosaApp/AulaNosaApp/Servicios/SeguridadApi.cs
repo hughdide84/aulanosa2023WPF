@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Servicios
 {
-    public class Seguridad
+    public class SeguridadApi
     {
 
         public static bool Acceso(string usuario, string password)

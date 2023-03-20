@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Util
 {
+    // Clases estaticas para utilizarlas entre pagina/ventana
     class Statics
     {
         // Usuario

@@ -6,18 +6,15 @@
       xmlns:local="clr-namespace:AulaNosaApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdministracionCursos">
-
+      Title="CPR AULA NOSA - Gestion Cursos">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
         <TextBlock Name="tbkTitulo" Text="Administración de cursos" Style="{StaticResource TextBlockTituloAdministracion}"/>
-
         <ToolBar Grid.Row="1" Name="tbrCursos">
             <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
             <Button Name="btnNuevo" Content="Nuevo" Style="{StaticResource BotonesAdministracion}" Click="btnNuevo_Click"/>
@@ -35,7 +32,6 @@
             </ComboBox>
             <Button Name="btnBuscar" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Collapsed" Click="btnBuscar_Click"/>
         </ToolBar>
-
         <DataGrid Grid.Row="2" Name="dgvListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvListado_Selected">
             <DataGrid.Columns>
@@ -46,6 +42,5 @@
                 <DataGridTextColumn Header="Estado" Binding="{Binding estado}"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Page>

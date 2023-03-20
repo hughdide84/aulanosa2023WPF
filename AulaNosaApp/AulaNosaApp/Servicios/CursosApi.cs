@@ -17,6 +17,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
         static RestClient client;
         static RestRequest request;
 
+        // Listar todos los cursos
         public static List<CursoDTO> listarCursos()
         {
             client = new RestClient(Constantes.client);
@@ -26,6 +27,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return apiResponse;
         }
 
+        // Crear un curso
         public static void crearCurso(CursoDTO curso)
         {
             client = new RestClient(Constantes.client);
@@ -35,6 +37,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             MessageBox.Show("Curso creado", "Exito", MessageBoxButton.OK);
         }
 
+        // Editar un curso
         public static void editarCurso(CursoDTO curso)
         {
             client = new RestClient(Constantes.client);
@@ -44,6 +47,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             MessageBox.Show("Curso modificado", "Exito", MessageBoxButton.OK);
         }
 
+        // Eliminar un curso
         public static void eliminarCurso(int idCursoSeleccionado)
         {
             client = new RestClient(Constantes.client);
@@ -51,6 +55,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             var response = client.Execute(request);
         }
 
+        // Buscar curso por ID
         public static CursoDTO filtrarCursoId(String filtro)
         {
             client = new RestClient(Constantes.client);
@@ -60,6 +65,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return apiResponse;
         }
 
+        // Listar cursos activos
         public static List<CursoDTO> listarCursosActivos()
         {
             client = new RestClient(Constantes.client);
@@ -69,6 +75,7 @@ namespace AulaNosaApp.Servicios.AdministracionCursos
             return apiResponse;
         }
 
+        // Listar cursos finalizados
         public static List<CursoDTO> listarCursosFinalizados()
         {
             client = new RestClient(Constantes.client);

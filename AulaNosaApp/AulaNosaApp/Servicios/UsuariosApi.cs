@@ -14,6 +14,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
         static RestClient client;
         static RestRequest request;
 
+        // Listar todos los usuarios
         public static List<UsuarioDTO> listarUsuarios()
         {
             client = new RestClient(Constantes.client);
@@ -23,6 +24,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             return apiResponse;
         }
 
+        // Crear usuario
         public static void crearUsuario(UsuarioDTO usuario)
         {
             client = new RestClient(Constantes.client);
@@ -50,6 +52,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             }
         }
 
+        // Modificar usuario
         public static void modificarUsuario(UsuarioDTO usuario)
         {
             client = new RestClient(Constantes.client);
@@ -77,13 +80,14 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             }
         }
 
+        // Eliminar usuario
         public static void eliminarUsuario(int idUsuarioEliminar)
         {
             request = new RestRequest("/api/usuario/" + idUsuarioEliminar, Method.Delete);
             var response = client.Execute(request);
         }
 
-
+        // Buscar usuario por ID
         public static UsuarioDTO filtrarUsuarioId(String filtro)
         {
             client = new RestClient(Constantes.client);
@@ -93,6 +97,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             return apiResponse;
         }
 
+        // Filtrar usuarios por nombre
         public static List<UsuarioDTO> filtrarUsuarioNombre(String filtro)
         {
             client = new RestClient(Constantes.client);
@@ -102,6 +107,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             return apiResponse;
         }
 
+        // Filtrar usuarios por rol
         public static List<UsuarioDTO> filtrarUsuarioRol(String filtro)
         {
             client = new RestClient(Constantes.client);
@@ -111,6 +117,7 @@ namespace AulaNosaApp.Servicios.AdministracionUsuarios
             return apiResponse;
         }
 
+        // Filtrar usuarios por email
         public static List<UsuarioDTO> filtrarUsuarioEmail(String filtro)
         {
             client = new RestClient(Constantes.client);

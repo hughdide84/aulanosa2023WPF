@@ -28,8 +28,10 @@ namespace AulaNosaApp
             cbbAñadirEstado.SelectedIndex = 0;
         }
 
+        // Boton de añadir usuario
         private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si se introdujo un nombre de curso
             if (tbxAñadirNombre.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de curso vacio";
@@ -38,6 +40,7 @@ namespace AulaNosaApp
             {
                 lblErrorNombre.Content = "";
             }
+            // Verificar si se introdujo una fecha de inicio
             if (dtpAñadirInicio.SelectedDate == null)
             {
                 lblErrorFechaInicio.Content = "Fecha de inicio vacio";
@@ -46,6 +49,7 @@ namespace AulaNosaApp
             {
                 lblErrorFechaInicio.Content = "";
             }
+            // Verificar si se introdujo una fecha de fin y que esta sea despues de la fecha de inicio
             if (dtpAñadirFin.SelectedDate == null)
             {
                 lblErrorFechaFin.Content = "Fecha de fin vacio";
@@ -57,8 +61,10 @@ namespace AulaNosaApp
             {
                 lblErrorFechaFin.Content = "";
             }
+            // Si se introdujo todo correctamente
             if (tbxAñadirNombre.Text.Length > 0 && dtpAñadirInicio.SelectedDate != null && dtpAñadirFin.SelectedDate != null)
             {
+                // Crear objeto
                 CursoDTO cursoInsertar = new CursoDTO();
                 cursoInsertar.nombre = tbxAñadirNombre.Text.ToString();
                 cursoInsertar.inicio = dtpAñadirInicio.SelectedDate;
@@ -71,13 +77,17 @@ namespace AulaNosaApp
                 {
                     cursoInsertar.estado = 'B';
                 }
+                // Crear curso
                 CursosApi.crearCurso(cursoInsertar);
+                // Cerrar ventana
                 Close();
             }
         }
 
+        // Accion al cerrar la ventana
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            // Cerrar ventana
             Close();
         }
     }

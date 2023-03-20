@@ -6,18 +6,15 @@
       xmlns:local="clr-namespace:AulaNosaApp.Paginas"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsuarioAdm">
-
+      Title="CPR AULA NOSA - Gestion Usuarios">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
         <TextBlock Name="tbkTitulo" Text="Administración de usuarios" Style="{StaticResource TextBlockTituloAdministracion}"/>
-
         <ToolBar Grid.Row="1" Name="tbrUsuarios">
             <Button Content="Refrescar" Name="btnRefrescarPantallaUsuarios" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescarPantallaUsuarios_Click"/>
             <Button Content="Nuevo" Name="btnCrearNuevoUsuario" Style="{StaticResource BotonesAdministracion}" Click="btnCrearNuevoUsuario_Click"/>
@@ -31,9 +28,8 @@
                 <ComboBoxItem>Email</ComboBoxItem>
             </ComboBox>
             <TextBox Width="100" Name="tbxFiltroUsuario" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
-			<Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="btnBuscarFiltroUsuario_Click"/>
+            <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="btnBuscarFiltroUsuario_Click"/>
         </ToolBar>
-
         <DataGrid Grid.Row="2" Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvUsuarios_Selected">
             <DataGrid.Columns>

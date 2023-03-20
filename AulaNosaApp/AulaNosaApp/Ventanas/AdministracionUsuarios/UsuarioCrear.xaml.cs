@@ -27,8 +27,10 @@ namespace AulaNosaApp.Ventanas
             cbbCreacionUsuarioRol.SelectedIndex = 0;
         }
 
+        // Accion al clickear el boton de creacion del usuario
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si se introdujo un nombre y verificar que este no contenga @ para no confundirlo con un correo
             if (tbxNombreCrearUsuario.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de usuario vacio";
@@ -41,6 +43,7 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorNombre.Content = "";
             }
+            // Verificar que se introdujo una contraseña de tres caracteres o mas
             if (pwbContrasenaCrearUsuario.Password.Length == 0)
             {
                 lblErrorContrasena.Content = "Contraseña vacia";
@@ -53,11 +56,12 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorContrasena.Content = "";
             }
+            // Verificar si se introdujo un email y que este contenga @ y .
             if (tbxEmailCrearUsuario.Text.Length == 0)
             {
                 lblErrorEmail.Content = "Email vacio";
             }
-            else if (!tbxEmailCrearUsuario.Text.Contains("@"))
+            else if (!tbxEmailCrearUsuario.Text.Contains("@") && !tbxEmailCrearUsuario.Text.Contains("."))
             {
                 lblErrorEmail.Content = "Se debe introducir un formato correcto de correo electronico";
             }
@@ -65,10 +69,12 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorEmail.Content = "";
             }
-            if ((tbxNombreCrearUsuario.Text.Length > 0 && !tbxNombreCrearUsuario.Text.Contains("@")) && pwbContrasenaCrearUsuario.Password.Length > 3 && (tbxEmailCrearUsuario.Text.Length > 0 && tbxEmailCrearUsuario.Text.Contains("@")))
+            // Si se cumplen todos los requisitos, entrara en la accion de crear el usuario
+            if ((tbxNombreCrearUsuario.Text.Length > 0 && !tbxNombreCrearUsuario.Text.Contains("@")) && pwbContrasenaCrearUsuario.Password.Length > 3 && (tbxEmailCrearUsuario.Text.Length > 0 && (tbxEmailCrearUsuario.Text.Contains("@") && tbxEmailCrearUsuario.Text.Contains("."))))
             {
+                // Crear un objeto
                 UsuarioDTO usuario = new UsuarioDTO();
-                usuario.id = 1;
+                usuario.id = 1; // (al ser un id autoincremental, este sera el ultimo id registrado + 1, pero se pone aqui un id por que el objeto tiene que tener un valor en el atributo)
                 usuario.nombre = tbxNombreCrearUsuario.Text;
                 usuario.password = pwbContrasenaCrearUsuario.Password;
                 usuario.email = tbxEmailCrearUsuario.Text;
@@ -80,13 +86,17 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "EDITOR";
                 }
+                // Crear usuario
                 UsuariosApi.crearUsuario(usuario);
+                // Cerrar ventana
                 Close();
             }
         }
 
+        // Accion al clickear el boton de salir
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
+            // Cerrar ventana
             Close();
         }
     }

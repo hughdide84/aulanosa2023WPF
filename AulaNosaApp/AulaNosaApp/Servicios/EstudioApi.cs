@@ -13,6 +13,7 @@ namespace AulaNosaApp.Servicios
 {
     public class EstudioApi
     {
+        // Listar todos los estudios
         public static List<EstudioDTO> ListarEstudios()
         {
             var cliente = new RestClient(Constantes.client);
@@ -23,6 +24,7 @@ namespace AulaNosaApp.Servicios
             return apiResponse;
         }
 
+        // Crear estudio
         public static void AltaEstudio(EstudioDTO estudio)
         {
             var client = new RestClient(Constantes.client);
@@ -34,10 +36,9 @@ namespace AulaNosaApp.Servicios
             MessageBox.Show("Estudio creado", "Exito", MessageBoxButton.OK);
         }
 
+        // Editar estudio
         public static void EditarEstudio(EstudioDTO estudio)
         {
-
-            string resultado = "Se ha producido un error no controlado";
             var cliente = new RestClient(Constantes.client);
             //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("api/estudios/update", Method.Put);
@@ -47,6 +48,7 @@ namespace AulaNosaApp.Servicios
             MessageBox.Show("Estudio modificado", "Exito", MessageBoxButton.OK);
         }
 
+        // Eliminar estudio
         public static void EliminarEstudio(int id)
         {
             var cliente = new RestClient(Constantes.client);
@@ -55,6 +57,7 @@ namespace AulaNosaApp.Servicios
             var response = cliente.Execute(request);
         }
 
+        // Buscar estudio por ID
         public static EstudioDTO filtrarEstudioId(String filtro)
         {
             var client = new RestClient(Constantes.client);

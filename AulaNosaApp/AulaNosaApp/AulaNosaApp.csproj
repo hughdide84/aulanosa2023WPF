@@ -114,7 +114,7 @@
     </Compile>
     <Compile Include="Servicios\AlumnoApi.cs" />
     <Compile Include="Servicios\EstudioApi.cs" />
-    <Compile Include="Servicios\Seguridad.cs" />
+    <Compile Include="Servicios\SeguridadApi.cs" />
     <Compile Include="Ventanas\AdministracionEstudios\EstudioAlta.xaml.cs">
       <DependentUpon>EstudioAlta.xaml</DependentUpon>
     </Compile>

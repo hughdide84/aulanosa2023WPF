@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Servicios
 {
-    internal class AlumnoApi
+    public class AlumnoApi
     {
         public static List<AlumnoDTO> ListarAlumnos()
         {

@@ -41,6 +41,7 @@ namespace AulaNosaApp
             refrescarCursos();
         }
 
+        // Refrescar lista de cursos
         void refrescarCursos()
         {
             cursosLista = CursosApi.listarCursos();
@@ -49,17 +50,20 @@ namespace AulaNosaApp
             dgvListado.ItemsSource = cursosLista;
         }
 
+        // Boton de refrescar cursos
         private void btnRefrescar_Click(object sender, RoutedEventArgs e)
         {
             refrescarCursos();
         }
 
+        // Boton de crear curso (abre ventana de creacion de curso)
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
             NuevoCurso nuevoCurso = new NuevoCurso();
             nuevoCurso.Show();
         }
 
+        // Boton de modificar curso (abre ventana de modificacion de curso)
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             var cursoSeleccionado = dgvListado.SelectedItem as CursoDTO;
@@ -71,6 +75,7 @@ namespace AulaNosaApp
             dgvListado.SelectedItem = null;
         }
 
+        // Boton de eliminar curso
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             var cursoSeleccionado = dgvListado.SelectedItem as CursoDTO;
@@ -89,6 +94,7 @@ namespace AulaNosaApp
             }
         }
 
+        // Mostrar/Ocultar el panel de filtros
         private void btnConsultar_Click(object sender, RoutedEventArgs e)
         {
             if (!filtrosActivados)
@@ -119,12 +125,14 @@ namespace AulaNosaApp
             }
         }
 
+        // Habilitar botones de editar y eliminar usuario al clickear uno
         private void dgvListado_Selected(object sender, RoutedEventArgs e)
         {
             btnModificar.IsEnabled = true;
             btnEliminar.IsEnabled = true;
         }
 
+        // Filtros de ID
         private void cbbiIdFiltro_Selected(object sender, RoutedEventArgs e)
         {
             if (filtrosActivados)
@@ -134,6 +142,7 @@ namespace AulaNosaApp
             }
         }
 
+        // Filtros de cursos activos/desactivos
         private void cbbiCursosActivosFiltro_Selected(object sender, RoutedEventArgs e)
         {
             if (filtrosActivados)
@@ -143,6 +152,7 @@ namespace AulaNosaApp
             }
         }
 
+        // Boton de buscar
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             if (cbbConsultar.SelectedIndex == 0)

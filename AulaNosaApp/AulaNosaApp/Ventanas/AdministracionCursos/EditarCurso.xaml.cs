@@ -25,6 +25,7 @@ namespace AulaNosaApp
         public EditarCurso()
         {
             InitializeComponent();
+            // Tomar los atributos del elemento a editar para mostrarlos
             tbxEditarID.Text = Statics.cursoSeleccionado.id.ToString();
             tbxEditarNombre.Text = Statics.cursoSeleccionado.nombre.ToString();
             dtpEditarInicio.SelectedDate = Statics.cursoSeleccionado.inicio;
@@ -39,6 +40,7 @@ namespace AulaNosaApp
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si se introdujo un nombre de curso
             if (tbxEditarNombre.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de curso vacio";
@@ -47,6 +49,7 @@ namespace AulaNosaApp
             {
                 lblErrorNombre.Content = "";
             }
+            // Verificar si se introdujo una fecha de inicio
             if (dtpEditarInicio.SelectedDate == null)
             {
                 lblErrorFechaInicio.Content = "Fecha de inicio vacio";
@@ -55,6 +58,7 @@ namespace AulaNosaApp
             {
                 lblErrorFechaInicio.Content = "";
             }
+            // Verificar si se introdujo una fecha de fin y que esta sea despues de la fecha de inicio
             if (dtpEditarFin.SelectedDate == null)
             {
                 lblErrorFechaFin.Content = "Fecha de fin vacio";
@@ -67,8 +71,10 @@ namespace AulaNosaApp
             {
                 lblErrorFechaFin.Content = "";
             }
+            // Si se introdujo todo correctamente
             if (tbxEditarNombre.Text.Length > 0 && dtpEditarInicio.SelectedDate != null && dtpEditarFin.SelectedDate != null && (dtpEditarFin.SelectedDate.Value.Date > dtpEditarInicio.SelectedDate.Value.Date))
             {
+                // Crear objeto
                 CursoDTO cursoInsertar = new CursoDTO();
                 cursoInsertar.id = Statics.cursoSeleccionado.id;
                 cursoInsertar.nombre = tbxEditarNombre.Text.ToString();
@@ -82,13 +88,17 @@ namespace AulaNosaApp
                 {
                     cursoInsertar.estado = 'B';
                 }
+                // Editar curso
                 CursosApi.editarCurso(cursoInsertar);
+                // Cerrar ventana
                 Close();
             }
         }
 
+        // Boton de salir
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            // Cerrar ventana
             Close();
         }
     }

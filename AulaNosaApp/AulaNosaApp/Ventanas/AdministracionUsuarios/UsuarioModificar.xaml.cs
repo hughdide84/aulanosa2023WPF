@@ -27,6 +27,7 @@ namespace AulaNosaApp.Ventanas
         public UsuarioModificar()
         {
             InitializeComponent();
+            // Tomar los atributos del elemento a editar para mostrarlos
             tbxIdModificarUsuario.Text = Statics.usuarioSeleccionado.id.ToString();
             tbxNombreModificarUsuario.Text = Statics.usuarioSeleccionado.nombre;
             pwbContrasenaModificarUsuario.Password = Statics.usuarioSeleccionado.password;
@@ -44,6 +45,7 @@ namespace AulaNosaApp.Ventanas
 
         private void btnUsuarioModificar_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si se introdujo un nombre y verificar que este no contenga @ para no confundirlo con un correo
             if (tbxNombreModificarUsuario.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de usuario vacio";
@@ -56,6 +58,7 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorNombre.Content = "";
             }
+            // Verificar que se introdujo una contraseña de tres caracteres o mas
             if (pwbContrasenaModificarUsuario.Password.Length == 0)
             {
                 lblErrorContrasena.Content = "Contraseña vacia";
@@ -68,11 +71,12 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorContrasena.Content = "";
             }
+            // Verificar si se introdujo un email y que este contenga @ y .
             if (tbxEmailModificarUsuario.Text.Length == 0)
             {
                 lblErrorEmail.Content = "Email vacio";
             }
-            else if (!tbxEmailModificarUsuario.Text.Contains("@"))
+            else if (!tbxEmailModificarUsuario.Text.Contains("@") && !tbxEmailModificarUsuario.Text.Contains("."))
             {
                 lblErrorEmail.Content = "Se debe introducir un formato correcto de correo electronico";
             }
@@ -80,13 +84,10 @@ namespace AulaNosaApp.Ventanas
             {
                 lblErrorEmail.Content = "";
             }
-            if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@")) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@")))
+            // Si se cumplen todos los requisitos, entrara en la accion de modificar el usuario
+            if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@")) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@") && tbxEmailModificarUsuario.Text.Contains(".")))
             {
-                client = new RestClient(Constantes.client);
-                request = new RestRequest("/api/usuario", Method.Get);
-                var response = client.Execute<List<UsuarioDTO>>(request);
-                var apiResponse = response.Data;
-                request = new RestRequest("/api/usuario", Method.Put);
+                // Crear un objeto
                 UsuarioDTO usuario = new UsuarioDTO();
                 usuario.id = Statics.usuarioSeleccionado.id;
                 usuario.nombre = tbxNombreModificarUsuario.Text;
@@ -100,13 +101,17 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "EDITOR";
                 }
+                // Modificar usuario
                 UsuariosApi.modificarUsuario(usuario);
+                // Cerrar ventana
                 Close();
             }
         }
 
+        // Accion al clickear el boton de salir
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
+            // Cerrar ventana
             Close();
         }
     }

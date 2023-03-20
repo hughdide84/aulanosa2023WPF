@@ -22,8 +22,10 @@ namespace AulaNosaApp.Ventanas
     /// </summary>
     public partial class EstudioEditar : Window
     {
+        // Accion al clickear el boton de modificacion del estudio
         public EstudioEditar()
         {
+            // Tomar los atributos del elemento a editar para mostrarlos
             InitializeComponent();
             tbkId.Text = Statics.estudioSeleccionado.id.ToString();
             tbxEditarNombre.Text = Statics.estudioSeleccionado.nombre.ToString();
@@ -47,23 +49,30 @@ namespace AulaNosaApp.Ventanas
 
         private void btnEditarEstudio_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si se introdujo un nombre de estudio
             if (tbxEditarNombre.Text.Length == 0)
             {
                 lblErrorNombreEstudio.Content = "Nombre de estudio vacio";
             }
+            // Si esta todo completo
             else
             {
                 lblErrorNombreEstudio.Content = "";
+                // Modificar objeto
                 Statics.estudioSeleccionado.nombre = tbxEditarNombre.Text;
                 Statics.estudioSeleccionado.fct = (bool)chbFCT.IsChecked ? true : false;
                 Statics.estudioSeleccionado.pext = (bool)chbPEXT.IsChecked ? true : false;
+                // Modificar estudio
                 EstudioApi.EditarEstudio(Statics.estudioSeleccionado);
+                // Cerrar ventana
                 Close();
             }
         }
 
+        // Accion al clickear el boton de salir
         private void btnCancelarEstudio_Click(object sender, RoutedEventArgs e)
         {
+            // Cerrar ventana
             Close();
         }
     }

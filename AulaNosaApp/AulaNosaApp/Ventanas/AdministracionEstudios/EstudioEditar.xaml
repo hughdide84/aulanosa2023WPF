@@ -5,33 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas"
         mc:Ignorable="d"
-        Title="EstudioEditar" Height="650" Width="800">
-
+        Title="CPR AULA NOSA - Gestion Estudios - Modificar Estudio" Height="650" Width="800" MinHeight="650" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid Background="#F0F4F7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
             <Image Style="{StaticResource ImagenLogoFormularios}"/>
             <Label Grid.Column="1" Content="Editar estudio" Style="{StaticResource LabelTituloFormularios}"/>
-
         </Grid>
-
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
-
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
-             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Id" Style="{StaticResource TextBlockFormularios}"/>
                 <TextBox x:Name="tbkId" IsEnabled="False" Style="{StaticResource TextBoxFormularios}"/>
-             </StackPanel>
+            </StackPanel>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
@@ -53,5 +47,4 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-
 </Window>
