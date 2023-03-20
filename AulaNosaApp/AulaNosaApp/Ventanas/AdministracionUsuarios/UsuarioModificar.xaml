@@ -23,7 +23,7 @@
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
                     <TextBlock Text="ID" Style="{StaticResource TextBlockFormularios}"/>
                     <TextBox Name="tbxIdModificarUsuario" Style="{StaticResource TextBoxFormularios}" IsEnabled="False"/>
                 </StackPanel>

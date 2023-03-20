@@ -32,14 +32,14 @@
                 <DataGridTemplateColumn Header="FCT">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding fct, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                            <CheckBox IsChecked="{Binding fct, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="PEXT">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding pext, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+                            <CheckBox IsChecked="{Binding pext, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

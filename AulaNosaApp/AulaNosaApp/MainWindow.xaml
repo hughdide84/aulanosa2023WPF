@@ -101,7 +101,13 @@
 			<Setter Property="VerticalAlignment" Value="Center"/>
 			<Setter Property="Margin" Value="15,0,0,0"/>
 		</Style>
-	</Window.Resources>
+        <Style x:Key="ErroresLogin" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DarkRed"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+    </Window.Resources>
 	<DockPanel>
 		<StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
 			<StackPanel>
@@ -208,7 +214,7 @@
 				<TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
 				<PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
 				<Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
-				<TextBlock Name="tbkError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
+				<TextBlock Name="tbkError" Text="" Style="{StaticResource ErroresLogin}"/>
 			</StackPanel>
 			<Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>
 		</Grid>
