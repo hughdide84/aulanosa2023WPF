@@ -193,7 +193,7 @@ namespace AulaNosaApp.Ventanas
             {
                 MessageBox.Show("Error al guardar el alumno externo. Código de estado: " + respuesta.StatusCode);
             }*/
-            this.Close();
+
         }
 
     }
