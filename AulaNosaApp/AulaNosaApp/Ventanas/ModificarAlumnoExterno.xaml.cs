@@ -21,18 +21,27 @@ namespace AulaNosaApp.Ventanas
     /// </summary>
     public partial class ModificarAlumnoExterno : Window
     {
-        private AlumnoExternoDTO productoSel;
-
-        internal ModificarAlumnoExterno(AlumnoExternoDTO productoSel)
+        internal ModificarAlumnoExterno(AlumnoExternoDTO alumnoExternoDTO)
         {
-            this.productoSel = productoSel;
-
-
+            InitializeComponent();
+            // Tomar los atributos del elemento a editar para mostrarlos
+            txtNombre.Text = alumnoExternoDTO.nombre.ToString();
         }
     
         private void Guardar_ClickAsync(object sender, RoutedEventArgs e)
         {
-
+            
+            // Si se introdujo todo correctamente
+            if (txtNombre.Text.Length > 0)
+            {
+                // Crear objeto
+                AlumnoExternoDTO cursoInsertar = new AlumnoExternoDTO();
+                cursoInsertar.nombre = txtNombre.Text.ToString();
+                // Editar curso
+                AlumnoExternoService.EditarAlumnoExterno(cursoInsertar);
+                // Cerrar ventana
+                Close();
+            }
         }
     }
 }

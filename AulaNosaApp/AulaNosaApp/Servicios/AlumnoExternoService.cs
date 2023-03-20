@@ -59,6 +59,7 @@ namespace AulaNosaApp.Servicios
 
             return controlEliminar;
         }
+
         internal static string EditarAlumnoExterno(AlumnoExternoDTO cursoDTO)
         {
             string controlEditar = "Se ha producido un error no controlado";
@@ -69,19 +70,7 @@ namespace AulaNosaApp.Servicios
             request.AddBody(JsonSerializer.Serialize(cursoDTO));
             var response = client.Execute(request);
 
-            if (response != null)
-            {
-                controlEditar = "";
-            }
-            else
-            {
-                //  Temporal - Falta que WS devuelva un ErrorDTO
-                //  ErrorDTO? error = JsonSerializer.Deserialize<ErrorDTO>(response.Content);
-                //  if ((error != null) && (error.mensaje != null))
-                //  {
-                controlEditar = "Se ha producido un error";
-                //  }
-            }
+ 
 
             return controlEditar;
         }

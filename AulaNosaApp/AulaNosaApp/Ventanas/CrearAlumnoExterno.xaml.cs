@@ -170,29 +170,6 @@ namespace AulaNosaApp.Ventanas
             }
 
             string v = AlumnoExternoService.AgregarAlumnoExterno(alumno);
-            /*
-            // aquí puedes guardar los detalles del alumno en una base de datos
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:8080");
-
-            // Convertir el objeto alumno a formato JSON
-            string alumnoJson = JsonConvert.SerializeObject(alumno);
-
-            // Crear un objeto HttpContent para enviar el objeto JSON en la solicitud POST
-            HttpContent contenido = new StringContent(alumnoJson, Encoding.UTF8, "application/json");
-
-            // Enviar la solicitud HTTP POST a la API
-            HttpResponseMessage respuesta = await httpClient.PostAsync("/api/alumnoExterno/", contenido);
-
-            // Verificar si la solicitud fue exitosa
-            if (respuesta.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Alumno externo guardado exitosamente");
-            }
-            else
-            {
-                MessageBox.Show("Error al guardar el alumno externo. Código de estado: " + respuesta.StatusCode);
-            }*/
 
         }
 
