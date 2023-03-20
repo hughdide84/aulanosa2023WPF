@@ -25,7 +25,7 @@
             <TextBox Name="tbxConsultarEstudios" Style="{StaticResource TextBoxAdministracion}" Visibility="Collapsed" MaxLength="100"/>
             <Button Name="btnBuscarEstudios" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Collapsed" Click="btnBuscarEstudios_Click"/>
         </ToolBar>
-        <DataGrid Grid.Row="2" x:Name="dgListado" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgListado_Selected">
+        <DataGrid Grid.Row="2" x:Name="dgListado" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgListado_Selected">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>

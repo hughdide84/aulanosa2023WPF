@@ -94,8 +94,44 @@
     <Compile Include="Paginas\AlumnoEmpresa\AlumEmpResumen.xaml.cs">
       <DependentUpon>AlumEmpResumen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml.cs">
+      <DependentUpon>CalendarioPEXT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionAlumnado\GestionAlumnado.xaml.cs">
+      <DependentUpon>GestionAlumnado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionEmpresas\GestionEmpresas.xaml.cs">
+      <DependentUpon>GestionEmpresas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionNotas\GestionNotas.xaml.cs">
+      <DependentUpon>GestionNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InfExposiciones\InfExposiciones.xaml.cs">
+      <DependentUpon>InfExposiciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionProyectos\GestionProyectos.xaml.cs">
+      <DependentUpon>GestionProyectos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionTutorias\GestionTutorias.xaml.cs">
+      <DependentUpon>GestionTutorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InfAlumnoEmpresa\ÏnfAlumnoEmpresa.xaml.cs">
+      <DependentUpon>ÏnfAlumnoEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InfEmpresaAlumno\InfEmpresaAlumno.xaml.cs">
+      <DependentUpon>InfEmpresaAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InfEmpresas\InfEmpresas.xaml.cs">
+      <DependentUpon>InfEmpresas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InfoPFC\InfoPFC.xaml.cs">
+      <DependentUpon>InfoPFC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\InformesFCT\InformesFCT.xaml.cs">
+      <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
@@ -122,6 +158,54 @@
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
     </Compile>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionAlumnado\GestionAlumnado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionEmpresas\GestionEmpresas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionNotas\GestionNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InfExposiciones\InfExposiciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionProyectos\GestionProyectos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionTutorias\GestionTutorias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InfAlumnoEmpresa\ÏnfAlumnoEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InfEmpresaAlumno\InfEmpresaAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InfEmpresas\InfEmpresas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InfoPFC\InfoPFC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\InformesFCT\InformesFCT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

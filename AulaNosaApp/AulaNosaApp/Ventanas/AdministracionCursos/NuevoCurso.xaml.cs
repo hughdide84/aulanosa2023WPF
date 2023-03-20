@@ -53,16 +53,21 @@ namespace AulaNosaApp
             if (dtpAñadirFin.SelectedDate == null)
             {
                 lblErrorFechaFin.Content = "Fecha de fin vacio";
-            }else if (dtpAñadirFin.SelectedDate.Value.Date < dtpAñadirInicio.SelectedDate.Value.Date)
+            }
+            else if (dtpAñadirFin.SelectedDate.Value.Date < dtpAñadirInicio.SelectedDate.Value.Date)
             {
                 lblErrorFechaFin.Content = "La fecha de fin no puede ser anterior a la fecha de inicio";
+            }
+            else if (dtpAñadirFin.SelectedDate.Value.Date == dtpAñadirInicio.SelectedDate.Value.Date)
+            {
+                lblErrorFechaFin.Content = "La fecha de fin no puede ser igual a la fecha de inicio";
             }
             else
             {
                 lblErrorFechaFin.Content = "";
             }
             // Si se introdujo todo correctamente
-            if (tbxAñadirNombre.Text.Length > 0 && dtpAñadirInicio.SelectedDate != null && dtpAñadirFin.SelectedDate != null)
+            if (lblErrorNombre.Content.ToString() == "" && lblErrorFechaInicio.Content.ToString() == "" && lblErrorFechaFin.Content.ToString() == "")
             {
                 // Crear objeto
                 CursoDTO cursoInsertar = new CursoDTO();

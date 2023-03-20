@@ -30,7 +30,8 @@ namespace AulaNosaApp
             tbxEditarNombre.Text = Statics.cursoSeleccionado.nombre.ToString();
             dtpEditarInicio.SelectedDate = Statics.cursoSeleccionado.inicio;
             dtpEditarFin.SelectedDate = Statics.cursoSeleccionado.fin;
-            if (Statics.cursoSeleccionado.estado == 'A') {
+            if (Statics.cursoSeleccionado.estado == 'A')
+            {
                 cbbEditarEstado.SelectedIndex = 0;
             }
             {
@@ -67,12 +68,16 @@ namespace AulaNosaApp
             {
                 lblErrorFechaFin.Content = "La fecha de fin no puede ser anterior a la fecha de inicio";
             }
+            else if (dtpEditarFin.SelectedDate.Value.Date == dtpEditarInicio.SelectedDate.Value.Date)
+            {
+                lblErrorFechaFin.Content = "La fecha de fin no puede ser igual a la fecha de inicio";
+            }
             else
             {
                 lblErrorFechaFin.Content = "";
             }
             // Si se introdujo todo correctamente
-            if (tbxEditarNombre.Text.Length > 0 && dtpEditarInicio.SelectedDate != null && dtpEditarFin.SelectedDate != null && (dtpEditarFin.SelectedDate.Value.Date > dtpEditarInicio.SelectedDate.Value.Date))
+            if (lblErrorNombre.Content.ToString() == "" && lblErrorFechaInicio.Content.ToString() == "" && lblErrorFechaFin.Content.ToString() == "")
             {
                 // Crear objeto
                 CursoDTO cursoInsertar = new CursoDTO();
