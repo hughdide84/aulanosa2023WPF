@@ -30,7 +30,9 @@ namespace AulaNosaApp.Ventanas
         // Accion al clickear el boton de creacion del usuario
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            // Verificar si se introdujo un nombre y verificar que este no contenga @ para no confundirlo con un correo
+            // Verificar si se introdujo un nombre y verificar que este no contenga @ para no confundirlo con un correo o sea un numero solo
+            int numeroDevuelto = 0;
+            bool nombreUsuarioNoNumerico = int.TryParse(tbxNombreCrearUsuario.Text, out numeroDevuelto);
             if (tbxNombreCrearUsuario.Text.Length == 0)
             {
                 lblErrorNombre.Content = "Nombre de usuario vacio";
@@ -38,6 +40,9 @@ namespace AulaNosaApp.Ventanas
             else if (tbxNombreCrearUsuario.Text.Contains("@"))
             {
                 lblErrorNombre.Content = "No se permiten correos electronicos como nombre de usuario";
+            }else if (nombreUsuarioNoNumerico)
+            {
+                lblErrorNombre.Content = "No se permite un numero solo como nombre de usuario";
             }
             else
             {
@@ -70,7 +75,7 @@ namespace AulaNosaApp.Ventanas
                 lblErrorEmail.Content = "";
             }
             // Si se cumplen todos los requisitos, entrara en la accion de crear el usuario
-            if ((tbxNombreCrearUsuario.Text.Length > 0 && !tbxNombreCrearUsuario.Text.Contains("@")) && pwbContrasenaCrearUsuario.Password.Length > 3 && (tbxEmailCrearUsuario.Text.Length > 0 && (tbxEmailCrearUsuario.Text.Contains("@") && tbxEmailCrearUsuario.Text.Contains("."))))
+            if ((tbxNombreCrearUsuario.Text.Length > 0 && !tbxNombreCrearUsuario.Text.Contains("@") && !nombreUsuarioNoNumerico) && pwbContrasenaCrearUsuario.Password.Length > 3 && (tbxEmailCrearUsuario.Text.Length > 0 && (tbxEmailCrearUsuario.Text.Contains("@") && tbxEmailCrearUsuario.Text.Contains("."))))
             {
                 // Crear un objeto
                 UsuarioDTO usuario = new UsuarioDTO();

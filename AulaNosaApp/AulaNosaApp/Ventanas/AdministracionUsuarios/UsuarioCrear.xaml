@@ -25,21 +25,21 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+                    <TextBox Name="tbxNombreCrearUsuario" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorNombre" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Contraseña" Style="{StaticResource TextBlockFormularios}"/>
-                    <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}"/>
+                    <PasswordBox Name="pwbContrasenaCrearUsuario" Style="{StaticResource PasswordBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorContrasena" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Email" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}"/>
+                    <TextBox Name="tbxEmailCrearUsuario" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorEmail" Content=""/>
             </StackPanel>

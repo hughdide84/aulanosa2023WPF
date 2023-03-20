@@ -29,7 +29,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Name="tbkEditarNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxEditarNombre" Style="{StaticResource TextBoxFormularios}"/>
+                    <TextBox Name="tbxEditarNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorNombre" Content=""/>
             </StackPanel>

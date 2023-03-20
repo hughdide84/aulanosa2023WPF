@@ -45,6 +45,8 @@ namespace AulaNosaApp.Ventanas
 
         private void btnUsuarioModificar_Click(object sender, RoutedEventArgs e)
         {
+            int numeroDevuelto = 0;
+            bool nombreUsuarioNoNumerico = int.TryParse(tbxNombreModificarUsuario.Text, out numeroDevuelto);
             // Verificar si se introdujo un nombre y verificar que este no contenga @ para no confundirlo con un correo
             if (tbxNombreModificarUsuario.Text.Length == 0)
             {
@@ -53,6 +55,10 @@ namespace AulaNosaApp.Ventanas
             else if (tbxNombreModificarUsuario.Text.Contains("@"))
             {
                 lblErrorNombre.Content = "No se permiten correos electronicos como nombre de usuario";
+            }
+            else if (nombreUsuarioNoNumerico)
+            {
+                lblErrorNombre.Content = "No se permite un numero solo como nombre de usuario";
             }
             else
             {
@@ -85,7 +91,7 @@ namespace AulaNosaApp.Ventanas
                 lblErrorEmail.Content = "";
             }
             // Si se cumplen todos los requisitos, entrara en la accion de modificar el usuario
-            if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@")) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@") && tbxEmailModificarUsuario.Text.Contains(".")))
+            if ((tbxNombreModificarUsuario.Text.Length > 0 && !tbxNombreModificarUsuario.Text.Contains("@") && !nombreUsuarioNoNumerico) && pwbContrasenaModificarUsuario.Password.Length > 3 && (tbxEmailModificarUsuario.Text.Length > 0 && tbxEmailModificarUsuario.Text.Contains("@") && tbxEmailModificarUsuario.Text.Contains(".")))
             {
                 // Crear un objeto
                 UsuarioDTO usuario = new UsuarioDTO();

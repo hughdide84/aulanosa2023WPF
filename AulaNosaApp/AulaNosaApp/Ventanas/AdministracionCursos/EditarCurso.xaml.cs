@@ -63,9 +63,9 @@ namespace AulaNosaApp
             {
                 lblErrorFechaFin.Content = "Fecha de fin vacio";
             }
-            else if (dtpEditarFin.SelectedDate.Value.Date < dtpEditarInicio.SelectedDate.Value.Date || dtpEditarFin.SelectedDate.Value.Date == dtpEditarInicio.SelectedDate.Value.Date)
+            else if (dtpEditarFin.SelectedDate.Value.Date < dtpEditarInicio.SelectedDate.Value.Date)
             {
-                lblErrorFechaFin.Content = "La fecha de fin no puede ser anterior o igual a la fecha de inicio";
+                lblErrorFechaFin.Content = "La fecha de fin no puede ser anterior a la fecha de inicio";
             }
             else
             {
