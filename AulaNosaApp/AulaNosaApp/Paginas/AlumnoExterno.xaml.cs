@@ -94,7 +94,6 @@ namespace AulaNosaApp.Paginas
             cmbConsultar.Items.Clear();
             cmbConsultar.Items.Add("Id");
             cmbConsultar.Items.Add("Nombre");
-            cmbConsultar.Items.Add("Estado");
             cmbConsultar.SelectedIndex = 0;
 
             if (cmbConsultar.Visibility == Visibility.Visible)
@@ -117,14 +116,14 @@ namespace AulaNosaApp.Paginas
             if (cmbConsultar.SelectedIndex == 0)
             {
                 lista.Clear();
-                AlumnoExternoDTO coincidencia = CursosApi.ListarCursoPorId((int)BigInteger.Parse(tbxConsultar.Text));
+                AlumnoExternoDTO coincidencia = AlumnoExternoService.ListarAlumnoExternoPorId((int)BigInteger.Parse(tbxConsultar.Text));
                 lista.Add(coincidencia);
                 dtgListado.ItemsSource = lista;
             }
             else if (cmbConsultar.SelectedIndex == 1)
             {
                 lista.Clear();
-                AlumnoExternoDTO coincidencia = CursosApi.ListarCursoPorNombre(tbxConsultar.Text);
+                AlumnoExternoDTO coincidencia = AlumnoExternoService.ListarAlumnoExternoPorNombre(tbxConsultar.Text);
                 lista.Add(coincidencia);
                 dtgListado.ItemsSource = lista;
             }

@@ -23,10 +23,15 @@ namespace AulaNosaApp.Ventanas
     {
         private AlumnoExternoDTO productoSel;
 
-        public ModificarAlumnoExterno(AlumnoExternoDTO productoSel)
+        internal ModificarAlumnoExterno(AlumnoExternoDTO productoSel)
         {
             this.productoSel = productoSel;
 
+
+        }
+    
+        private void Guardar_ClickAsync(object sender, RoutedEventArgs e)
+        {
 
         }
     }
