@@ -15,8 +15,8 @@ namespace AulaNosaApp.DTO
         public string cv { get; set; }
         public string carta { get; set; }
         public int idEmpresa { get; set; }
-        public DateTime inicioPr { get; set; }
-        public DateTime finPr { get; set; }
+        public DateTime? inicioPr { get; set; }
+        public DateTime? finPr { get; set; }
         public string usuario { get; set; }
     }
 

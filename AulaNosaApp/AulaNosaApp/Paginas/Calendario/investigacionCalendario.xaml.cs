@@ -64,6 +64,8 @@ namespace AulaNosaApp.Paginas
 
                 AlumnoDTO alumno = alumnos[i];
 
+                if (alumno.inicioPr.HasValue && alumno.finPr.HasValue) { 
+
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30);
                 grdLista.RowDefinitions.Add(row);
@@ -94,7 +96,7 @@ namespace AulaNosaApp.Paginas
                 grid.ColumnDefinitions.Add(cln3);
 
                 TextBlock tbkFechaInicio = new TextBlock();
-                tbkFechaInicio.Text = alumno.inicioPr.Day.ToString() + "/" + alumno.inicioPr.Month.ToString() + "/" + alumno.inicioPr.Year.ToString();
+                tbkFechaInicio.Text = alumno.inicioPr.Value.ToString("dd/MM/yyyy");
                 tbkFechaInicio.Margin = new Thickness(20,0,10,0);
                 tbkFechaInicio.Style = (Style) this.FindResource("fechasNombre");
                 
@@ -110,7 +112,7 @@ namespace AulaNosaApp.Paginas
                 grid.Children.Add(tbkNombre);
 
                 TextBlock tbkFechaFinal = new TextBlock();
-                tbkFechaFinal.Text = alumno.finPr.Day.ToString() + "/" + alumno.finPr.Month.ToString() + "/" + alumno.finPr.Year.ToString();
+                tbkFechaFinal.Text = alumno.finPr.Value.ToString("dd/MM/yyyy");
                 tbkFechaFinal.Margin = new Thickness(10, 0, 20, 0);
                 tbkFechaFinal.Style = (Style)this.FindResource("fechasNombre");
 
@@ -122,6 +124,7 @@ namespace AulaNosaApp.Paginas
                 Grid.SetRow(border, i +1);
 
                 grdLista.Children.Add(border);
+                }
             }
         
         
@@ -129,13 +132,13 @@ namespace AulaNosaApp.Paginas
         
         private int calcularComienzo(AlumnoDTO alumno)
         {
-            int mesInicio = alumno.inicioPr.Month;
-            int diaInicio = alumno.inicioPr.Day;
-            int aInicio = alumno.inicioPr.Year; //es el año
+            int mesInicio = alumno.inicioPr.Value.Month;
+            int diaInicio = alumno.inicioPr.Value.Day;
+            int aInicio = alumno.inicioPr.Value.Year; //es el año
             int numeroDiasMesInicio = calcularDias(aInicio, mesInicio);
 
-            int mesFinal = alumno.finPr.Month;
-            int diaFinal = alumno.finPr.Day;
+            int mesFinal = alumno.finPr.Value.Month;
+            int diaFinal = alumno.finPr.Value.Day;
 
             Trace.WriteLine("pixel inicio: " + ((mesInicio >= 9 ? mesInicio - 9 : 9 - mesInicio) * 200).ToString());
             Trace.WriteLine("diferencia meses: " + (((mesFinal >= 9 ? mesFinal - 9 : 3 + mesFinal) * 200) - (((mesInicio >= 9 ? mesInicio - 9 : 3 + mesInicio) * 200))).ToString());
@@ -147,14 +150,14 @@ namespace AulaNosaApp.Paginas
 
         private int calcularFinal(AlumnoDTO alumno) 
         {
-            int mesInicio = alumno.inicioPr.Month;
-            int diaInicio = alumno.inicioPr.Day;
-            int aInicio = alumno.inicioPr.Year; //es el año
+            int mesInicio = alumno.inicioPr.Value.Month;
+            int diaInicio = alumno.inicioPr.Value.Day;
+            int aInicio = alumno.inicioPr.Value.Year; //es el año
             int numeroDiasMesInicio = calcularDias(aInicio, mesInicio);
 
-            int mesFinal = alumno.finPr.Month;
-            int diaFinal = alumno.finPr.Day;
-            int aFinal = alumno.finPr.Year;
+            int mesFinal = alumno.finPr.Value.Month;
+            int diaFinal = alumno.finPr.Value.Day;
+            int aFinal = alumno.finPr.Value.Year;
             int numeroDiasMesFinal = calcularDias(aFinal, mesFinal);
 
 
