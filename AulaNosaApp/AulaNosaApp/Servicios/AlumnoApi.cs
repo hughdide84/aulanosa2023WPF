@@ -12,29 +12,44 @@ namespace AulaNosaApp.Servicios
 {
     public class AlumnoApi
     {
-        public static List<AlumnoDTO> ListarAlumnos()
+        internal static List<AlumnoDTO> ListarAlumnos()
         {
-            List<AlumnoDTO> alumnos = new List<AlumnoDTO>();
-            var cliente = new RestClient(Constantes.client);
-            cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/alumno", Method.Get);
-            var response = cliente.Execute(request);
+            List<AlumnoDTO> lista = new List<AlumnoDTO>();
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/alumno", Method.Get);
+            var response = client.Execute<List<AlumnoDTO>>(request);
 
             if (response != null)
             {
-                if ((response.StatusCode == System.Net.HttpStatusCode.OK) && (response.Content != null))
+                var resultado = JsonSerializer.Deserialize<List<AlumnoDTO>>(response.Content);
+                if (resultado != null)
                 {
-
-                    var resultado = JsonSerializer.Deserialize<List<AlumnoDTO>>(response.Content);
-                    if (resultado != null)
-                    {
-                        alumnos = resultado;
-                    }
-                    Console.WriteLine(response.Content);
+                    lista = resultado;
                 }
             }
 
-            return alumnos;
+            return lista;
+        }
+
+        internal static AlumnoDTO ListarAlumnoPorId(int id)
+        {
+            AlumnoDTO objeto = new AlumnoDTO();
+            var client = new RestClient("http://localhost:8080");
+            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
+            var request = new RestRequest("/api/alumno/" + id.ToString(), Method.Get);
+            var response = client.Execute(request);
+
+            if (response != null)
+            {
+                var resultado = JsonSerializer.Deserialize<AlumnoDTO>(response.Content);
+                if (resultado != null)
+                {
+                    objeto = resultado;
+                }
+            }
+
+            return objeto;
         }
     }
 }

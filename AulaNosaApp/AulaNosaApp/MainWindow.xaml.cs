@@ -94,5 +94,10 @@ namespace AulaNosaApp
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnadoExterno/GestionAlumnadoExterno.xaml", UriKind.Relative));
         }
+
+        private void btnAlumnado_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/GestionAlumnado.xaml", UriKind.Relative));
+        }
     }
 }
