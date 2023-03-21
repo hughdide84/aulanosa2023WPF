@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="CPR AULA NOSA - Gestion" Height="700" Width="950" MinHeight="650" MinWidth="800" WindowState="Maximized">
+        Title="CPR AULA NOSA - Gestion" Height="750" Width="950" MinHeight="750" MinWidth="800" WindowState="Maximized">
     <Window.Resources>
         <Style x:Key="StackPanelMenuIzqda" TargetType="StackPanel">
             <Setter Property="DockPanel.Dock" Value="Left"/>
@@ -106,13 +106,13 @@
         <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
             <StackPanel>
                 <TextBlock x:Name="tbkCursosActivos" Text="Cursos" Style="{StaticResource TextBlockMenuIzqda}"/>
-                <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}"/>
+                <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
 
 
             </StackPanel>
             <StackPanel Margin="0,5,0,0">
                 <TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
-                <ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}"/>
+                <ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbEstudios_SelectionChanged"/>
             </StackPanel>
             <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
                 <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
@@ -120,6 +120,7 @@
                     <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
                     <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
                     <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
+                    <Button x:Name="btnMatriculas" Content="Matrículas" Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="spnFCT" Style="{StaticResource MargenAbajoStackPanel}">
@@ -195,10 +196,10 @@
             <StackPanel Name="spnAcceso" Style="{StaticResource StackPanelAcceso}">
                 <Image Style="{StaticResource ImagenLogoAcceso}"/>
                 <TextBlock Text="Usuario" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
-                <TextBox Text="Prueba" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
+                <TextBox Text="Prueba" Name="tbxUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
-                <PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
+                <PasswordBox Password="prueba" Name="pbxContrasena" Style="{StaticResource PasswordBoxLogin}"/>
+                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="iniciarSesion_Click"/>
                 <TextBlock Name="tbkError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
             <Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>

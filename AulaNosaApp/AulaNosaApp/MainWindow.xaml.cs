@@ -2,6 +2,9 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
+using Org.BouncyCastle.Asn1.Ocsp;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +35,10 @@ namespace AulaNosaApp
             // Ocultar paneles de gestion para mostrar solo el menu de acceso
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
-                              
+
             List<String> listaNombresCursos = new List<String>();
-            foreach (var curso in listaCursos) {
+            foreach (var curso in listaCursos)
+            {
                 listaNombresCursos.Add(curso.nombre);
             }
             cbbCursos.ItemsSource = listaNombresCursos;
@@ -50,6 +54,7 @@ namespace AulaNosaApp
         // Accion del boton de iniciar sesion
         private void btnAcceder_Click(object sender, RoutedEventArgs e)
         {
+
             // Ocultar menu de acceso
             spnAcceso.Visibility = Visibility.Hidden;
             // Mostrar paneles de gestion
@@ -60,13 +65,50 @@ namespace AulaNosaApp
             // Pestaña de informacion usuario/cerrar sesion
             cbbUsuario.SelectedIndex = 0;
             // Mostrar nombre y rol del usuario
-            txbNombreUsuarioLogueado.Text = tbUsuario.Text;
+            txbNombreUsuarioLogueado.Text = tbxUsuario.Text;
             txbRolUsuarioLogueado.Text = "Admin";
         }
 
+        private void iniciarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            var client = new RestClient("http://localhost:8080");
+            var request = new RestRequest("/api/usuario/nombreEs/" + tbxUsuario.Text, Method.Get);
+            RestResponse respuesta = client.Execute(request);
+
+            UsuarioDTO usuario = client.Execute<UsuarioDTO>(request).Data;
+
+            if (usuario == null)
+            {
+                MessageBox.Show("Usuario/Contraseña no validos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                if (usuario.nombre == tbxUsuario.Text && usuario.password == pbxContrasena.Password)
+                {
+
+                    // Ocultar menu de acceso
+                    spnAcceso.Visibility = Visibility.Hidden;
+                    // Mostrar paneles de gestion
+                    spnMenuIzqda.Visibility = Visibility.Visible;
+                    grdMenuSuperior.Visibility = Visibility.Visible;
+                    frmPrincipal.Visibility = Visibility.Visible;
+                    frmPrincipal.Source = null;
+                    // Pestaña de informacion usuario/cerrar sesion
+                    cbbUsuario.SelectedIndex = 0;
+                    // Mostrar nombre y rol del usuario
+                    txbNombreUsuarioLogueado.Text = tbxUsuario.Text;
+                    txbRolUsuarioLogueado.Text = "Admin";
+                }
+                else
+                {
+                    MessageBox.Show("Usuario/Contraseña no validos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
         // Accion del boton de cerrar sesion
-		private void btnCerrarSesion_Selected(object sender, RoutedEventArgs e)
-		{
+        private void btnCerrarSesion_Selected(object sender, RoutedEventArgs e)
+        {
             spnAcceso.Visibility = Visibility.Visible;
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
@@ -75,32 +117,32 @@ namespace AulaNosaApp
         }
 
         // Panel de usuarios
-		private void btnUsuarios_Click(object sender, RoutedEventArgs e)
-		{
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionUsuarios/AdministracionUsuarios.xaml", UriKind.Relative));
         }
 
         // Panel de cursos
-		private void btnCursos_Click(object sender, RoutedEventArgs e)
-		{
+        private void btnCursos_Click(object sender, RoutedEventArgs e)
+        {
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionCursos/AdministracionCursos.xaml", UriKind.Relative));
         }
 
         // Panel de estudios
-		private void btnEstudios_Click(object sender, RoutedEventArgs e)
-		{
+        private void btnEstudios_Click(object sender, RoutedEventArgs e)
+        {
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionEstudios/AdministracionEstudios.xaml", UriKind.Relative));
         }
 
         // Panel del calendario FCT
-		private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
-		{
+        private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
+        {
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
         // Panel del calendario PEXT
-		private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
-		{
+        private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
+        {
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
@@ -122,6 +164,30 @@ namespace AulaNosaApp
         private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative));
+        }
+
+        private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String cursoSeleccionado = cbbCursos.Text;
+            foreach (CursoDTO curso in listaCursos)
+            {
+                if (curso.nombre == cursoSeleccionado)
+                {
+                    Statics.idCursoElegido = curso.id;
+                }
+            }
+        }
+
+        private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+                        String estudioSeleccionado = cbbEstudios.Text;
+            foreach (EstudioDTO estudio in listaEstudios)
+            {
+                if (estudio.nombre == estudioSeleccionado)
+                {
+                    Statics.idEstudioElegido = estudio.id;
+                }
+            }
         }
     }
 }
