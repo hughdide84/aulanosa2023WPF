@@ -161,7 +161,7 @@
 			<StackPanel x:Name="spnPEXT" Style="{StaticResource MargenAbajoStackPanel}">
 				<Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
 				<StackPanel Style="{StaticResource BotonesCentrados}">
-					<Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}" Click="btnAlumnadoExterno_Click"/>
 					<Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioPext_Click"/>
 				</StackPanel>
 			</StackPanel>
