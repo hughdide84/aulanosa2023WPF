@@ -89,5 +89,10 @@ namespace AulaNosaApp
         {
             frmPrincipal.Navigate(new Uri("/Paginas/InfoPFC/InfoPFC.xaml", UriKind.Relative));
         }
+
+        private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnadoExterno/GestionAlumnadoExterno.xaml", UriKind.Relative));
+        }
     }
 }

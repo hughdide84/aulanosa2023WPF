@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\AlumnoExternoDTO.cs" />
     <Compile Include="Paginas\AdministracionUsuarios\AdministracionUsuarios.xaml.cs">
       <DependentUpon>AdministracionUsuarios.xaml</DependentUpon>
     </Compile>
@@ -99,6 +100,9 @@
     </Compile>
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionAlumnadoExterno\GestionAlumnadoExterno.xaml.cs">
+      <DependentUpon>GestionAlumnadoExterno.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\GestionAlumnado\GestionAlumnado.xaml.cs">
       <DependentUpon>GestionAlumnado.xaml</DependentUpon>
@@ -133,6 +137,7 @@
     <Compile Include="Paginas\InformesFCT\InformesFCT.xaml.cs">
       <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\AlumnoExternoApi.cs" />
     <Compile Include="Servicios\InfoPFCApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
@@ -158,6 +163,18 @@
     <Compile Include="Ventanas\AdministracionEstudios\EstudioEditar.xaml.cs">
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\GestionAlumnadoExterno\CrearAlumnoExterno.xaml.cs">
+      <DependentUpon>CrearAlumnoExterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnadoExterno\ModificarAlumnoExterno.xaml.cs">
+      <DependentUpon>ModificarAlumnoExterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnado\AgregarAlumno.xaml.cs">
+      <DependentUpon>AgregarAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnado\EditarAlumno.xaml.cs">
+      <DependentUpon>EditarAlumno.xaml</DependentUpon>
+    </Compile>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +182,10 @@
     <Page Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionAlumnadoExterno\GestionAlumnadoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\GestionAlumnado\GestionAlumnado.xaml">
       <SubType>Designer</SubType>
@@ -274,6 +295,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas\GestionAlumnadoExterno\CrearAlumnoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnadoExterno\ModificarAlumnoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnado\AgregarAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnado\EditarAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Paginas\AdministracionEstudios\AdministracionEstudios.xaml.cs">
@@ -308,7 +345,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Ventanas\GestionEmpresas\" />
+    <Folder Include="Ventanas\GestionProyectos\" />
+    <Folder Include="Ventanas\GestionTutorias\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
   </ItemGroup>
