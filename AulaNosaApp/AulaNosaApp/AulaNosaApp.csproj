@@ -87,6 +87,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\AlumnoExternoDTO.cs" />
+    <Compile Include="DTO\ProyectoEntregaDTO.cs" />
     <Compile Include="Paginas\AdministracionUsuarios\AdministracionUsuarios.xaml.cs">
       <DependentUpon>AdministracionUsuarios.xaml</DependentUpon>
     </Compile>
@@ -133,6 +135,8 @@
     <Compile Include="Paginas\InformesFCT\InformesFCT.xaml.cs">
       <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\AlumnoExternoApi.cs" />
+    <Compile Include="Servicios\ProyectoEntregaApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -145,8 +149,8 @@
     <Compile Include="DTO\AlumnoDTO.cs" />
     <Compile Include="DTO\ErrorDTO.cs" />
     <Compile Include="DTO\EstudioDTO.cs" />
-    <Compile Include="Paginas\Calendario\investigacionCalendario.xaml.cs">
-      <DependentUpon>investigacionCalendario.xaml</DependentUpon>
+    <Compile Include="Paginas\Calendario\Calendario.xaml.cs">
+      <DependentUpon>Calendario.xaml</DependentUpon>
     </Compile>
     <Compile Include="Servicios\AlumnoApi.cs" />
     <Compile Include="Servicios\EstudioApi.cs" />
@@ -257,7 +261,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Paginas\Calendario\investigacionCalendario.xaml">
+    <Page Include="Paginas\Calendario\Calendario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

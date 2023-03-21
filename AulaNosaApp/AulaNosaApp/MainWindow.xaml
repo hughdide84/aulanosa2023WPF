@@ -146,7 +146,7 @@
 					<Button x:Name="btnAlumnoEmpresa" Content="Alumno - Empresa"  Style="{StaticResource BotonesMenuIzqda}"/>
 					<Button x:Name="btnEmpresa" Content="Empresa - Alumnos"  Style="{StaticResource BotonesMenuIzqda}"/>
 					<Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}"/>
-					<Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}" Click="btnTutorias_Click"/>
 				</StackPanel>
 			</StackPanel>
 			<StackPanel x:Name="spnPFC" Style="{StaticResource MargenAbajoStackPanel}">
@@ -154,7 +154,7 @@
 				<StackPanel Style="{StaticResource BotonesCentrados}">
 					<Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
 					<Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
-					<Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}" Click="btnExposiciones_Click"/>
 					<Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}"/>
 				</StackPanel>
 			</StackPanel>

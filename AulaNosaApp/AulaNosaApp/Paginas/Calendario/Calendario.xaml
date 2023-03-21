@@ -1,4 +1,4 @@
-﻿<Page x:Class="AulaNosaApp.Paginas.investigacionCalendario"
+﻿<Page x:Class="AulaNosaApp.Paginas.Calendario"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AulaNosaApp.Paginas"
       mc:Ignorable="d" 
       d:DesignHeight="450"
-      Title="investigacionCalendario">
+      Title="Calendario">
 
     <Page.Resources>
         <Style x:Key="fechasNombre" TargetType="TextBlock">

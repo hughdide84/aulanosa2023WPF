@@ -21,14 +21,17 @@ namespace AulaNosaApp.Paginas
     /// <summary>
     /// Lógica de interacción para investigacionCalendario.xaml
     /// </summary>
-    public partial class investigacionCalendario : Page
+    public partial class Calendario : Page
     {
 
         private List<string> colores = new List<string>
         {
-            "#20B2AA", "#008B8B", "#008080"
+            "#FF69B4", "#FFD700", "#FFA07A", "#00FFFF", "#FF00FF",
+            "#00FF00", "#FF1493", "#FFFF00", "#00FF7F", "#FF4500",
+            "#FF6347", "#FF8C00", "#FF7F50", "#00FA9A", "#FFC0CB",
+            "#FFDAB9", "#ADFF2F", "#FFB6C1", "#BA55D3", "#FF00CC"
         }; 
-        public investigacionCalendario()
+        public Calendario()
         {
             InitializeComponent();
             //lo comente para que no pete nada más abrir, pero funsiona

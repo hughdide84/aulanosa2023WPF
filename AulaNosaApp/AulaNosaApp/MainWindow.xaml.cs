@@ -76,13 +76,23 @@ namespace AulaNosaApp
         // Panel del calendario FCT
 		private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
 		{
-            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/Calendario.xaml", UriKind.Relative));
         }
 
         // Panel del calendario PEXT
 		private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
 		{
-            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/CalendarioPEXT/CalendarioPEXT.xaml", UriKind.Relative));
         }
-	}
+
+        private void btnExposiciones_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/InfExposiciones/InfExposiciones.xaml", UriKind.Relative));
+        }
+
+        private void btnTutorias_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }

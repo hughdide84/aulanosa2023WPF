@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.Servicios
 {
-    public class AlumnoApi
+    public class AlumnoExternoApi
     {
-        public static List<AlumnoDTO> ListarAlumnos()
+        public static List<AlumnoExternoDTO> ListarAlumnosExternos()
         {
             var cliente = new RestClient(Constantes.client);
             //cliente.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("api/alumno/all", Method.Get);
-            var response = cliente.Execute<List<AlumnoDTO>>(request);
+            var request = new RestRequest("api/alumnoExterno/all", Method.Get);
+            var response = cliente.Execute<List<AlumnoExternoDTO>>(request);
             var apiResponse = response.Data;
             return apiResponse;
         }
