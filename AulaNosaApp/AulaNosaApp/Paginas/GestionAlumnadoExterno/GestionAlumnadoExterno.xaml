@@ -8,48 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GestionAlumnadoExterno">
 
-    <StackPanel Background="White">
-        <TextBlock Name="tbkTitulo" Text="ADMINISTRACIÓN DE ALUMNOS EXTERNOS" HorizontalAlignment="Center" Foreground="Blue" FontSize="36" FontWeight="Bold" Margin="10"/>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <DockPanel Grid.Row="0">
-                <ToolBar Name="tbrDatos" Height="40">
-                    <Grid Width="500">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="3" Name="btnRefrescar" Content="Refrescar" Click="BtnRefrescar_Click"/>
-                        <Button Grid.Column="1" Margin="3" Name="btnNuevo" Content="Nuevo" Click="BtnNuevo_Click"/>
-                        <Button Grid.Column="2" Margin="3" Name="btnModificar" Content="Editar" IsEnabled="False" Click="BtnModificar_Click"/>
-                        <Button Grid.Column="3" Margin="3" Name="btnEliminar" Content="Eliminar" IsEnabled="False" Click="BtnEliminar_Click"/>
-                        <Button Grid.Column="4" Margin="3,3,2,0" Name="btnConsultar" Content="Consultar" Height="29" VerticalAlignment="Top" Click="BtnConsultar_Click"/>
-                        <ComboBox Grid.Column="5" Margin="3" Name="cmbConsultar" Visibility="Hidden"/>
-                        <TextBox Grid.Column="6" Margin="3" Name="tbxConsultar" Visibility="Hidden"/>
-                        <Button Grid.Column="7" Margin="3" Name="btnBuscar" Content="Buscar" Visibility="Hidden" Click="BtnBuscar_Click"/>
-                    </Grid>
-                </ToolBar>
-            </DockPanel>
-
-            <DataGrid Grid.Row="1" Name="dtgListado" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="DtgListado_Selected">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding email}"/>
-                    <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
-                    <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-    </StackPanel>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Administración de alumnos externos" Style="{StaticResource TextBlockTituloAdministracion}"/>
+        <ToolBar Grid.Row="1" Name="tbrAdministracion">
+            <Button Content="Refrescar" Name="btnRefrescar" Style="{StaticResource BotonesAdministracion}" Click="BtnRefrescar_Click"/>
+            <Button Content="Nuevo" Name="btnNuevo" Style="{StaticResource BotonesAdministracion}" Click="BtnNuevo_Click"/>
+            <Button Content="Editar" Name="btnModificar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="BtnModificar_Click"/>
+            <Button Content="Eliminar" Name="btnEliminar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="BtnEliminar_Click"/>
+            <Button Content="Consultar" Name="btnConsultaUsuario" Style="{StaticResource BotonesAdministracion}" Click="BtnConsultar_Click"/>
+            <ComboBox Name="cmbConsultar" Style="{StaticResource ComboBoxAdministracion}">
+                <ComboBoxItem>ID</ComboBoxItem>
+                <ComboBoxItem>Nombre</ComboBoxItem>
+                <ComboBoxItem>Email</ComboBoxItem>
+                <ComboBoxItem>Telefono</ComboBoxItem>
+                <ComboBoxItem>Inicio</ComboBoxItem>
+                <ComboBoxItem>Fin</ComboBoxItem>
+            </ComboBox>
+            <TextBox Width="100" Name="tbxConsultar" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
+            <Button Content="Buscar" Name="btnBuscar" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="BtnBuscar_Click"/>
+        </ToolBar>
+        <DataGrid Grid.Row="2" Name="dtgListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="DtgListado_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"/>
+                <DataGridTextColumn Header="Universidad" Binding="{Binding universidad}"/>
+                <DataGridTextColumn Header="Titulación" Binding="{Binding titulacion}"/>
+                <DataGridTextColumn Header="Especialidad" Binding="{Binding especialidad}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
+                <DataGridTextColumn Header="CV" Binding="{Binding cv}"/>
+                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}"/>
+                <DataGridTextColumn Header="Evaluación" Binding="{Binding evaluacion}"/>
+                <DataGridTextColumn Header="Horario" Binding="{Binding horario}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </Page>

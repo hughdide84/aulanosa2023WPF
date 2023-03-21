@@ -82,6 +82,7 @@
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="0,0,0,35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
             <Setter Property="SelectedIndex" Value="0"/>
@@ -93,6 +94,7 @@
             <Setter Property="Width" Value="100"/>
             <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
             <Setter Property="Margin" Value="0,0,0,15"/>
+            
         </Style>
         <Style x:Key="LogoBarraSuperior" TargetType="Image">
             <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
@@ -199,7 +201,7 @@
                 <TextBox Text="Prueba" Name="tbxUsuario" Style="{StaticResource TextBoxLogin}"/>
                 <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
                 <PasswordBox Password="prueba" Name="pbxContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="iniciarSesion_Click"/>
+                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesFormularios}" Click="iniciarSesion_Click"/>
                 <TextBlock Name="tbkError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
             </StackPanel>
             <Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>

@@ -25,32 +25,32 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
         {
             InitializeComponent();
             // Tomar los atributos del elemento a editar para mostrarlos
-            lblid.Text = alumnoExternoDTO.id.ToString();
-            txtNombre.Text = alumnoExternoDTO.nombre.ToString();
-            txtCorreo.Text = alumnoExternoDTO.email.ToString();
-            txtTelefono.Text = alumnoExternoDTO.telefono.ToString();
-            txtUniversidad.Text = alumnoExternoDTO.universidad.ToString();
-            txtTitulacion.Text = alumnoExternoDTO.titulacion.ToString();
-            txtEspecialidad.Text = alumnoExternoDTO.especialidad.ToString();
-            txtCurso.Text = alumnoExternoDTO.idCurso.ToString();
-            txtTipo.Text = alumnoExternoDTO.tipo.ToString();
+            tbxId.Text = alumnoExternoDTO.id.ToString();
+            tbxNombre.Text = alumnoExternoDTO.nombre.ToString();
+            tbxCorreo.Text = alumnoExternoDTO.email.ToString();
+            tbxTelefono.Text = alumnoExternoDTO.telefono.ToString();
+            tbxUniversidad.Text = alumnoExternoDTO.universidad.ToString();
+            tbxTitulacion.Text = alumnoExternoDTO.titulacion.ToString();
+            tbxEspecialidad.Text = alumnoExternoDTO.especialidad.ToString();
+            tbxCurso.Text = alumnoExternoDTO.idCurso.ToString();
+            tbxTipo.Text = alumnoExternoDTO.tipo.ToString();
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
         {
 
             // Si se introdujo todo correctamente
-            if (txtNombre.Text.Length > 0)
+            if (tbxNombre.Text.Length > 0)
             {
                 int id;
-                if (!int.TryParse(lblid.Text, out id))
+                if (!int.TryParse(tbxId.Text, out id))
                 {
                     MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                     return;
                 }
 
                 int Curso;
-                if (!int.TryParse(txtCurso.Text, out Curso))
+                if (!int.TryParse(tbxCurso.Text, out Curso))
                 {
                     MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                     return;
@@ -58,14 +58,14 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 // Crear objeto
                 AlumnoExternoDTO cursoInsertar = new AlumnoExternoDTO();
                 cursoInsertar.id = id;
-                cursoInsertar.nombre = txtNombre.Text.ToString();
-                cursoInsertar.email = txtCorreo.Text.ToString();
-                cursoInsertar.telefono = txtTelefono.Text.ToString();
-                cursoInsertar.universidad = txtUniversidad.Text.ToString();
-                cursoInsertar.titulacion = txtTitulacion.Text.ToString();
-                cursoInsertar.especialidad = txtEspecialidad.Text.ToString();
+                cursoInsertar.nombre = tbxNombre.Text.ToString();
+                cursoInsertar.email = tbxCorreo.Text.ToString();
+                cursoInsertar.telefono = tbxTelefono.Text.ToString();
+                cursoInsertar.universidad = tbxUniversidad.Text.ToString();
+                cursoInsertar.titulacion = tbxTitulacion.Text.ToString();
+                cursoInsertar.especialidad = tbxEspecialidad.Text.ToString();
                 cursoInsertar.idCurso = Curso;
-                cursoInsertar.tipo = txtTipo.Text.ToString();
+                cursoInsertar.tipo = tbxTipo.Text.ToString();
                 cursoInsertar.inicio = "2022-04-22T22:00:00.000+00:00";
                 cursoInsertar.fin = "2022-04-22T22:00:00.000+00:00";
                 cursoInsertar.cv = "a";
@@ -77,6 +77,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 // Cerrar ventana
                 Close();
             }
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

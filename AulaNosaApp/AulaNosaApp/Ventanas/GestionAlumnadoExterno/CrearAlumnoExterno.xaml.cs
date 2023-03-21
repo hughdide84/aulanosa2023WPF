@@ -63,40 +63,40 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
 
         private void btnSubirCV_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirCV, "cv");
+            // SubirArchivo(btnSubirCV, "cv");
         }
 
         private void btnSubirConvenio_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirConvenio, "convenio");
+            // SubirArchivo(btnSubirConvenio, "convenio");
         }
 
         private void btnSubirEvaluacion_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirEvaluacion, "evaluacion");
+            // SubirArchivo(btnSubirEvaluacion, "evaluacion");
         }
 
         private void btnSubirHorario_Click(object sender, RoutedEventArgs e)
         {
-            SubirArchivo(btnSubirHorario, "horario");
+            // SubirArchivo(btnSubirHorario, "horario");
         }
 
 
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
             int Curso;
-            if (!int.TryParse(txtCurso.Text, out Curso))
+            if (!int.TryParse(tbxCurso.Text, out Curso))
             {
                 MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                 return;
             }
-            alumno.nombre = txtNombre.Text;
-            alumno.tipo = txtTipo.Text;
-            alumno.email = txtCorreo.Text;
-            alumno.telefono = txtTelefono.Text;
-            alumno.universidad = txtUniversidad.Text;
-            alumno.titulacion = txtTitulacion.Text;
-            alumno.especialidad = txtEspecialidad.Text;
+            alumno.nombre = tbxNombre.Text;
+            alumno.tipo = tbxTipo.Text;
+            alumno.email = tbxCorreo.Text;
+            alumno.telefono = tbxTelefono.Text;
+            alumno.universidad = tbxUniversidad.Text;
+            alumno.titulacion = tbxTitulacion.Text;
+            alumno.especialidad = tbxEspecialidad.Text;
             try
             {
                 alumno.inicio = "2022-04-22T22:00:00.000+00:00";
@@ -171,6 +171,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
 
             this.Close();
 
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

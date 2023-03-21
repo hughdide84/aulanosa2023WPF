@@ -1,4 +1,6 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Util;
+using Org.BouncyCastle.Asn1.Ocsp;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -114,26 +116,6 @@ namespace AulaNosaApp.Servicios
             var client = new RestClient("http://localhost:8080");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
             var request = new RestRequest("/api/alumnoExterno/" + id.ToString(), Method.Get);
-            var response = client.Execute(request);
-
-            if (response != null)
-            {
-                var resultado = JsonSerializer.Deserialize<AlumnoExternoDTO>(response.Content);
-                if (resultado != null)
-                {
-                    objeto = resultado;
-                }
-            }
-
-            return objeto;
-        }
-
-        internal static AlumnoExternoDTO ListarAlumnoExternoPorNombre(String nombre)
-        {
-            AlumnoExternoDTO objeto = new AlumnoExternoDTO();
-            var client = new RestClient("http://localhost:8080");
-            client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", App.Current.Properties["token"]));
-            var request = new RestRequest("/cursos/alumnoExterno/" + nombre, Method.Get);
             var response = client.Execute(request);
 
             if (response != null)

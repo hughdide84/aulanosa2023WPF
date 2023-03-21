@@ -35,6 +35,8 @@ namespace AulaNosaApp
             // Ocultar paneles de gestion para mostrar solo el menu de acceso
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
+            tbxUsuario.Text = string.Empty;
+            pbxContrasena.Password = string.Empty;
 
             List<String> listaNombresCursos = new List<String>();
             foreach (var curso in listaCursos)
@@ -180,7 +182,7 @@ namespace AulaNosaApp
 
         private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                        String estudioSeleccionado = cbbEstudios.Text;
+            String estudioSeleccionado = cbbEstudios.Text;
             foreach (EstudioDTO estudio in listaEstudios)
             {
                 if (estudio.nombre == estudioSeleccionado)
