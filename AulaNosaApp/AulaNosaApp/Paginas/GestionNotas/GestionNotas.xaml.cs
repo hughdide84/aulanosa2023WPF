@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp.Paginas.InfNotas
+namespace AulaNosaApp.Paginas.GestionNotas
 {
     /// <summary>
-    /// Lógica de interacción para InfNotas.xaml
+    /// Lógica de interacción para GestionNotas.xaml
     /// </summary>
-    public partial class InfNotas : Page
+    public partial class GestionNotas : Page
     {
-        public InfNotas()
+        public GestionNotas()
         {
             InitializeComponent();
         }

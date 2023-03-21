@@ -101,13 +101,7 @@
 			<Setter Property="VerticalAlignment" Value="Center"/>
 			<Setter Property="Margin" Value="15,0,0,0"/>
 		</Style>
-        <Style x:Key="ErroresLogin" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="DarkRed"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-        
-    </Window.Resources>
+	</Window.Resources>
 	<DockPanel>
 		<StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
 			<StackPanel>
@@ -155,7 +149,7 @@
 					<Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
 					<Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
 					<Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
-					<Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}" Click="btnInfo_Click"/>
 				</StackPanel>
 			</StackPanel>
 			<StackPanel x:Name="spnPEXT" Style="{StaticResource MargenAbajoStackPanel}">
@@ -214,7 +208,7 @@
 				<TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
 				<PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
 				<Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
-				<TextBlock Name="tbkError" Text="" Style="{StaticResource ErroresLogin}"/>
+				<TextBlock Name="tbkError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
 			</StackPanel>
 			<Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>
 		</Grid>

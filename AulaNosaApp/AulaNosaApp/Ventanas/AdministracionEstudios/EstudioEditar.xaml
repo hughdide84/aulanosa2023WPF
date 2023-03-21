@@ -22,18 +22,18 @@
         </Grid>
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
         <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Id" Style="{StaticResource TextBlockFormularios}"/>
                 <TextBox x:Name="tbkId" IsEnabled="False" Style="{StaticResource TextBoxFormularios}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" >
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
                     <TextBox x:Name="tbxEditarNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorNombreEstudio" Content=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="FCT" Style="{StaticResource TextBlockFormularios}"/>
                 <CheckBox x:Name="chbFCT" Style="{StaticResource CheckBoxFormularios}"/>
             </StackPanel>
