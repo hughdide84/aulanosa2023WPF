@@ -133,6 +133,7 @@
     <Compile Include="Paginas\InformesFCT\InformesFCT.xaml.cs">
       <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\InfoPFCApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AulaNosaApp.Servicios;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,18 +26,7 @@ namespace AulaNosaApp.Paginas.InfoPFC
         public InfoPFC()
         {
             InitializeComponent();
-        }
-
-        private void btnSubirPDF_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                btnSubirPDF.Content = "Archivo subido";
-                btnSubirPDF.IsEnabled = false;
-            }
+            tbkTextoRubrica.Text = InfoPFCApi.mostrarInformacion();
         }
     }
 }
