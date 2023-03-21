@@ -85,9 +85,9 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
-        private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnadoExterno/GestionAlumnadoExterno.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/InfoPFC/InfoPFC.xaml", UriKind.Relative));
         }
     }
 }
