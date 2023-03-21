@@ -114,12 +114,6 @@ namespace AulaNosaApp.Paginas
         {
             if (cmbConsultar.SelectedIndex == 0)
             {
-                /*
-                lista.Clear();
-                AlumnoExternoDTO coincidencia = AlumnoExternoService.ListarAlumnoExternoPorId((int)BigInteger.Parse(tbxConsultar.Text));
-                lista.Add(coincidencia);
-                dtgListado.ItemsSource = lista;
-                */
                 int id;
                 if (int.TryParse(tbxConsultar.Text, out id))
                 {
