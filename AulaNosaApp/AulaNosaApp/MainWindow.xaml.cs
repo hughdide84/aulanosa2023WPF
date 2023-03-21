@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.DTO.AdministracionCursos;
+using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +24,27 @@ namespace AulaNosaApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<CursoDTO> listaCursos = CursosApi.listarCursos();
+        List<EstudioDTO> listaEstudios = EstudioApi.ListarEstudios();
         public MainWindow()
         {
             InitializeComponent();
             // Ocultar paneles de gestion para mostrar solo el menu de acceso
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
+                              
+            List<String> listaNombresCursos = new List<String>();
+            foreach (var curso in listaCursos) {
+                listaNombresCursos.Add(curso.nombre);
+            }
+            cbbCursos.ItemsSource = listaNombresCursos;
+
+            List<String> listaNombresEstudios = new List<String>();
+            foreach (var estudio in listaEstudios)
+            {
+                listaNombresEstudios.Add(estudio.nombre);
+            }
+            cbbEstudios.ItemsSource = listaNombresEstudios;
         }
 
         // Accion del boton de iniciar sesion
@@ -93,6 +112,16 @@ namespace AulaNosaApp
         private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnadoExterno/GestionAlumnadoExterno.xaml", UriKind.Relative));
+        }
+
+        private void btnAlumnoEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/AlumnoEmpresa/AlumEmpResumen.xaml", UriKind.Relative));
+        }
+
+        private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative));
         }
     }
 }

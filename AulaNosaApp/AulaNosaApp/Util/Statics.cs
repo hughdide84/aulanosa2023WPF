@@ -11,6 +11,9 @@ namespace AulaNosaApp.Util
     // Clases estaticas para utilizarlas entre pagina/ventana
     class Statics
     {
+        // Curso y estudio seleccionado
+        public static int idCursoElegido = 0;
+        public static int idEstudioElegido = 0;
         // Usuario
         public static UsuarioDTO usuarioSeleccionado = null; // Obtener el usuario que se ha seleccionado
         // Estudio
