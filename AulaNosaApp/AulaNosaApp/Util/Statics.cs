@@ -17,5 +17,7 @@ namespace AulaNosaApp.Util
         public static EstudioDTO estudioSeleccionado = null; // Obtener el estudio que se ha seleccionado
         // Curso
         public static CursoDTO cursoSeleccionado = null; // Obtener el curso que se ha seleccionado
+        // Proyecto
+        public static ProyectoDTO proyectoSeleccionado = null; // Obtener el proyecto que se ha seleccionado
     }
 }

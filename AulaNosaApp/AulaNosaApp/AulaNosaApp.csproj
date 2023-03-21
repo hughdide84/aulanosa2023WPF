@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\ProyectoDTO.cs" />
     <Compile Include="Paginas\AdministracionUsuarios\AdministracionUsuarios.xaml.cs">
       <DependentUpon>AdministracionUsuarios.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
       <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
     <Compile Include="Servicios\InfoPFCApi.cs" />
+    <Compile Include="Servicios\ProyectoApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -157,6 +159,12 @@
     </Compile>
     <Compile Include="Ventanas\AdministracionEstudios\EstudioEditar.xaml.cs">
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoCrear.xaml.cs">
+      <DependentUpon>ProyectoCrear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoModificar.xaml.cs">
+      <DependentUpon>ProyectoModificar.xaml</DependentUpon>
     </Compile>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
@@ -271,6 +279,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\AdministracionCursos\NuevoCurso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoCrear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoModificar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
