@@ -1,4 +1,6 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
 using AulaNosaApp.Util;
 using AulaNosaApp.Ventanas.AdministracionMatriculas;
 using AulaNosaApp.Ventanas.AdministracionPagos;
@@ -33,6 +35,7 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
         public GestionMatriculas()
         {
             InitializeComponent();
+            refrescarLista();
         }
 
         // Boton de refrescar lista
@@ -51,8 +54,12 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
         // Boton de editar matricula
         private void btnEditarMatricula_Click(object sender, RoutedEventArgs e)
         {
+            Statics.matriculaSeleccionada = dgvMatriculas.SelectedItem as MatriculaDTO;
             EditarMatricula editarMatricula = new EditarMatricula();
             editarMatricula.Show();
+            btnEditarMatricula.IsEnabled = false;
+            btnMostrarPagos.IsEnabled = false;
+            dgvMatriculas.SelectedItem = null;
         }
 
         // Boton de mostrar pagos
@@ -60,12 +67,25 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
         {
             AdministracionPagos administracionPagos = new AdministracionPagos();
             administracionPagos.Show();
+            btnEditarMatricula.IsEnabled = false;
+            btnMostrarPagos.IsEnabled = false;
+            dgvMatriculas.SelectedItem = null;
         }
 
         // Refrescar lista
         void refrescarLista()
         {
+            matriculaLista = MatriculaApi.listarMatriculas();
+            dgvMatriculas.ItemsSource = null;
+            dgvMatriculas.Items.Clear();
+            dgvMatriculas.ItemsSource = matriculaLista;
+        }
 
+        // Seleccionar un elemento del DataGrid
+        private void dgvMatriculas_Selected(object sender, RoutedEventArgs e)
+        {
+            btnEditarMatricula.IsEnabled = true;
+            btnMostrarPagos.IsEnabled = true;
         }
     }
 }

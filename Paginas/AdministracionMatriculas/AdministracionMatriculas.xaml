@@ -19,19 +19,19 @@
             <Button Content="Refrescar" Name="btnRefrescarMatriculas" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescarMatriculas_Click"/>
             <Button Content="Nueva" Name="btnNuevaMatricula" Style="{StaticResource BotonesAdministracion}" Click="btnNuevaMatricula_Click"/>
             <Button Content="Editar" Name="btnEditarMatricula" IsEnabled="False" Style="{StaticResource BotonesAdministracion}" Click="btnEditarMatricula_Click"/>
-            <Button Content="Pagos" Name="btnMostrarPagos" IsEnabled="True" Style="{StaticResource BotonesAdministracion}" Click="btnMostrarPagos_Click"/>
+            <Button Content="Pagos" Name="btnMostrarPagos" IsEnabled="False" Style="{StaticResource BotonesAdministracion}" Click="btnMostrarPagos_Click"/>
         </ToolBar>
-        <DataGrid Grid.Row="2" Name="dgvMatriculas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid Grid.Row="2" Name="dgvMatriculas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvMatriculas_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID"></DataGridTextColumn>
-                <DataGridTextColumn Header="Factura"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombre"></DataGridTextColumn>
-                <DataGridTextColumn Header="NIF"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cuota"></DataGridTextColumn>
-                <DataGridTextColumn Header="Matricula"></DataGridTextColumn>
-                <DataGridTextColumn Header="Observaciones"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha Alta"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha Baja"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Factura" Binding="{Binding factura}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="NIF" Binding="{Binding nif}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cuota" Binding="{Binding cuota}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding fecha}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha Baja" Binding="{Binding fechaBaja}"></DataGridTextColumn>
             </DataGrid.Columns> 
         </DataGrid>
     </Grid>
