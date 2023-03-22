@@ -87,9 +87,17 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "ADMIN";
                 }
-                else
+                else if (cbbCreacionUsuarioRol.SelectedIndex == 1)
                 {
                     usuario.rol = "EDITOR";
+                }
+                else if (cbbCreacionUsuarioRol.SelectedIndex == 2)
+                {
+                    usuario.rol = "PROFE";
+                }
+                else if (cbbCreacionUsuarioRol.SelectedIndex == 3)
+                {
+                    usuario.rol = "ALUMNO";
                 }
                 // Crear usuario
                 UsuariosApi.crearUsuario(usuario);

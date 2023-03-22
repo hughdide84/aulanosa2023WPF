@@ -25,6 +25,7 @@ namespace AulaNosaApp.Servicios
         static RestClient client;
         static RestRequest request;
 
+        // Listar todos los emprea-alumnos
         public static List<EmpresaAlumnosDTO> listarEmpresaAlumnos(int idCurso, int idEstudio)
         {
             client = new RestClient(Constantes.client);
@@ -34,6 +35,7 @@ namespace AulaNosaApp.Servicios
             return apiResponse;
         }
 
+        // Exportar a PDF
         public static void exportarPDF(List<EmpresaAlumnosDTO> empresaAlumnosLista)
         {
             try

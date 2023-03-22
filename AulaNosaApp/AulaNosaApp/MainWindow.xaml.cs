@@ -54,26 +54,9 @@ namespace AulaNosaApp
         }
 
         // Accion del boton de iniciar sesion
-        private void btnAcceder_Click(object sender, RoutedEventArgs e)
-        {
-
-            // Ocultar menu de acceso
-            spnAcceso.Visibility = Visibility.Hidden;
-            // Mostrar paneles de gestion
-            spnMenuIzqda.Visibility = Visibility.Visible;
-            grdMenuSuperior.Visibility = Visibility.Visible;
-            frmPrincipal.Visibility = Visibility.Visible;
-            frmPrincipal.Source = null;
-            // Pestaña de informacion usuario/cerrar sesion
-            cbbUsuario.SelectedIndex = 0;
-            // Mostrar nombre y rol del usuario
-            txbNombreUsuarioLogueado.Text = tbxUsuario.Text;
-            txbRolUsuarioLogueado.Text = "Admin";
-        }
-
         private void iniciarSesion_Click(object sender, RoutedEventArgs e)
         {
-            var client = new RestClient("http://localhost:8080");
+            var client = new RestClient(Constantes.client);
             var request = new RestRequest("/api/usuario/nombreEs/" + tbxUsuario.Text, Method.Get);
             RestResponse respuesta = client.Execute(request);
 
@@ -81,13 +64,18 @@ namespace AulaNosaApp
 
             if (usuario == null)
             {
-                MessageBox.Show("Usuario/Contraseña no validos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // No existe el usuario
+                MessageBox.Show("Usuario no existe", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else
+            else if (usuario.nombre == tbxUsuario.Text && usuario.password == pbxContrasena.Password)
             {
-                if (usuario.nombre == tbxUsuario.Text && usuario.password == pbxContrasena.Password)
+                if (usuario.rol == "ALUMNO")
                 {
-
+                    // No permite entrar si es rol de alumno
+                    MessageBox.Show("Tipo de usuario no apto para entrar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
                     // Ocultar menu de acceso
                     spnAcceso.Visibility = Visibility.Hidden;
                     // Mostrar paneles de gestion
@@ -98,13 +86,23 @@ namespace AulaNosaApp
                     // Pestaña de informacion usuario/cerrar sesion
                     cbbUsuario.SelectedIndex = 0;
                     // Mostrar nombre y rol del usuario
-                    txbNombreUsuarioLogueado.Text = tbxUsuario.Text;
-                    txbRolUsuarioLogueado.Text = "Admin";
+                    txbNombreUsuarioLogueado.Text = usuario.nombre;
+                    txbRolUsuarioLogueado.Text = usuario.rol;
+                    // Ocultar paneles en funcion del rol que tenga
+                    if (usuario.rol == "ADMIN")
+                    {
+                        // Si es Admin
+                    }
+                    else
+                    {
+                        // Si es editor/profesor
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Usuario/Contraseña no validos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+            }
+            else
+            {
+                // No permite entrar si los datos estan mal
+                MessageBox.Show("Tipo de usuario no apto para entrar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -116,8 +114,9 @@ namespace AulaNosaApp
             grdMenuSuperior.Visibility = Visibility.Collapsed;
             frmPrincipal.Visibility = Visibility.Hidden;
             cbbUsuario.SelectedIndex = 0;
+            tbxUsuario.Text = string.Empty;
+            pbxContrasena.Password = string.Empty;
         }
-
         // Panel de usuarios
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {

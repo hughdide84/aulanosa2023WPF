@@ -29,16 +29,19 @@ namespace AulaNosaApp.Paginas.EmpresaAlumnos
             refrescarEmpresaAlumnos();
         }
 
-        private void btnGenerarPDF_Click(object sender, RoutedEventArgs e)
-        {
-            EmpresaAlumnosApi.exportarPDF(listaEmpresaAlumnos);
-        }
-
+        // Boton de refrescar la lista de empresa-alumnos
         private void btnRefrescar_Click(object sender, RoutedEventArgs e)
         {
             refrescarEmpresaAlumnos();
         }
 
+        // Boton de generar PDF
+        private void btnGenerarPDF_Click(object sender, RoutedEventArgs e)
+        {
+            EmpresaAlumnosApi.exportarPDF(listaEmpresaAlumnos);
+        }
+
+        // Refrescar lista empresa-alumnos
         void refrescarEmpresaAlumnos()
         {
             listaEmpresaAlumnos = EmpresaAlumnosApi.listarEmpresaAlumnos(1, 3);
