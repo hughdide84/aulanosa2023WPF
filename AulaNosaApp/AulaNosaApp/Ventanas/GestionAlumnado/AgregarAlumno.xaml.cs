@@ -1,5 +1,7 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace AulaNosaApp.Ventanas.GestionAlumnado
 {
@@ -28,46 +31,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
             InitializeComponent();
         }
         AlumnoDTO alumno = new AlumnoDTO();
-
-        //Metodo Subir Archivo PDF
-        private void SubirArchivo(Button boton, string tipoArchivo)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string fileName = openFileDialog.FileName;
-                // aquí puedes guardar el archivo en algún lugar o almacenarlo en una base de datos
-
-                switch (tipoArchivo)
-                {
-                    case "cv":
-                        alumno.cv = "";
-                        break;
-                    case "carta":
-                        alumno.carta = "";
-                        break;
-                    default:
-                        break;
-                }
-
-                boton.Content = "Archivo subido";
-                boton.IsEnabled = false;
-            }
-        }
-
-        private void btnSubirCV_Click(object sender, RoutedEventArgs e)
-        {
-            SubirArchivo(btnSubirCV, "cv");
-        }
-
-        private void btnSubirCarta_Click(object sender, RoutedEventArgs e)
-        {
-            SubirArchivo(btnSubirCarta, "carta");
-        }
-
-
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
             int Curso;
@@ -95,18 +58,50 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
             {
                 alumno.inicioPr = DateTime.Parse(DPInicio.Text);
                 alumno.finPr = DateTime.Parse(DPFinal.Text);
+
+                if (alumno.finPr <= alumno.inicioPr)
+                {
+                    MessageBox.Show("La fecha de finalización debe ser posterior a la de inicio.");
+                    return;
+                }
             }
             catch (FormatException ex)
             {
                 MessageBox.Show("Formato incorrecto: " + ex.Message);
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                return;
             }
             alumno.idCurso = Curso;
+            CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
+            if (curso == null)
+            {
+                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             alumno.idEmpresa = Empresa;
+           /* EmpresaDTO empresa = EmpresaApi.filtrarCursoId(Curso.ToString());
+            if (empresa == null)
+            {
+                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }*/
             alumno.idEstudios = Estudios;
+            EstudioDTO estudio = new EstudioDTO();
+            estudio.id = Estudios;
+
+            estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
+
+            if (estudio == null)
+            {
+                MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
 
 
             if (string.IsNullOrEmpty(alumno.nombre))
@@ -114,6 +109,23 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+            }
+
+            if ((bool)chbxCv.IsChecked)
+            {
+                alumno.cv = "a";
+            }
+            else
+            {
+                alumno.cv = "b";
+            }
+            if ((bool)chbxCarta.IsChecked)
+            {
+                alumno.carta = "a";
+            }
+            else
+            {
+                alumno.carta = "b";
             }
 
             string v = AlumnoApi.AgregarAlumno(alumno);

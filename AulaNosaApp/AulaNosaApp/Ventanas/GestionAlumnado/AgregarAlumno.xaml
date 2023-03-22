@@ -30,9 +30,9 @@
             <WrapPanel Height="25"/>
             <WrapPanel HorizontalAlignment="Center">
                 <TextBlock Text="CV:" Margin="10"/>
-                <Button Name="btnSubirCV" Click="btnSubirCV_Click" Content="Subir archivo" Width="100"/>
+                <CheckBox VerticalAlignment="Center" x:Name="chbxCv"/>
                 <TextBlock Text="Carta:" Margin="10"/>
-                <Button Name="btnSubirCarta" Click="btnSubirCarta_Click" Content="Subir archivo" Width="100"/>
+                <CheckBox VerticalAlignment="Center" x:Name="chbxCarta"/>
             </WrapPanel>
             <WrapPanel Height="25"/>
             <Button Content="Guardar" Click="Guardar_Click" Height="25"/>

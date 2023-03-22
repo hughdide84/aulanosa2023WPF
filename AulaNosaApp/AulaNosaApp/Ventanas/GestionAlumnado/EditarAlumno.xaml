@@ -7,32 +7,38 @@
         mc:Ignorable="d"
         Title="EditarAlumno" Height="450" Width="800">
     <Grid>
-        <Grid>
-            <StackPanel HorizontalAlignment="Center" Width="665">
-                <Label Content="Modificar Alumno" FontSize="30" HorizontalAlignment="Center"/>
-                <TextBlock Text="Nombre y apellidos:"/>
-                <TextBox Name="txtNombre"/>
+        <StackPanel HorizontalAlignment="Center" Width="665">
+            <Label Content="Modificar Alumno" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Text="Nombre y apellidos:"/>
+            <TextBox Name="txtNombre"/>
 
-                <TextBlock Text="Curso:"/>
-                <TextBox Name="txtCurso"/>
+            <TextBlock Text="Curso:"/>
+            <TextBox Name="txtCurso"/>
 
-                <TextBlock Text="Estudios:"/>
-                <TextBox Name="txtEstudios"/>
+            <TextBlock Text="Estudios:"/>
+            <TextBox Name="txtEstudios"/>
 
-                <TextBlock Text="Empresa:"/>
-                <TextBox Name="txtEmpresa"/>
+            <TextBlock Text="Empresa:"/>
+            <TextBox Name="txtEmpresa"/>
 
-                <TextBlock Text="Inicio:"/>
-                <DatePicker Name="DPInicio"/>
+            <TextBlock Text="Inicio:"/>
+            <DatePicker Name="DPInicio"/>
 
-                <TextBlock Text="Final:"/>
-                <DatePicker Name="DPFinal"/>
+            <TextBlock Text="Final:"/>
+            <DatePicker Name="DPFinal"/>
 
-                <WrapPanel Height="25"/>
-                <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
-                <TextBlock Name="txtid" Visibility="Hidden"/>
-            </StackPanel>
+            <WrapPanel Height="10"/>
+            <WrapPanel HorizontalAlignment="Center">
+                <TextBlock Text="CV:" Margin="10"/>
+                <CheckBox VerticalAlignment="Center" x:Name="chbxCv"/>
+                <TextBlock Text="Carta:" Margin="10"/>
+                <CheckBox VerticalAlignment="Center" x:Name="chbxCarta"/>
+            </WrapPanel>
+            <WrapPanel Height="10"/>
 
-        </Grid>
+            <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+            <TextBlock Name="txtid" Visibility="Hidden"/>
+        </StackPanel>
+
     </Grid>
 </Window>

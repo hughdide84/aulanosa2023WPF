@@ -177,7 +177,7 @@ namespace AulaNosaApp
 
         private void btnAlumnado_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/EmpAlumResumen.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/GestionAlumnado.xaml", UriKind.Relative));
         }
 
         private void btnProyectos_Click(object sender, RoutedEventArgs e)
@@ -188,6 +188,11 @@ namespace AulaNosaApp
         private void btnMatriculas_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionMatriculas/AdministracionMatriculas.xaml", UriKind.Relative));
+        }
+
+        private void btnEmpresas_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionEmpresas/GestionEmpresas.xaml", UriKind.Relative));
         }
 
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)

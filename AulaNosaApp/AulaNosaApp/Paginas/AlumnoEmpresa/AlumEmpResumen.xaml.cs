@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,35 @@ namespace AulaNosaApp.Paginas.AlumnoEmpresa
     /// </summary>
     public partial class AlumEmpResumen : Page
     {
+
+        List<AlumnoEmpresaDTO> listaAlumnoEmpresa;
+
         public AlumEmpResumen()
         {
             InitializeComponent();
-            cbbFiltroAlumnoEmpresa.SelectedIndex = 0;
+            refrescarAlumnoEmpresa();
         }
+
+        // Boton de refrescar la lista de alumno-empresa
+        private void btnRefrescar_Click(object sender, RoutedEventArgs e)
+        {
+            refrescarAlumnoEmpresa();
+        }
+
+        // Boton de generar PDF
+        private void btnGenerarPDF_Click(object sender, RoutedEventArgs e)
+        {
+            AlumnoEmpresaApi.exportarPDF(listaAlumnoEmpresa);
+        }
+
+        // Refrescar lista alumno-empresa
+        void refrescarAlumnoEmpresa()
+        {
+            listaAlumnoEmpresa = AlumnoEmpresaApi.listarAlumnoEmpresa(1, 3);
+            dgvAlumnoEmpresa.ItemsSource = null;
+            dgvAlumnoEmpresa.Items.Clear();
+            dgvAlumnoEmpresa.ItemsSource = listaAlumnoEmpresa;
+        }
+
     }
 }
