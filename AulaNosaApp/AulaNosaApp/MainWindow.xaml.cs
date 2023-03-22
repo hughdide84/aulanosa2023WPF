@@ -174,6 +174,11 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative));
         }
 
+        private void btnAlumnado_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/GestionAlumnado.xaml", UriKind.Relative));
+        }
+
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             spnFCT.Visibility = Visibility.Collapsed;
@@ -219,5 +224,7 @@ namespace AulaNosaApp
             }
 
         }
+
+        
     }
 }
