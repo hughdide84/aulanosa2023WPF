@@ -116,5 +116,10 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 Close();
             }
         }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

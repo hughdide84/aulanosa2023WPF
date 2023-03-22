@@ -496,7 +496,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ventanas\GestionEmpresas\" />
     <Folder Include="Ventanas\GestionTutorias\" />
   </ItemGroup>
   <ItemGroup>

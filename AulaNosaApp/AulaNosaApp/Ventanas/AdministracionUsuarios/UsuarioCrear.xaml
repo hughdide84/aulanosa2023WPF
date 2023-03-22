@@ -12,11 +12,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Background="#F0F4F7">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <Image Style="{StaticResource ImagenLogoFormularios}"/>
             <Label Grid.Column="1" Content="Registro de usuarios" Style="{StaticResource LabelTituloFormularios}"/>
         </Grid>
@@ -43,7 +38,7 @@
                 </StackPanel>
                 <Label Name="lblErrorEmail" Content=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,50" Style="{StaticResource StackPanelDatosForm}">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Rol" Style="{StaticResource TextBlockFormularios}"/>
                 <ComboBox Name="cbbCreacionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
                     <ComboBoxItem>Administrador</ComboBoxItem>

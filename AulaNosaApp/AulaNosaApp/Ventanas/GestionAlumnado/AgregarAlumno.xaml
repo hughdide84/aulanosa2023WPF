@@ -5,38 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas.GestionAlumnado"
         mc:Ignorable="d"
-        Title="AgregarAlumno" Height="450" Width="800">
+        Title="AgregarAlumno" Height="850" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Width="665">
-            <Label Content="Crear Alumno" FontSize="30" HorizontalAlignment="Center"/>
-            <TextBlock Text="Nombre y apellidos:"/>
-            <TextBox Name="txtNombre"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#F0F4F7">
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Registro de alumnos" Style="{StaticResource LabelTituloFormularios}"/>
+        </Grid>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="txtNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                </StackPanel>
+                <Label Name="lblErrorNombre" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Curso" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="txtCurso" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                </StackPanel>
+                <Label Name="lblError" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Estudios" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="txtEstudios" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                </StackPanel>
+                <Label Name="lblErrorEmail" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Empresa" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="txtEmpresa" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                </StackPanel>
+                <Label Name="lblErrorE" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="Inicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="DPInicio" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorFechaInicio" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="Fin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="DPFinal" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label  Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="CV" Style="{StaticResource TextBlockFormularios}" />
+                    <CheckBox x:Name="chbxCv" Style="{StaticResource CheckBoxFormularios}" Margin="0,0,20,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Carta" Style="{StaticResource TextBlockFormularios}"/>
+                    <CheckBox x:Name="chbxCarta" Style="{StaticResource CheckBoxFormularios}"/>
+                </StackPanel>
+            </StackPanel>
 
-            <TextBlock Text="Curso:"/>
-            <TextBox Name="txtCurso"/>
-
-            <TextBlock Text="Estudios:"/>
-            <TextBox Name="txtEstudios"/>
-
-            <TextBlock Text="Empresa:"/>
-            <TextBox Name="txtEmpresa"/>
-
-            <TextBlock Text="Inicio:"/>
-            <DatePicker Name="DPInicio"/>
-
-            <TextBlock Text="Final:"/>
-            <DatePicker Name="DPFinal"/>
-
-            <WrapPanel Height="25"/>
-            <WrapPanel HorizontalAlignment="Center">
-                <TextBlock Text="CV:" Margin="10"/>
-                <CheckBox VerticalAlignment="Center" x:Name="chbxCv"/>
-                <TextBlock Text="Carta:" Margin="10"/>
-                <CheckBox VerticalAlignment="Center" x:Name="chbxCarta"/>
-            </WrapPanel>
-            <WrapPanel Height="25"/>
-            <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+            <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="Guardar_Click"/>
+            </StackPanel>
         </StackPanel>
-
     </Grid>
+    
 </Window>
