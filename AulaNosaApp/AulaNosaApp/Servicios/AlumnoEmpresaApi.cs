@@ -19,6 +19,10 @@ using System.Xml.Linq;
 using AulaNosaApp.Util;
 using Org.BouncyCastle.Asn1.Ocsp;
 using RestSharp;
+using iTextSharp.text.pdf;
+using PdfWriter = iText.Kernel.Pdf.PdfWriter;
+using PdfDocument = iText.Kernel.Pdf.PdfDocument;
+using PdfFont = iText.Kernel.Font.PdfFont;
 
 namespace AulaNosaApp.Servicios
 {
