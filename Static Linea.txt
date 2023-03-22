@@ -1,2 +1,0 @@
-        // Matricula
-        public static MatriculaDTO matriculaSeleccionada = null; // Obtener la matricula que se ha seleccionado
