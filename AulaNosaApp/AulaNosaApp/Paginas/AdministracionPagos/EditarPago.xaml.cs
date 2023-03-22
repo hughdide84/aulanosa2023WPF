@@ -10,30 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp.Ventanas.AdministracionMatriculas
+namespace AulaNosaApp.Paginas.PaginasPagos
 {
     /// <summary>
-    /// Lógica de interacción para EditarMatricula.xaml
+    /// Lógica de interacción para EditarPago.xaml
     /// </summary>
-    public partial class EditarMatricula : Window
+    public partial class EditarPago : Page
     {
-        public EditarMatricula()
+        public EditarPago()
         {
             InitializeComponent();
         }
 
-        // Boton de editar matricula
+        // Boton de editar pago
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        // Boton de cancelar editar matricula
+        // Boton de cancelar editar pago
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+
         }
     }
 }

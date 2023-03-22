@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas.AdministracionMatriculas"
         mc:Ignorable="d"
-        Title="EditarMatricula" Height="450" Width="800">
+        Title="EditarMatricula"  Height="650" Width="800" MinHeight="650" MinWidth="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Editar Matricula" Style="{StaticResource LabelTituloFormularios}"/>
+        </Grid>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Factura" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxFacturaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorFactura" Content=""/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxNombreCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorNombre" Content=""/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="NIF" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxNifCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorNif" Content=""/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Cuota" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxCuotaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorCuota" Content=""/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Matricula" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxMatriculaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorMatricula" Content=""/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="15,0,0,0">
+                        <TextBlock Text="Observacion" Style="{StaticResource TextBlockFormularios}"/>
+                        <TextBox Name="tbxObservacionCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    </StackPanel>
+                    <Label Name="lblErrorObservacion" Content=""/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Name="tbkEditarInicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
+                        <DatePicker Name="dtpEditarInicio" Style="{StaticResource DatePickerFormularios}"/>
+                    </StackPanel>
+                    <Label Name="lblErrorFechaInicio" Content=""/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Name="lblEditarFin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
+                        <DatePicker Name="dtpEditarFin" Style="{StaticResource DatePickerFormularios}"/>
+                    </StackPanel>
+                    <Label Name="lblErrorFechaFin" Content=""/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelBotonesForm}">
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}" Click="btnCancelar_Click"/>
+                <Button Name="btnEditar" Content="Editar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnEditar_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

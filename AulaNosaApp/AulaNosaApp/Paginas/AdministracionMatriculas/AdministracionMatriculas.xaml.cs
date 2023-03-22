@@ -1,4 +1,9 @@
-﻿using System;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Util;
+using AulaNosaApp.Ventanas.AdministracionMatriculas;
+using AulaNosaApp.Ventanas.AdministracionPagos;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +25,47 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
     /// </summary>
     public partial class GestionMatriculas : Page
     {
+
+        RestClient client;
+        RestRequest request;
+        List<MatriculaDTO> matriculaLista;
+
         public GestionMatriculas()
         {
             InitializeComponent();
+        }
+
+        // Boton de refrescar lista
+        private void btnRefrescarMatriculas_Click(object sender, RoutedEventArgs e)
+        {
+            refrescarLista();
+        }
+
+        // Boton de crear matricula
+        private void btnNuevaMatricula_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMatricula agregarMatricula = new AgregarMatricula();
+            agregarMatricula.Show();
+        }
+
+        // Boton de editar matricula
+        private void btnEditarMatricula_Click(object sender, RoutedEventArgs e)
+        {
+            EditarMatricula editarMatricula = new EditarMatricula();
+            editarMatricula.Show();
+        }
+
+        // Boton de mostrar pagos
+        private void btnMostrarPagos_Click(object sender, RoutedEventArgs e)
+        {
+            AdministracionPagos administracionPagos = new AdministracionPagos();
+            administracionPagos.Show();
+        }
+
+        // Refrescar lista
+        void refrescarLista()
+        {
+
         }
     }
 }

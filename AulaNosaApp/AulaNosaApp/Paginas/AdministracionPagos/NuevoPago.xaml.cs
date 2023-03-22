@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Svg.Renderers.Path.Impl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,30 +11,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp.Ventanas.AdministracionMatriculas
+namespace AulaNosaApp.Paginas.PaginasPagos
 {
     /// <summary>
-    /// Lógica de interacción para EditarMatricula.xaml
+    /// Lógica de interacción para NuevoPago.xaml
     /// </summary>
-    public partial class EditarMatricula : Window
+    public partial class NuevoPago : Page
     {
-        public EditarMatricula()
+        public NuevoPago()
         {
             InitializeComponent();
         }
 
-        // Boton de editar matricula
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        // Boton de añadir pago
+        private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        // Boton de cancelar editar matricula
+        // Boton de cancelar crear pago
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
     }
 }
