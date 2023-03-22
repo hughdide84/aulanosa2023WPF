@@ -83,12 +83,12 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 return;
             }
             alumno.idEmpresa = Empresa;
-           /* EmpresaDTO empresa = EmpresaApi.filtrarCursoId(Curso.ToString());
+            EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Curso);
             if (empresa == null)
             {
-                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            }*/
+            }
             alumno.idEstudios = Estudios;
             EstudioDTO estudio = new EstudioDTO();
             estudio.id = Estudios;
