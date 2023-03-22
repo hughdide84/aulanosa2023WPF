@@ -35,6 +35,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cargarCampos();
         }
 
+        // Función que llama a la API para cargar los cursos en una lista (`cursos') y los nombres de estos ('nombresCurso') en otra
         void cargarCursos()
         {
             List<String> nombresCursos = new List<string>();
@@ -49,6 +50,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cbCursos.ItemsSource = nombresCursos;
         }
 
+        // Función que llama a la API para cargar los estudios en una lista (`estudios') y los nombres de estos ('nombresEstudios') en otra
         void cargarEstudios()
         {
             List<String> nombresEstudios = new List<string>();
@@ -63,6 +65,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cbEstudios.ItemsSource = nombresEstudios;
         }
 
+        // Función que verifica que los campos no estén vacíos
         void cargarCampos()
         {
             cbCursos.SelectedValue = CursosApi.filtrarCursoId(Statics.empresaSeleccionada.idCurso.ToString()).nombre;

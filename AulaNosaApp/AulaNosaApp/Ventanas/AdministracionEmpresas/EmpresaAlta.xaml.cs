@@ -35,6 +35,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cbEstudios.SelectedIndex = 0;
         }
 
+        // Función que llama a la API para cargar los cursos en una lista (`cursos') y los nombres de estos ('nombresCurso') en otra
         void cargarCursos()
         {
             List<String> nombresCursos = new List<string>();
@@ -49,6 +50,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cbCursos.ItemsSource = nombresCursos;
         }
 
+        // Función que llama a la API para cargar los estudios en una lista (`estudios') y los nombres de estos ('nombresEstudios') en otra
         void cargarEstudios()
         {
             List<String> nombresEstudios = new List<string>();
@@ -63,6 +65,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             cbEstudios.ItemsSource = nombresEstudios;
         }
 
+        // Función que verifica que los campos no estén vacíos
         bool validarCampos()
         {
             if (tbxNombre.Text.Length > 0 && tbxDireccionSocial.Text.Length > 0 && tbxDireccionTrabajo.Text.Length > 0 && tbxCIF.Text.Length > 0 && tbxRepresentante.Text.Length > 0
@@ -78,6 +81,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
 
         }
 
+        // Botón que al accionarse, en función de la validez de los campos, almacena o no una nueva empresa en la BD
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             if (tbxNombre.Text.Length == 0)
@@ -216,6 +220,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             }
         }
 
+        // Botón que al accionarse cierra la plantilla de creación de empresas
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();

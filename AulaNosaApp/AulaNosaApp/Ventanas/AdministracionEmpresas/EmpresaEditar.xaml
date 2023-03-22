@@ -11,26 +11,15 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Background="#F0F4F7">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource ImagenLogoFormularios}"/>
-            <Label Grid.Column="1" Content="Edición de empresas" Style="{StaticResource LabelTituloFormularios}"/>
-        </Grid>
 
-        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-                <ColumnDefinition Width="33*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
+        <Grid Grid.Row="0" Background="#F0F4F7"/>
+        <Image Grid.Row="0" Style="{StaticResource ImagenLogoFormularios}"/>
+        <Label Grid.Row="0" Content="Edición de empresas" Style="{StaticResource LabelTituloFormularios}"/>
+        <Border Grid.Row="0" Style="{StaticResource BordeEncabezadoForm}"/>
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,25,0,25">
             <StackPanel Style="{StaticResource StackPanelForm}">
@@ -145,6 +134,7 @@
                     <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
                     <Button x:Name="btnModificar" Content="Modificar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnModificar_Click"/>
                 </StackPanel>
+                
             </StackPanel>
         </ScrollViewer>
     </Grid>

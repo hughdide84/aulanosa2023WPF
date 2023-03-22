@@ -32,40 +32,41 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
         RestClient client;
         RestRequest request;
         List<EmpresaDTO> empresas;
-        bool filtrosActivados = false;
 
         public GestionEmpresas()
         {
             InitializeComponent();
-            cbbFiltroEmpresa.SelectedIndex = 0;
-            actualizarEmpresas();
+            refrescarEmpresas();
         }
 
+        // Botón que al accionarse refresca el listado de empresas
         private void btnRefrescarPantallaEmpresas_Click(object sender, RoutedEventArgs e)
         {
-            actualizarEmpresas();
+            refrescarEmpresas();
         }
 
-        // Boton de crear empresa (abre ventana de creacion de empresa)
+        // Boton que al accionarse abre la plantilla de creación de empresas (Ventanas/AdministracionEmpresas/EmpresaAlta)
         private void btnCrearNuevaEmpresa_Click(object sender, RoutedEventArgs e)
         {
             EmpresaAlta empresaAlta = new EmpresaAlta();
             empresaAlta.Show();
         }
 
-        // Boton de editar empresa (abre ventana de editar de empresa)
+        // Boton que al accionarse abre la plantilla de edición de empresas (Ventanas/AdministracionEmpresas/EmpresaEditar)
         private void btnEditarEmpresa_Click(object sender, RoutedEventArgs e)
         {
-            // Obtenemos la empresa seleccionada
+            // Cargamos los datos de la empresa seleccionada en una variable estática (Util/Statics)
             Statics.empresaSeleccionada = dgvEmpresas.SelectedItem as EmpresaDTO;
+
             EmpresaEditar empresaEditar = new EmpresaEditar();
             empresaEditar.Show();
+
             btnEditarEmpresa.IsEnabled = false;
             btnEliminarEmpresa.IsEnabled = false;
             dgvEmpresas.SelectedItem = null;
         }
 
-        // Boton de eliminar empresa
+        // Boton que al accionarse elimina la empresa que hayamos seleccionado en el listado de empresas
         private void btnEliminarEmpresa_Click(object sender, RoutedEventArgs e)
         {
             Statics.empresaSeleccionada = dgvEmpresas.SelectedItem as EmpresaDTO;
@@ -74,55 +75,32 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
             if (resultado == MessageBoxResult.Yes)
             {
                 EmpresaAPI.eliminarEmpresa(Statics.empresaSeleccionada.id);
-                actualizarEmpresas();
+                refrescarEmpresas();
+
                 btnEditarEmpresa.IsEnabled = false;
                 btnEliminarEmpresa.IsEnabled = false;
                 dgvEmpresas.SelectedItem = null;
             }
             else
             {
-                actualizarEmpresas();
+                refrescarEmpresas();
             }
         }
 
-        // Mostrar/Ocultar el panel de filtros
-        private void btnConsultaEmpresa_Click(object sender, RoutedEventArgs e)
-        {
-            if (!filtrosActivados)
-            {
-                cbbFiltroEmpresa.Visibility = Visibility.Visible;
-                tbxFiltroEmpresa.Visibility = Visibility.Visible;
-                btnBuscarFiltroEmpresa.Visibility = Visibility.Visible;
-                filtrosActivados = true;
-            }
-            else
-            {
-                cbbFiltroEmpresa.Visibility = Visibility.Collapsed;
-                tbxFiltroEmpresa.Visibility = Visibility.Collapsed;
-                btnBuscarFiltroEmpresa.Visibility = Visibility.Collapsed;
-                filtrosActivados = false;
-            }
-        }
-
-        // Habilitar botones de editar y eliminar empresa al clickear uno
+        // Función que habilita los botones para Editar y Eliminar empresas cuando seleccionamos una del listado
         private void dgvEmpresas_Selected(object sender, RoutedEventArgs e)
         {
             btnEditarEmpresa.IsEnabled = true;
             btnEliminarEmpresa.IsEnabled = true;
         }
 
-        // Actualizar lista de empresas
-        void actualizarEmpresas()
+        // Función que refresca el DataGridView que muestra el listado de empresas
+        void refrescarEmpresas()
         {
             empresas = EmpresaAPI.listarEmpresas();
             dgvEmpresas.ItemsSource = null;
             dgvEmpresas.Items.Clear();
             dgvEmpresas.ItemsSource = empresas;
-        }
-
-        private void dgvEmpresas_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
