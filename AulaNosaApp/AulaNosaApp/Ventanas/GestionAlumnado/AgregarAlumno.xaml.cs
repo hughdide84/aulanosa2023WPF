@@ -90,13 +90,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
             }
             alumno.nombre = txtNombre.Text;
 
-            DateTime inicio = DateTime.Parse("2022-04-22T22:00:00.000+00:00");
-            DateTime fin = DateTime.Parse("2022-04-22T22:00:00.000+00:00");
 
             try
             {
-                alumno.inicioPr = inicio;
-                alumno.finPr = fin;
+                alumno.inicioPr = DateTime.Parse(DPInicio.Text);
+                alumno.finPr = DateTime.Parse(DPFinal.Text);
             }
             catch (FormatException ex)
             {

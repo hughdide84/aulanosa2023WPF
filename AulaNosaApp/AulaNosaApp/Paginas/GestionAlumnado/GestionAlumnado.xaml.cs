@@ -161,9 +161,18 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
                     int id;
                     if (int.TryParse(tbxConsultarId.Text, out id))
                     {
-                        AlumnoDTO coincidencia = AlumnoApi.ListarAlumnoPorId(id);
-                        alumnosLista = new List<AlumnoDTO> { coincidencia };
-                        dgvListado.ItemsSource = alumnosLista;
+                        try
+                        {
+                            AlumnoDTO coincidencia = AlumnoApi.ListarAlumnoPorId(id);
+
+                            alumnosLista = new List<AlumnoDTO> { coincidencia };
+                            dgvListado.ItemsSource = alumnosLista;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("No se encontró ningún alumno con el ID especificado", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        
                     }
                     else
                     {
