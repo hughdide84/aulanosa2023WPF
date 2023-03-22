@@ -31,7 +31,7 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
     {
         RestClient client;
         RestRequest request;
-        List<EmpresaDTO> empresasLista;
+        List<EmpresaDTO> empresas;
         bool filtrosActivados = false;
 
         public GestionEmpresas()
@@ -114,10 +114,10 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
         // Actualizar lista de empresas
         void actualizarEmpresas()
         {
-            empresasLista = EmpresaAPI.listarEmpresas();
+            empresas = EmpresaAPI.listarEmpresas();
             dgvEmpresas.ItemsSource = null;
             dgvEmpresas.Items.Clear();
-            dgvEmpresas.ItemsSource = empresasLista;
+            dgvEmpresas.ItemsSource = empresas;
         }
 
         private void dgvEmpresas_SelectionChanged(object sender, SelectionChangedEventArgs e)
