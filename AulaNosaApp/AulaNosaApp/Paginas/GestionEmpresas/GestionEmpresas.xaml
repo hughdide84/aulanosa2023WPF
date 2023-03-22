@@ -1,0 +1,49 @@
+﻿<Page x:Class="AulaNosaApp.Paginas.GestionEmpresas.GestionEmpresas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AulaNosaApp.Paginas.GestionEmpresas"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GestionEmpresas">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Gestión de Empresas" Style="{StaticResource TextBlockTituloAdministracion}"/>
+
+        <ToolBar Grid.Row="1" Name="tbrEmpresas">
+            <Button Content="Refrescar" Name="btnRefrescarPantallaEmpresas" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescarPantallaEmpresas_Click"/>
+            <Button Content="Nuevo" Name="btnCrearNuevaEmpresa" Style="{StaticResource BotonesAdministracion}" Click="btnCrearNuevaEmpresa_Click"/>
+            <Button Content="Editar" Name="btnEditarEmpresa" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEditarEmpresa_Click"/>
+            <Button Content="Eliminar" Name="btnEliminarEmpresa" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEliminarEmpresa_Click"/>
+        </ToolBar>
+
+        <DataGrid Grid.Row="2" Name="dgvEmpresas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvEmpresas_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Curso" Binding="{Binding idCurso}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estudios" Binding="{Binding idEstudios}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dirección social" Binding="{Binding direccionSocial}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dirección de trabajo" Binding="{Binding direccionTrabajo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="CIF" Binding="{Binding cif}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Representante" Binding="{Binding representante}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tutor 1" Binding="{Binding tutor1}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tutor 2" Binding="{Binding tutor2}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tutor 3" Binding="{Binding tutor3}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Plan individual" Binding="{Binding planIndividual}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Hoja de actividades" Binding="{Binding hojaActividades}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

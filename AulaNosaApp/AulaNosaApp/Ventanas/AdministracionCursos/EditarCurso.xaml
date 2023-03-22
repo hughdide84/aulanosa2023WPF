@@ -1,0 +1,74 @@
+﻿<Window x:Class="AulaNosaApp.EditarCurso"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AulaNosaApp"
+        mc:Ignorable="d"
+        Title="CPR AULA NOSA - Gestion Cursos - Editar Curso" Height="650" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Name="lblEditar" Content="Editar Curso" Style="{StaticResource LabelTituloFormularios}"/>
+        </Grid>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
+                <TextBlock Name="tbkEditarID" Text="ID" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxEditarID" IsEnabled="False" Style="{StaticResource TextBoxFormularios}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbkEditarNombre" Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxEditarNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                </StackPanel>
+                <Label Name="lblErrorNombre" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbkEditarInicio" Text="Inicio" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="dtpEditarInicio" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorFechaInicio" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbkEditarFin" Text="Fin" Style="{StaticResource TextBlockFormularios}"/>
+                    <DatePicker Name="dtpEditarFin" Style="{StaticResource DatePickerFormularios}"/>
+                </StackPanel>
+                <Label Name="lblErrorFechaFin" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                <TextBlock Name="tbkEditarEstado" Text="Estado" Style="{StaticResource TextBlockFormularios}"/>
+                <ComboBox Name="cbbEditarEstado" IsReadOnly="True" Style="{StaticResource ComboBoxFormularios}">
+                    <ComboBoxItem>Activo</ComboBoxItem>
+                    <ComboBoxItem>Finalizado</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelBotonesForm}">
+                <Button Name="btnCancelar" Content="Cancelar" Style="{StaticResource BotonesFormularios}" Click="btnCancelar_Click"/>
+                <Button Name="btnEditar" Content="Editar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnEditar_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+
+
+
+
+
+
+
+</Window>
