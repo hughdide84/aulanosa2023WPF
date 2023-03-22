@@ -201,7 +201,7 @@ namespace AulaNosaApp
             spnPFC.Visibility = Visibility.Collapsed;
             spnPEXT.Visibility = Visibility.Collapsed;
 
-            String estudioSeleccionado = cbbEstudios.Text;
+            String estudioSeleccionado = (sender as ComboBox).SelectedItem as string;
             bool FCT = false;
             bool PEXT = false;
             foreach (EstudioDTO estudio in listaEstudios)
@@ -228,7 +228,8 @@ namespace AulaNosaApp
 
         private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String cursoSeleccionado = cbbCursos.Text;
+  
+            String cursoSeleccionado = (sender as ComboBox).SelectedItem as string;
 
             foreach (CursoDTO curso in listaCursos)
             {
