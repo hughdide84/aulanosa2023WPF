@@ -35,6 +35,11 @@ namespace AulaNosaApp
             // Ocultar paneles de gestion para mostrar solo el menu de acceso
             spnMenuIzqda.Visibility = Visibility.Collapsed;
             grdMenuSuperior.Visibility = Visibility.Collapsed;
+            spnFCT.Visibility = Visibility.Collapsed;
+            spnPFC.Visibility = Visibility.Collapsed;
+            spnPEXT.Visibility = Visibility.Collapsed;
+            spnAdmin.Visibility = Visibility.Collapsed;
+
             tbxUsuario.Text = string.Empty;
             pbxContrasena.Password = string.Empty;
 
@@ -62,17 +67,17 @@ namespace AulaNosaApp
 
             UsuarioDTO usuario = client.Execute<UsuarioDTO>(request).Data;
 
-            if (usuario == null)
+            if (usuario == null || usuario.password == null)
             {
                 // No existe el usuario
-                MessageBox.Show("Usuario no existe", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else if (usuario.nombre == tbxUsuario.Text && usuario.password == pbxContrasena.Password)
             {
                 if (usuario.rol == "ALUMNO")
                 {
                     // No permite entrar si es rol de alumno
-                    MessageBox.Show("Tipo de usuario no apto para entrar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Tipo de usuario no apto para acceder.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
@@ -89,9 +94,11 @@ namespace AulaNosaApp
                     txbNombreUsuarioLogueado.Text = usuario.nombre;
                     txbRolUsuarioLogueado.Text = usuario.rol;
                     // Ocultar paneles en funcion del rol que tenga
+                    
                     if (usuario.rol == "ADMIN")
                     {
                         // Si es Admin
+                        spnAdmin.Visibility = Visibility.Visible;
                     }
                     else
                     {
@@ -169,26 +176,48 @@ namespace AulaNosaApp
 
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String cursoSeleccionado = cbbCursos.Text;
-            foreach (CursoDTO curso in listaCursos)
-            {
-                if (curso.nombre == cursoSeleccionado)
-                {
-                    Statics.idCursoElegido = curso.id;
-                }
-            }
-        }
+            spnFCT.Visibility = Visibility.Collapsed;
+            spnPFC.Visibility = Visibility.Collapsed;
+            spnPEXT.Visibility = Visibility.Collapsed;
 
-        private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             String estudioSeleccionado = cbbEstudios.Text;
+            bool FCT = false;
+            bool PEXT = false;
             foreach (EstudioDTO estudio in listaEstudios)
             {
                 if (estudio.nombre == estudioSeleccionado)
                 {
                     Statics.idEstudioElegido = estudio.id;
+                    FCT = estudio.fct;
+                    PEXT = estudio.pext;
                 }
             }
+
+            if (FCT)
+            {
+                spnFCT.Visibility = Visibility.Visible;
+                spnPFC.Visibility = Visibility.Visible;
+            }
+
+            if (PEXT)
+            {
+                spnPEXT.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String cursoSeleccionado = cbbCursos.Text;
+
+            foreach (CursoDTO curso in listaCursos)
+            {
+                if (curso.nombre == cursoSeleccionado)
+                {
+                    Statics.idCursoElegido = curso.id;
+
+                }
+            }
+
         }
     }
 }
