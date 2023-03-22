@@ -1,0 +1,71 @@
+﻿<Window x:Class="AulaNosaApp.Ventanas.GestionProyectos.ProyectoCrear"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AulaNosaApp.Ventanas.GestionProyectos"
+        mc:Ignorable="d"
+        Title="CPR AULA NOSA - Gestion Proyecto - Crear Proyecto" Height="650" Width="800" MinHeight="650" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#F0F4F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Style="{StaticResource ImagenLogoFormularios}"/>
+            <Label Grid.Column="1" Content="Registro de proyectos" Style="{StaticResource LabelTituloFormularios}"/>
+        </Grid>
+        <Border Style="{StaticResource BordeEncabezadoForm}"/>
+        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Id Alumno" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxIdAlumno_KeyDown"/>
+                </StackPanel>
+                <Label Name="lblErrorIdAlumno" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Documento" Style="{StaticResource TextBlockFormularios}"/>
+                    <CheckBox x:Name="chbDocumento" Style="{StaticResource CheckBoxFormularios}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Presentación" Style="{StaticResource TextBlockFormularios}"/>
+                    <CheckBox x:Name="chbPresentacion" Style="{StaticResource CheckBoxFormularios}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Nota Doc" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxNotaDocumento" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaDocumento_KeyDown"/>
+                </StackPanel>
+                <Label Name="lblErrorNotaDocumento" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Nota Pres" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxNotaPresentacion" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaPresentacion_KeyDown"/>
+                </StackPanel>
+                <Label Name="lblErrorNotaPresentacion" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Text="Nota Final" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBox Name="tbxNotaFinal" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaFinal_KeyDown"/>
+                </StackPanel>
+                <Label Name="lblErrorNotaFinal" Content=""/>
+            </StackPanel>
+            <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
+                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnRegistrar_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

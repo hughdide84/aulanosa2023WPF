@@ -150,6 +150,15 @@
     <Compile Include="DTO\AlumnoExternoDTO.cs" />
     <Compile Include="DTO\AlumnoEmpresaDTO.cs" />
     <Compile Include="DTO\EmpresaAlumnosDTO.cs" />
+    <Compile Include="DTO\MatriculaDTO.cs" />
+    <Compile Include="DTO\PagoDTO.cs" />
+    <Compile Include="DTO\ProyectoDTO.cs" />
+    <Compile Include="Paginas\AdministracionPagos\EditarPago.xaml.cs">
+      <DependentUpon>EditarPago.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AdministracionPagos\NuevoPago.xaml.cs">
+      <DependentUpon>NuevoPago.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\AdministracionUsuarios\AdministracionUsuarios.xaml.cs">
       <DependentUpon>AdministracionUsuarios.xaml</DependentUpon>
     </Compile>
@@ -206,6 +215,9 @@
     <Compile Include="Servicios\AlumnoExternoApi.cs" />
     <Compile Include="Servicios\EmpresaAlumnosApi.cs" />
     <Compile Include="Servicios\InfoPFCApi.cs" />
+    <Compile Include="Servicios\MatriculaApi.cs" />
+    <Compile Include="Servicios\PagosApi.cs" />
+    <Compile Include="Servicios\ProyectoApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -214,6 +226,9 @@
     </Compile>
     <Compile Include="Ventanas\AdministracionMatriculas\EditarMatricula.xaml.cs">
       <DependentUpon>EditarMatricula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\AdministracionPagos\AdministracionPagos.xaml.cs">
+      <DependentUpon>AdministracionPagos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
       <DependentUpon>UsuarioCrear.xaml</DependentUpon>
@@ -248,9 +263,23 @@
     <Compile Include="Ventanas\GestionAlumnado\EditarAlumno.xaml.cs">
       <DependentUpon>EditarAlumno.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoCrear.xaml.cs">
+      <DependentUpon>ProyectoCrear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoModificar.xaml.cs">
+      <DependentUpon>ProyectoModificar.xaml</DependentUpon>
+    </Compile>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\AdministracionPagos\EditarPago.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Paginas\AdministracionPagos\NuevoPago.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml">
       <SubType>Designer</SubType>
@@ -352,6 +381,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas\AdministracionPagos\AdministracionPagos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -396,6 +429,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoCrear.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoModificar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Paginas\AdministracionEstudios\AdministracionEstudios.xaml.cs">
@@ -432,7 +473,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventanas\GestionEmpresas\" />
-    <Folder Include="Ventanas\GestionProyectos\" />
     <Folder Include="Ventanas\GestionTutorias\" />
   </ItemGroup>
   <ItemGroup>

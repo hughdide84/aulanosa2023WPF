@@ -23,5 +23,17 @@ namespace AulaNosaApp.Ventanas.AdministracionMatriculas
         {
             InitializeComponent();
         }
+
+        // Boton de editar matricula
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Boton de cancelar editar matricula
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

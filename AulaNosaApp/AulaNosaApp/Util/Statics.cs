@@ -13,7 +13,6 @@ namespace AulaNosaApp.Util
     {
         // Usuario logueado
         public static UsuarioDTO usuarioLogin = null;
-
         // Curso y estudio seleccionado
         public static int idCursoElegido = 0;
         public static int idEstudioElegido = 0;
@@ -23,7 +22,7 @@ namespace AulaNosaApp.Util
         public static EstudioDTO estudioSeleccionado = null; // Obtener el estudio que se ha seleccionado
         // Curso
         public static CursoDTO cursoSeleccionado = null; // Obtener el curso que se ha seleccionado
-        // Alumno
-        public static AlumnoDTO alumnoSeleccionado = null; // Obtener el alumno que se ha seleccionado
+        // Proyecto
+        public static ProyectoDTO proyectoSeleccionado = null; // Obtener el proyecto que se ha seleccionado
     }
 }
