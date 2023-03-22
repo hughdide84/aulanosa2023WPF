@@ -119,16 +119,32 @@ namespace AulaNosaApp.Paginas.GestionAlumnadoExterno
         {
             if (cmbConsultar.SelectedIndex == 0)
             {
-                int id;
-                if (int.TryParse(tbxConsultar.Text, out id))
+                if (tbxConsultar.Text.Length == 0)
                 {
-                    AlumnoExternoDTO coincidencia = AlumnoExternoApi.ListarAlumnoExternoPorId(id);
-                    lista = new List<AlumnoExternoDTO> { coincidencia };
-                    dtgListado.ItemsSource = lista;
+                    MessageBox.Show("Busqueda vacia", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("El valor ingresado no es un número válido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    int id;
+                    if (int.TryParse(tbxConsultar.Text, out id))
+                    {
+                        try
+                        {
+                            AlumnoExternoDTO coincidencia = AlumnoExternoApi.ListarAlumnoExternoPorId(id);
+
+                            lista = new List<AlumnoExternoDTO> { coincidencia };
+                            dtgListado.ItemsSource = lista;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("No se encontró ningún alumno con el ID especificado", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor ingresado no es un número válido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
         }
