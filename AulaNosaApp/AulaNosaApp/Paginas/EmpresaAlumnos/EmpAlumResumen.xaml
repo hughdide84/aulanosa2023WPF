@@ -7,26 +7,24 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EmpAlumResumen">
-    <Grid>
-        <Grid Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
-            <TextBlock Name="tbkTitulo" Text="Resumen Empresa - Alumnos" Style="{StaticResource TextBlockTituloAdministracion}"/>
-            <ToolBar Grid.Row="1">
-                <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
-                <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click"/>
+    <StackPanel Background="White">
+        <Label Content="Empresa - Alumnos" FontSize="18"/>
+        <ToolBarTray>
+            <ToolBar Band="1">
+                <Label Content="Buscar Registro"/>
+                <ComboBox Name="cbbFiltroAlumnoEmpresa">
+                    <ComboBoxItem>Usuario</ComboBoxItem>
+                    <ComboBoxItem>Empresa</ComboBoxItem>
+                </ComboBox>
+                <TextBox Width="100" MaxLength="100" Name="tbxFiltroAlumnoEmpresa"/>
+                <Button Content="Buscar" Name="btnBuscarFiltroAlumnoEmpresa"/>
             </ToolBar>
-            <DataGrid Grid.Row="2" Name="dgvAlumnoEmpresa"  ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Empresa" Binding="{Binding nombreEmpresa}"/>
-                    <DataGridTextColumn Header="Alumnos" Binding="{Binding nombreAlumno}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-    </Grid>
+        </ToolBarTray>
+        <DataGrid Name="dgvAlumnoEmpresa" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Empresa"/>
+                <DataGridTextColumn Header="Alumnos"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </Page>

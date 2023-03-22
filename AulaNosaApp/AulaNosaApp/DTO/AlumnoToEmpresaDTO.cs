@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.DTO
 {
-    public class AlumnoDTO
+    internal class AlumnoToEmpresaDTO
     {
         public int id { get; set; }
-        public string nombre { get; set; }
-        public DateTime inicioPr { get; set; }
-        public DateTime finPr { get; set; }
+        public int idEmpresa { get; set; }
+        public int idAlumno { get; set; }
+        public char estado { get; set; }
     }
 }

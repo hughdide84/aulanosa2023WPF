@@ -8,49 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfoPFC">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="80*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
-            <TextBlock Text="INFORMACIÓN" Foreground="Blue" FontWeight="Bold" FontSize="40"/>
-        </StackPanel>
-
-        <DockPanel Background="LightCyan" Margin="50" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="40*"/>
-                </Grid.ColumnDefinitions>
-
-                <DockPanel Grid.Column="0" VerticalAlignment="Center">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="75*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Text="RÚBRICA" Margin="10" FontSize="20" FontWeight="Bold"/>
-                        <StackPanel Grid.Row="1">
-                            <!-- Salto de Línea: &#x0a; -->
-                            <TextBlock Margin="10" Name="tbkTextoRubrica" TextWrapping="Wrap" FontSize="14" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a enim nec nisl ullamcorper eleifend. Praesent risus leo, fringilla et nulla at, egestas euismod orci. Suspendisse porttitor diam eu condimentum aliquam. Fusce interdum cursus nisl ut rutrum. Donec et sapien sit amet nisl pretium efficitur. Morbi faucibus felis mauris, sit amet finibus ipsum finibus at."/>
-                        </StackPanel>
-                    </Grid>
-                </DockPanel>
-
-                <StackPanel Grid.Column="1" Margin="15" VerticalAlignment="Center">
-                    <Label FontSize="14" Content="Puntos Proyecto:" Foreground="Red" FontWeight="Bold"/>
-                    <Label FontSize="14" Content="    · Definición de objetivos"/>
-                    <Label FontSize="14" Content="    · Definición de requisitos"/>
-                    <Label FontSize="14" Content="    · Creación de diseños"/>
-                    <Label FontSize="14" Content="    · Creación de estilos"/>
-                    <Label FontSize="14" Content="    · Aprobación de diseño"/>
-                    <Label FontSize="14" Content="    · Aprobación de contenidos"/>
-                    <Label FontSize="14" Content="    · Aprobación de producto"/>
-                </StackPanel>
-            </Grid>
-        </DockPanel>
+    <Grid>
+        
     </Grid>
 </Page>
