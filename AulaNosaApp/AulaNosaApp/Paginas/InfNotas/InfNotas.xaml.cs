@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp.Paginas.InfoPFC
+namespace AulaNosaApp.Paginas.InfNotas
 {
     /// <summary>
-    /// Lógica de interacción para InfoPFC.xaml
+    /// Lógica de interacción para InfNotas.xaml
     /// </summary>
-    public partial class InfoPFC : Page
+    public partial class InfNotas : Page
     {
-        public InfoPFC()
+        public InfNotas()
         {
             InitializeComponent();
         }

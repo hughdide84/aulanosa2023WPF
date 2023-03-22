@@ -5,200 +5,218 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp"
         mc:Ignorable="d"
-        Title="CPR AULA NOSA - Gestion" Height="750" Width="950" MinHeight="750" MinWidth="800" WindowState="Maximized">
+        Title="CPR AULA NOSA - Gestion" Height="700" Width="950" MinHeight="650" MinWidth="800" WindowState="Maximized">
     <Window.Resources>
-        <Style x:Key="StackPanelMenuIzqda" TargetType="StackPanel">
-            <Setter Property="DockPanel.Dock" Value="Left"/>
-            <Setter Property="Background" Value="#1A17A1"/>
-            <Setter Property="Width" Value="200"/>
-        </Style>
-        <Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-        </Style>
-        <Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0,0,0,5"/>
-        </Style>
-        <Style x:Key="BotonesCentrados" TargetType="StackPanel">
-            <Setter Property="Margin" Value="25,0,0,0"/>
-        </Style>
-        <Style x:Key="StackPanelAcceso" TargetType="StackPanel">
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="350"/>
+		<Style x:Key="StackPanelMenuIzqda" TargetType="StackPanel">
+			<Setter Property="DockPanel.Dock" Value="Left"/>
+			<Setter Property="Background" Value="#1A17A1"/>
+			<Setter Property="Width" Value="200"/>
+		</Style>
+		<Style x:Key="StackPanelBotonesMenuSup" TargetType="StackPanel">
+			<Setter Property="Orientation" Value="Vertical"/>
+		</Style>
+		<Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
+			<Setter Property="Margin" Value="0,0,0,5"/>
+		</Style>
+		<Style x:Key="BotonesCentrados" TargetType="StackPanel">
+			<Setter Property="Margin" Value="25,0,0,0"/>
+		</Style>
+		<Style x:Key="StackPanelAcceso" TargetType="StackPanel">
+			<Setter Property="Width" Value="350"/>
+			<Setter Property="Height" Value="350"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="WrapPanelBarraSuperior" TargetType="WrapPanel">
+			<Setter Property="Grid.Column" Value="1"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+		</Style>
+		<Style x:Key="GridBarraSuperior" TargetType="Grid">
+			<Setter Property="DockPanel.Dock" Value="Top"/>
+			<Setter Property="Height" Value="60"/>
+		</Style>
+		<Style x:Key="BotonesMenuIzqda" TargetType="Button">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Background" Value="#1A17A1"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Margin" Value="0,0,0,5"/>
+		</Style>
+		<Style x:Key="BotonesBarraSuperior" TargetType="Button">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="Margin" Value="0,0,15,0"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Width" Value="60"/>
+		</Style>
+		<Style x:Key="BotonesLogin" TargetType="Button">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="Width" Value="80"/>
+			<Setter Property="Height" Value="30"/>
+		</Style>
+		<Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Gray"/>
+		</Style>
+		<Style x:Key="TextBlockMenuIzqda" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Gray"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Margin" Value="5,0,0,0"/>
+		</Style>
+		<Style x:Key="TextBlockLogin" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="Margin" Value="0,0,0,4"/>
+		</Style>
+		<Style x:Key="TextBoxLogin" TargetType="TextBox">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="Width" Value="250"/>
+			<Setter Property="Height" Value="35"/>
+			<Setter Property="Margin" Value="0,0,0,15"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="PasswordBoxLogin" TargetType="PasswordBox">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="Width" Value="250"/>
+			<Setter Property="Height" Value="35"/>
+			<Setter Property="Margin" Value="0,0,0,35"/>
+		</Style>
+		<Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
+			<Setter Property="SelectedIndex" Value="0"/>
+		</Style>
+		<Style x:Key="ImagenesIconosMenuSup" TargetType="Image">
+			<Setter Property="Width" Value="25"/>
+		</Style>
+		<Style x:Key="ImagenLogoAcceso" TargetType="Image">
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
+			<Setter Property="Margin" Value="0,0,0,15"/>
+		</Style>
+		<Style x:Key="LogoBarraSuperior" TargetType="Image">
+			<Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
+			<Setter Property="Width" Value="60"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="15,0,0,0"/>
+		</Style>
+        <Style x:Key="ErroresLogin" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DarkRed"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style x:Key="WrapPanelBarraSuperior" TargetType="WrapPanel">
-            <Setter Property="Grid.Column" Value="1"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-        <Style x:Key="GridBarraSuperior" TargetType="Grid">
-            <Setter Property="DockPanel.Dock" Value="Top"/>
-            <Setter Property="Height" Value="60"/>
-        </Style>
-        <Style x:Key="BotonesMenuIzqda" TargetType="Button">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#1A17A1"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="0,0,0,5"/>
-        </Style>
-        <Style x:Key="BotonesBarraSuperior" TargetType="Button">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Margin" Value="0,0,15,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Width" Value="60"/>
-        </Style>
-        <Style x:Key="BotonesLogin" TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="Height" Value="30"/>
-        </Style>
-        <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Foreground" Value="Gray"/>
-        </Style>
-        <Style x:Key="TextBlockMenuIzqda" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="5,0,0,0"/>
-        </Style>
-        <Style x:Key="TextBlockLogin" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="0,0,0,4"/>
-        </Style>
-        <Style x:Key="TextBoxLogin" TargetType="TextBox">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Width" Value="250"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Margin" Value="0,0,0,15"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="PasswordBoxLogin" TargetType="PasswordBox">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Width" Value="250"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Margin" Value="0,0,0,35"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ComboBoxPantallaPrincipal" TargetType="ComboBox">
-            <Setter Property="SelectedIndex" Value="0"/>
-        </Style>
-        <Style x:Key="ImagenesIconosMenuSup" TargetType="Image">
-            <Setter Property="Width" Value="25"/>
-        </Style>
-        <Style x:Key="ImagenLogoAcceso" TargetType="Image">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
-            <Setter Property="Margin" Value="0,0,0,15"/>
-
-        </Style>
-        <Style x:Key="LogoBarraSuperior" TargetType="Image">
-            <Setter Property="Source" Value="/Imagenes/aulanosa_logo.png"/>
-            <Setter Property="Width" Value="60"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="15,0,0,0"/>
-        </Style>
+        
     </Window.Resources>
-    <DockPanel>
-        <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
-            <StackPanel>
-                <TextBlock x:Name="tbkCursosActivos" Text="Cursos" Style="{StaticResource TextBlockMenuIzqda}"/>
-                <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
-
-
-            </StackPanel>
-            <StackPanel Margin="0,5,0,0">
-                <TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
-                <ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbEstudios_SelectionChanged"/>
-            </StackPanel>
-            <StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
-                <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
-                    <Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
-                    <Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
-                    <Button x:Name="btnMatriculas" Content="Matrículas" Style="{StaticResource BotonesMenuIzqda}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel x:Name="spnFCT" Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblFCT" Content="GESTIÓN FCT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
-                <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnEmpresas" Content="Empresas" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnAlumnado" Content="Alumnado"  Style="{StaticResource BotonesMenuIzqda}" Click="btnAlumnado_Click"/>
-                    <Button x:Name="btnCalendarioFct" Content="Calendario"  Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioFct_Click"/>
-                    <Button x:Name="btnAlumnoEmpresa" Content="Alumno - Empresa"  Style="{StaticResource BotonesMenuIzqda}" Click="btnAlumnoEmpresa_Click"/>
-                    <Button x:Name="btnEmpresaAlumnos" Content="Empresa - Alumnos"  Style="{StaticResource BotonesMenuIzqda}" Click="btnEmpresaAlumnos_Click"/>
-                    <Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel x:Name="spnPFC" Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
-                <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}" Click="btnInfo_Click"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel x:Name="spnPEXT" Style="{StaticResource MargenAbajoStackPanel}">
-                <Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
-                <StackPanel Style="{StaticResource BotonesCentrados}">
-                    <Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}" Click="btnAlumnadoExterno_Click"/>
-                    <Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioPext_Click"/>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
-        <Grid x:Name="grdMenuSuperior" Style="{StaticResource GridBarraSuperior}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Image Style="{StaticResource LogoBarraSuperior}"/>
-            <WrapPanel Style="{StaticResource WrapPanelBarraSuperior}">
-                <Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
-                    <StackPanel Orientation="Vertical">
-                        <Image Source="/Imagenes/home_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
-                        <TextBlock Text="Inicio"/>
-                    </StackPanel>
-                </Button>
-                <ComboBox x:Name="cbbUsuario" Style="{StaticResource ComboBoxPantallaPrincipal}">
-                    <ComboBoxItem Visibility="Collapsed">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Imagenes/user_icon.png" Width="45"/>
-                            <StackPanel VerticalAlignment="Center">
-                                <TextBlock Name="txbNombreUsuarioLogueado" Text="Nombre" FontSize="15" FontWeight="DemiBold"/>
-                                <TextBlock Name="txbRolUsuarioLogueado" Text="Categoría"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem Selected="btnCerrarSesion_Selected">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Imagenes/user_icon.png" Width="45"/>
-                            <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="Cerrar Sesion" FontSize="15" FontWeight="DemiBold"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </ComboBoxItem>
-                </ComboBox>
-            </WrapPanel>
-        </Grid>
-        <Grid>
-            <StackPanel Name="spnAcceso" Style="{StaticResource StackPanelAcceso}">
-                <Image Style="{StaticResource ImagenLogoAcceso}"/>
-                <TextBlock Text="Usuario" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
-                <TextBox Text="Prueba" Name="tbxUsuario" Style="{StaticResource TextBoxLogin}"/>
-                <TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
-                <PasswordBox Password="prueba" Name="pbxContrasena" Style="{StaticResource PasswordBoxLogin}"/>
-                <Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesFormularios}" Click="iniciarSesion_Click"/>
-                <TextBlock Name="tbkError" Text="" HorizontalAlignment="Center" Foreground="DarkRed" FontWeight="Bold"/>
-            </StackPanel>
-            <Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>
-        </Grid>
-    </DockPanel>
+	<DockPanel>
+		<StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
+			<StackPanel>
+				<TextBlock x:Name="tbkCursosActivos" Text="Cursos Activos" Style="{StaticResource TextBlockMenuIzqda}"/>
+				<ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}">
+					<ComboBoxItem>Curso 1</ComboBoxItem>
+					<ComboBoxItem>Curso 2</ComboBoxItem>
+					<ComboBoxItem>Curso 3</ComboBoxItem>
+				</ComboBox>
+			</StackPanel>
+			<StackPanel Margin="0,5,0,0">
+				<TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
+				<ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}">
+					<ComboBoxItem>Grado Básico</ComboBoxItem>
+					<ComboBoxItem>Ciclo Medio</ComboBoxItem>
+					<ComboBoxItem>Ciclo Superior</ComboBoxItem>
+					<ComboBoxItem>AFD</ComboBoxItem>
+					<ComboBoxItem>Máster Profesorado</ComboBoxItem>
+					<ComboBoxItem>Otros externos</ComboBoxItem>
+				</ComboBox>
+			</StackPanel>
+			<StackPanel x:Name="spnAdmin" Style="{StaticResource MargenAbajoStackPanel}">
+				<Label x:Name="lblAdministracion" Content="ADMINISTRACIÓN" Style="{StaticResource LabelTitulosMenuIzqda}"/>
+				<StackPanel Style="{StaticResource BotonesCentrados}">
+					<Button x:Name="btnUsuarios" Content="Usuarios" Style="{StaticResource BotonesMenuIzqda}" Click="btnUsuarios_Click"/>
+					<Button x:Name="btnCursos" Content="Cursos" Style="{StaticResource BotonesMenuIzqda}" Click="btnCursos_Click"/>
+					<Button x:Name="btnEstudios" Content="Estudios" Style="{StaticResource BotonesMenuIzqda}" Click="btnEstudios_Click"/>
+				</StackPanel>
+			</StackPanel>
+			<StackPanel x:Name="spnFCT" Style="{StaticResource MargenAbajoStackPanel}">
+				<Label x:Name="lblFCT" Content="GESTIÓN FCT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
+				<StackPanel Style="{StaticResource BotonesCentrados}">
+					<Button x:Name="btnEmpresas" Content="Empresas" Style="{StaticResource BotonesMenuIzqda}" Click="btnEmpresas_Click"/>
+					<Button x:Name="btnAlumnado" Content="Alumnado"  Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnCalendarioFct" Content="Calendario"  Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioFct_Click"/>
+					<Button x:Name="btnAlumnoEmpresa" Content="Alumno - Empresa"  Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnEmpresa" Content="Empresa - Alumnos"  Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}"/>
+				</StackPanel>
+			</StackPanel>
+			<StackPanel x:Name="spnPFC" Style="{StaticResource MargenAbajoStackPanel}">
+				<Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
+				<StackPanel Style="{StaticResource BotonesCentrados}">
+					<Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}"/>
+				</StackPanel>
+			</StackPanel>
+			<StackPanel x:Name="spnPEXT" Style="{StaticResource MargenAbajoStackPanel}">
+				<Label x:Name="lblPEXT" Content="GESTIÓN PEXT" Style="{StaticResource LabelTitulosMenuIzqda}"/>
+				<StackPanel Style="{StaticResource BotonesCentrados}">
+					<Button x:Name="btnAlumnadoExterno" Content="Alumnado Externo" Style="{StaticResource BotonesMenuIzqda}"/>
+					<Button x:Name="btnCalendarioPext" Content="Calendario" Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioPext_Click"/>
+				</StackPanel>
+			</StackPanel>
+		</StackPanel>
+		<Grid x:Name="grdMenuSuperior" Style="{StaticResource GridBarraSuperior}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Image Style="{StaticResource LogoBarraSuperior}"/>
+			<WrapPanel Style="{StaticResource WrapPanelBarraSuperior}">
+				<Button x:Name="btnInicio" Style="{StaticResource BotonesBarraSuperior}">
+					<StackPanel Orientation="Vertical">
+						<Image Source="/Imagenes/home_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
+						<TextBlock Text="Inicio"/>
+					</StackPanel>
+				</Button>
+				<Button x:Name="btnMensajeria" Style="{StaticResource BotonesBarraSuperior}">
+					<StackPanel Orientation="Vertical">
+						<Image Source="/Imagenes/message_icon.png" Style="{StaticResource ImagenesIconosMenuSup}"/>
+						<TextBlock Text="Mensajería"/>
+					</StackPanel>
+				</Button>
+				<ComboBox x:Name="cbbUsuario" Style="{StaticResource ComboBoxPantallaPrincipal}">
+					<ComboBoxItem Visibility="Collapsed">
+						<StackPanel Orientation="Horizontal">
+							<Image Source="/Imagenes/user_icon.png" Width="45"/>
+							<StackPanel VerticalAlignment="Center">
+								<TextBlock Name="txbNombreUsuarioLogueado" Text="Nombre" FontSize="15" FontWeight="DemiBold"/>
+								<TextBlock Name="txbRolUsuarioLogueado" Text="Categoría"/>
+							</StackPanel>
+						</StackPanel>
+					</ComboBoxItem>
+					<ComboBoxItem Selected="btnCerrarSesion_Selected">
+						<StackPanel Orientation="Horizontal">
+							<Image Source="/Imagenes/user_icon.png" Width="45"/>
+							<StackPanel VerticalAlignment="Center">
+								<TextBlock Text="Cerrar Sesion" FontSize="15" FontWeight="DemiBold"/>
+							</StackPanel>
+						</StackPanel>
+					</ComboBoxItem>
+				</ComboBox>
+			</WrapPanel>
+		</Grid>
+		<Grid>
+			<StackPanel Name="spnAcceso" Style="{StaticResource StackPanelAcceso}">
+				<Image Style="{StaticResource ImagenLogoAcceso}"/>
+				<TextBlock Text="Usuario" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
+				<TextBox Text="Prueba" Name="tbUsuario" Style="{StaticResource TextBoxLogin}"/>
+				<TextBlock Text="Contraseña" HorizontalAlignment="Center" Style="{StaticResource TextBlockLogin}"/>
+				<PasswordBox Password="prueba" Name="tbContrasena" Style="{StaticResource PasswordBoxLogin}"/>
+				<Button Name="btnAcceder" Content="Acceder" HorizontalAlignment="Center" Style="{StaticResource BotonesLogin}" Click="btnAcceder_Click"/>
+				<TextBlock Name="tbkError" Text="" Style="{StaticResource ErroresLogin}"/>
+			</StackPanel>
+			<Frame x:Name="frmPrincipal" NavigationUIVisibility="Hidden"/>
+		</Grid>
+	</DockPanel>
 </Window>

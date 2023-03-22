@@ -27,7 +27,7 @@
                     <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
                     <TextBox x:Name="tbxNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
-                <Label Name="lblErrorNombreEstudio" Content="" Height="15"/>
+                <Label Name="lblErrorNombreEstudio" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="FCT" Style="{StaticResource TextBlockFormularios}"/>
