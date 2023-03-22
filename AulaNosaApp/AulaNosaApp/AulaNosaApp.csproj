@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="RestSharp, Version=109.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.109.0.1\lib\net471\RestSharp.dll</HintPath>
     </Reference>
@@ -161,6 +162,18 @@
     <Compile Include="Ventanas\AdministracionEstudios\EstudioEditar.xaml.cs">
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
     </Compile>
+    <Page Include="Estilos\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Estilos\EstilosGenerales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Estilos\Iconos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
