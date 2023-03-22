@@ -12,7 +12,7 @@ namespace AulaNosaApp.DTO
         public String factura { get; set; }
         public String nombre { get; set; }
         public String nif { get; set; }
-        public int cuota { get; set; }
+        public float cuota { get; set; }
         public int matricula { get; set; }
         public int idCurso { get; set; }
         public String observaciones { get; set; }
