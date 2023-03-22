@@ -84,6 +84,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             tbxHojaActividades.Text = Statics.empresaSeleccionada.hojaActividades.ToString();
         }
 
+        // Función que verifica que los campos no estén vacíos
         bool validarCampos()
         {
             if (tbxNombre.Text.Length > 0 && tbxDireccionSocial.Text.Length > 0 && tbxDireccionTrabajo.Text.Length > 0 && tbxCIF.Text.Length > 0 && tbxRepresentante.Text.Length > 0
@@ -99,11 +100,13 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
 
         }
 
+        // Botón que al accionarse cierra la plantilla de creación de empresas
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        // Botón que al accionarse, en función de la validez de los campos, se modifica o no una empresa en la BD
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (tbxNombre.Text.Length == 0)
