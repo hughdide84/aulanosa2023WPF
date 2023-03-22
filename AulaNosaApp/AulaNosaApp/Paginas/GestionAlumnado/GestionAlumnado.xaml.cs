@@ -1,9 +1,8 @@
 ﻿using AulaNosaApp.DTO;
-using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
-using AulaNosaApp.Servicios.AdministracionCursos;
 using AulaNosaApp.Util;
 using AulaNosaApp.Ventanas.GestionAlumnado;
+using AulaNosaApp.Ventanas.GestionAlumnadoExterno;
 using RestSharp;
 using System;
 using System.Collections;
@@ -36,11 +35,10 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
         {
             InitializeComponent();
             cbbConsultar.SelectedIndex = 0;
-            cbbCursosActivosFiltro.SelectedIndex = 0;
             refrescarAlumnos();
         }
 
-        // Refrescar lista de cursos
+        // Refrescar lista de alumnos
         void refrescarAlumnos()
         {
             alumnosLista = AlumnoApi.ListarAlumnos();
@@ -49,39 +47,43 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
             dgvListado.ItemsSource = alumnosLista;
         }
 
-        // Boton de refrescar cursos
+        // Boton de refrescar alumnos
         private void btnRefrescar_Click(object sender, RoutedEventArgs e)
         {
             refrescarAlumnos();
         }
 
-        // Boton de crear curso (abre ventana de creacion de curso)
+        // Boton de crear alumno (abre ventana de creacion de alumno)
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
             AgregarAlumno nuevoAlumno = new AgregarAlumno();
             nuevoAlumno.Show();
         }
 
-        // Boton de modificar curso (abre ventana de modificacion de curso)
+        // Boton de modificar alumno (abre ventana de modificacion de alumno)
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            var alumnoSeleccionado = dgvListado.SelectedItem as AlumnoDTO;
-            Statics.alumnoSeleccionado = alumnoSeleccionado;
-            EditarAlumno editarAlumno = new EditarAlumno();
-            editarAlumno.Show();
-            btnModificar.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
-            dgvListado.SelectedItem = null;
+            AlumnoDTO productoSel = dgvListado.SelectedItem as AlumnoDTO;
+            if (productoSel != null)
+            {
+                EditarAlumno editaralumnoext = new EditarAlumno(productoSel);
+                editaralumnoext.ShowDialog();
+                refrescarAlumnos();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        // Boton de eliminar curso
+        // Boton de eliminar Alumno
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             var alumnoSeleccionado = dgvListado.SelectedItem as AlumnoDTO;
             var resultado = MessageBox.Show("¿Desea eliminar este alumno?", "Eliminar Alumno", MessageBoxButton.YesNo);
             if (resultado == MessageBoxResult.Yes)
             {
-                CursosApi.eliminarCurso(alumnoSeleccionado.id);
+                AlumnoApi.EliminarAlumno(alumnoSeleccionado.id);
                 refrescarAlumnos();
                 btnModificar.IsEnabled = false;
                 btnEliminar.IsEnabled = false;
@@ -103,12 +105,10 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
                 if (cbbConsultar.SelectedIndex == 0)
                 {
                     tbxConsultarId.Visibility = Visibility.Visible;
-                    cbbCursosActivosFiltro.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     tbxConsultarId.Visibility = Visibility.Collapsed;
-                    cbbCursosActivosFiltro.Visibility = Visibility.Visible;
                 }
                 filtrosActivados = true;
             }
@@ -118,13 +118,11 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
                 cbbConsultar.Visibility = Visibility.Collapsed;
                 btnBuscar.Visibility = Visibility.Collapsed;
                 tbxConsultarId.Visibility = Visibility.Collapsed;
-                cbbCursosActivosFiltro.Visibility = Visibility.Collapsed;
                 cbbConsultar.SelectedIndex = 0;
-                cbbCursosActivosFiltro.SelectedIndex = 0;
             }
         }
 
-        // Habilitar botones de editar y eliminar usuario al clickear uno
+        // Habilitar botones de editar y eliminar alumno al clickear uno
         private void dgvListado_Selected(object sender, RoutedEventArgs e)
         {
             btnModificar.IsEnabled = true;
@@ -137,17 +135,15 @@ namespace AulaNosaApp.Paginas.GestionAlumnos
             if (filtrosActivados)
             {
                 tbxConsultarId.Visibility = Visibility.Visible;
-                cbbCursosActivosFiltro.Visibility = Visibility.Collapsed;
             }
         }
 
-        // Filtros de cursos activos/desactivos
-        private void cbbiCursosActivosFiltro_Selected(object sender, RoutedEventArgs e)
+        // Filtros de alumnos activos/desactivos
+        private void cbbiAlumnosActivosFiltro_Selected(object sender, RoutedEventArgs e)
         {
             if (filtrosActivados)
             {
                 tbxConsultarId.Visibility = Visibility.Collapsed;
-                cbbCursosActivosFiltro.Visibility = Visibility.Visible;
             }
         }
 

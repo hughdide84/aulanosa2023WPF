@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="EditarAlumno" Height="450" Width="800">
     <Grid>
-        
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" Width="665">
+                <Label Content="Modificar Alumno" FontSize="30" HorizontalAlignment="Center"/>
+                <TextBlock Text="Nombre y apellidos:"/>
+                <TextBox Name="txtNombre"/>
+
+                <TextBlock Text="Curso:"/>
+                <TextBox Name="txtCurso"/>
+
+                <TextBlock Text="Estudios:"/>
+                <TextBox Name="txtEstudios"/>
+
+                <TextBlock Text="Empresa:"/>
+                <TextBox Name="txtEmpresa"/>
+
+                <TextBlock Text="Inicio:"/>
+                <DatePicker Name="DPInicio"/>
+
+                <TextBlock Text="Final:"/>
+                <DatePicker Name="DPFinal"/>
+
+                <WrapPanel Height="25"/>
+                <Button Content="Guardar" Click="Guardar_Click" Height="25"/>
+                <TextBlock Name="txtid" Visibility="Hidden"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>
