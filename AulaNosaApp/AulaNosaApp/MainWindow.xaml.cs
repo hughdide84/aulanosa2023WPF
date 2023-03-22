@@ -27,8 +27,8 @@ namespace AulaNosaApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<CursoDTO> listaCursos = CursosApi.listarCursos();
-        List<EstudioDTO> listaEstudios = EstudioApi.ListarEstudios();
+        List<CursoDTO> listaCursos;
+        List<EstudioDTO> listaEstudios;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,23 +39,14 @@ namespace AulaNosaApp
             spnPFC.Visibility = Visibility.Collapsed;
             spnPEXT.Visibility = Visibility.Collapsed;
             spnAdmin.Visibility = Visibility.Collapsed;
-
+            // Usuario y contraseña
             tbxUsuario.Text = string.Empty;
             pbxContrasena.Password = string.Empty;
-
-            List<String> listaNombresCursos = new List<String>();
-            foreach (var curso in listaCursos)
-            {
-                listaNombresCursos.Add(curso.nombre);
-            }
-            cbbCursos.ItemsSource = listaNombresCursos;
-
-            List<String> listaNombresEstudios = new List<String>();
-            foreach (var estudio in listaEstudios)
-            {
-                listaNombresEstudios.Add(estudio.nombre);
-            }
-            cbbEstudios.ItemsSource = listaNombresEstudios;
+            // Rellenar ComboBox de cursos y estudios
+            recargarPrinicpal();
+            // Seleccion de curso y estudio
+            Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+            seleccionEstudio();
         }
 
         // Accion del boton de iniciar sesion
@@ -65,16 +56,16 @@ namespace AulaNosaApp
             var request = new RestRequest("/api/usuario/nombreEs/" + tbxUsuario.Text, Method.Get);
             RestResponse respuesta = client.Execute(request);
 
-            UsuarioDTO usuario = client.Execute<UsuarioDTO>(request).Data;
+            Statics.usuarioLogin = client.Execute<UsuarioDTO>(request).Data;
 
-            if (usuario == null || usuario.password == null)
+            if (Statics.usuarioLogin == null || Statics.usuarioLogin.password == null)
             {
                 // No existe el usuario
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (usuario.nombre == tbxUsuario.Text && usuario.password == pbxContrasena.Password)
+            else if (Statics.usuarioLogin.nombre == tbxUsuario.Text && Statics.usuarioLogin.password == pbxContrasena.Password)
             {
-                if (usuario.rol == "ALUMNO")
+                if (Statics.usuarioLogin.rol == "ALUMNO")
                 {
                     // No permite entrar si es rol de alumno
                     MessageBox.Show("Tipo de usuario no apto para acceder.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -91,11 +82,10 @@ namespace AulaNosaApp
                     // Pestaña de informacion usuario/cerrar sesion
                     cbbUsuario.SelectedIndex = 0;
                     // Mostrar nombre y rol del usuario
-                    txbNombreUsuarioLogueado.Text = usuario.nombre;
-                    txbRolUsuarioLogueado.Text = usuario.rol;
-                    // Ocultar paneles en funcion del rol que tenga
-                    
-                    if (usuario.rol == "ADMIN")
+                    txbNombreUsuarioLogueado.Text = Statics.usuarioLogin.nombre;
+                    txbRolUsuarioLogueado.Text = Statics.usuarioLogin.rol;
+                    // Ocultar paneles en funcion del rol que tenga                   
+                    if (Statics.usuarioLogin.rol == "ADMIN")
                     {
                         // Si es Admin
                         spnAdmin.Visibility = Visibility.Visible;
@@ -103,14 +93,19 @@ namespace AulaNosaApp
                     else
                     {
                         // Si es editor/profesor
-                        
+                        spnAdmin.Visibility = Visibility.Collapsed;
                     }
+                    // Rellenar ComboBox de cursos y estudios
+                    recargarPrinicpal();
+                    // Seleccion de curso y estudio
+                    Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+                    seleccionEstudio();
                 }
             }
             else
             {
                 // No permite entrar si los datos estan mal
-                MessageBox.Show("Tipo de usuario no apto para entrar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -155,93 +150,139 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
+        // Informacion PFC
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/InfoPFC/InfoPFC.xaml", UriKind.Relative));
         }
 
+        // Gestion Alumno Externo
         private void btnAlumnadoExterno_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnadoExterno/GestionAlumnadoExterno.xaml", UriKind.Relative));
         }
 
+        // Alumno - Empresa
         private void btnAlumnoEmpresa_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/AlumnoEmpresa/AlumEmpResumen.xaml", UriKind.Relative));
         }
 
+        // Empresa - Alumnos
         private void btnEmpresaAlumnos_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/EmpresaAlumnos/EmpAlumResumen.xaml", UriKind.Relative));
         }
 
+        // Gestion Alumnado
         private void btnAlumnado_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/GestionAlumnado.xaml", UriKind.Relative));
         }
 
+        // Gestion Proyectos
         private void btnProyectos_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionProyectos/GestionProyectos.xaml", UriKind.Relative));
         }
 
+        // Gestion Matriculas
         private void btnMatriculas_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/AdministracionMatriculas/AdministracionMatriculas.xaml", UriKind.Relative));
         }
 
+        // Gestion Empresas
         private void btnEmpresas_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionEmpresas/GestionEmpresas.xaml", UriKind.Relative));
         }
 
+        // Boton de recargar contenido de ambos ComboBox
+        private void btnRecargarContenido_Click(object sender, RoutedEventArgs e)
+        {
+            recargarPrinicpal();
+        }
+
+        // Accion de seleccion de un item del ComboBox de cursos
+        private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+        }
+
+        // Accion de seleccion de un item del ComboBox de estudios
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Statics.idEstudioElegido = listaEstudios[cbbEstudios.SelectedIndex].id;
+
             spnFCT.Visibility = Visibility.Collapsed;
             spnPFC.Visibility = Visibility.Collapsed;
             spnPEXT.Visibility = Visibility.Collapsed;
 
-            String estudioSeleccionado = (sender as ComboBox).SelectedItem as string;
-            bool FCT = false;
-            bool PEXT = false;
-            foreach (EstudioDTO estudio in listaEstudios)
+            seleccionEstudio();
+        }
+
+        // Recargar ComboBoxes de cursos y estudios
+        void recargarPrinicpal()
+        {
+            listaCursos = CursosApi.listarCursos();
+            listaEstudios = EstudioApi.ListarEstudios();
+
+            cbbCursos.SelectedItem = null;
+            cbbEstudios.SelectedItem = null;
+
+            cbbCursos.ItemsSource = null;
+            cbbEstudios.ItemsSource = null;
+
+            cbbCursos.Items.Clear();
+            cbbEstudios.Items.Clear();
+
+            List<String> listaNombresCursos = new List<String>();
+            foreach (var curso in listaCursos)
             {
-                if (estudio.nombre == estudioSeleccionado)
-                {
-                    Statics.idEstudioElegido = estudio.id;
-                    FCT = estudio.fct;
-                    PEXT = estudio.pext;
-                }
+                listaNombresCursos.Add(curso.nombre);
+            }
+            cbbCursos.ItemsSource = listaNombresCursos;
+
+            List<String> listaNombresEstudios = new List<String>();
+            foreach (var estudio in listaEstudios)
+            {
+                listaNombresEstudios.Add(estudio.nombre);
             }
 
-            if (FCT)
+            cbbEstudios.ItemsSource = listaNombresEstudios;
+
+            cbbCursos.SelectedItem = 0;
+            cbbEstudios.SelectedItem = 0;
+            cbbCursos.SelectedIndex = 0;
+            cbbEstudios.SelectedIndex = 0;
+
+            Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+            seleccionEstudio();
+        }
+
+        // Funcion que se llama al cambiar o seleccionar un estudio
+        void seleccionEstudio()
+        {
+            if (listaEstudios[cbbEstudios.SelectedIndex].fct)
             {
                 spnFCT.Visibility = Visibility.Visible;
                 spnPFC.Visibility = Visibility.Visible;
             }
+            else
+            {
+                spnFCT.Visibility = Visibility.Hidden;
+                spnPFC.Visibility = Visibility.Hidden;
+            }
 
-            if (PEXT)
+            if (listaEstudios[cbbEstudios.SelectedIndex].pext)
             {
                 spnPEXT.Visibility = Visibility.Visible;
             }
-        }
-
-        private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-  
-            String cursoSeleccionado = (sender as ComboBox).SelectedItem as string;
-
-            foreach (CursoDTO curso in listaCursos)
+            else
             {
-                if (curso.nombre == cursoSeleccionado)
-                {
-                    Statics.idCursoElegido = curso.id;
-
-                }
+                spnPEXT.Visibility = Visibility.Collapsed;
             }
-
         }
-
-        
     }
 }

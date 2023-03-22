@@ -13,10 +13,10 @@ namespace AulaNosaApp.DTO
         public String nombre { get; set; }
         public String nif { get; set; }
         public float cuota { get; set; }
-        public int matricula { get; set; }
+        public float matricula { get; set; }
         public int idCurso { get; set; }
         public String observaciones { get; set; }
-        public DateTime? fechaInicio { get; set; }
+        public DateTime? fechaBaja { get; set; }
         public int idUsuario { get; set; }
         public DateTime? fecha { get; set; }
     }

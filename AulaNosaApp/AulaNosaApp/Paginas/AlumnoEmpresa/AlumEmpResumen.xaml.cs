@@ -1,5 +1,6 @@
 ﻿using AulaNosaApp.DTO;
 using AulaNosaApp.Servicios;
+using AulaNosaApp.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace AulaNosaApp.Paginas.AlumnoEmpresa
         // Refrescar lista alumno-empresa
         void refrescarAlumnoEmpresa()
         {
-            listaAlumnoEmpresa = AlumnoEmpresaApi.listarAlumnoEmpresa(1, 3);
+            listaAlumnoEmpresa = AlumnoEmpresaApi.listarAlumnoEmpresa(Statics.idCursoElegido, Statics.idEstudioElegido);
             dgvAlumnoEmpresa.ItemsSource = null;
             dgvAlumnoEmpresa.Items.Clear();
             dgvAlumnoEmpresa.ItemsSource = listaAlumnoEmpresa;

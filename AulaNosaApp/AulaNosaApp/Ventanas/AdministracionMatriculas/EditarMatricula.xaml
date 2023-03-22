@@ -22,18 +22,22 @@
         </Grid>
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" HorizontalAlignment="Center" IsEnabled="False">
+                <TextBlock Text="ID" Style="{StaticResource TextBlockFormularios}"/>
+                <TextBox Name="tbxIdEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                         <TextBlock Text="Factura" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxFacturaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxFacturaEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorFactura" Content=""/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                         <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxNombreCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxNombreEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorNombre" Content=""/>
                 </StackPanel>
@@ -42,14 +46,14 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                         <TextBlock Text="NIF" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxNifCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxNifEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorNif" Content=""/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                         <TextBlock Text="Cuota" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxCuotaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxCuotaEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorCuota" Content=""/>
                 </StackPanel>
@@ -58,14 +62,14 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                         <TextBlock Text="Matricula" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxMatriculaCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxMatriculaEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorMatricula" Content=""/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="15,0,0,0">
                         <TextBlock Text="Observacion" Style="{StaticResource TextBlockFormularios}"/>
-                        <TextBox Name="tbxObservacionCrearMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                        <TextBox Name="tbxObservacionEditarMatricula" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                     </StackPanel>
                     <Label Name="lblErrorObservacion" Content=""/>
                 </StackPanel>

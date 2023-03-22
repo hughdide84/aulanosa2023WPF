@@ -36,9 +36,17 @@ namespace AulaNosaApp.Ventanas
             {
                 cbbEdicionUsuarioRol.SelectedIndex = 0;
             }
-            else
+            else if (Statics.usuarioSeleccionado.rol.Contains("EDITOR"))
             {
                 cbbEdicionUsuarioRol.SelectedIndex = 1;
+            }
+            else if (Statics.usuarioSeleccionado.rol.Contains("PROFE"))
+            {
+                cbbEdicionUsuarioRol.SelectedIndex = 2;
+            }
+            else
+            {
+                cbbEdicionUsuarioRol.SelectedIndex = 3;
             }
         }
 
@@ -103,9 +111,17 @@ namespace AulaNosaApp.Ventanas
                 {
                     usuario.rol = "ADMIN";
                 }
-                else
+                else if (cbbEdicionUsuarioRol.SelectedIndex == 1)
                 {
                     usuario.rol = "EDITOR";
+                }
+                else if (cbbEdicionUsuarioRol.SelectedIndex == 2)
+                {
+                    usuario.rol = "PROFE";
+                }
+                else
+                {
+                    usuario.rol = "ALUMNO";
                 }
                 // Modificar usuario
                 UsuariosApi.modificarUsuario(usuario);

@@ -59,10 +59,10 @@
         <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Foreground" Value="LightGray"/>
         </Style>
         <Style x:Key="TextBlockMenuIzqda" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
@@ -106,6 +106,7 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
+            <Button Name="btnRecargarContenido"  Content="Recargar" Click="btnRecargarContenido_Click"/>
             <StackPanel>
                 <TextBlock x:Name="tbkCursosActivos" Text="Cursos" Style="{StaticResource TextBlockMenuIzqda}"/>
                 <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
