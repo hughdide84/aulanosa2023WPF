@@ -83,16 +83,18 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 return;
             }
             alumno.idEmpresa = Empresa;
-            EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Empresa);
+           /* EmpresaDTO empresa = EmpresaApi.filtrarCursoId(Curso.ToString());
             if (empresa == null)
             {
-                MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            }
+            }*/
             alumno.idEstudios = Estudios;
             EstudioDTO estudio = new EstudioDTO();
             estudio.id = Estudios;
+
             estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
+
             if (estudio == null)
             {
                 MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -130,11 +132,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
 
             this.Close();
 
-        }
-
-        private void btnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

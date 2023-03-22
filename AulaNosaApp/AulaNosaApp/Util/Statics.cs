@@ -26,5 +26,7 @@ namespace AulaNosaApp.Util
         public static ProyectoDTO proyectoSeleccionado = null; // Obtener el proyecto que se ha seleccionado
         // Empresa
         public static EmpresaDTO empresaSeleccionada = null; // Obtener la empresa que se ha seleccionado
+        // Matrícula
+        public static MatriculaTDO matriculaSeleccionada = null; // Obtener la matricula que se ha seleccionado
     }
 }

@@ -1,7 +1,5 @@
 ﻿using AulaNosaApp.DTO;
-using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
-using AulaNosaApp.Servicios.AdministracionCursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,28 +73,8 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 alumnoInsertar.id = id;
                 alumnoInsertar.nombre = txtNombre.Text.ToString();
                 alumnoInsertar.idCurso = Curso;
-                CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-                if (curso == null)
-                {
-                    MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
                 alumnoInsertar.idEmpresa = Empresa;
-                EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Empresa);
-                if (empresa == null)
-                {
-                    MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
                 alumnoInsertar.idEstudios = Estudios;
-                EstudioDTO estudio = new EstudioDTO();
-                estudio.id = Estudios;
-                estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
-                if (estudio == null)
-                {
-                    MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
                 try
                 {
                     alumnoInsertar.inicioPr = DateTime.Parse(DPInicio.Text);
@@ -137,11 +115,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 // Cerrar ventana
                 Close();
             }
-        }
-
-        private void btnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

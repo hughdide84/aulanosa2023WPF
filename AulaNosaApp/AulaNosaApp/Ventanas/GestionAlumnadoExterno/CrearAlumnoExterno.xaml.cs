@@ -1,7 +1,5 @@
 ﻿using AulaNosaApp.DTO;
-using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
-using AulaNosaApp.Servicios.AdministracionCursos;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -29,6 +27,61 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             InitializeComponent();
         }
         AlumnoExternoDTO alumno = new AlumnoExternoDTO();
+
+        private void SubirArchivo(Button boton, string tipoArchivo)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = openFileDialog.FileName;
+                // aquí puedes guardar el archivo en algún lugar o almacenarlo en una base de datos
+
+                switch (tipoArchivo)
+                {
+                    case "cv":
+                        alumno.cv = "";
+                        break;
+                    case "convenio":
+                        alumno.convenio = "";
+                        break;
+                    case "evaluacion":
+                        alumno.evaluacion = "";
+                        break;
+                    case "horario":
+                        alumno.horario = "";
+                        break;
+                    default:
+                        break;
+                }
+
+                boton.Content = "Archivo subido";
+                boton.IsEnabled = false;
+            }
+        }
+
+        private void btnSubirCV_Click(object sender, RoutedEventArgs e)
+        {
+            // SubirArchivo(btnSubirCV, "cv");
+        }
+
+        private void btnSubirConvenio_Click(object sender, RoutedEventArgs e)
+        {
+            // SubirArchivo(btnSubirConvenio, "convenio");
+        }
+
+        private void btnSubirEvaluacion_Click(object sender, RoutedEventArgs e)
+        {
+            // SubirArchivo(btnSubirEvaluacion, "evaluacion");
+        }
+
+        private void btnSubirHorario_Click(object sender, RoutedEventArgs e)
+        {
+            // SubirArchivo(btnSubirHorario, "horario");
+        }
+
+
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
             int Curso;
@@ -46,14 +99,8 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             alumno.especialidad = tbxEspecialidad.Text;
             try
             {
-                alumno.inicio = DateTime.Parse(dtpInicio.Text);
-                alumno.fin = DateTime.Parse(dtpFin.Text);
-
-                if (alumno.fin <= alumno.inicio)
-                {
-                    MessageBox.Show("La fecha de finalización debe ser posterior a la de inicio.");
-                    return;
-                }
+                alumno.inicio = "2022-04-22T22:00:00.000+00:00";
+                alumno.fin = "2022-04-22T22:00:00.000+00:00";
             }
             catch (FormatException ex)
             {
@@ -64,12 +111,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("Error: " + ex.Message);
             }
             alumno.idCurso = Curso;
-            CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-            if (curso == null)
-            {
-                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+
 
 
             if (string.IsNullOrEmpty(alumno.nombre))
@@ -123,39 +165,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 // Mostrar un mensaje de error indicando que la especialidad del alumno es obligatoria
                 MessageBox.Show("La especialidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            }
-
-            if ((bool)chbCv.IsChecked)
-            {
-                alumno.cv = "a";
-            }
-            else
-            {
-                alumno.cv = "b";
-            }
-            if ((bool)chbHorario.IsChecked)
-            {
-                alumno.horario = "a";
-            }
-            else
-            {
-                alumno.horario = "b";
-            }
-            if ((bool)chbConvenio.IsChecked)
-            {
-                alumno.convenio = "a";
-            }
-            else
-            {
-                alumno.convenio = "b";
-            }
-            if ((bool)chbEvaluacion.IsChecked)
-            {
-                alumno.evaluacion = "a";
-            }
-            else
-            {
-                alumno.evaluacion = "b";
             }
 
             string v = AlumnoExternoApi.AgregarAlumnoExterno(alumno);

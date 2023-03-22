@@ -29,7 +29,7 @@
                 </StackPanel>
                 <Label Name="lblErrorNombreEstudio" Content=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,50">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="FCT" Style="{StaticResource TextBlockFormularios}"/>
                 <CheckBox x:Name="chbFct" Style="{StaticResource CheckBoxFormularios}"/>
             </StackPanel>

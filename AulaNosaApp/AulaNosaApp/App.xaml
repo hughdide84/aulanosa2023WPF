@@ -80,16 +80,14 @@
         </Style>
 
         <Style x:Key="StackPanelForm" TargetType="StackPanel">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Width" Value="450"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="StackPanelBotonesForm" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Margin" Value="0,25,0,0"/>
         </Style>
 
 
