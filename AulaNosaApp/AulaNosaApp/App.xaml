@@ -81,7 +81,6 @@
 
         <Style x:Key="StackPanelForm" TargetType="StackPanel">
             <Setter Property="Width" Value="450"/>
-            
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 

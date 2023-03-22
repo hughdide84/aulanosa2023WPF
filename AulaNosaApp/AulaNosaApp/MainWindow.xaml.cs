@@ -103,6 +103,7 @@ namespace AulaNosaApp
                     else
                     {
                         // Si es editor/profesor
+                      
                     }
                 }
             }
@@ -176,7 +177,7 @@ namespace AulaNosaApp
 
         private void btnAlumnado_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/GestionAlumnado.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/GestionAlumnado/EmpAlumResumen.xaml", UriKind.Relative));
         }
 
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)

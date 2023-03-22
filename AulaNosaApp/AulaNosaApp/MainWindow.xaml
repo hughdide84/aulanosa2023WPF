@@ -109,8 +109,6 @@
             <StackPanel>
                 <TextBlock x:Name="tbkCursosActivos" Text="Cursos" Style="{StaticResource TextBlockMenuIzqda}"/>
                 <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
-
-
             </StackPanel>
             <StackPanel Margin="0,5,0,0">
                 <TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
