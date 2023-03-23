@@ -17,6 +17,7 @@ using iText.IO.Font;
 using iText.Kernel.Pdf.Canvas.Draw;
 using iText.Kernel.Colors;
 using iText.IO.Font.Constants;
+using System.Windows.Media;
 
 namespace AulaNosaApp.Servicios
 {
@@ -62,15 +63,20 @@ namespace AulaNosaApp.Servicios
                 iText.Layout.Element.Paragraph subheader = new iText.Layout.Element.Paragraph("").SetFontSize(10);
                 document.Add(subheader);
 
-                iText.Layout.Element.Table table = new iText.Layout.Element.Table(2);
+                iText.Layout.Element.Table table = new iText.Layout.Element.Table(2).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
 
-                table.AddCell(new iText.Layout.Element.Paragraph("EMPRESA").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                table.AddCell(new iText.Layout.Element.Paragraph("ALUMNOS").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                table.AddCell(new iText.Layout.Element.Paragraph("EMPRESA").SetFont(bold).SetFontColor(DeviceRgb.WHITE).SetBackgroundColor(backgroundColor: (DeviceRgb)new BrushConverter().ConvertFrom("#1A17A1")).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                table.AddCell(new iText.Layout.Element.Paragraph("ALUMNOS").SetFont(bold).SetFontColor(DeviceRgb.WHITE).SetBackgroundColor(backgroundColor: (DeviceRgb)new BrushConverter().ConvertFrom("#1A17A1")).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
 
+                int cont = 0;
+
+                
                 foreach (EmpresaAlumnosDTO empresaAlumno in empresaAlumnosLista)
                 {
-                    table.AddCell(new iText.Layout.Element.Paragraph(empresaAlumno.nombreEmpresa.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                    table.AddCell(new iText.Layout.Element.Paragraph(empresaAlumno.nombreAlumno).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                    table.AddCell(new iText.Layout.Element.Paragraph(empresaAlumno.nombreEmpresa.ToString()).SetFont(font).SetBackgroundColor(cont % 2 == 0 ? (DeviceRgb)new BrushConverter().ConvertFrom("#FFFFFF") : (DeviceRgb)new BrushConverter().ConvertFrom("#E6E6E6")).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                    table.AddCell(new iText.Layout.Element.Paragraph(empresaAlumno.nombreAlumno).SetFont(font).SetBackgroundColor(cont % 2 == 0 ? (DeviceRgb)new BrushConverter().ConvertFrom("#FFFFFF") : (DeviceRgb)new BrushConverter().ConvertFrom("#E6E6E6")).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+
+                    cont++;
                 }
 
                 document.Add(table);
