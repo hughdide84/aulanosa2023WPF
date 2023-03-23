@@ -27,6 +27,6 @@ namespace AulaNosaApp.Util
         // Empresa
         public static EmpresaDTO empresaSeleccionada = null; // Obtener la empresa que se ha seleccionado
         // Matrícula 
-        public static MatriculaTDO matriculaSeleccionada = null; // Obtener la matrícula que se ha seleccionado
+        public static MatriculaDTO matriculaSeleccionada = null; // Obtener la matrícula que se ha seleccionado
     }
 }

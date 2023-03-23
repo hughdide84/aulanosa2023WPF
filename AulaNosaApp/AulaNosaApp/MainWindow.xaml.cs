@@ -44,7 +44,7 @@ namespace AulaNosaApp
             pbxContrasena.Password = string.Empty;
             // Rellenar ComboBox de cursos y estudios
             recargarPrinicpal();
-            // Seleccion de curso y estudio
+            //Seleccion de curso y estudio
             Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
             seleccionEstudio();
         }
@@ -207,19 +207,32 @@ namespace AulaNosaApp
         // Accion de seleccion de un item del ComboBox de cursos
         private void cbbCursos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+            if (cbbCursos.SelectedIndex != -1)
+            {
+                Statics.idCursoElegido = listaCursos[cbbCursos.SelectedIndex].id;
+            }
+            else
+            {
+                cbbCursos.SelectedIndex = 0;
+            }
         }
 
         // Accion de seleccion de un item del ComboBox de estudios
         private void cbbEstudios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Statics.idEstudioElegido = listaEstudios[cbbEstudios.SelectedIndex].id;
-
             spnFCT.Visibility = Visibility.Collapsed;
             spnPFC.Visibility = Visibility.Collapsed;
             spnPEXT.Visibility = Visibility.Collapsed;
 
-            seleccionEstudio();
+            if (cbbEstudios.SelectedIndex != -1)
+            {
+                Statics.idEstudioElegido = listaEstudios[cbbEstudios.SelectedIndex].id;
+                seleccionEstudio();
+            }
+            else
+            {
+                cbbEstudios.SelectedIndex = 0;
+            }
         }
 
         // Recargar ComboBoxes de cursos y estudios
