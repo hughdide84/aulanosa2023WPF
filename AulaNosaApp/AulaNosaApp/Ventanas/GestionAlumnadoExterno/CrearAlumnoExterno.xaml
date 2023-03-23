@@ -35,7 +35,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Teléfono" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxTelefono" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                <TextBox Name="tbxTelefono" Style="{StaticResource TextBoxFormularios}" MaxLength="50" KeyDown="tbxTelefono_KeyDown"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Universidad" Style="{StaticResource TextBlockFormularios}"/>

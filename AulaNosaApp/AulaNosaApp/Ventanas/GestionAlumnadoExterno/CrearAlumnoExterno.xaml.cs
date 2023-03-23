@@ -31,7 +31,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             InitializeComponent();
         }
         AlumnoExternoDTO alumno = new AlumnoExternoDTO();
-
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
             alumno.nombre = tbxNombre.Text;
@@ -49,7 +48,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 return;
             }
             alumno.email = tbxCorreo.Text;
-            alumno.telefono = tbxTelefono.Text;
+            alumno.telefono = tbxTelefono.Text.ToString();
             alumno.universidad = tbxUniversidad.Text;
             alumno.titulacion = tbxTitulacion.Text;
             alumno.especialidad = tbxEspecialidad.Text;
@@ -120,7 +119,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("El teléfono del alumno tiene que tener 9 caracteres", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            
             if (string.IsNullOrEmpty(alumno.universidad))
             {
                 // Mostrar un mensaje de error indicando que la universidad del alumno es obligatoria
@@ -141,6 +140,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("La especialidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
 
             if ((bool)chbCv.IsChecked)
             {
@@ -184,6 +184,15 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void tbxTelefono_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)))
+            {
+                // Si la tecla presionada no es un número, se suprime
+                e.Handled = true;
+            }
         }
     }
 }
