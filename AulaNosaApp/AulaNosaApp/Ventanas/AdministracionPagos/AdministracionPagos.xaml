@@ -23,13 +23,13 @@
             <StackPanel DockPanel.Dock="Right" Width="500" Visibility="Visible">
                 <Frame x:Name="frmPagos" NavigationUIVisibility="Hidden"/>
             </StackPanel>
-            <DataGrid Name="dgvPagos" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" >
+            <DataGrid Name="dgvPagos" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvPagos_Selected">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Pago"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Estado"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Observaciones"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Fecha"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Pago" Binding="{Binding pago}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Estado" Binding="{Binding estado}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding fecha}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

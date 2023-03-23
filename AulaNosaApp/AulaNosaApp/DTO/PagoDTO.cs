@@ -11,7 +11,7 @@ namespace AulaNosaApp.DTO
         public int id {  get; set; }
         public int idMatricula { get; set; }
         public String recibo { get; set; }
-        public int pago { get; set; }
+        public float pago { get; set; }
         public Char estado { get; set; }
         public String observaciones { get; set; }
         public int idUsuario { get; set; }

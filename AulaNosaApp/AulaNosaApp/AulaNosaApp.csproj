@@ -284,18 +284,6 @@
     <Compile Include="Ventanas\GestionProyectos\ProyectoModificar.xaml.cs">
       <DependentUpon>ProyectoModificar.xaml</DependentUpon>
     </Compile>
-    <Page Include="Estilos\DataGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="Estilos\EstilosGenerales.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Estilos\Iconos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

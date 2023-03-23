@@ -53,7 +53,7 @@ namespace AulaNosaApp.Servicios
             }
 
             return objeto;
-        }  
+        }
 
         //Metodo Eliminar Alumnos
         public static string EliminarAlumno(int id)

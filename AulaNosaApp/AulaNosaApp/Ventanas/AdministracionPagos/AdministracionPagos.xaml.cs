@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.DTO.AdministracionCursos;
+using AulaNosaApp.Servicios;
+using AulaNosaApp.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +23,13 @@ namespace AulaNosaApp.Ventanas.AdministracionPagos
     /// </summary>
     public partial class AdministracionPagos : Window
     {
+
+        List<PagoDTO> pagosLista;
+
         public AdministracionPagos()
         {
             InitializeComponent();
+            refrescarLista();
         }
 
         // Boton de refrescar lista
@@ -39,13 +47,24 @@ namespace AulaNosaApp.Ventanas.AdministracionPagos
         // Boton de editar pago
         private void btnEditarPago_Click(object sender, RoutedEventArgs e)
         {
+            var pagoSeleccionado = dgvPagos.SelectedItem as PagoDTO;
+            Statics.pagoSeleccionado = pagoSeleccionado;
             frmPagos.Navigate(new Uri("/Paginas/AdministracionPagos/EditarPago.xaml", UriKind.Relative));
         }
 
         // Refrescar lista
         void refrescarLista()
         {
-            frmPagos.Navigate(new Uri("/Paginas/VentanaVacia.xaml", UriKind.Relative));
+            pagosLista = PagosApi.listarPagosIdMatricula(Statics.matriculaSeleccionada.id);
+            dgvPagos.ItemsSource = null;
+            dgvPagos.Items.Clear();
+            dgvPagos.ItemsSource = pagosLista;
+        }
+
+        // Seleccionar elemento del DataGrid
+        private void dgvPagos_Selected(object sender, RoutedEventArgs e)
+        {
+            btnEditarPago.IsEnabled = true;
         }
     }
 }
