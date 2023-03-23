@@ -25,7 +25,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Id Alumno" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}"/>
+                    <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxIdAlumno_KeyDown"/>
                 </StackPanel>
                 <Label Name="lblErrorIdAlumno" Content=""/>
             </StackPanel>
@@ -44,21 +44,21 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nota Doc" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaDocumento" Style="{StaticResource TextBoxFormularios}"/>
+                    <TextBox Name="tbxNotaDocumento" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaDocumento_KeyDown"/>
                 </StackPanel>
                 <Label Name="lblErrorNotaDocumento" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nota Pres" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaPresentacion" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    <TextBox Name="tbxNotaPresentacion" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaPresentacion_KeyDown"/>
                 </StackPanel>
                 <Label Name="lblErrorNotaPresentacion" Content=""/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Text="Nota Final" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaFinal" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                    <TextBox Name="tbxNotaFinal" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaFinal_KeyDown"/>
                 </StackPanel>
                 <Label Name="lblErrorNotaFinal" Content=""/>
             </StackPanel>

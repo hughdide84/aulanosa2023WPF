@@ -115,7 +115,7 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 }
                 else
                 {
-                    proyecto.documento = 'n';
+                    proyecto.documento = 'a';
                 }
                 if (chbPresentacion.IsChecked == true)
                 {
@@ -123,7 +123,7 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 }
                 else
                 {
-                    proyecto.presentacion = 'n';
+                    proyecto.presentacion = 'a';
                 }
                 proyecto.notaDoc = int.Parse(tbxNotaDocumento.Text);
                 proyecto.notaPres = int.Parse(tbxNotaPresentacion.Text);

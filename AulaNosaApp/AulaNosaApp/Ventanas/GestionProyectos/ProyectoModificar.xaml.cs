@@ -24,82 +24,31 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
     public partial class ProyectoModificar : Window
     {
 
-        bool documento = false;
-        bool presentacion = false;
-
         public ProyectoModificar()
         {
             InitializeComponent();
             // Tomar los atributos del elemento a editar para mostrarlos
             tbxId.Text = Statics.proyectoSeleccionado.id.ToString();
-            tbxIdAlumno.Text = Statics.proyectoSeleccionado.idalumno.ToString();
+            tbxIdAlumno.Text = Statics.proyectoSeleccionado.idAlumno.ToString();
             if (Statics.proyectoSeleccionado.documento == 's')
             {
-                btnEditarDocumento.Content = "Inserta un documento";
-                btnEditarDocumento.IsEnabled = true;
+                chbDocumento.IsChecked = true;
             }
             else
             {
-                btnEditarDocumento.Content = "Insertado";
-                btnEditarDocumento.IsEnabled = false;
+                chbDocumento.IsChecked = false;
             }
             if (Statics.proyectoSeleccionado.presentacion == 's')
             {
-                btnEditarPresentacion.Content = "Inserta una presentacion";
-                btnEditarPresentacion.IsEnabled = true;
+                chbPresentacion.IsChecked = true;
             }
             else
             {
-                btnEditarPresentacion.Content = "Insertado";
-                btnEditarPresentacion.IsEnabled = false;
+                chbPresentacion.IsChecked = false;
             }
-            tbxNotaDocumento.Text = Statics.proyectoSeleccionado.notadocumento.ToString();
-            tbxNotaPresentacion.Text = Statics.proyectoSeleccionado.notapresentacion.ToString();
-            tbxNotaFinal.Text = Statics.proyectoSeleccionado.notafinal.ToString();
-        }
-
-        // Accion al modificar un documento
-        private void btnEditarDocumento_Click(object sender, RoutedEventArgs e)
-        {
-            if (btnEditarDocumento.IsEnabled == false)
-            {
-                btnEditarDocumento.Content = "Inserta un documento";
-                btnEditarDocumento.IsEnabled = true;
-            }
-            else 
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
-
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    documento = true;
-                    btnEditarDocumento.Content = "Insertado";
-                    btnEditarDocumento.IsEnabled = false;
-                }
-            }
-        }
-
-        // Accion al modificar una presentacion
-        private void btnEditarPresentacion_Click(object sender, RoutedEventArgs e)
-        {
-            if (btnEditarPresentacion.IsEnabled == false)
-            {
-                btnEditarPresentacion.Content = "Inserta una presentacion";
-                btnEditarPresentacion.IsEnabled = true;
-            }
-            else
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
-
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    presentacion = true;
-                    btnEditarPresentacion.Content = "Insertado";
-                    btnEditarPresentacion.IsEnabled = false;
-                }
-            }
+            tbxNotaDocumento.Text = Statics.proyectoSeleccionado.notaDoc.ToString();
+            tbxNotaPresentacion.Text = Statics.proyectoSeleccionado.notaPres.ToString();
+            tbxNotaFinal.Text = Statics.proyectoSeleccionado.notaFinal.ToString();
         }
 
         // Accion al clickear el boton de creacion del proyecto
@@ -114,40 +63,40 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
             {
                 lblErrorIdAlumno.Content = "";
             }
-            // Verificar que se introdujo una nota de documentacion de dos caracteres o mas
-            if (tbxNotaDocumento.Text.Length == 0)
+            // Verificar que se introdujo una nota de documentacion mayor que 10
+            if (tbxNotaDocumento.Text == "" || int.Parse(tbxNotaDocumento.Text) == 0)
             {
-                lblErrorNotaDocumento.Content = "Nota vacia";
+                lblErrorNotaDocumento.Content = "Nota vacia o 0";
             }
-            else if (tbxNotaDocumento.Text.Length > 2)
+            else if (int.Parse(tbxNotaDocumento.Text) > 10)
             {
-                lblErrorNotaDocumento.Content = "Máximo dos dígitos de nota de documentación";
+                lblErrorNotaDocumento.Content = "La nota máxima del documento es un 10";
             }
             else
             {
                 lblErrorNotaDocumento.Content = "";
             }
-            // Verificar que se introdujo una nota de presentacion de dos caracteres o mas
-            if (tbxNotaPresentacion.Text.Length == 0)
+            // Verificar que se introdujo una nota de presentacion mayor que 10
+            if (tbxNotaPresentacion.Text == "" || int.Parse(tbxNotaPresentacion.Text) == 0)
             {
-                lblErrorNotaPresentacion.Content = "Nota vacia";
+                lblErrorNotaPresentacion.Content = "Nota vacia o 0";
             }
-            else if (tbxNotaPresentacion.Text.Length > 2)
+            else if (int.Parse(tbxNotaPresentacion.Text) > 10)
             {
-                lblErrorNotaPresentacion.Content = "Máximo dos dígitos de nota de presentacion";
+                lblErrorNotaPresentacion.Content = "La nota máxima de la presentacion es un 10";
             }
             else
             {
                 lblErrorNotaPresentacion.Content = "";
             }
-            // Verificar que se introdujo una nota final de dos caracteres o mas
-            if (tbxNotaFinal.Text.Length == 0)
+            // Verificar que se introdujo una nota final mayor que 10
+            if (tbxNotaFinal.Text == "" || int.Parse(tbxNotaFinal.Text) == 0)
             {
-                lblErrorNotaFinal.Content = "Nota vacia";
+                lblErrorNotaFinal.Content = "Nota vacia o 0";
             }
-            else if (tbxNotaFinal.Text.Length > 2)
+            else if (int.Parse(tbxNotaFinal.Text) > 10)
             {
-                lblErrorNotaFinal.Content = "Máximo dos dígitos de nota final";
+                lblErrorNotaFinal.Content = "La nota máxima final es un 10";
             }
             else
             {
@@ -159,8 +108,8 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 // Crear un objeto
                 ProyectoDTO proyecto = new ProyectoDTO();
                 proyecto.id = 1; // (al ser un id autoincremental, este sera el ultimo id registrado + 1, pero se pone aqui un id por que el objeto tiene que tener un valor en el atributo)
-                proyecto.idalumno = int.Parse(tbxIdAlumno.Text);
-                if (documento)
+                proyecto.idAlumno = int.Parse(tbxIdAlumno.Text);
+                if (chbDocumento.IsChecked == true)
                 {
                     proyecto.documento = 's';
                 }
@@ -168,7 +117,7 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 {
                     proyecto.documento = 'a';
                 }
-                if (presentacion)
+                if (chbPresentacion.IsChecked == true)
                 {
                     proyecto.presentacion = 's';
                 }
@@ -176,9 +125,9 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 {
                     proyecto.presentacion = 'a';
                 }
-                proyecto.notadocumento = int.Parse(tbxNotaDocumento.Text);
-                proyecto.notapresentacion = int.Parse(tbxNotaPresentacion.Text);
-                proyecto.notafinal = int.Parse(tbxNotaFinal.Text);
+                proyecto.notaDoc = int.Parse(tbxNotaDocumento.Text);
+                proyecto.notaPres = int.Parse(tbxNotaPresentacion.Text);
+                proyecto.notaFinal = int.Parse(tbxNotaFinal.Text);
                 // Crear proyecto
                 ProyectoApi.modificarProyecto(proyecto);
                 // Cerrar ventana
@@ -190,6 +139,39 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        //Controladores de que no se puedan insertar letras en los TextBox
+        private void tbxIdAlumno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        private void tbxNotaDocumento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        private void tbxNotaPresentacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        private void tbxNotaFinal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
         }
     }
 }

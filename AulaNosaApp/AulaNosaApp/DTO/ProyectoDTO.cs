@@ -9,11 +9,11 @@ namespace AulaNosaApp.DTO
     public class ProyectoDTO
     {
         public int id { get; set; }
-        public int idalumno { get; set; }
+        public int idAlumno { get; set; }
         public char documento { get; set; }
         public char presentacion { get; set; }
-        public int notadocumento { get; set; }
-        public int notapresentacion { get; set; }
-        public int notafinal { get; set; }
+        public int notaDoc { get; set; }
+        public int notaPres { get; set; }
+        public int notaFinal { get; set; }
     }
 }

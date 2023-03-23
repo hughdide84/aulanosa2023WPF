@@ -4,7 +4,6 @@ using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
 using AulaNosaApp.Util;
 using AulaNosaApp.Ventanas.GestionProyectos;
-using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +26,6 @@ namespace AulaNosaApp.Paginas.GestionProyectos
     /// </summary>
     public partial class GestionProyectos : Page
     {
-
-        RestClient client;
-        RestRequest request;
         bool filtrosActivados = false;
         List<ProyectoDTO> proyectosLista;
 
@@ -50,6 +46,13 @@ namespace AulaNosaApp.Paginas.GestionProyectos
             tbxConsultarId.Visibility = Visibility.Collapsed;
             btnBuscar.Visibility = Visibility.Collapsed;
             proyectosLista = ProyectoApi.listarProyectos();
+            //for (int i = 0; i < proyectosLista.Count; i++)
+            //{
+            //    if (proyectosLista[i].documento.Checked == true)
+            //    {
+            //        cbxDocumento.IsThreeState = true;
+            //    }
+            //}
             dgvListado.ItemsSource = null;
             dgvListado.Items.Clear();
             dgvListado.ItemsSource = proyectosLista;
