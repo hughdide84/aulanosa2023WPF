@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -184,6 +185,16 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("La especialidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            try
+            {
+                MailAddress correo = new MailAddress(tbxCorreo.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El correo electrónico no es válido.", "Error");
+                return;
+            }
+            
             bool terminacion;
 
             terminacion = tbxCorreo_LostFocus(sender, e);
