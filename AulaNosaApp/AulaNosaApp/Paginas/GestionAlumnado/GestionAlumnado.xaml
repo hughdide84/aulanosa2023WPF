@@ -33,6 +33,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="IdEmpresa" Binding="{Binding idEmpresa}"/>
                 <DataGridTextColumn Header="Inicio" Binding="{Binding inicioPr}"/>
                 <DataGridTextColumn Header="Fin" Binding="{Binding finPr}"/>
             </DataGrid.Columns>
