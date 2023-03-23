@@ -71,7 +71,7 @@ namespace AulaNosaApp.Servicios
                 table.AddCell(new iText.Layout.Element.Paragraph("CONTACTO").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
 
 
-                foreach (EmpresasDTO empresa in empresaLista)
+                foreach (EmpresaDTO empresa in empresaLista)
                 {
                     table.AddCell(new iText.Layout.Element.Paragraph(empresa.nombre).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
                     table.AddCell(new iText.Layout.Element.Paragraph(empresa.cif).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
