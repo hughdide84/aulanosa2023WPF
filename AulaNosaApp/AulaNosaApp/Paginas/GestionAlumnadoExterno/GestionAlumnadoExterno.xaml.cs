@@ -132,8 +132,16 @@ namespace AulaNosaApp.Paginas.GestionAlumnadoExterno
                         {
                             AlumnoExternoDTO coincidencia = AlumnoExternoApi.ListarAlumnoExternoPorId(id);
 
-                            lista = new List<AlumnoExternoDTO> { coincidencia };
-                            dtgListado.ItemsSource = lista;
+                            if (coincidencia.id == 0)
+                            {
+                                MessageBox.Show("No se encontró ningún alumno con el ID especificado", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            else
+                            {
+                                lista = new List<AlumnoExternoDTO> { coincidencia };
+
+                                dtgListado.ItemsSource = lista;
+                            }
                         }
                         catch
                         {

@@ -2,6 +2,7 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             tbxUniversidad.Text = alumnoExternoDTO.universidad.ToString();
             tbxTitulacion.Text = alumnoExternoDTO.titulacion.ToString();
             tbxEspecialidad.Text = alumnoExternoDTO.especialidad.ToString();
-            tbxCurso.Text = alumnoExternoDTO.idCurso.ToString();
             if(alumnoExternoDTO.tipo.ToString() == "M")
             {
                 tbxTipo.SelectedIndex = 0;
@@ -62,13 +62,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                     MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                     return;
                 }
-
-                int Curso;
-                if (!int.TryParse(tbxCurso.Text, out Curso))
-                {
-                    MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
-                    return;
-                }
                 // Crear objeto
                 AlumnoExternoDTO alumnoExternoInsertar = new AlumnoExternoDTO();
                 alumnoExternoInsertar.id = id;
@@ -78,13 +71,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 alumnoExternoInsertar.universidad = tbxUniversidad.Text.ToString();
                 alumnoExternoInsertar.titulacion = tbxTitulacion.Text.ToString();
                 alumnoExternoInsertar.especialidad = tbxEspecialidad.Text.ToString();
-                alumnoExternoInsertar.idCurso = Curso;
-                CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-                if (curso == null)
-                {
-                    MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                alumnoExternoInsertar.idCurso = Statics.idCursoElegido;
                 if (tbxTipo.SelectedIndex == 0)
                 {
                     alumnoExternoInsertar.tipo = "M";
@@ -92,6 +79,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 else if (tbxTipo.SelectedIndex == 1)
                 {
                     alumnoExternoInsertar.tipo = "O";
+                }
+                else
+                {
+                    MessageBox.Show("Debes elegir una opción para el tipo");
+                    return;
                 }
                 try
                 {
@@ -114,35 +106,81 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 }
                 if ((bool)chbCv.IsChecked)
                 {
-                    alumnoExternoInsertar.cv = "a";
+                    alumnoExternoInsertar.cv = "S";
                 }
                 else
                 {
-                    alumnoExternoInsertar.cv = "b";
+                    alumnoExternoInsertar.cv = "N";
                 }
                 if ((bool)chbHorario.IsChecked)
                 {
-                    alumnoExternoInsertar.horario = "a";
+                    alumnoExternoInsertar.horario = "S";
                 }
                 else
                 {
-                    alumnoExternoInsertar.horario = "b";
+                    alumnoExternoInsertar.horario = "N";
                 }
                 if ((bool)chbConvenio.IsChecked)
                 {
-                    alumnoExternoInsertar.convenio = "a";
+                    alumnoExternoInsertar.convenio = "S";
                 }
                 else
                 {
-                    alumnoExternoInsertar.convenio = "b";
+                    alumnoExternoInsertar.convenio = "N";
                 }
                 if ((bool)chbEvaluacion.IsChecked)
                 {
-                    alumnoExternoInsertar.evaluacion = "a";
+                    alumnoExternoInsertar.evaluacion = "S";
                 }
                 else
                 {
-                    alumnoExternoInsertar.evaluacion = "b";
+                    alumnoExternoInsertar.evaluacion = "N";
+                }
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.nombre))
+                {
+                    // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
+                    MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.tipo))
+                {
+                    // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
+                    MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.email))
+                {
+                    // Mostrar un mensaje de error indicando que el email del alumno es obligatorio
+                    MessageBox.Show("El email del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.telefono))
+                {
+                    // Mostrar un mensaje de error indicando que el teléfono del alumno es obligatorio
+                    MessageBox.Show("El teléfono del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.universidad))
+                {
+                    // Mostrar un mensaje de error indicando que la universidad del alumno es obligatoria
+                    MessageBox.Show("La universidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.titulacion))
+                {
+                    // Mostrar un mensaje de error indicando que la titulación del alumno es obligatoria
+                    MessageBox.Show("La titulación del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(alumnoExternoInsertar.especialidad))
+                {
+                    // Mostrar un mensaje de error indicando que la especialidad del alumno es obligatoria
+                    MessageBox.Show("La especialidad del alumno es obligatoria", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
                 // Editar alumnno externo
                 AlumnoExternoApi.EditarAlumnoExterno(alumnoExternoInsertar);

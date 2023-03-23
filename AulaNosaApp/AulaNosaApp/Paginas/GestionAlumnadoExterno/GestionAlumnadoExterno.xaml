@@ -46,10 +46,10 @@
                 <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}"/>
                 <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
                 <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
-                <DataGridCheckBoxColumn Header="CV" x:Name="ChbCV" Binding="{Binding cv}"/>
-                <DataGridCheckBoxColumn Header="Convenio" x:Name="ChbConvenio" Binding="{Binding convenio}"/>
-                <DataGridCheckBoxColumn Header="Evaluación" x:Name="ChbEvaluacion" Binding="{Binding evaluacion}"/>
-                <DataGridCheckBoxColumn Header="Horario" x:Name="CgbHorario" Binding="{Binding horario}"/>
+                <DataGridTextColumn Header="CV"  Binding="{Binding cv}"/>
+                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}"/>
+                <DataGridTextColumn Header="Evaluación" Binding="{Binding evaluacion}"/>
+                <DataGridTextColumn Header="Horario" Binding="{Binding horario}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Visibility="Hidden" Name="idCurso"/>

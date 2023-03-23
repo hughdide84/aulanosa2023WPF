@@ -2,6 +2,7 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -33,12 +34,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
 
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
-            int Curso;
-            if (!int.TryParse(tbxCurso.Text, out Curso))
-            {
-                MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
-                return;
-            }
             alumno.nombre = tbxNombre.Text;
             if(tbxTipo.SelectedIndex == 0)
             {
@@ -47,6 +42,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             else if (tbxTipo.SelectedIndex == 1)
             {
                 alumno.tipo = "O";
+            }
+            else
+            {
+                MessageBox.Show("Debes elegir una opción para el tipo");
+                return;
             }
             alumno.email = tbxCorreo.Text;
             alumno.telefono = tbxTelefono.Text;
@@ -72,13 +72,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            alumno.idCurso = Curso;
-            CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-            if (curso == null)
-            {
-                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+            alumno.idCurso = Statics.idCursoElegido;
 
             if (string.IsNullOrEmpty(alumno.nombre))
             {
@@ -92,12 +86,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (alumno.tipo.Length > 1)
-            {
-                MessageBox.Show("El tipo del alumno no puede tener más de un caracter", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
             if (string.IsNullOrEmpty(alumno.email))
             {
                 // Mostrar un mensaje de error indicando que el email del alumno es obligatorio
@@ -135,35 +123,35 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
 
             if ((bool)chbCv.IsChecked)
             {
-                alumno.cv = "a";
+                alumno.cv = "S";
             }
             else
             {
-                alumno.cv = "b";
+                alumno.cv = "N";
             }
             if ((bool)chbHorario.IsChecked)
             {
-                alumno.horario = "a";
+                alumno.horario = "S";
             }
             else
             {
-                alumno.horario = "b";
+                alumno.horario = "N";
             }
             if ((bool)chbConvenio.IsChecked)
             {
-                alumno.convenio = "a";
+                alumno.convenio = "S";
             }
             else
             {
-                alumno.convenio = "b";
+                alumno.convenio = "N";
             }
             if ((bool)chbEvaluacion.IsChecked)
             {
-                alumno.evaluacion = "a";
+                alumno.evaluacion = "S";
             }
             else
             {
-                alumno.evaluacion = "b";
+                alumno.evaluacion = "N";
             }
 
             string v = AlumnoExternoApi.AgregarAlumnoExterno(alumno);

@@ -51,10 +51,6 @@
                 <TextBox Name="tbxEspecialidad" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                <TextBlock Text="Curso" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxCurso" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Tipo" Style="{StaticResource TextBlockFormularios}"/>
                 <ComboBox Name="tbxTipo" Style="{StaticResource ComboBoxFormularios}">
                     <ComboBoxItem>M</ComboBoxItem>
