@@ -1,0 +1,55 @@
+﻿<Page x:Class="AulaNosaApp.Paginas.GestionAlumnadoExterno.GestionAlumnadoExterno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AulaNosaApp.Paginas.GestionAlumnadoExterno"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GestionAlumnadoExterno">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Administración de alumnos externos" Style="{StaticResource TextBlockTituloAdministracion}"/>
+        <ToolBar Grid.Row="1" Name="tbrAdministracion">
+            <Button Content="Refrescar" Name="btnRefrescar" Style="{StaticResource BotonesAdministracion}" Click="BtnRefrescar_Click"/>
+            <Button Content="Nuevo" Name="btnNuevo" Style="{StaticResource BotonesAdministracion}" Click="BtnNuevo_Click"/>
+            <Button Content="Editar" Name="btnModificar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="BtnModificar_Click"/>
+            <Button Content="Eliminar" Name="btnEliminar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="BtnEliminar_Click"/>
+            <Button Content="Consultar" Name="btnConsultaUsuario" Style="{StaticResource BotonesAdministracion}" Click="BtnConsultar_Click"/>
+            <ComboBox Name="cmbConsultar" Style="{StaticResource ComboBoxAdministracion}">
+                <ComboBoxItem>ID</ComboBoxItem>
+                <ComboBoxItem>Nombre</ComboBoxItem>
+                <ComboBoxItem>Email</ComboBoxItem>
+                <ComboBoxItem>Telefono</ComboBoxItem>
+                <ComboBoxItem>Inicio</ComboBoxItem>
+                <ComboBoxItem>Fin</ComboBoxItem>
+            </ComboBox>
+            <TextBox Width="100" Name="tbxConsultar" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
+            <Button Content="Buscar" Name="btnBuscar" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="BtnBuscar_Click"/>
+        </ToolBar>
+        <DataGrid Grid.Row="2" Name="dtgListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="DtgListado_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"/>
+                <DataGridTextColumn Header="Universidad" Binding="{Binding universidad}"/>
+                <DataGridTextColumn Header="Titulación" Binding="{Binding titulacion}"/>
+                <DataGridTextColumn Header="Especialidad" Binding="{Binding especialidad}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
+                <DataGridTextColumn Header="CV" Binding="{Binding cv}"/>
+                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}"/>
+                <DataGridTextColumn Header="Evaluación" Binding="{Binding evaluacion}"/>
+                <DataGridTextColumn Header="Horario" Binding="{Binding horario}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

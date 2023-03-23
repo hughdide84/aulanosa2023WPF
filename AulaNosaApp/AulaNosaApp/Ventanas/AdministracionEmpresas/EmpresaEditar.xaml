@@ -1,0 +1,141 @@
+﻿<Window x:Class="AulaNosaApp.Ventanas.AdministracionEmpresas.EmpresaEditar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AulaNosaApp.Ventanas.AdministracionEmpresas"
+        mc:Ignorable="d"
+        Title="EmpresaEditar" Height="700" Width="950" MinHeight="650" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Background="#F0F4F7"/>
+        <Image Grid.Row="0" Style="{StaticResource ImagenLogoFormularios}"/>
+        <Label Grid.Row="0" Content="Edición de empresas" Style="{StaticResource LabelTituloFormularios}"/>
+        <Border Grid.Row="0" Style="{StaticResource BordeEncabezadoForm}"/>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,25,0,25">
+            <StackPanel Style="{StaticResource StackPanelForm}" Width="500">
+
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbckCursos" Text="Curso" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                    <ComboBox Name="cbCursos" Text="Curso" Style="{StaticResource ComboBoxFormularios}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                    <TextBlock Name="tbckEstudios" Text="Estudio" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                    <ComboBox Name="cbEstudios" Text="Curso" Style="{StaticResource ComboBoxFormularios}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrorNombre" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Dirección social" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxDireccionSocial" Style="{StaticResource TextBoxFormularios}" MaxLength="300"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxDireccionSocial" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Dirección de trabajo" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxDireccionTrabajo" Style="{StaticResource TextBoxFormularios}" MaxLength="300"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxDireccionTrabajo" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="CIF" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxCIF" Style="{StaticResource TextBoxFormularios}" MaxLength="10"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxCIF" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Representante" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxRepresentante" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxRepresentante" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Contacto" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxContacto" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxContacto" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Tutor 1" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxTutor1" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxTutor1" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Tutor 2" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxTutor2" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxTutor2" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Tutor 3" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxTutor3" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxTutor3" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Convenio" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxConvenio" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxConvenio" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Plan individual" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxPlanIndividual" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxPlanIndividual" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
+                        <TextBlock Text="Hoja de actividades" Style="{StaticResource TextBlockFormularios}" Width="200"/>
+                        <TextBox Name="tbxHojaActividades" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                    </StackPanel>
+                    <Label Name="lblErrortbxHojaActividades" Content="" Margin="0,0,0,25" Foreground="Red"/>
+                </StackPanel>
+
+                <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
+                    <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                    <Button x:Name="btnModificar" Content="Modificar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnModificar_Click"/>
+                </StackPanel>
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
