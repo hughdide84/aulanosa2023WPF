@@ -36,6 +36,8 @@
                 <DataGridTextColumn Header="IdEmpresa" Binding="{Binding idEmpresa}"/>
                 <DataGridTextColumn Header="Inicio" Binding="{Binding inicioPr}"/>
                 <DataGridTextColumn Header="Fin" Binding="{Binding finPr}"/>
+                <DataGridTextColumn Header="Cv" Binding="{Binding cv}"/>
+                <DataGridTextColumn Header="Carta" Binding="{Binding carta}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

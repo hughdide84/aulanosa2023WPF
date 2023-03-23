@@ -44,10 +44,10 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             }
             dtpInicio.Text = alumnoExternoDTO.inicio.ToString();
             dtpFin.Text = alumnoExternoDTO.fin.ToString();
-            chbCv.IsChecked = alumnoExternoDTO.cv.Equals("a");
-            chbHorario.IsChecked = alumnoExternoDTO.horario.Equals("a");
-            chbConvenio.IsChecked = alumnoExternoDTO.convenio.Equals("a");
-            chbEvaluacion.IsChecked = alumnoExternoDTO.evaluacion.Equals("a");
+            chbCv.IsChecked = alumnoExternoDTO.cv.Equals("S");
+            chbHorario.IsChecked = alumnoExternoDTO.horario.Equals("S");
+            chbConvenio.IsChecked = alumnoExternoDTO.convenio.Equals("S");
+            chbEvaluacion.IsChecked = alumnoExternoDTO.evaluacion.Equals("S");
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 // Crear objeto
                 AlumnoExternoDTO alumnoExternoInsertar = new AlumnoExternoDTO();
                 alumnoExternoInsertar.id = id;
-                alumnoExternoInsertar.nombre = tbxNombre.Text.ToString();
+                alumnoExternoInsertar.nombre = tbxNombre.Text;
                 alumnoExternoInsertar.email = tbxCorreo.Text.ToString();
                 alumnoExternoInsertar.telefono = tbxTelefono.Text.ToString();
                 alumnoExternoInsertar.universidad = tbxUniversidad.Text.ToString();
@@ -136,7 +136,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 {
                     alumnoExternoInsertar.evaluacion = "N";
                 }
-                if (string.IsNullOrEmpty(alumnoExternoInsertar.nombre))
+                if (tbxNombre.Text == "")
                 {
                     // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                     MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

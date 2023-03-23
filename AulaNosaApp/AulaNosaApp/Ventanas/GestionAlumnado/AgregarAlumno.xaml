@@ -12,12 +12,6 @@
             <TextBlock Text="Nombre y apellidos:"/>
             <TextBox Name="txtNombre"/>
 
-            <TextBlock Text="Curso:"/>
-            <TextBox Name="txtCurso"/>
-
-            <TextBlock Text="Estudios:"/>
-            <TextBox Name="txtEstudios"/>
-
             <TextBlock Text="Empresa:"/>
             <TextBox Name="txtEmpresa"/>
 

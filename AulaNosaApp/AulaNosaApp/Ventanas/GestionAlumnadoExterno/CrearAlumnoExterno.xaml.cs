@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +31,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             InitializeComponent();
         }
         AlumnoExternoDTO alumno = new AlumnoExternoDTO();
-
 
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
@@ -67,10 +67,12 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             catch (FormatException ex)
             {
                 MessageBox.Show("Formato incorrecto: " + ex.Message);
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                return;
             }
             alumno.idCurso = Statics.idCursoElegido;
 
@@ -78,6 +80,11 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             {
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if(alumno.nombre.Length > 50 || alumno.nombre.Length < 3)
+            {
+                MessageBox.Show("El nombre del alumno no puede tener menos de 3 caracteres o mas de 50", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (string.IsNullOrEmpty(alumno.tipo))
@@ -92,11 +99,25 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("El email del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            try
+            {
+                MailAddress correo = new MailAddress(tbxCorreo.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El correo electrónico no es válido.", "Error");
+                return;
+            }
 
             if (string.IsNullOrEmpty(alumno.telefono))
             {
                 // Mostrar un mensaje de error indicando que el teléfono del alumno es obligatorio
                 MessageBox.Show("El teléfono del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if(alumno.telefono.Length != 9)
+            {
+                MessageBox.Show("El teléfono del alumno tiene que tener 9 caracteres", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
