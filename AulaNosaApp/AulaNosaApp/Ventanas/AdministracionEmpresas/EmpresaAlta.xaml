@@ -35,7 +35,7 @@
                     <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
                     <TextBox Name="tbxNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
                 </StackPanel>
-                <Label Name="lblErrorNombre" Content="" Foreground="Red"/>
+                <Label Name="lblError" Content="" Foreground="Red"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
