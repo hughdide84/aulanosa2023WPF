@@ -107,7 +107,14 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("El correo electrónico no es válido.", "Error");
                 return;
             }
+            bool terminacion;
 
+            terminacion = tbxCorreo_LostFocus(sender, e);
+            if (terminacion == false)
+            {
+                MessageBox.Show("El correo electrónico debe terminar en .com o .es", "Error de validación");
+                return;
+            }
             if (string.IsNullOrEmpty(alumno.telefono))
             {
                 // Mostrar un mensaje de error indicando que el teléfono del alumno es obligatorio
@@ -185,7 +192,17 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
         {
             Close();
         }
-
+        private bool tbxCorreo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!tbxCorreo.Text.EndsWith(".com") && !tbxCorreo.Text.EndsWith(".es"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void tbxTelefono_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)))
