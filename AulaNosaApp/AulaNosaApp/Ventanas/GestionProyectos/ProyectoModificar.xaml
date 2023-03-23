@@ -1,4 +1,4 @@
-﻿<Window x:Class="AulaNosaApp.Ventanas.GestionProyectos.ProyectoModificar"
+﻿<Window x:Class="AulaNosaApp.Ventanas.GestionProyectos.ProyectoCrear"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,57 +21,117 @@
             <Label Grid.Column="1" Content="Registro de proyectos" Style="{StaticResource LabelTituloFormularios}"/>
         </Grid>
         <Border Style="{StaticResource BordeEncabezadoForm}"/>
-        <StackPanel Grid.Row="1" Style="{StaticResource StackPanelForm}">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Id" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxId" Style="{StaticResource TextBoxFormularios}" IsEnabled="False"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,25,0,25">
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Id" Style="{StaticResource TextBlockFormularios}"/>
+                            <TextBox Name="tbxId" Style="{StaticResource TextBoxFormularios}" IsEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Id Alumno" Style="{StaticResource TextBlockFormularios}"/>
+                            <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxIdAlumno_KeyDown"/>
+                        </StackPanel>
+                        <Label Name="lblErrorIdAlumno" Content=""/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Nota Doc" Style="{StaticResource TextBlockFormularios}"/>
+                            <TextBox Name="tbxNotaDocumento" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaDocumento_KeyDown"/>
+                        </StackPanel>
+                        <Label Name="lblErrorNotaDocumento" Content=""/>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Documento" Style="{StaticResource TextBlockFormularios}"/>
+                            <CheckBox x:Name="chbDocumento" Style="{StaticResource CheckBoxFormularios}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="50,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Presentación" Style="{StaticResource TextBlockFormularios}"/>
+                            <CheckBox x:Name="chbPresentacion" Style="{StaticResource CheckBoxFormularios}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Nota Pres" Style="{StaticResource TextBlockFormularios}"/>
+                            <TextBox Name="tbxNotaPresentacion" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaPresentacion_KeyDown"/>
+                        </StackPanel>
+                        <Label Name="lblErrorNotaPresentacion" Content=""/>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Name="tbkExposicion" Text="Exposición" Style="{StaticResource TextBlockFormularios}"/>
+                            <DatePicker Name="dtpExposicion" Style="{StaticResource DatePickerFormularios}"/>
+                        </StackPanel>
+                        <Label Name="lblErrorFechaExposicion" Content=""/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Text="Nota Final" Style="{StaticResource TextBlockFormularios}"/>
+                            <TextBox Name="tbxNotaFinal" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaFinal_KeyDown"/>
+                        </StackPanel>
+                        <Label Name="lblErrorNotaFinal" Content=""/>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Name="lblTutoria1" Text="Tutoria1" Style="{StaticResource TextBlockFormularios}"/>
+                            <DatePicker Name="dtpTutoria1" Style="{StaticResource DatePickerFormularios}"/>
+                        </StackPanel>
+                        <Label Name="lblErrorFechaTutoria1" Content=""/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Name="lblTutoria2" Text="Tutoria2" Style="{StaticResource TextBlockFormularios}"/>
+                            <DatePicker Name="dtpTutoria2" Style="{StaticResource DatePickerFormularios}"/>
+                        </StackPanel>
+                        <Label Name="lblErrorFechaTutoria2" Content=""/>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                            <TextBlock Name="lblTutoria3" Text="Tutoria3" Style="{StaticResource TextBlockFormularios}"/>
+                            <DatePicker Name="dtpTutoria3" Style="{StaticResource DatePickerFormularios}"/>
+                        </StackPanel>
+                        <Label Name="lblErrorFechaTutoria3" Content=""/>
+                    </StackPanel>
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel HorizontalAlignment="Center" Grid.Column="0" Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Estado Tuto 1" Style="{StaticResource TextBlockFormularios}"/>
+                        <CheckBox x:Name="chbEstadoTutoria1" Style="{StaticResource CheckBoxFormularios}"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Grid.Column="1" Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Estado Tuto 2" Style="{StaticResource TextBlockFormularios}"/>
+                        <CheckBox x:Name="chbEstadoTutoria2" Style="{StaticResource CheckBoxFormularios}"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Grid.Column="2" Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
+                        <TextBlock Text="Estado Tuto 3" Style="{StaticResource TextBlockFormularios}"/>
+                        <CheckBox x:Name="chbEstadoTutoria3" Style="{StaticResource CheckBoxFormularios}"/>
+                    </StackPanel>
+                </Grid>
+                <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
+                    <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
+                    <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnRegistrar_Click"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Id Alumno" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxIdAlumno_KeyDown"/>
-                </StackPanel>
-                <Label Name="lblErrorIdAlumno" Content=""/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Documento" Style="{StaticResource TextBlockFormularios}"/>
-                    <CheckBox x:Name="chbDocumento" Style="{StaticResource CheckBoxFormularios}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Presentación" Style="{StaticResource TextBlockFormularios}"/>
-                    <CheckBox x:Name="chbPresentacion" Style="{StaticResource CheckBoxFormularios}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Nota Doc" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaDocumento" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaDocumento_KeyDown"/>
-                </StackPanel>
-                <Label Name="lblErrorNotaDocumento" Content=""/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Nota Pres" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaPresentacion" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaPresentacion_KeyDown"/>
-                </StackPanel>
-                <Label Name="lblErrorNotaPresentacion" Content=""/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                    <TextBlock Text="Nota Final" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxNotaFinal" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxNotaFinal_KeyDown"/>
-                </StackPanel>
-                <Label Name="lblErrorNotaFinal" Content=""/>
-            </StackPanel>
-            <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">
-                <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
-                <Button x:Name="btnModificar" Content="Modificar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnModificar_Click"/>
-            </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

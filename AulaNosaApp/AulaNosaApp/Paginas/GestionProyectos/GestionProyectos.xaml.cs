@@ -46,13 +46,6 @@ namespace AulaNosaApp.Paginas.GestionProyectos
             tbxConsultarId.Visibility = Visibility.Collapsed;
             btnBuscar.Visibility = Visibility.Collapsed;
             proyectosLista = ProyectoApi.listarProyectos();
-            //for (int i = 0; i < proyectosLista.Count; i++)
-            //{
-            //    if (proyectosLista[i].documento.Checked == true)
-            //    {
-            //        cbxDocumento.IsThreeState = true;
-            //    }
-            //}
             dgvListado.ItemsSource = null;
             dgvListado.Items.Clear();
             dgvListado.ItemsSource = proyectosLista;

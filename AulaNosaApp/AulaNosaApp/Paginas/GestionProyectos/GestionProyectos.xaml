@@ -38,6 +38,13 @@
                 <DataGridTextColumn Header="Nota Documento" Binding="{Binding notaDoc}"/>
                 <DataGridTextColumn Header="Nota Presentacion" Binding="{Binding notaPres}"/>
                 <DataGridTextColumn Header="Nota Final" Binding="{Binding notaFinal}"/>
+                <DataGridTextColumn Header="Exposición" Binding="{Binding exposicion}"/>
+                <DataGridTextColumn Header="Tutoria1" Binding="{Binding tutoria1}"/>
+                <DataGridTextColumn Header="Tutoria2" Binding="{Binding tutoria2}"/>
+                <DataGridTextColumn Header="Tutoria3" Binding="{Binding tutoria3}"/>
+                <DataGridTextColumn Header="Estado T1" Binding="{Binding estadoTutoria1}"/>
+                <DataGridTextColumn Header="Estado T2" Binding="{Binding estadoTutoria2}"/>
+                <DataGridTextColumn Header="Estado T3" Binding="{Binding estadoTutoria3}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -23,7 +23,6 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
     /// </summary>
     public partial class ProyectoModificar : Window
     {
-
         public ProyectoModificar()
         {
             InitializeComponent();
@@ -102,8 +101,68 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
             {
                 lblErrorNotaFinal.Content = "";
             }
+            // Verificar si se introdujo una fecha de tutoria1
+            if (dtpTutoria1.SelectedDate == null)
+            {
+                lblErrorFechaTutoria1.Content = "Fecha de tutoria1 vacia";
+            }
+            else
+            {
+                lblErrorFechaTutoria1.Content = "";
+            }
+            // Verificar si se introdujo una fecha de tutoria2 y que esta sea despues de la fecha de tutoria1
+            if (dtpTutoria2.SelectedDate == null)
+            {
+                lblErrorFechaTutoria2.Content = "Fecha de tutoria2 vacia";
+            }
+            else if (dtpTutoria2.SelectedDate.Value.Date < dtpTutoria1.SelectedDate.Value.Date)
+            {
+                lblErrorFechaTutoria2.Content = "La fecha de tutoria2 no puede ser anterior a la fecha de tutoria1";
+            }
+            else if (dtpTutoria2.SelectedDate.Value.Date == dtpTutoria1.SelectedDate.Value.Date)
+            {
+                lblErrorFechaTutoria2.Content = "La fecha de tutoria2 no puede ser igual a la fecha de tutoria1";
+            }
+            else
+            {
+                lblErrorFechaFin.Content = "";
+            }
+            // Verificar si se introdujo una fecha de tutoria3 y que esta sea despues de la fecha de tutoria2
+            if (dtpTutoria3.SelectedDate == null)
+            {
+                lblErrorFechaTutoria3.Content = "Fecha de tutoria3 vacia";
+            }
+            else if (dtpTutoria3.SelectedDate.Value.Date < dtpTutoria2.SelectedDate.Value.Date)
+            {
+                lblErrorFechaTutoria3.Content = "La fecha de tutoria3 no puede ser anterior a la fecha de tutoria2";
+            }
+            else if (dtpTutoria3.SelectedDate.Value.Date == dtpTutoria2.SelectedDate.Value.Date)
+            {
+                lblErrorFechaTutoria3.Content = "La fecha de tutoria3 no puede ser igual a la fecha de tutoria2";
+            }
+            else
+            {
+                lblErrorFechaTutoria3.Content = "";
+            }
+            // Verificar si se introdujo una fecha de exposicion y que esta sea despues de la fecha de tutoria3
+            if (dtpExposicion.SelectedDate == null)
+            {
+                lblErrorFechaExposicion.Content = "Fecha de exposicion vacia";
+            }
+            else if (dtpExposicion.SelectedDate.Value.Date < dtpTutoria3.SelectedDate.Value.Date)
+            {
+                lblErrorFechaExposicion.Content = "La fecha de exposicion no puede ser anterior a la fecha de tutoria3";
+            }
+            else if (dtpExposicion.SelectedDate.Value.Date == dtpTutoria3.SelectedDate.Value.Date)
+            {
+                lblErrorFechaExposicion.Content = "La fecha de exposicion no puede ser igual a la fecha de tutoria3";
+            }
+            else
+            {
+                lblErrorFechaExposicion.Content = "";
+            }
             // Si se cumplen todos los requisitos, entrara en la accion de crear el proyecto
-            if (lblErrorIdAlumno.Content == "" && lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "")
+            if (lblErrorIdAlumno.Content == "" && lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "" && lblErrorFechaTutoria1.Content == "" && lblErrorFechaTutoria2.Content == "" && lblErrorFechaTutoria3.Content == "" && lblErrorFechaExposicion.Content == "")
             {
                 // Crear un objeto
                 ProyectoDTO proyecto = new ProyectoDTO();
@@ -128,8 +187,48 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 proyecto.notaDoc = int.Parse(tbxNotaDocumento.Text);
                 proyecto.notaPres = int.Parse(tbxNotaPresentacion.Text);
                 proyecto.notaFinal = int.Parse(tbxNotaFinal.Text);
+                proyecto.exposicion = DateTime.Parse(dtpExposicion.Text);
+                proyecto.tutoria1 = DateTime.Parse(dtpTutoria1.Text);
+                proyecto.tutoria2 = DateTime.Parse(dtpTutoria2.Text);
+                proyecto.tutoria3 = DateTime.Parse(dtpTutoria3.Text);
+                if (cbbEstadoTutoria1.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria1 = 'p';
+                }
+                else if (cbbEstadoTutoria1.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria1 = 'a';
+                }
+                else
+                {
+                    proyecto.estadoTutoria1 = 'f';
+                }
+                if (cbbEstadoTutoria2.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria2 = 'p';
+                }
+                else if (cbbEstadoTutoria2.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria2 = 'a';
+                }
+                else
+                {
+                    proyecto.estadoTutoria2 = 'f';
+                }
+                if (cbbEstadoTutoria3.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria3 = 'p';
+                }
+                else if (cbbEstadoTutoria3.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria3 = 'a';
+                }
+                else
+                {
+                    proyecto.estadoTutoria3 = 'f';
+                }
                 // Crear proyecto
-                ProyectoApi.modificarProyecto(proyecto);
+                ProyectoApi.crearProyecto(proyecto);
                 // Cerrar ventana
                 Close();
             }
