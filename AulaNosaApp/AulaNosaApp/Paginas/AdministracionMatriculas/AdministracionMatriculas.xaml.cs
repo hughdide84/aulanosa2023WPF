@@ -65,6 +65,7 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
         // Boton de mostrar pagos
         private void btnMostrarPagos_Click(object sender, RoutedEventArgs e)
         {
+            Statics.matriculaSeleccionada = dgvMatriculas.SelectedItem as MatriculaDTO;
             AdministracionPagos administracionPagos = new AdministracionPagos();
             administracionPagos.Show();
             btnEditarMatricula.IsEnabled = false;
