@@ -54,6 +54,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Green"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -108,6 +119,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRow}">
@@ -172,7 +184,7 @@
         <Setter Property="VerticalContentAlignment" 
                 Value="Center"/>
         <Setter Property="Background" 
-                Value="Blue"/>
+                Value="#1A17A1"/>
         <Setter Property="FontWeight" 
                 Value="SemiBold"/>
         <Setter Property="Padding" 
@@ -188,32 +200,37 @@
                         <Border Background="{TemplateBinding Background}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
-                                Padding="{TemplateBinding Padding}">
-                            <Grid Margin="{TemplateBinding Padding}">
+                                Padding="{TemplateBinding Padding}"
+                                Height="50">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="60"/>
                                 </Grid.ColumnDefinitions>
 
                                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                                   RecognizesAccessKey="True" 
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  MaxWidth="150"/>
+                                                  MaxWidth="150"
+                                                  />
                                 <StackPanel Grid.Column="1"
                                             Orientation="Horizontal"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
-                                            Margin="10,15,0,0"
                                             MinWidth="100">
                                     <Path x:Name="FlechaPaArriba"
                                           Data="{DynamicResource SortUp}"
-                                          Fill="Gray">
+                                          Margin="0,2,0,0"
+                                          Fill="Gray"
+                                          VerticalAlignment="Center">
                                         <Path.RenderTransform>
                                             <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
                                         </Path.RenderTransform>
                                     </Path>
                                     <Path x:Name="FlechaPaAbajo"
+                                          Margin="0,2,0,0"
+                                          VerticalAlignment="Center"
                                           Data="{DynamicResource SortDown}"
                                           Fill="Gray">
                                         <Path.RenderTransform>
@@ -253,10 +270,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Stroke" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            <Setter Property="Stroke" TargetName="Border" Value="#aed6f1"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Border" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                            <Setter Property="Fill" TargetName="Border" Value="#aed6f1"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Visibility" TargetName="Arrow" Value="Collapsed"/>
