@@ -35,7 +35,13 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             tbxTitulacion.Text = alumnoExternoDTO.titulacion.ToString();
             tbxEspecialidad.Text = alumnoExternoDTO.especialidad.ToString();
             tbxCurso.Text = alumnoExternoDTO.idCurso.ToString();
-            tbxTipo.Text = alumnoExternoDTO.tipo.ToString();
+            if(alumnoExternoDTO.tipo.ToString() == "M")
+            {
+                tbxTipo.SelectedIndex = 0;
+            }else if(alumnoExternoDTO.tipo.ToString() == "O")
+            {
+                tbxTipo.SelectedIndex = 1;
+            }
             dtpInicio.Text = alumnoExternoDTO.inicio.ToString();
             dtpFin.Text = alumnoExternoDTO.fin.ToString();
             chbCv.IsChecked = alumnoExternoDTO.cv.Equals("a");
@@ -79,7 +85,14 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                     MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                alumnoExternoInsertar.tipo = tbxTipo.Text.ToString();
+                if (tbxTipo.SelectedIndex == 0)
+                {
+                    alumnoExternoInsertar.tipo = "M";
+                }
+                else if (tbxTipo.SelectedIndex == 1)
+                {
+                    alumnoExternoInsertar.tipo = "O";
+                }
                 try
                 {
                     alumnoExternoInsertar.inicio = DateTime.Parse(dtpInicio.Text);

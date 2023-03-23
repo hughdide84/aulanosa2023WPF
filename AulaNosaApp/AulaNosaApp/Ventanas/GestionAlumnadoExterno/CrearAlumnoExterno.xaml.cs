@@ -40,7 +40,14 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 return;
             }
             alumno.nombre = tbxNombre.Text;
-            alumno.tipo = tbxTipo.Text;
+            if(tbxTipo.SelectedIndex == 0)
+            {
+                alumno.tipo = "M";
+            }
+            else if (tbxTipo.SelectedIndex == 1)
+            {
+                alumno.tipo = "O";
+            }
             alumno.email = tbxCorreo.Text;
             alumno.telefono = tbxTelefono.Text;
             alumno.universidad = tbxUniversidad.Text;

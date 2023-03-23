@@ -56,7 +56,10 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                 <TextBlock Text="Tipo" Style="{StaticResource TextBlockFormularios}"/>
-                <TextBox Name="tbxTipo" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
+                <ComboBox Name="tbxTipo" Style="{StaticResource ComboBoxFormularios}">
+                    <ComboBoxItem>M</ComboBoxItem>
+                    <ComboBoxItem>O</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
