@@ -32,10 +32,10 @@
 
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nombre" Style="{StaticResource TextBlockFormularios}"/>
+                    <TextBlock Text="NombreEMP" Style="{StaticResource TextBlockFormularios}"/>
                     <TextBox Name="tbxNombre" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
                 </StackPanel>
-                <Label Name="lblError" Content="" Foreground="Red"/>
+                <Label Name="lblErrorNombre" Content="" Foreground="Red"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
