@@ -141,7 +141,7 @@
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}" Click="btnProyectos_Click"/>
                     <Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
+                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}" Click="btnExposiciones_Click"/>
                     <Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}" Click="btnInfo_Click"/>
                 </StackPanel>
             </StackPanel>

@@ -148,13 +148,13 @@ namespace AulaNosaApp
         // Panel del calendario FCT
         private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/Calendario.xaml", UriKind.Relative));
         }
 
         // Panel del calendario PEXT
         private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/CalendarioPEXT/CalendarioPEXT.xaml", UriKind.Relative));
         }
 
         // Informacion PFC
@@ -203,6 +203,12 @@ namespace AulaNosaApp
         private void btnEmpresas_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionEmpresas/GestionEmpresas.xaml", UriKind.Relative));
+        }
+
+        // Informe exposiciones
+        private void btnExposiciones_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/InfExposiciones/InfExposiciones.xaml", UriKind.Relative));
         }
 
         // Boton de recargar contenido de ambos ComboBox

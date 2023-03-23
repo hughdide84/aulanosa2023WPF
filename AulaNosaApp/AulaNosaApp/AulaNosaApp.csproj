@@ -155,6 +155,7 @@
     <Compile Include="DTO\MatriculaDTO.cs" />
     <Compile Include="DTO\PagoDTO.cs" />
     <Compile Include="DTO\ProyectoDTO.cs" />
+    <Compile Include="DTO\ProyectoEntregaDTO.cs" />
     <Compile Include="Paginas\AdministracionPagos\EditarPago.xaml.cs">
       <DependentUpon>EditarPago.xaml</DependentUpon>
     </Compile>
@@ -170,6 +171,9 @@
     </Compile>
     <Compile Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml.cs">
       <DependentUpon>CalendarioPEXT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Calendario\Calendario.xaml.cs">
+      <DependentUpon>Calendario.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
@@ -227,6 +231,7 @@
     <Compile Include="Servicios\MatriculaApi.cs" />
     <Compile Include="Servicios\PagosApi.cs" />
     <Compile Include="Servicios\ProyectoApi.cs" />
+    <Compile Include="Servicios\ProyectoEntregaApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -311,6 +316,10 @@
     <Page Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Calendario\Calendario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\GestionAlumnadoExterno\GestionAlumnadoExterno.xaml">
       <Generator>MSBuild:Compile</Generator>

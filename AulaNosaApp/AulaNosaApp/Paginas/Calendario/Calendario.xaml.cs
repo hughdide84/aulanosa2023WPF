@@ -16,34 +16,36 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AulaNosaApp.Paginas.CalendarioFEXT
+namespace AulaNosaApp.Paginas
 {
     /// <summary>
-    /// Lógica de interacción para CalendarioFEXT.xaml
+    /// Lógica de interacción para investigacionCalendario.xaml
     /// </summary>
-    public partial class CalendarioFEXT : Page
+    public partial class Calendario : Page
     {
+
         private List<string> colores = new List<string>
         {
             "#FF69B4", "#FFD700", "#FFA07A", "#00FFFF", "#FF00FF",
             "#00FF00", "#FF1493", "#FFFF00", "#00FF7F", "#FF4500",
             "#FF6347", "#FF8C00", "#FF7F50", "#00FA9A", "#FFC0CB",
             "#FFDAB9", "#ADFF2F", "#FFB6C1", "#BA55D3", "#FF00CC"
-        };
-        public CalendarioFEXT()
+        }; 
+        public Calendario()
         {
             InitializeComponent();
+            //lo comente para que no pete nada más abrir, pero funsiona
             generarCalendario();
         }
-        private void generarCalendario()
+
+        private void generarCalendario() 
         {
-            List<AlumnoExternoDTO> alumnos = AlumnoExternoApi.ListarAlumnosExternos();
+            List<AlumnoDTO> alumnos = AlumnoApi.ListarAlumnos();
 
             int nuncolor = 0;
-            for (int i = 0; i < alumnos.Count; i++)
-            {
+            for (int i = 0; i < alumnos.Count; i ++ ) {
 
-                AlumnoExternoDTO alumno = alumnos[i];
+                AlumnoDTO alumno = alumnos[i];
 
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(30);
@@ -52,12 +54,11 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
                 Border border = new Border();
                 border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colores[nuncolor]));
                 nuncolor++;
-                if (nuncolor == colores.Count)
-                {
+                if (nuncolor == colores.Count) { 
                     nuncolor = 0;
                 }
                 border.CornerRadius = new CornerRadius(15);
-                border.Margin = new Thickness(calcularComienzo(alumno), 3, 0, 3);
+                border.Margin = new Thickness(calcularComienzo(alumno),3,0,3);
                 border.Width = calcularFinal(alumno);
                 border.HorizontalAlignment = HorizontalAlignment.Left;
 
@@ -76,13 +77,13 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
                 grid.ColumnDefinitions.Add(cln3);
 
                 TextBlock tbkFechaInicio = new TextBlock();
-                tbkFechaInicio.Text = alumno.inicio.Value.Day.ToString() + "/" + alumno.inicio.Value.Month.ToString() + "/" + alumno.inicio.Value.Year.ToString();
-                tbkFechaInicio.Margin = new Thickness(20, 0, 10, 0);
-                tbkFechaInicio.Style = (Style)this.FindResource("fechasNombre");
-
+                tbkFechaInicio.Text = alumno.inicioPr.Value.Day.ToString() + "/" + alumno.inicioPr.Value.Month.ToString() + "/" + alumno.inicioPr.Value.Year.ToString();
+                tbkFechaInicio.Margin = new Thickness(20,0,10,0);
+                tbkFechaInicio.Style = (Style) this.FindResource("fechasNombre");
+                
                 Grid.SetColumn(tbkFechaInicio, 0);
                 grid.Children.Add(tbkFechaInicio);
-
+                
                 TextBlock tbkNombre = new TextBlock();
                 tbkNombre.Text = alumno.nombre;
                 tbkNombre.Style = (Style)this.FindResource("fechasNombre");
@@ -92,7 +93,7 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
                 grid.Children.Add(tbkNombre);
 
                 TextBlock tbkFechaFinal = new TextBlock();
-                tbkFechaFinal.Text = alumno.fin.Value.Day.ToString() + "/" + alumno.fin.Value.Month.ToString() + "/" + alumno.fin.Value.Year.ToString();
+                tbkFechaFinal.Text = alumno.finPr.Value.Day.ToString() + "/" + alumno.finPr.Value.Month.ToString() + "/" + alumno.finPr.Value.Year.ToString();
                 tbkFechaFinal.Margin = new Thickness(10, 0, 20, 0);
                 tbkFechaFinal.Style = (Style)this.FindResource("fechasNombre");
 
@@ -101,23 +102,23 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
 
                 border.Child = grid;
 
-                Grid.SetRow(border, i + 1);
+                Grid.SetRow(border, i +1);
 
                 grdLista.Children.Add(border);
             }
-
-
+        
+        
         }
-
-        private int calcularComienzo(AlumnoExternoDTO alumno)
+        
+        private int calcularComienzo(AlumnoDTO alumno)
         {
-            int mesInicio = alumno.inicio.Value.Month;
-            int diaInicio = alumno.inicio.Value.Day;
-            int aInicio = alumno.inicio.Value.Year; //es el año
+            int mesInicio = alumno.inicioPr.Value.Month;
+            int diaInicio = alumno.inicioPr.Value.Day;
+            int aInicio = alumno.inicioPr.Value.Year; //es el año
             int numeroDiasMesInicio = calcularDias(aInicio, mesInicio);
 
-            int mesFinal = alumno.fin.Value.Month;
-            int diaFinal = alumno.fin.Value.Day;
+            int mesFinal = alumno.finPr.Value.Month;
+            int diaFinal = alumno.finPr.Value.Day;
 
             Trace.WriteLine("pixel inicio: " + ((mesInicio >= 9 ? mesInicio - 9 : 9 - mesInicio) * 200).ToString());
             Trace.WriteLine("diferencia meses: " + (((mesFinal >= 9 ? mesFinal - 9 : 3 + mesFinal) * 200) - (((mesInicio >= 9 ? mesInicio - 9 : 3 + mesInicio) * 200))).ToString());
@@ -127,21 +128,21 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
 
         }
 
-        private int calcularFinal(AlumnoExternoDTO alumno)
+        private int calcularFinal(AlumnoDTO alumno) 
         {
-            int mesInicio = alumno.inicio.Value.Month;
-            int diaInicio = alumno.inicio.Value.Day;
-            int aInicio = alumno.inicio.Value.Year; //es el año
+            int mesInicio = alumno.inicioPr.Value.Month;
+            int diaInicio = alumno.inicioPr.Value.Day;
+            int aInicio = alumno.inicioPr.Value.Year; //es el año
             int numeroDiasMesInicio = calcularDias(aInicio, mesInicio);
 
-            int mesFinal = alumno.fin.Value.Month;
-            int diaFinal = alumno.fin.Value.Day;
-            int aFinal = alumno.fin.Value.Year;
+            int mesFinal = alumno.finPr.Value.Month;
+            int diaFinal = alumno.finPr.Value.Day;
+            int aFinal = alumno.finPr.Value.Year;
             int numeroDiasMesFinal = calcularDias(aFinal, mesFinal);
 
 
             //calcula el numero de pixeles restantes del mes inicial los suma al numero de meses y le añade el porcentaje de pixeles que se corresponden con el numnero de dias que han pasado desde el comienzo de mes
-            return 200 - (((100 * diaInicio) / numeroDiasMesInicio) * 2) + (((mesFinal >= 9 ? mesFinal - 9 : 3 + mesFinal) * 200) - (((mesInicio >= 9 ? mesInicio - 9 : 3 + mesInicio) * 200))) - 200 + (((100 * diaFinal) / numeroDiasMesFinal) * 2);
+            return 200 - (((100 * diaInicio) / numeroDiasMesInicio) * 2) + (((mesFinal >= 9 ? mesFinal - 9 : 3 + mesFinal) * 200) - (((mesInicio >= 9 ? mesInicio - 9 : 3 + mesInicio) * 200))) -200 + (((100 * diaFinal) / numeroDiasMesFinal) * 2);
 
         }
         private int calcularDias(int a, int mesInicio)
@@ -158,4 +159,3 @@ namespace AulaNosaApp.Paginas.CalendarioFEXT
         }
     }
 }
-
