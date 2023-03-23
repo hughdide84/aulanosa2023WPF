@@ -1,14 +1,43 @@
-﻿<Page x:Class="AulaNosaApp.Paginas.GestionExposiciones.GestionExposiciones"
+﻿<Page x:Class="AulaNosaApp.Paginas.AlumnoEmpresa.AlumEmpResumen"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AulaNosaApp.Paginas.GestionExposiciones"
+      xmlns:local="clr-namespace:AulaNosaApp.Paginas.AlumnoEmpresa"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="GestionExposiciones">
-
+      Title="AlumEmpResumen">
     <Grid>
-        
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+            <TextBlock Name="tbkTitulo" Text="Resumen Alumno - Empresa" Style="{StaticResource TextBlockTituloAdministracion}"/>
+            <ToolBar Grid.Row="1">
+                <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}"/>
+                <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}"/>
+            </ToolBar>
+            <DataGrid Grid.Row="2" Name="dgvAlumnoEmpresa" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre alumno" Binding="{Binding nombre}"/>
+                    <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
+                    <DataGridTextColumn Header="Presentacion" Binding="{Binding presentacion}"/>
+                    <DataGridTextColumn Header="Nota Doc" Binding="{Binding notaDoc}"/>
+                    <DataGridTextColumn Header="Nota Pres" Binding="{Binding notaPres}"/>
+                    <DataGridTextColumn Header="Exposicion" Binding="{Binding exposicion}"/>
+                    <DataGridTextColumn Header="1º Tutoria" Binding="{Binding tutoria1}"/>
+                    <DataGridTextColumn Header="2º Tutoria" Binding="{Binding tutoria2}"/>
+                    <DataGridTextColumn Header="3º Tutoria" Binding="{Binding tutoria3}"/>
+                    <DataGridTextColumn Header="Estado 1º Tutoria" Binding="{Binding estadoTutoria1}"/>
+                    <DataGridTextColumn Header="Estado 2º Tutoria" Binding="{Binding estadoTutoria2}"/>
+                    <DataGridTextColumn Header="Estado 3º Tutoria" Binding="{Binding estadoTutoria3}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>
+
