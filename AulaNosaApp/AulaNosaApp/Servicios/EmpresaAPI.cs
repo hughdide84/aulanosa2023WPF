@@ -1,6 +1,7 @@
 ﻿using AulaNosaApp.DTO;
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Util;
+using Google.Protobuf.WellKnownTypes;
 using RestSharp;
 using System;
 using System.Collections.Generic;

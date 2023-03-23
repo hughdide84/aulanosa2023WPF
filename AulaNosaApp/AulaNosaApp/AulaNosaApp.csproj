@@ -38,6 +38,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.22.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.22.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="itext.barcodes, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.barcodes.dll</HintPath>
     </Reference>
@@ -189,6 +192,9 @@
     <Compile Include="Paginas\GestionNotas\GestionNotas.xaml.cs">
       <DependentUpon>GestionNotas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\InfEmpresas\InfEmpresas.xaml.cs">
+      <DependentUpon>InfEmpresas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\InfExposiciones\InfExposiciones.xaml.cs">
       <DependentUpon>InfExposiciones.xaml</DependentUpon>
     </Compile>
@@ -203,9 +209,6 @@
     </Compile>
     <Compile Include="Paginas\InfEmpresaAlumno\InfEmpresaAlumno.xaml.cs">
       <DependentUpon>InfEmpresaAlumno.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Paginas\InfEmpresas\InfEmpresas.xaml.cs">
-      <DependentUpon>InfEmpresas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\InfNotas\InfNotas.xaml.cs">
       <DependentUpon>InfNotas.xaml</DependentUpon>
@@ -223,6 +226,7 @@
     <Compile Include="Servicios\AlumnoExternoApi.cs" />
     <Compile Include="Servicios\EmpresaAlumnosApi.cs" />
     <Compile Include="Servicios\EmpresaAPI.cs" />
+    <Compile Include="Servicios\EmpresaPFC.cs" />
     <Compile Include="Servicios\InfoPFCApi.cs" />
     <Compile Include="Servicios\MatriculaApi.cs" />
     <Compile Include="Servicios\PagosApi.cs" />
@@ -332,6 +336,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Paginas\InfEmpresas\InfEmpresas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Paginas\InfExposiciones\InfExposiciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,10 +357,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\InfEmpresaAlumno\InfEmpresaAlumno.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Paginas\InfEmpresas\InfEmpresas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

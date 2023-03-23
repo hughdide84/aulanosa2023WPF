@@ -8,7 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfEmpresas">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Resumen - Empresas disponibles" Style="{StaticResource TextBlockTituloAdministracion}"/>
+        <ToolBar Grid.Row="1">
+            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
+            <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click"/>
+        </ToolBar>
+        <DataGrid Grid.Row="2" Name="dgvEmpresaDisponible" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Cif" Binding="{Binding cif}"/>
+                <DataGridTextColumn Header="Representante" Binding="{Binding representante}"/>
+                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Page>
