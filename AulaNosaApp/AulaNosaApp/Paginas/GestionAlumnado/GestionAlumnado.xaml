@@ -8,7 +8,34 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GestionAlumnos">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Name="tbkTitulo" Text="Administración de Alumnos" Style="{StaticResource TextBlockTituloAdministracion}"/>
+        <ToolBar Grid.Row="1" Name="tbrAlumnos">
+            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click"/>
+            <Button Name="btnNuevo" Content="Nuevo" Style="{StaticResource BotonesAdministracion}" Click="btnNuevo_Click"/>
+            <Button Name="btnModificar" Content="Editar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnModificar_Click"/>
+            <Button Name="btnEliminar" Content="Eliminar" Style="{StaticResource BotonesAdministracion}" IsEnabled="False" Click="btnEliminar_Click"/>
+            <Button Name="btnConsultar" Content="Consultar" Style="{StaticResource BotonesAdministracion}" Click="btnConsultar_Click"/>
+            <ComboBox Name="cbbConsultar" Style="{StaticResource ComboBoxAdministracion}" Visibility="Collapsed">
+                <ComboBoxItem Name="cbbiIdFiltro" Selected="cbbiIdFiltro_Selected">ID</ComboBoxItem>
+            </ComboBox>
+            <TextBox Name="tbxConsultarId" Style="{StaticResource TextBoxAdministracion}" Visibility="Collapsed" MaxLength="50"/>
+            <Button Name="btnBuscar" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Collapsed" Click="btnBuscar_Click"/>
+        </ToolBar>
+        <DataGrid Grid.Row="2" Name="dgvListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvListado_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicioPr}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding finPr}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

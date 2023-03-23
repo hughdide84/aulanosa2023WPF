@@ -8,9 +8,8 @@ namespace AulaNosaApp.DTO
 {
     internal class AlumnoExternoDTO
     {
-
-        // Propiedades que corresponden a las columnas de la tabla AlumnosExternos en la base de datos
         public int id { get; set; }
+        public int idCurso { get; set; }
         public string tipo { get; set; }
         public string nombre { get; set; }
         public string email { get; set; }
@@ -18,16 +17,14 @@ namespace AulaNosaApp.DTO
         public string universidad { get; set; }
         public string titulacion { get; set; }
         public string especialidad { get; set; }
-        public string inicio { get; set; }
-        public string fin { get; set; }
+        public DateTime? inicio { get; set; }
+        public DateTime? fin { get; set; }
         public string cv { get; set; }
         public string convenio { get; set; }
         public string evaluacion { get; set; }
         public string horario { get; set; }
-        public int idCurso { get; set; }
 
-        // Constructor que toma todos los valores
-        internal AlumnoExternoDTO(int id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, string inicio, string fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
+        internal AlumnoExternoDTO(int id, string tipo, string nombre, string email, string telefono, string universidad, string titulacion, string especialidad, DateTime? inicio, DateTime? fin, string cv, string convenio, string evaluacion, string horario, int idcurso)
         {
             this.id = id;
             this.tipo = tipo;
@@ -49,6 +46,6 @@ namespace AulaNosaApp.DTO
         public AlumnoExternoDTO()
         {
         }
-
     }
+
 }

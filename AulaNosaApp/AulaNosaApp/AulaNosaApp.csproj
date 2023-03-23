@@ -35,8 +35,65 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.commons.7.2.5\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=109.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.109.0.1\lib\net471\RestSharp.dll</HintPath>
@@ -46,6 +103,9 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -87,8 +147,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DTO\AlumnoExternoDTO.cs" />
+    <Compile Include="DTO\AlumnoEmpresaDTO.cs" />
     <Compile Include="DTO\AlumnoToEmpresaDTO.cs" />
+    <Compile Include="DTO\EmpresaAlumnosDTO.cs" />
     <Compile Include="DTO\EmpresaDTO.cs" />
+    <Compile Include="DTO\MatriculaDTO.cs" />
+    <Compile Include="DTO\PagoDTO.cs" />
+    <Compile Include="DTO\ProyectoDTO.cs" />
+    <Compile Include="Paginas\AdministracionPagos\EditarPago.xaml.cs">
+      <DependentUpon>EditarPago.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AdministracionPagos\NuevoPago.xaml.cs">
+      <DependentUpon>NuevoPago.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\AdministracionUsuarios\AdministracionUsuarios.xaml.cs">
       <DependentUpon>AdministracionUsuarios.xaml</DependentUpon>
     </Compile>
@@ -102,11 +174,20 @@
     <Compile Include="Paginas\EmpresaAlumnos\EmpAlumResumen.xaml.cs">
       <DependentUpon>EmpAlumResumen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\GestionAlumnadoExterno\GestionAlumnadoExterno.xaml.cs">
+      <DependentUpon>GestionAlumnadoExterno.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\GestionAlumnado\GestionAlumnado.xaml.cs">
       <DependentUpon>GestionAlumnado.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\GestionEmpresas\GestionEmpresas.xaml.cs">
       <DependentUpon>GestionEmpresas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AdministracionMatriculas\AdministracionMatriculas.xaml.cs">
+      <DependentUpon>AdministracionMatriculas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionNotas\GestionNotas.xaml.cs">
+      <DependentUpon>GestionNotas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Paginas\InfExposiciones\InfExposiciones.xaml.cs">
       <DependentUpon>InfExposiciones.xaml</DependentUpon>
@@ -135,7 +216,17 @@
     <Compile Include="Paginas\InformesFCT\InformesFCT.xaml.cs">
       <DependentUpon>InformesFCT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\VentanaVacia.xaml.cs">
+      <DependentUpon>VentanaVacia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\AlumnoEmpresaApi.cs" />
+    <Compile Include="Servicios\AlumnoExternoApi.cs" />
+    <Compile Include="Servicios\EmpresaAlumnosApi.cs" />
     <Compile Include="Servicios\EmpresaAPI.cs" />
+    <Compile Include="Servicios\InfoPFCApi.cs" />
+    <Compile Include="Servicios\MatriculaApi.cs" />
+    <Compile Include="Servicios\PagosApi.cs" />
+    <Compile Include="Servicios\ProyectoApi.cs" />
     <Compile Include="Servicios\UsuariosApi.cs" />
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\Statics.cs" />
@@ -144,6 +235,15 @@
     </Compile>
     <Compile Include="Ventanas\AdministracionEmpresas\EmpresaEditar.xaml.cs">
       <DependentUpon>EmpresaEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\AdministracionMatriculas\AgregarMatricula.xaml.cs">
+      <DependentUpon>AgregarMatricula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\AdministracionMatriculas\EditarMatricula.xaml.cs">
+      <DependentUpon>EditarMatricula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\AdministracionPagos\AdministracionPagos.xaml.cs">
+      <DependentUpon>AdministracionPagos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml.cs">
       <DependentUpon>UsuarioCrear.xaml</DependentUpon>
@@ -166,19 +266,57 @@
     <Compile Include="Ventanas\AdministracionEstudios\EstudioEditar.xaml.cs">
       <DependentUpon>EstudioEditar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\GestionAlumnadoExterno\CrearAlumnoExterno.xaml.cs">
+      <DependentUpon>CrearAlumnoExterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnadoExterno\ModificarAlumnoExterno.xaml.cs">
+      <DependentUpon>ModificarAlumnoExterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnado\AgregarAlumno.xaml.cs">
+      <DependentUpon>AgregarAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionAlumnado\EditarAlumno.xaml.cs">
+      <DependentUpon>EditarAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoCrear.xaml.cs">
+      <DependentUpon>ProyectoCrear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\GestionProyectos\ProyectoModificar.xaml.cs">
+      <DependentUpon>ProyectoModificar.xaml</DependentUpon>
+    </Compile>
     <Page Include="Paginas\AdministracionCursos\AdministracionCursos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Paginas\AdministracionPagos\EditarPago.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Paginas\AdministracionPagos\NuevoPago.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Paginas\CalendarioPEXT\CalendarioPEXT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionAlumnadoExterno\GestionAlumnadoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\GestionAlumnado\GestionAlumnado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\GestionEmpresas\GestionEmpresas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\AdministracionMatriculas\AdministracionMatriculas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\GestionNotas\GestionNotas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,14 +345,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\InfNotas\InfNotas.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Paginas\InfoPFC\InfoPFC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Paginas\InformesFCT\InformesFCT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\VentanaVacia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,12 +397,24 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\AdministracionEmpresas\EmpresaAlta.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\AdministracionEmpresas\EmpresaEditar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\AdministracionMatriculas\AgregarMatricula.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ventanas\AdministracionEmpresas\EmpresaEditar.xaml">
+    <Page Include="Ventanas\AdministracionMatriculas\EditarMatricula.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\AdministracionPagos\AdministracionPagos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Ventanas\AdministracionUsuarios\UsuarioCrear.xaml">
       <SubType>Designer</SubType>
@@ -289,6 +443,30 @@
     <Page Include="Ventanas\AdministracionCursos\NuevoCurso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnadoExterno\CrearAlumnoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnadoExterno\ModificarAlumnoExterno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnado\AgregarAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionAlumnado\EditarAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoCrear.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ventanas\GestionProyectos\ProyectoModificar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -324,7 +502,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Ventanas\GestionEmpresas\" />
+    <Folder Include="Ventanas\GestionTutorias\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\evolcampus_logo.png" />
   </ItemGroup>

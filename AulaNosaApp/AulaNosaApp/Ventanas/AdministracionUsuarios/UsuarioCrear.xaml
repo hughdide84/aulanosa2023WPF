@@ -48,6 +48,8 @@
                 <ComboBox Name="cbbCreacionUsuarioRol" Style="{StaticResource ComboBoxFormularios}">
                     <ComboBoxItem>Administrador</ComboBoxItem>
                     <ComboBoxItem>Editor</ComboBoxItem>
+                    <ComboBoxItem>Profesor</ComboBoxItem>
+                    <ComboBoxItem>Alumno</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel x:Name="spnBotonesForm" Style="{StaticResource StackPanelBotonesForm}">

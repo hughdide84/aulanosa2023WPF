@@ -68,8 +68,8 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
         // Función que verifica que los campos no estén vacíos
         void cargarCampos()
         {
-            cbCursos.SelectedValue = CursosApi.filtrarCursoId(Statics.empresaSeleccionada.idCurso.ToString()).nombre;
-            cbEstudios.SelectedValue = EstudioApi.filtrarEstudioId(Statics.empresaSeleccionada.idEstudios.ToString()).nombre;
+            cbCursos.SelectedValue = CursosApi.filtrarCursoId(Statics.idCursoElegido.ToString()).nombre;
+            cbEstudios.SelectedValue = EstudioApi.filtrarEstudioId(Statics.idEstudioElegido.ToString()).nombre;
             tbxNombre.Text = Statics.empresaSeleccionada.nombre;
             tbxDireccionSocial.Text = Statics.empresaSeleccionada.direccionSocial;
             tbxDireccionTrabajo.Text = Statics.empresaSeleccionada.direccionTrabajo;
@@ -79,17 +79,39 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             tbxTutor1.Text = Statics.empresaSeleccionada.tutor1;
             tbxTutor2.Text = Statics.empresaSeleccionada.tutor2;
             tbxTutor3.Text = Statics.empresaSeleccionada.tutor3;
-            tbxConvenio.Text = Statics.empresaSeleccionada.convenio.ToString();
-            tbxPlanIndividual.Text = Statics.empresaSeleccionada.planIndividual.ToString();
-            tbxHojaActividades.Text = Statics.empresaSeleccionada.hojaActividades.ToString();
+
+            if (Statics.empresaSeleccionada.convenio == 'S')
+            {
+                tbxConvenio.IsChecked = true;
+            }
+            else
+            {
+                tbxConvenio.IsChecked = false;
+            }
+
+            if (Statics.empresaSeleccionada.planIndividual == 'S')
+            {
+                tbxPlanIndividual.IsChecked = true;
+            }
+            else
+            {
+                tbxPlanIndividual.IsChecked = false;
+            }
+
+            if (Statics.empresaSeleccionada.hojaActividades == 'S')
+            {
+                tbxHojaActividades.IsChecked = true;
+            }
+            else
+            {
+                tbxHojaActividades.IsChecked = false;
+            }
         }
 
-        // Función que verifica que los campos no estén vacíos
         bool validarCampos()
         {
             if (tbxNombre.Text.Length > 0 && tbxDireccionSocial.Text.Length > 0 && tbxDireccionTrabajo.Text.Length > 0 && tbxCIF.Text.Length > 0 && tbxRepresentante.Text.Length > 0
-                && tbxContacto.Text.Length > 0 && tbxTutor1.Text.Length > 0 && tbxTutor2.Text.Length > 0 && tbxTutor3.Text.Length > 0 && tbxConvenio.Text.Length > 0
-                && tbxPlanIndividual.Text.Length > 0 && tbxHojaActividades.Text.Length > 0)
+                && tbxContacto.Text.Length > 0 && tbxTutor1.Text.Length > 0 && tbxTutor2.Text.Length > 0 && tbxTutor3.Text.Length > 0)
             {
                 return true;
             }
@@ -100,13 +122,11 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
 
         }
 
-        // Botón que al accionarse cierra la plantilla de creación de empresas
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        // Botón que al accionarse, en función de la validez de los campos, se modifica o no una empresa en la BD
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (tbxNombre.Text.Length == 0)
@@ -190,33 +210,6 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
                 lblErrortbxTutor3.Content = "";
             }
 
-            if (tbxConvenio.Text.Length == 0)
-            {
-                lblErrortbxConvenio.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxConvenio.Content = "";
-            }
-
-            if (tbxPlanIndividual.Text.Length == 0)
-            {
-                lblErrortbxPlanIndividual.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxPlanIndividual.Content = "";
-            }
-
-            if (tbxHojaActividades.Text.Length == 0)
-            {
-                lblErrortbxHojaActividades.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxHojaActividades.Content = "";
-            }
-
             if (validarCampos())
             {
                 EmpresaDTO empresa = new EmpresaDTO();
@@ -232,9 +225,6 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
                 empresa.tutor1 = tbxTutor1.Text;
                 empresa.tutor2 = tbxTutor2.Text;
                 empresa.tutor3 = tbxTutor3.Text;
-                empresa.convenio = tbxConvenio.Text.ToCharArray()[0];
-                empresa.planIndividual = tbxPlanIndividual.Text.ToCharArray()[0];
-                empresa.hojaActividades = tbxHojaActividades.Text.ToCharArray()[0];
 
                 EmpresaAPI.editarEmpresa(empresa);
 

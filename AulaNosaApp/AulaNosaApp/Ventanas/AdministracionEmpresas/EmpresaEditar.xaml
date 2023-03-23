@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas.AdministracionEmpresas"
         mc:Ignorable="d"
-        Title="EmpresaEditar" Height="450" Width="800">
+        Title="EmpresaEditar" Height="700" Width="950" MinHeight="650" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -22,7 +22,7 @@
         <Border Grid.Row="0" Style="{StaticResource BordeEncabezadoForm}"/>
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,25,0,25">
-            <StackPanel Style="{StaticResource StackPanelForm}">
+            <StackPanel Style="{StaticResource StackPanelForm}" Width="500">
 
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Name="tbckCursos" Text="Curso" Style="{StaticResource TextBlockFormularios}" Width="200"/>
@@ -109,7 +109,7 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
                         <TextBlock Text="Convenio" Style="{StaticResource TextBlockFormularios}" Width="200"/>
-                        <TextBox Name="tbxConvenio" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                        <CheckBox Name="tbxConvenio" Style="{StaticResource CheckBoxFormularios}"/>
                     </StackPanel>
                     <Label Name="lblErrortbxConvenio" Content="" Margin="0,0,0,25" Foreground="Red"/>
                 </StackPanel>
@@ -117,7 +117,7 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
                         <TextBlock Text="Plan individual" Style="{StaticResource TextBlockFormularios}" Width="200"/>
-                        <TextBox Name="tbxPlanIndividual" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                        <CheckBox Name="tbxPlanIndividual" Style="{StaticResource CheckBoxFormularios}"/>
                     </StackPanel>
                     <Label Name="lblErrortbxPlanIndividual" Content="" Margin="0,0,0,25" Foreground="Red"/>
                 </StackPanel>
@@ -125,7 +125,7 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}" Margin="0,0,0,0">
                         <TextBlock Text="Hoja de actividades" Style="{StaticResource TextBlockFormularios}" Width="200"/>
-                        <TextBox Name="tbxHojaActividades" Style="{StaticResource TextBoxFormularios}" MaxLength="1"/>
+                        <CheckBox Name="tbxHojaActividades" Style="{StaticResource CheckBoxFormularios}"/>
                     </StackPanel>
                     <Label Name="lblErrortbxHojaActividades" Content="" Margin="0,0,0,25" Foreground="Red"/>
                 </StackPanel>

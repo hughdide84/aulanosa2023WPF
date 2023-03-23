@@ -1,5 +1,7 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,10 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
             txtEmpresa.Text = alumnoDTO.idEmpresa.ToString();
             txtEstudios.Text = alumnoDTO.idEstudios.ToString();
             txtCurso.Text = alumnoDTO.idCurso.ToString();
+            DPInicio.Text = alumnoDTO.inicioPr.ToString();
+            DPFinal.Text = alumnoDTO.finPr.ToString();
+            chbxCv.IsChecked = alumnoDTO.cv.Equals("a");
+            chbxCarta.IsChecked = alumnoDTO.carta.Equals("a");
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -65,18 +71,67 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                     return;
                 }
                 // Crear objeto
-                DateTime inicio = DateTime.Parse("2022-04-22T22:00:00.000+00:00");
-                DateTime fin = DateTime.Parse("2022-04-22T22:00:00.000+00:00");
                 AlumnoDTO alumnoInsertar = new AlumnoDTO();
                 alumnoInsertar.id = id;
                 alumnoInsertar.nombre = txtNombre.Text.ToString();
                 alumnoInsertar.idCurso = Curso;
+                CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
+                if (curso == null)
+                {
+                    MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 alumnoInsertar.idEmpresa = Empresa;
+                EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Empresa);
+                if (empresa == null)
+                {
+                    MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 alumnoInsertar.idEstudios = Estudios;
-                alumnoInsertar.inicioPr = inicio;
-                alumnoInsertar.finPr = fin;
-                alumnoInsertar.cv = "a";
-                alumnoInsertar.carta = "a";
+                EstudioDTO estudio = new EstudioDTO();
+                estudio.id = Estudios;
+                estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
+                if (estudio == null)
+                {
+                    MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                try
+                {
+                    alumnoInsertar.inicioPr = DateTime.Parse(DPInicio.Text);
+                    alumnoInsertar.finPr = DateTime.Parse(DPFinal.Text);
+
+                    if (alumnoInsertar.finPr <= alumnoInsertar.inicioPr)
+                    {
+                        MessageBox.Show("La fecha de finalización debe ser posterior a la de inicio.");
+                        return;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Formato incorrecto: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                if ((bool)chbxCv.IsChecked)
+                {
+                    alumnoInsertar.cv = "a";
+                }
+                else
+                {
+                    alumnoInsertar.cv = "b";
+                }
+                if ((bool)chbxCarta.IsChecked)
+                {
+                    alumnoInsertar.carta = "a";
+                }
+                else
+                {
+                    alumnoInsertar.carta = "b";
+                }
                 // Editar alumno
                 AlumnoApi.EditarAlumno(alumnoInsertar);
                 // Cerrar ventana

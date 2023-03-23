@@ -1,4 +1,11 @@
-﻿using System;
+﻿using AulaNosaApp.DTO;
+using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
+using AulaNosaApp.Ventanas.AdministracionMatriculas;
+using AulaNosaApp.Ventanas.AdministracionPagos;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +27,65 @@ namespace AulaNosaApp.Paginas.GestionMatriculas
     /// </summary>
     public partial class GestionMatriculas : Page
     {
+
+        RestClient client;
+        RestRequest request;
+        List<MatriculaDTO> matriculaLista;
+
         public GestionMatriculas()
         {
             InitializeComponent();
+            refrescarLista();
+        }
+
+        // Boton de refrescar lista
+        private void btnRefrescarMatriculas_Click(object sender, RoutedEventArgs e)
+        {
+            refrescarLista();
+        }
+
+        // Boton de crear matricula
+        private void btnNuevaMatricula_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarMatricula agregarMatricula = new AgregarMatricula();
+            agregarMatricula.Show();
+        }
+
+        // Boton de editar matricula
+        private void btnEditarMatricula_Click(object sender, RoutedEventArgs e)
+        {
+            Statics.matriculaSeleccionada = dgvMatriculas.SelectedItem as MatriculaDTO;
+            EditarMatricula editarMatricula = new EditarMatricula();
+            editarMatricula.Show();
+            btnEditarMatricula.IsEnabled = false;
+            btnMostrarPagos.IsEnabled = false;
+            dgvMatriculas.SelectedItem = null;
+        }
+
+        // Boton de mostrar pagos
+        private void btnMostrarPagos_Click(object sender, RoutedEventArgs e)
+        {
+            AdministracionPagos administracionPagos = new AdministracionPagos();
+            administracionPagos.Show();
+            btnEditarMatricula.IsEnabled = false;
+            btnMostrarPagos.IsEnabled = false;
+            dgvMatriculas.SelectedItem = null;
+        }
+
+        // Refrescar lista
+        void refrescarLista()
+        {
+            matriculaLista = MatriculaApi.listarMatriculas();
+            dgvMatriculas.ItemsSource = null;
+            dgvMatriculas.Items.Clear();
+            dgvMatriculas.ItemsSource = matriculaLista;
+        }
+
+        // Seleccionar un elemento del DataGrid
+        private void dgvMatriculas_Selected(object sender, RoutedEventArgs e)
+        {
+            btnEditarMatricula.IsEnabled = true;
+            btnMostrarPagos.IsEnabled = true;
         }
     }
 }

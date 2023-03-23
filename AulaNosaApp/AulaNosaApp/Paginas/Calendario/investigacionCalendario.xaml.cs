@@ -32,10 +32,10 @@ namespace AulaNosaApp.Paginas
         {
             InitializeComponent();
             //lo comente para que no pete nada más abrir, pero funsiona
-            generarCalendario();
+            //generarCalendario();
         }
 
-        private void generarCalendario() 
+        /*private void generarCalendario() 
         {
             List<AlumnoDTO> alumnos = AlumnoApi.ListarAlumnos();
             alumnos.Clear();
@@ -174,5 +174,6 @@ namespace AulaNosaApp.Paginas
         {
             return 1;
         }
+        */
     }
 }

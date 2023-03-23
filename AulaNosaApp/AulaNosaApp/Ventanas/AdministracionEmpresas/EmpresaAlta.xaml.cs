@@ -2,6 +2,7 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,48 +30,13 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
         public EmpresaAlta()
         {
             InitializeComponent();
-            cargarCursos();
-            cargarEstudios();
-            cbCursos.SelectedIndex = 0;
-            cbEstudios.SelectedIndex = 0;
         }
-
-        // Función que llama a la API para cargar los cursos en una lista (`cursos') y los nombres de estos ('nombresCurso') en otra
-        void cargarCursos()
-        {
-            List<String> nombresCursos = new List<string>();
-
-            cursos = CursosApi.listarCursos();
-
-            foreach (CursoDTO curso in cursos)
-            {
-                nombresCursos.Add(curso.nombre);
-            }
-
-            cbCursos.ItemsSource = nombresCursos;
-        }
-
-        // Función que llama a la API para cargar los estudios en una lista (`estudios') y los nombres de estos ('nombresEstudios') en otra
-        void cargarEstudios()
-        {
-            List<String> nombresEstudios = new List<string>();
-
-            estudios = EstudioApi.ListarEstudios();
-
-            foreach (EstudioDTO estudio in estudios)
-            {
-                nombresEstudios.Add(estudio.nombre);
-            }
-
-            cbEstudios.ItemsSource = nombresEstudios;
-        }
-
+        
         // Función que verifica que los campos no estén vacíos
         bool validarCampos()
         {
             if (tbxNombre.Text.Length > 0 && tbxDireccionSocial.Text.Length > 0 && tbxDireccionTrabajo.Text.Length > 0 && tbxCIF.Text.Length > 0 && tbxRepresentante.Text.Length > 0
-                && tbxContacto.Text.Length > 0 && tbxTutor1.Text.Length > 0 && tbxTutor2.Text.Length > 0 && tbxTutor3.Text.Length > 0 && tbxConvenio.Text.Length > 0
-                && tbxPlanIndividual.Text.Length > 0 && tbxHojaActividades.Text.Length > 0)
+                && tbxContacto.Text.Length > 0 && tbxTutor1.Text.Length > 0 && tbxTutor2.Text.Length > 0 && tbxTutor3.Text.Length > 0)
             {
                 return true;
             }
@@ -78,7 +44,6 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
             {
                 return false;
             }
-
         }
 
         // Botón que al accionarse, en función de la validez de los campos, almacena o no una nueva empresa en la BD
@@ -165,38 +130,11 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
                 lblErrortbxTutor3.Content = "";
             }
 
-            if (tbxConvenio.Text.Length == 0)
-            {
-                lblErrortbxConvenio.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxConvenio.Content = "";
-            }
-
-            if (tbxPlanIndividual.Text.Length == 0)
-            {
-                lblErrortbxPlanIndividual.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxPlanIndividual.Content = "";
-            }
-
-            if (tbxHojaActividades.Text.Length == 0)
-            {
-                lblErrortbxHojaActividades.Content = "Campo vacío";
-            }
-            else
-            {
-                lblErrortbxHojaActividades.Content = "";
-            }
-
             if (validarCampos())
             {
                 EmpresaDTO empresa = new EmpresaDTO();
-                empresa.idCurso = cursos[cbCursos.SelectedIndex].id;
-                empresa.idEstudios = estudios[cbEstudios.SelectedIndex].id;
+                empresa.idCurso = Statics.idCursoElegido;
+                empresa.idEstudios = Statics.idEstudioElegido;
                 empresa.nombre = tbxNombre.Text;
                 empresa.direccionSocial = tbxDireccionSocial.Text;
                 empresa.direccionTrabajo = tbxDireccionTrabajo.Text;
@@ -206,9 +144,33 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
                 empresa.tutor1 = tbxTutor1.Text;
                 empresa.tutor2 = tbxTutor2.Text;
                 empresa.tutor3 = tbxTutor3.Text;
-                empresa.convenio = tbxConvenio.Text.ToCharArray()[0];
-                empresa.planIndividual = tbxPlanIndividual.Text.ToCharArray()[0];
-                empresa.hojaActividades = tbxHojaActividades.Text.ToCharArray()[0];
+
+                if (tbxConvenio.IsChecked == true)
+                {
+                    empresa.convenio = 'S';
+                }
+                else
+                {
+                    empresa.convenio = 'N';
+                }
+
+                if (tbxPlanIndividual.IsChecked == true)
+                {
+                    empresa.planIndividual = 'S';
+                }
+                else
+                {
+                    empresa.planIndividual = 'N';
+                }
+
+                if (tbxHojaActividades.IsChecked == true)
+                {
+                    empresa.hojaActividades = 'S';
+                }
+                else
+                {
+                    empresa.hojaActividades = 'N';
+                }
 
                 EmpresaAPI.crearEmpresa(empresa);
 

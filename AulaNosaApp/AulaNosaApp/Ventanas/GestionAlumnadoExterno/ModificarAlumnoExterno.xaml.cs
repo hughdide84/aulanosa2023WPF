@@ -1,5 +1,7 @@
 ﻿using AulaNosaApp.DTO;
+using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
+using AulaNosaApp.Servicios.AdministracionCursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +36,12 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             tbxEspecialidad.Text = alumnoExternoDTO.especialidad.ToString();
             tbxCurso.Text = alumnoExternoDTO.idCurso.ToString();
             tbxTipo.Text = alumnoExternoDTO.tipo.ToString();
+            dtpInicio.Text = alumnoExternoDTO.inicio.ToString();
+            dtpFin.Text = alumnoExternoDTO.fin.ToString();
+            chbCv.IsChecked = alumnoExternoDTO.cv.Equals("a");
+            chbHorario.IsChecked = alumnoExternoDTO.horario.Equals("a");
+            chbConvenio.IsChecked = alumnoExternoDTO.convenio.Equals("a");
+            chbEvaluacion.IsChecked = alumnoExternoDTO.evaluacion.Equals("a");
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -56,24 +64,75 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                     return;
                 }
                 // Crear objeto
-                AlumnoExternoDTO cursoInsertar = new AlumnoExternoDTO();
-                cursoInsertar.id = id;
-                cursoInsertar.nombre = tbxNombre.Text.ToString();
-                cursoInsertar.email = tbxCorreo.Text.ToString();
-                cursoInsertar.telefono = tbxTelefono.Text.ToString();
-                cursoInsertar.universidad = tbxUniversidad.Text.ToString();
-                cursoInsertar.titulacion = tbxTitulacion.Text.ToString();
-                cursoInsertar.especialidad = tbxEspecialidad.Text.ToString();
-                cursoInsertar.idCurso = Curso;
-                cursoInsertar.tipo = tbxTipo.Text.ToString();
-                cursoInsertar.inicio = "2022-04-22T22:00:00.000+00:00";
-                cursoInsertar.fin = "2022-04-22T22:00:00.000+00:00";
-                cursoInsertar.cv = "a";
-                cursoInsertar.horario = "a";
-                cursoInsertar.convenio = "a";
-                cursoInsertar.evaluacion = "a";
-                // Editar curso
-                AlumnoExternoApi.EditarAlumnoExterno(cursoInsertar);
+                AlumnoExternoDTO alumnoExternoInsertar = new AlumnoExternoDTO();
+                alumnoExternoInsertar.id = id;
+                alumnoExternoInsertar.nombre = tbxNombre.Text.ToString();
+                alumnoExternoInsertar.email = tbxCorreo.Text.ToString();
+                alumnoExternoInsertar.telefono = tbxTelefono.Text.ToString();
+                alumnoExternoInsertar.universidad = tbxUniversidad.Text.ToString();
+                alumnoExternoInsertar.titulacion = tbxTitulacion.Text.ToString();
+                alumnoExternoInsertar.especialidad = tbxEspecialidad.Text.ToString();
+                alumnoExternoInsertar.idCurso = Curso;
+                CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
+                if (curso == null)
+                {
+                    MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                alumnoExternoInsertar.tipo = tbxTipo.Text.ToString();
+                try
+                {
+                    alumnoExternoInsertar.inicio = DateTime.Parse(dtpInicio.Text);
+                    alumnoExternoInsertar.fin = DateTime.Parse(dtpFin.Text);
+
+                    if (alumnoExternoInsertar.fin <= alumnoExternoInsertar.inicio)
+                    {
+                        MessageBox.Show("La fecha de finalización debe ser posterior a la de inicio.");
+                        return;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Formato incorrecto: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                if ((bool)chbCv.IsChecked)
+                {
+                    alumnoExternoInsertar.cv = "a";
+                }
+                else
+                {
+                    alumnoExternoInsertar.cv = "b";
+                }
+                if ((bool)chbHorario.IsChecked)
+                {
+                    alumnoExternoInsertar.horario = "a";
+                }
+                else
+                {
+                    alumnoExternoInsertar.horario = "b";
+                }
+                if ((bool)chbConvenio.IsChecked)
+                {
+                    alumnoExternoInsertar.convenio = "a";
+                }
+                else
+                {
+                    alumnoExternoInsertar.convenio = "b";
+                }
+                if ((bool)chbEvaluacion.IsChecked)
+                {
+                    alumnoExternoInsertar.evaluacion = "a";
+                }
+                else
+                {
+                    alumnoExternoInsertar.evaluacion = "b";
+                }
+                // Editar alumnno externo
+                AlumnoExternoApi.EditarAlumnoExterno(alumnoExternoInsertar);
                 // Cerrar ventana
                 Close();
             }
