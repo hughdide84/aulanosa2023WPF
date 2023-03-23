@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas.GestionAlumnadoExterno"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="CrearAlumnoExterno" Height="900" Width="800">
 
     <Grid>
