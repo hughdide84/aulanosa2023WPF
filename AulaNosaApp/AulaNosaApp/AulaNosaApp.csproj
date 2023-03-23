@@ -227,6 +227,7 @@
     <Compile Include="Servicios\AlumnoExternoApi.cs" />
     <Compile Include="Servicios\EmpresaAlumnosApi.cs" />
     <Compile Include="Servicios\EmpresaAPI.cs" />
+    <Compile Include="Servicios\EmpresaPFC.cs" />
     <Compile Include="Servicios\InfoPFCApi.cs" />
     <Compile Include="Servicios\MatriculaApi.cs" />
     <Compile Include="Servicios\PagosApi.cs" />
@@ -541,6 +542,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\refresh_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

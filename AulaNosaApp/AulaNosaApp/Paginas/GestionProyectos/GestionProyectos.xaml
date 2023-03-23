@@ -31,13 +31,13 @@
         <DataGrid Grid.Row="2" Name="dgvListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvListado_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Id Alumno" Binding="{Binding idAlumno}"/>
-                <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
-                <DataGridTextColumn Header="Presentacion" Binding="{Binding presentacion}"/>
-                <DataGridTextColumn Header="Nota Documento" Binding="{Binding notaDoc}"/>
-                <DataGridTextColumn Header="Nota Presentacion" Binding="{Binding notaPres}"/>
-                <DataGridTextColumn Header="Nota Final" Binding="{Binding notaFinal}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="10*"/>
+                <DataGridTextColumn Header="Id Alumno" Binding="{Binding idAlumno}" Width="20*"/>
+                <DataGridTextColumn Header="Documento" Binding="{Binding documento}" Width="20*"/>
+                <DataGridTextColumn Header="Presentacion" Binding="{Binding presentacion}" Width="10*"/>
+                <DataGridTextColumn Header="Nota Documento" Binding="{Binding notaDoc}" Width="15*"/>
+                <DataGridTextColumn Header="Nota Presentacion" Binding="{Binding notaPres}" Width="15*"/>
+                <DataGridTextColumn Header="Nota Final" Binding="{Binding notaFinal}" Width="10*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -23,15 +23,15 @@
         </ToolBar>
         <DataGrid Grid.Row="2" Name="dgvMatriculas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvMatriculas_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Factura" Binding="{Binding factura}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="NIF" Binding="{Binding nif}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cuota" Binding="{Binding cuota}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding fecha}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha Baja" Binding="{Binding fechaBaja}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="10*"/>
+                <DataGridTextColumn Header="Factura" Binding="{Binding factura}" Width="10*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="10*"/>
+                <DataGridTextColumn Header="NIF" Binding="{Binding nif}" Width="10*"/>
+                <DataGridTextColumn Header="Cuota" Binding="{Binding cuota}" Width="10*"/>
+                <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" Width="10*"/>
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}" Width="20*"/>
+                <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding fecha}" Width="10*"/>
+                <DataGridTextColumn Header="Fecha Baja" Binding="{Binding fechaBaja}" Width="10*"/>
             </DataGrid.Columns> 
         </DataGrid>
     </Grid>

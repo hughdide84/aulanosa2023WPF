@@ -211,6 +211,11 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/InfExposiciones/InfExposiciones.xaml", UriKind.Relative));
         }
 
+        private void btnInformes_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/InfEmpresas/InfEmpresas.xaml", UriKind.Relative));
+        }
+
         // Boton de recargar contenido de ambos ComboBox
         private void btnRecargarContenido_Click(object sender, RoutedEventArgs e)
         {
@@ -299,8 +304,8 @@ namespace AulaNosaApp
             }
             else
             {
-                spnFCT.Visibility = Visibility.Hidden;
-                spnPFC.Visibility = Visibility.Hidden;
+                spnFCT.Visibility = Visibility.Collapsed;
+                spnPFC.Visibility = Visibility.Collapsed;
             }
 
             if (listaEstudios[cbbEstudios.SelectedIndex].pext)
@@ -312,5 +317,7 @@ namespace AulaNosaApp
                 spnPEXT.Visibility = Visibility.Collapsed;
             }
         }
+
+        
     }
 }

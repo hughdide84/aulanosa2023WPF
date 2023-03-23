@@ -31,11 +31,11 @@
         <DataGrid Grid.Row="2" Name="dgvListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvListado_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                <DataGridTextColumn Header="IdEmpresa" Binding="{Binding idEmpresa}"/>
-                <DataGridTextColumn Header="Inicio" Binding="{Binding inicioPr}"/>
-                <DataGridTextColumn Header="Fin" Binding="{Binding finPr}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="10*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="20*"/>
+                <DataGridTextColumn Header="IdEmpresa" Binding="{Binding idEmpresa}" Width="20*"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicioPr}" Width="20*"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding finPr}" Width="20*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -33,11 +33,11 @@
         <DataGrid Grid.Row="2" Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvUsuarios_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Contraseña" Binding="{Binding password}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rol" Binding="{Binding rolNombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Email" Binding="{Binding email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="10*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="20*"/>
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding password}" Width="20*"/>
+                <DataGridTextColumn Header="Rol" Binding="{Binding rolNombre}" Width="20*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="20*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
