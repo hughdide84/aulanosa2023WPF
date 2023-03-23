@@ -45,7 +45,7 @@ namespace AulaNosaApp.Ventanas.AdministracionPagos
         // Refrescar lista
         void refrescarLista()
         {
-
+            frmPagos.Navigate(new Uri("/Paginas/VentanaVacia.xaml", UriKind.Relative));
         }
     }
 }

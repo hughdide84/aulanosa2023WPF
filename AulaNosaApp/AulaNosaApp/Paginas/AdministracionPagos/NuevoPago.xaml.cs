@@ -35,7 +35,7 @@ namespace AulaNosaApp.Paginas.PaginasPagos
         // Boton de cancelar crear pago
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
