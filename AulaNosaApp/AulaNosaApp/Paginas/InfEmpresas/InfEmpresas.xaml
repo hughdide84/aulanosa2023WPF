@@ -21,12 +21,12 @@
             <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click"/>
         </ToolBar>
         <DataGrid Grid.Row="2" Name="dgvEmpresaDisponible" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                <DataGridTextColumn Header="Cif" Binding="{Binding cif}"/>
-                <DataGridTextColumn Header="Representante" Binding="{Binding representante}"/>
-                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="30*"/>
+                <DataGridTextColumn Header="Cif" Binding="{Binding cif}" Width="20*"/>
+                <DataGridTextColumn Header="Representante" Binding="{Binding representante}" Width="30*"/>
+                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}" Width="20*"/>
             </DataGrid.Columns>
         </DataGrid>
 

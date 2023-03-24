@@ -21,10 +21,10 @@
                 <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click"/>
             </ToolBar>
             <DataGrid Grid.Row="2" Name="dgvAlumnoEmpresa"  ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Empresa" Binding="{Binding nombreEmpresa}"/>
-                    <DataGridTextColumn Header="Alumnos" Binding="{Binding nombreAlumno}"/>
+                    <DataGridTextColumn Header="Empresa" Binding="{Binding nombreEmpresa}" Width="50*"/>
+                    <DataGridTextColumn Header="Alumnos" Binding="{Binding nombreAlumno}" Width="50*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

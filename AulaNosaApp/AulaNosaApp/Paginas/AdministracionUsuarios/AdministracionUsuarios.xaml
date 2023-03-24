@@ -31,7 +31,7 @@
             <Button Content="Buscar" Name="btnBuscarFiltroUsuario" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="btnBuscarFiltroUsuario_Click"/>
         </ToolBar>
         <DataGrid Grid.Row="2" Name="dgvUsuarios" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvUsuarios_Selected">
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvUsuarios_Selected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="10*"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="20*"/>

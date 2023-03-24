@@ -26,7 +26,7 @@
         </ToolBar>
 
         <DataGrid Grid.Row="2" Name="dgvEmpresas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvEmpresas_Selected">
+                  CanUserAddRows="False" CanUserDeleteRows="False" DataGridCell.Selected="dgvEmpresas_Selected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Curso" Binding="{Binding idCurso}"></DataGridTextColumn>
