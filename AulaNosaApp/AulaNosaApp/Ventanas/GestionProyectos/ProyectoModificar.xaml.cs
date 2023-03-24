@@ -128,6 +128,42 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 proyecto.notaDoc = int.Parse(tbxNotaDocumento.Text);
                 proyecto.notaPres = int.Parse(tbxNotaPresentacion.Text);
                 proyecto.notaFinal = int.Parse(tbxNotaFinal.Text);
+                if (cbbEstadoTutoria1.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria1 = 'P';
+                }
+                else if (cbbEstadoTutoria1.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria1 = 'A';
+                }
+                else
+                {
+                    proyecto.estadoTutoria1 = 'F';
+                }
+                if (cbbEstadoTutoria2.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria2 = 'P';
+                }
+                else if (cbbEstadoTutoria2.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria2 = 'A';
+                }
+                else
+                {
+                    proyecto.estadoTutoria2 = 'F';
+                }
+                if (cbbEstadoTutoria3.SelectedIndex == 0)
+                {
+                    proyecto.estadoTutoria3 = 'P';
+                }
+                else if (cbbEstadoTutoria3.SelectedIndex == 1)
+                {
+                    proyecto.estadoTutoria3 = 'A';
+                }
+                else
+                {
+                    proyecto.estadoTutoria3 = 'F';
+                }
                 // Crear proyecto
                 ProyectoApi.modificarProyecto(proyecto);
                 // Cerrar ventana

@@ -16,5 +16,12 @@ namespace AulaNosaApp.DTO
         public int notaDoc { get; set; }
         public int notaPres { get; set; }
         public int notaFinal { get; set; }
+        public DateTime exposicion { get; set; }
+        public DateTime tutoria1 { get; set; }
+        public DateTime tutoria2 { get; set; }
+        public DateTime tutoria3 { get; set; }
+        public char estadoTutoria1 { get; set; }
+        public char estadoTutoria2 { get; set; }
+        public char estadoTutoria3 { get; set; }
     }
 }
