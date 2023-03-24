@@ -19,20 +19,17 @@
         <TextBlock Grid.Row="0" Name="tbkTitulo" Text="Informe de notas" Style="{StaticResource TextBlockTituloAdministracion}"/>
 
         <ToolBar Grid.Row="1">
-            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}"/>
-            <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}"/>
+            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click_1"/>
+            <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click_1"/>
         </ToolBar>
 
-        <DataGrid Grid.Row="2" Name="dgvAlumnoEmpresa" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+        <DataGrid Grid.Row="2" Name="dgvProyectos" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Id alumno" Binding="{Binding idAlumno}"/>
-                <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
-                <DataGridTextColumn Header="Presentación" Binding="{Binding presentacion}"/>
-                <DataGridTextColumn Header="Nota documentación" Binding="{Binding notaDoc}"/>
-                <DataGridTextColumn Header="Nota presentación" Binding="{Binding notaPres}"/>
-                <DataGridTextColumn Header="Nota final" Binding="{Binding notaFinal}"/>
+                <DataGridTextColumn Header="Alumno" Binding="{Binding nombreAlumno}" Width="55*"/>
+                <DataGridTextColumn Header="Nota documentación" Binding="{Binding notaDoc}" Width="15*"/>
+                <DataGridTextColumn Header="Nota presentación" Binding="{Binding notaPres}" Width="15*"/>
+                <DataGridTextColumn Header="Nota final" Binding="{Binding notaFinal}" Width="15*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

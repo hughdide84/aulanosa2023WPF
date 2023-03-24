@@ -98,24 +98,23 @@ namespace AulaNosaApp.Servicios
                 PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
                 PdfFont bold = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
 
-                iText.Layout.Element.Paragraph header = new iText.Layout.Element.Paragraph("INFORME ALUMNO - EMPRESA").SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER).SetFontSize(20);
+                iText.Layout.Element.Paragraph header = new iText.Layout.Element.Paragraph("INFORME NOTAS - PROYECTOS").SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER).SetFontSize(20);
                 document.Add(header);
                 LineSeparator ls = new LineSeparator(new SolidLine());
                 document.Add(ls);
                 iText.Layout.Element.Paragraph subheader = new iText.Layout.Element.Paragraph("").SetFontSize(10);
                 document.Add(subheader);
 
-                iText.Layout.Element.Table table = new iText.Layout.Element.Table(2);
+                iText.Layout.Element.Table table = new iText.Layout.Element.Table(4);
 
                 table.AddCell(new iText.Layout.Element.Paragraph("ALUMNO").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                table.AddCell(new iText.Layout.Element.Paragraph("EMPRESA").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                table.AddCell(new iText.Layout.Element.Paragraph("NOTA DOCUMENTACIÓN").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                table.AddCell(new iText.Layout.Element.Paragraph("NOTA PRESENTACIÓN").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                table.AddCell(new iText.Layout.Element.Paragraph("NOTA FINAL").SetFont(bold).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
 
                 foreach (ProyectoDTO proyecto in proyectos)
                 {
-                    table.AddCell(new iText.Layout.Element.Paragraph(proyecto.id.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                    table.AddCell(new iText.Layout.Element.Paragraph(proyecto.idAlumno.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                    table.AddCell(new iText.Layout.Element.Paragraph(proyecto.documento.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
-                    table.AddCell(new iText.Layout.Element.Paragraph(proyecto.presentacion.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
+                    table.AddCell(new iText.Layout.Element.Paragraph(proyecto.nombreAlumno).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
                     table.AddCell(new iText.Layout.Element.Paragraph(proyecto.notaDoc.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
                     table.AddCell(new iText.Layout.Element.Paragraph(proyecto.notaPres.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));
                     table.AddCell(new iText.Layout.Element.Paragraph(proyecto.notaFinal.ToString()).SetFont(font).SetBackgroundColor(ColorConstants.WHITE).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER));

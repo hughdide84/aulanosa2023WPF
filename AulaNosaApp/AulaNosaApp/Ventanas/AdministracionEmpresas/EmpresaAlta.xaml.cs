@@ -31,7 +31,7 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
         {
             InitializeComponent();
         }
-        
+
         // Función que verifica que los campos no estén vacíos
         bool validarCampos()
         {
@@ -103,27 +103,27 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
                 lblErrortbxContacto.Content = "";
             }
 
-            if (tbxTutor1.Text.Length == 0)
+            if (tbxTutor1.Text.Length == 0 || !ContieneSoloLetras(tbxTutor1.Text))
             {
-                lblErrortbxTutor1.Content = "Campo vacío";
+                lblErrortbxTutor1.Content = "Campo vacío / inválido";
             }
             else
             {
                 lblErrortbxTutor1.Content = "";
             }
 
-            if (tbxTutor2.Text.Length == 0)
+            if (tbxTutor2.Text.Length == 0 || !ContieneSoloLetras(tbxTutor2.Text))
             {
-                lblErrortbxTutor2.Content = "Campo vacío";
+                lblErrortbxTutor2.Content = "Campo vacío / inválido";
             }
             else
             {
                 lblErrortbxTutor2.Content = "";
             }
 
-            if (tbxTutor3.Text.Length == 0)
+            if (tbxTutor3.Text.Length == 0 || !ContieneSoloLetras(tbxTutor3.Text))
             {
-                lblErrortbxTutor3.Content = "Campo vacío";
+                lblErrortbxTutor3.Content = "Campo vacío / inválido";
             }
             else
             {
@@ -186,6 +186,21 @@ namespace AulaNosaApp.Ventanas.AdministracionEmpresas
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        // Función que verifica que un campo contenga solo letras del alfabeto (permite tildes)
+        public bool ContieneSoloLetras(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                // Comprobamos si el caracter es una letra o una tilde
+                if (!Char.IsLetter(caracter) && caracter != 'á' && caracter != 'é' && caracter != 'í' && caracter != 'ó' && caracter != 'ú' &&
+                    caracter != 'Á' && caracter != 'É' && caracter != 'Í' && caracter != 'Ó' && caracter != 'Ú' && caracter != 'ñ' && caracter != 'Ñ')
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

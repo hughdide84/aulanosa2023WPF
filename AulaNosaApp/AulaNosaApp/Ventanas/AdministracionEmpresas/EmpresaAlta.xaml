@@ -124,7 +124,7 @@
                     <Button x:Name="btnSalir" Content="Salir" Style="{StaticResource BotonesFormularios}" Click="btnSalir_Click"/>
                     <Button x:Name="btnRegistrar" Content="Registrar" Style="{StaticResource BotonesFormularios}" Margin="50,0,0,0" Click="btnRegistrar_Click"/>
                 </StackPanel>
-                
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

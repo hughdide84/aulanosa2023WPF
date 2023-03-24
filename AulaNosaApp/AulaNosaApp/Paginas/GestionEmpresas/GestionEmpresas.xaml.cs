@@ -32,6 +32,7 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
         RestClient client;
         RestRequest request;
         List<EmpresaDTO> empresas;
+        List<EmpresaDTO> empresasFiltradas = new List<EmpresaDTO>();
 
         public GestionEmpresas()
         {
@@ -98,9 +99,19 @@ namespace AulaNosaApp.Paginas.GestionEmpresas
         void refrescarEmpresas()
         {
             empresas = EmpresaAPI.listarEmpresas();
+            empresasFiltradas.Clear();
+  
+            foreach (EmpresaDTO empresa in empresas)
+            {
+                if (empresa.idCurso == Statics.idCursoElegido && empresa.idEstudios == Statics.idEstudioElegido)
+                {
+                    empresasFiltradas.Add(empresa);
+                }
+            }
+
             dgvEmpresas.ItemsSource = null;
             dgvEmpresas.Items.Clear();
-            dgvEmpresas.ItemsSource = empresas;
+            dgvEmpresas.ItemsSource = empresasFiltradas;
         }
     }
 }

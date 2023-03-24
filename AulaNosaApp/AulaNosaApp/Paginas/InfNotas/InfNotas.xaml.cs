@@ -27,6 +27,7 @@ namespace AulaNosaApp.Paginas.InfNotas
         public InfNotas()
         {
             InitializeComponent();
+            refrescarProyectos();
         }
 
         // Boton de refrescar la lista de proyectos
@@ -45,9 +46,25 @@ namespace AulaNosaApp.Paginas.InfNotas
         void refrescarProyectos()
         {
             proyectos = ProyectoApi.listarProyectos();
-            dgvAlumnoEmpresa.ItemsSource = null;
-            dgvAlumnoEmpresa.Items.Clear();
-            dgvAlumnoEmpresa.ItemsSource = proyectos;
+
+            foreach (ProyectoDTO proyecto in proyectos)
+            {
+                proyecto.nombreAlumno = proyecto.alumno.nombre;
+            }
+
+            dgvProyectos.ItemsSource = null;
+            dgvProyectos.Items.Clear();
+            dgvProyectos.ItemsSource = proyectos;
+        }
+
+        private void btnRefrescar_Click_1(object sender, RoutedEventArgs e)
+        {
+            refrescarProyectos();
+        }
+
+        private void btnGenerarPDF_Click_1(object sender, RoutedEventArgs e)
+        {
+            ProyectoApi.exportarPDF(proyectos);
         }
     }
 }
