@@ -12,7 +12,6 @@ namespace AulaNosaApp.Util
         public String nombre { get; set; }
         public String password { get; set; }
         public String rol { get; set; }
-        public String rolNombre { get; set; }
         public String email { get; set; }
     }
 }

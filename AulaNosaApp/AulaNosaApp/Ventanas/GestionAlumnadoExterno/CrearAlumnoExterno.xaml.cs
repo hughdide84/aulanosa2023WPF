@@ -2,12 +2,10 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
-using AulaNosaApp.Util;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,24 +29,20 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             InitializeComponent();
         }
         AlumnoExternoDTO alumno = new AlumnoExternoDTO();
+
+
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
-            alumno.nombre = tbxNombre.Text;
-            if (tbxTipo.SelectedIndex == 0)
+            int Curso;
+            if (!int.TryParse(tbxCurso.Text, out Curso))
             {
-                alumno.tipo = "M";
-            }
-            else if (tbxTipo.SelectedIndex == 1)
-            {
-                alumno.tipo = "O";
-            }
-            else
-            {
-                MessageBox.Show("Debes elegir una opción para el tipo");
+                MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
                 return;
             }
+            alumno.nombre = tbxNombre.Text;
+            alumno.tipo = tbxTipo.Text;
             alumno.email = tbxCorreo.Text;
-            alumno.telefono = tbxTelefono.Text.ToString();
+            alumno.telefono = tbxTelefono.Text;
             alumno.universidad = tbxUniversidad.Text;
             alumno.titulacion = tbxTitulacion.Text;
             alumno.especialidad = tbxEspecialidad.Text;
@@ -66,24 +60,23 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
             catch (FormatException ex)
             {
                 MessageBox.Show("Formato incorrecto: " + ex.Message);
-                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+            alumno.idCurso = Curso;
+            CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
+            if (curso == null)
+            {
+                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            alumno.idCurso = Statics.idCursoElegido;
 
             if (string.IsNullOrEmpty(alumno.nombre))
             {
                 // Mostrar un mensaje de error indicando que el nombre del alumno es obligatorio
                 MessageBox.Show("El nombre del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (alumno.nombre.Length > 50 || alumno.nombre.Length < 3)
-            {
-                MessageBox.Show("El nombre del alumno no puede tener menos de 3 caracteres o mas de 50", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (string.IsNullOrEmpty(alumno.tipo))
@@ -92,38 +85,23 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 MessageBox.Show("El tipo del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (alumno.tipo.Length > 1)
+            {
+                MessageBox.Show("El tipo del alumno no puede tener más de un caracter", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (string.IsNullOrEmpty(alumno.email))
             {
                 // Mostrar un mensaje de error indicando que el email del alumno es obligatorio
                 MessageBox.Show("El email del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            try
-            {
-                MailAddress correo = new MailAddress(tbxCorreo.Text);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("El correo electrónico no es válido.", "Error");
-                return;
-            }
-            bool terminacion;
 
-            terminacion = tbxCorreo_LostFocus(sender, e);
-            if (terminacion == false)
-            {
-                MessageBox.Show("El correo electrónico debe terminar en .com o .es", "Error de validación");
-                return;
-            }
             if (string.IsNullOrEmpty(alumno.telefono))
             {
                 // Mostrar un mensaje de error indicando que el teléfono del alumno es obligatorio
                 MessageBox.Show("El teléfono del alumno es obligatorio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (alumno.telefono.Length != 9)
-            {
-                MessageBox.Show("El teléfono del alumno tiene que tener 9 caracteres", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -148,38 +126,37 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
                 return;
             }
 
-
             if ((bool)chbCv.IsChecked)
             {
-                alumno.cv = "S";
+                alumno.cv = "a";
             }
             else
             {
-                alumno.cv = "N";
+                alumno.cv = "b";
             }
             if ((bool)chbHorario.IsChecked)
             {
-                alumno.horario = "S";
+                alumno.horario = "a";
             }
             else
             {
-                alumno.horario = "N";
+                alumno.horario = "b";
             }
             if ((bool)chbConvenio.IsChecked)
             {
-                alumno.convenio = "S";
+                alumno.convenio = "a";
             }
             else
             {
-                alumno.convenio = "N";
+                alumno.convenio = "b";
             }
             if ((bool)chbEvaluacion.IsChecked)
             {
-                alumno.evaluacion = "S";
+                alumno.evaluacion = "a";
             }
             else
             {
-                alumno.evaluacion = "N";
+                alumno.evaluacion = "b";
             }
 
             string v = AlumnoExternoApi.AgregarAlumnoExterno(alumno);
@@ -191,25 +168,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnadoExterno
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-        private bool tbxCorreo_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (!tbxCorreo.Text.EndsWith(".com") && !tbxCorreo.Text.EndsWith(".es"))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private void tbxTelefono_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)))
-            {
-                // Si la tecla presionada no es un número, se suprime
-                e.Handled = true;
-            }
         }
     }
 }

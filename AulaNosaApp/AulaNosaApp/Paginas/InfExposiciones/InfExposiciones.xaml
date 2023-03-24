@@ -8,28 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GestionExposiciones">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Rectangle Style="{StaticResource BgColorGridRowTituloAdm}"/>
-        <TextBlock Name="tbkTitulo" Text="Calendario Proyectos" Style="{StaticResource TextBlockTituloAdministracion}"/>
+    <Grid>
         
-        <DataGrid  Grid.Row="1" x:Name="dgListado" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="true" AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"  CanUserAddRows="False" CanUserDeleteRows="False">
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
-                <DataGridTextColumn Header="Fecha" Binding="{Binding fecha}"/>
-                <DataGridTextColumn Header="Comentarios" Binding="{Binding comentarios}" MaxWidth="1000">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Page>

@@ -26,7 +26,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Name="tbkEditarRecibo" Text="Recibo" Style="{StaticResource TextBlockFormularios}"/>
-                    <TextBox Name="tbxEditarRecibo" Style="{StaticResource TextBoxFormularios}" MaxLength="20"/>
+                    <TextBox Name="tbxEditarRecibo" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorRecibo" Content=""/>
             </StackPanel>
@@ -40,7 +40,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
                     <TextBlock Name="tbkEditarObservacion" Text="Observacion" Style="{StaticResource TextBlockFormularios}" FontSize="16"/>
-                    <TextBox Name="tbxEditarObservacion" Style="{StaticResource TextBoxFormularios}" MaxLength="100"/>
+                    <TextBox Name="tbxEditarObservacion" Style="{StaticResource TextBoxFormularios}" MaxLength="50"/>
                 </StackPanel>
                 <Label Name="lblErrorObservacion" Content=""/>
             </StackPanel>

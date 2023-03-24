@@ -24,6 +24,11 @@
             <Button Content="Consultar" Name="btnConsultaUsuario" Style="{StaticResource BotonesAdministracion}" Click="BtnConsultar_Click"/>
             <ComboBox Name="cmbConsultar" Style="{StaticResource ComboBoxAdministracion}">
                 <ComboBoxItem>ID</ComboBoxItem>
+                <ComboBoxItem>Nombre</ComboBoxItem>
+                <ComboBoxItem>Email</ComboBoxItem>
+                <ComboBoxItem>Telefono</ComboBoxItem>
+                <ComboBoxItem>Inicio</ComboBoxItem>
+                <ComboBoxItem>Fin</ComboBoxItem>
             </ComboBox>
             <TextBox Width="100" Name="tbxConsultar" MaxLength="100" Style="{StaticResource TextBoxAdministracion}"/>
             <Button Content="Buscar" Name="btnBuscar" Visibility="Hidden" Style="{StaticResource BotonesAdministracion}" Click="BtnBuscar_Click"/>

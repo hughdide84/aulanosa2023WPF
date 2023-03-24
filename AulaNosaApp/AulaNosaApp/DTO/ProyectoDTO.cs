@@ -16,5 +16,7 @@ namespace AulaNosaApp.DTO
         public int notaDoc { get; set; }
         public int notaPres { get; set; }
         public int notaFinal { get; set; }
+        public String nombreAlumno { get; set; }
+        public AlumnoDTO alumno { get; set; }
     }
 }

@@ -92,6 +92,12 @@ namespace AulaNosaApp.Paginas.GestionAlumnadoExterno
         {
             cmbConsultar.Items.Clear();
             cmbConsultar.Items.Add("Id");
+            cmbConsultar.Items.Add("Nombre");
+            cmbConsultar.Items.Add("Email");
+            cmbConsultar.Items.Add("Teléfono");
+            cmbConsultar.Items.Add("Universidad");
+            cmbConsultar.Items.Add("Titulación");
+            cmbConsultar.Items.Add("Especialidad");
             cmbConsultar.SelectedIndex = 0;
 
             if (cmbConsultar.Visibility == Visibility.Visible)
@@ -126,16 +132,8 @@ namespace AulaNosaApp.Paginas.GestionAlumnadoExterno
                         {
                             AlumnoExternoDTO coincidencia = AlumnoExternoApi.ListarAlumnoExternoPorId(id);
 
-                            if (coincidencia.id == 0)
-                            {
-                                MessageBox.Show("No se encontró ningún alumno con el ID especificado", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                            else
-                            {
-                                lista = new List<AlumnoExternoDTO> { coincidencia };
-
-                                dtgListado.ItemsSource = lista;
-                            }
+                            lista = new List<AlumnoExternoDTO> { coincidencia };
+                            dtgListado.ItemsSource = lista;
                         }
                         catch
                         {
@@ -143,10 +141,10 @@ namespace AulaNosaApp.Paginas.GestionAlumnadoExterno
                         }
                     }
                     else
-                    {
-                        MessageBox.Show("El valor ingresado no es un número válido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        {
+                            MessageBox.Show("El valor ingresado no es un número válido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
-                }
             }
         }
 

@@ -148,13 +148,13 @@ namespace AulaNosaApp
         // Panel del calendario FCT
         private void btnCalendarioFct_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/Calendario.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
         // Panel del calendario PEXT
         private void btnCalendarioPext_Click(object sender, RoutedEventArgs e)
         {
-            frmPrincipal.Navigate(new Uri("/Paginas/CalendarioPEXT/CalendarioPEXT.xaml", UriKind.Relative));
+            frmPrincipal.Navigate(new Uri("/Paginas/Calendario/investigacionCalendario.xaml", UriKind.Relative));
         }
 
         // Informacion PFC
@@ -203,17 +203,6 @@ namespace AulaNosaApp
         private void btnEmpresas_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/GestionEmpresas/GestionEmpresas.xaml", UriKind.Relative));
-        }
-
-        // Informe exposiciones
-        private void btnExposiciones_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/InfExposiciones/InfExposiciones.xaml", UriKind.Relative));
-        }
-
-        private void btnInformes_Click(object sender, RoutedEventArgs e)
-        {
-            frmPrincipal.Navigate(new Uri("/Paginas/InfEmpresas/InfEmpresas.xaml", UriKind.Relative));
         }
 
         // Boton de recargar contenido de ambos ComboBox
@@ -304,8 +293,8 @@ namespace AulaNosaApp
             }
             else
             {
-                spnFCT.Visibility = Visibility.Collapsed;
-                spnPFC.Visibility = Visibility.Collapsed;
+                spnFCT.Visibility = Visibility.Hidden;
+                spnPFC.Visibility = Visibility.Hidden;
             }
 
             if (listaEstudios[cbbEstudios.SelectedIndex].pext)
@@ -318,6 +307,9 @@ namespace AulaNosaApp
             }
         }
 
-        
+        private void btnNotas_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/InfNotas/InfNotas.xaml", UriKind.Relative));
+        }
     }
 }

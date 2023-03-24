@@ -33,13 +33,13 @@
             <Button Name="btnBuscar" Content="Buscar" Style="{StaticResource BotonesAdministracion}" Visibility="Collapsed" Click="btnBuscar_Click"/>
         </ToolBar>
         <DataGrid Grid.Row="2" Name="dgvListado" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
-                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" DataGridCell.Selected="dgvListado_Selected">
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvListado_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="10*"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="25*"/>
-                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}" Width="25*"/>
-                <DataGridTextColumn Header="Fin" Binding="{Binding fin}" Width="25*"/>
-                <DataGridTextColumn Header="Estado" Binding="{Binding estado}" Width="15*"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                <DataGridTextColumn Header="Inicio" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Header="Fin" Binding="{Binding fin}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

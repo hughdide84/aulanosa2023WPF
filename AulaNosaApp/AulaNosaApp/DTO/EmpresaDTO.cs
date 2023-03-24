@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AulaNosaApp.DTO
 {
-    public class EmpresaDTO
+    internal class EmpresaDTO
     {
         public int id { get; set; }
         public int idCurso { get; set; }

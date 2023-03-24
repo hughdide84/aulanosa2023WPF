@@ -16,7 +16,7 @@
             <Setter Property="Orientation" Value="Vertical"/>
         </Style>
         <Style x:Key="MargenAbajoStackPanel" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
         </Style>
         <Style x:Key="BotonesCentrados" TargetType="StackPanel">
             <Setter Property="Margin" Value="25,0,0,0"/>
@@ -58,15 +58,13 @@
         </Style>
         <Style x:Key="LabelTitulosMenuIzqda" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Foreground" Value="LightBlue"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="LightGray"/>
         </Style>
         <Style x:Key="TextBlockMenuIzqda" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="LightBlue"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="5,0,0,0"/>
-            
         </Style>
         <Style x:Key="TextBlockLogin" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
@@ -108,24 +106,12 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel x:Name="spnMenuIzqda" Style="{StaticResource StackPanelMenuIzqda}">
-
+            <Button Name="btnRecargarContenido"  Content="Recargar" Click="btnRecargarContenido_Click"/>
             <StackPanel>
                 <TextBlock x:Name="tbkCursosActivos" Text="Cursos" Style="{StaticResource TextBlockMenuIzqda}"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
-
-                    <Button Grid.Column="1" Name="btnRecargarContenido" Height="25" Click="btnRecargarContenido_Click" Background="#1A17A1">
-                        <StackPanel>
-                            <Image Source="/Imagenes/refresh_icon.png"/>
-                        </StackPanel>
-                    </Button>
-                </Grid>
+                <ComboBox Name="cbbCursos" Margin="5,5,5,0" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbCursos_SelectionChanged"/>
             </StackPanel>
-            <StackPanel Margin="0,10,0,10">
+            <StackPanel Margin="0,5,0,0">
                 <TextBlock x:Name="tbkEstudios" Text="Estudios" Style="{StaticResource TextBlockMenuIzqda}"/>
                 <ComboBox Name="cbbEstudios" Margin="5" Style="{StaticResource ComboBoxPantallaPrincipal}" SelectionChanged="cbbEstudios_SelectionChanged"/>
             </StackPanel>
@@ -146,7 +132,7 @@
                     <Button x:Name="btnCalendarioFct" Content="Calendario"  Style="{StaticResource BotonesMenuIzqda}" Click="btnCalendarioFct_Click"/>
                     <Button x:Name="btnAlumnoEmpresa" Content="Alumno - Empresa"  Style="{StaticResource BotonesMenuIzqda}" Click="btnAlumnoEmpresa_Click"/>
                     <Button x:Name="btnEmpresaAlumnos" Content="Empresa - Alumnos"  Style="{StaticResource BotonesMenuIzqda}" Click="btnEmpresaAlumnos_Click"/>
-                    <Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}" Click="btnInformes_Click"/>
+                    <Button x:Name="btnInformes" Content="Informes"  Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnTutorias" Content="Tutorías"  Style="{StaticResource BotonesMenuIzqda}"/>
                 </StackPanel>
             </StackPanel>
@@ -154,8 +140,8 @@
                 <Label x:Name="lblPFC" Content="GESTIÓN PFC" Style="{StaticResource LabelTitulosMenuIzqda}"/>
                 <StackPanel Style="{StaticResource BotonesCentrados}">
                     <Button x:Name="btnProyectos" Content="Proyectos" Style="{StaticResource BotonesMenuIzqda}" Click="btnProyectos_Click"/>
-                    <Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}"/>
-                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}" Click="btnExposiciones_Click"/>
+                    <Button x:Name="btnNotas" Content="Notas" Style="{StaticResource BotonesMenuIzqda}" Click="btnNotas_Click"/>
+                    <Button x:Name="btnExposiciones" Content="Exposiciones" Style="{StaticResource BotonesMenuIzqda}"/>
                     <Button x:Name="btnInfo" Content="Info" Style="{StaticResource BotonesMenuIzqda}" Click="btnInfo_Click"/>
                 </StackPanel>
             </StackPanel>

@@ -155,27 +155,6 @@ namespace AulaNosaApp.Paginas
         void refrescarUsuarios()
         {
             usuariosLista = UsuariosApi.listarUsuarios();
-            foreach (UsuarioDTO usuario in usuariosLista)
-            {
-
-                if (usuario.rol.Contains("ADMIN"))
-                {
-                    usuario.rolNombre = "Administrador";
-                }
-                else if (usuario.rol.Contains("EDITOR"))
-                {
-                    usuario.rolNombre = "Editor";
-
-                }
-                else if (usuario.rol.Contains("PROFE"))
-                {
-                    usuario.rolNombre = "Profesor";
-                }
-                else
-                {
-                    usuario.rolNombre = "Alumno";
-                }
-            }
             dgvUsuarios.ItemsSource = null;
             dgvUsuarios.Items.Clear();
             dgvUsuarios.ItemsSource = usuariosLista;

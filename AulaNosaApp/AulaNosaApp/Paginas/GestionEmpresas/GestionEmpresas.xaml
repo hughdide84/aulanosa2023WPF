@@ -28,21 +28,19 @@
         <DataGrid Grid.Row="2" Name="dgvEmpresas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   CanUserAddRows="False" CanUserDeleteRows="False" Style="{StaticResource DataGridAdministracion}" DataGridCell.Selected="dgvEmpresas_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Curso" Binding="{Binding idCurso}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estudios" Binding="{Binding idEstudios}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Dirección social" Binding="{Binding direccionSocial}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Dirección de trabajo" Binding="{Binding direccionTrabajo}"></DataGridTextColumn>
-                <DataGridTextColumn Header="CIF" Binding="{Binding cif}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Representante" Binding="{Binding representante}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tutor 1" Binding="{Binding tutor1}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tutor 2" Binding="{Binding tutor2}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tutor 3" Binding="{Binding tutor3}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Plan individual" Binding="{Binding planIndividual}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Hoja de actividades" Binding="{Binding hojaActividades}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="2*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="8*"/>
+                <DataGridTextColumn Header="Dirección social" Binding="{Binding direccionSocial}" Width="12*"/>
+                <DataGridTextColumn Header="Dirección de trabajo" Binding="{Binding direccionTrabajo}" Width="12*"/>
+                <DataGridTextColumn Header="CIF" Binding="{Binding cif}" Width="8*"/>
+                <DataGridTextColumn Header="Representante" Binding="{Binding representante}" Width="8*"/>
+                <DataGridTextColumn Header="Contacto" Binding="{Binding contacto}" Width="8*"/>
+                <DataGridTextColumn Header="Tutor 1" Binding="{Binding tutor1}" Width="8*"/>
+                <DataGridTextColumn Header="Tutor 2" Binding="{Binding tutor2}" Width="8*"/>
+                <DataGridTextColumn Header="Tutor 3" Binding="{Binding tutor3}" Width="8*"/>
+                <DataGridTextColumn Header="Convenio" Binding="{Binding convenio}" Width="6*"/>
+                <DataGridTextColumn Header="Plan individual" Binding="{Binding planIndividual}" Width="6*"/>
+                <DataGridTextColumn Header="Hoja actividades" Binding="{Binding hojaActividades}" Width="6*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
