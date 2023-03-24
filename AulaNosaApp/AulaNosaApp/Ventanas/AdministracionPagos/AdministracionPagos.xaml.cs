@@ -65,6 +65,7 @@ namespace AulaNosaApp.Ventanas.AdministracionPagos
         private void dgvPagos_Selected(object sender, RoutedEventArgs e)
         {
             btnEditarPago.IsEnabled = true;
+            var pagoSeleccionado = dgvPagos.SelectedItem as PagoDTO;
         }
     }
 }

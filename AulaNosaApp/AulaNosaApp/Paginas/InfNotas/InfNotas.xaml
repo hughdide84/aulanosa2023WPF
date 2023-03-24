@@ -8,7 +8,29 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfNotas">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Style="{StaticResource BgColorGridRowTituloAdm}"/>
+        <TextBlock Grid.Row="0" Name="tbkTitulo" Text="Informe de notas" Style="{StaticResource TextBlockTituloAdministracion}"/>
+
+        <ToolBar Grid.Row="1">
+            <Button Name="btnRefrescar" Content="Refrescar" Style="{StaticResource BotonesAdministracion}" Click="btnRefrescar_Click_1"/>
+            <Button Name="btnGenerarPDF" Content="PDF" Style="{StaticResource BotonesAdministracion}" Click="btnGenerarPDF_Click_1"/>
+        </ToolBar>
+
+        <DataGrid Grid.Row="2" Name="dgvProyectos" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Style="{StaticResource DataGridAdministracion}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Alumno" Binding="{Binding nombreAlumno}" Width="55*"/>
+                <DataGridTextColumn Header="Nota documentación" Binding="{Binding notaDoc}" Width="15*"/>
+                <DataGridTextColumn Header="Nota presentación" Binding="{Binding notaPres}" Width="15*"/>
+                <DataGridTextColumn Header="Nota final" Binding="{Binding notaFinal}" Width="15*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

@@ -24,24 +24,38 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
     /// </summary>
     public partial class ProyectoCrear : Window
     {
+        List<AlumnoDTO> alumnos;
+        List<AlumnoDTO> alumnoDTOs = new List<AlumnoDTO>();
 
         public ProyectoCrear()
         {
             InitializeComponent();
+            cbbEstadoTutoria1.SelectedIndex = 0;
+            cbbEstadoTutoria2.SelectedIndex = 0;
+            cbbEstadoTutoria3.SelectedIndex = 0;
+            cargarAlumnos();
+            cbbAlumnos.SelectedIndex = 0;
+        }
+
+        private void cargarAlumnos()
+        {
+            alumnos = AlumnoApi.ListarAlumnos();
+            List<string> alumnosFiltrados = new List<string>();
+            alumnosFiltrados.Clear();
+            foreach (AlumnoDTO alumno in alumnos)
+            {
+                if (alumno.idCurso == Statics.idCursoElegido && alumno.idEstudios == Statics.idEstudioElegido)
+                {
+                    alumnoDTOs.Add(alumno);
+                    alumnosFiltrados.Add(alumno.nombre);
+                }
+            }
+            cbbAlumnos.ItemsSource = alumnosFiltrados;
         }
 
         // Accion al clickear el boton de creacion del proyecto
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            // Verificar si se introdujo un Id de Alumno vacío
-            if (tbxIdAlumno.Text.Length == 0)
-            {
-                lblErrorIdAlumno.Content = "Id de alumno vacio";
-            }
-            else
-            {
-                lblErrorIdAlumno.Content = "";
-            }
             // Verificar que se introdujo una nota de documentacion mayor que 10
             if (tbxNotaDocumento.Text == "" || int.Parse(tbxNotaDocumento.Text) == 0)
             {
@@ -142,12 +156,12 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 lblErrorFechaExposicion.Content = "";
             }
             // Si se cumplen todos los requisitos, entrara en la accion de crear el proyecto
-            if (lblErrorIdAlumno.Content == "" && lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "" && lblErrorFechaTutoria1.Content == "" && lblErrorFechaTutoria2.Content == "" && lblErrorFechaTutoria3.Content == "" && lblErrorFechaExposicion.Content == "")
+            if (lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "" && lblErrorFechaTutoria1.Content == "" && lblErrorFechaTutoria2.Content == "" && lblErrorFechaTutoria3.Content == "" && lblErrorFechaExposicion.Content == "")
             {
                 // Crear un objeto
                 ProyectoDTO proyecto = new ProyectoDTO();
                 proyecto.id = 1; // (al ser un id autoincremental, este sera el ultimo id registrado + 1, pero se pone aqui un id por que el objeto tiene que tener un valor en el atributo)
-                proyecto.idAlumno = int.Parse(tbxIdAlumno.Text);
+                proyecto.idAlumno = alumnoDTOs[cbbAlumnos.SelectedIndex].id;
                 if (chbDocumento.IsChecked == true)
                 {
                     proyecto.documento = 's';
@@ -173,39 +187,39 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 proyecto.tutoria3 = DateTime.Parse(dtpTutoria3.Text);
                 if (cbbEstadoTutoria1.SelectedIndex == 0)
                 {
-                    proyecto.estadoTutoria1 = 'p';
+                    proyecto.estadoTutoria1 = 'P';
                 }
                 else if (cbbEstadoTutoria1.SelectedIndex == 1)
                 {
-                    proyecto.estadoTutoria1 = 'a';
+                    proyecto.estadoTutoria1 = 'A';
                 }
                 else
                 {
-                    proyecto.estadoTutoria1 = 'f';
+                    proyecto.estadoTutoria1 = 'F';
                 }
                 if (cbbEstadoTutoria2.SelectedIndex == 0)
                 {
-                    proyecto.estadoTutoria2 = 'p';
+                    proyecto.estadoTutoria2 = 'P';
                 }
                 else if (cbbEstadoTutoria2.SelectedIndex == 1)
                 {
-                    proyecto.estadoTutoria2 = 'a';
+                    proyecto.estadoTutoria2 = 'A';
                 }
                 else
                 {
-                    proyecto.estadoTutoria2 = 'f';
+                    proyecto.estadoTutoria2 = 'F';
                 }
                 if (cbbEstadoTutoria3.SelectedIndex == 0)
                 {
-                    proyecto.estadoTutoria3 = 'p';
+                    proyecto.estadoTutoria3 = 'P';
                 }
                 else if (cbbEstadoTutoria3.SelectedIndex == 1)
                 {
-                    proyecto.estadoTutoria3 = 'a';
+                    proyecto.estadoTutoria3 = 'A';
                 }
                 else
                 {
-                    proyecto.estadoTutoria3 = 'f';
+                    proyecto.estadoTutoria3 = 'F';
                 }
                 // Crear proyecto
                 ProyectoApi.crearProyecto(proyecto);

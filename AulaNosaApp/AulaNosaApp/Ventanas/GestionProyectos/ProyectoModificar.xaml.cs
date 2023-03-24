@@ -23,13 +23,15 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
     /// </summary>
     public partial class ProyectoModificar : Window
     {
+        List<AlumnoDTO> alumnos;
+        List<AlumnoDTO> alumnoDTOs = new List<AlumnoDTO>();
 
         public ProyectoModificar()
         {
             InitializeComponent();
             // Tomar los atributos del elemento a editar para mostrarlos
             tbxId.Text = Statics.proyectoSeleccionado.id.ToString();
-            tbxIdAlumno.Text = Statics.proyectoSeleccionado.idAlumno.ToString();
+            cbbAlumnos.SelectedItem = Statics.proyectoSeleccionado.alumno.nombre.ToString();
             if (Statics.proyectoSeleccionado.documento == 's')
             {
                 chbDocumento.IsChecked = true;
@@ -49,20 +51,69 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
             tbxNotaDocumento.Text = Statics.proyectoSeleccionado.notaDoc.ToString();
             tbxNotaPresentacion.Text = Statics.proyectoSeleccionado.notaPres.ToString();
             tbxNotaFinal.Text = Statics.proyectoSeleccionado.notaFinal.ToString();
+            dtpExposicion.Text = Statics.proyectoSeleccionado.exposicion.ToString();
+            dtpTutoria1.Text = Statics.proyectoSeleccionado.tutoria1.ToString();
+            dtpTutoria2.Text = Statics.proyectoSeleccionado.tutoria2.ToString();
+            dtpTutoria3.Text = Statics.proyectoSeleccionado.tutoria3.ToString();
+            if (Statics.proyectoSeleccionado.estadoTutoria1 == 'p')
+            {
+                cbbEstadoTutoria1.SelectedIndex = 0;
+            }
+            else if (Statics.proyectoSeleccionado.estadoTutoria1 == 'a')
+            {
+                cbbEstadoTutoria1.SelectedIndex = 1;
+            }
+            else
+            {
+                cbbEstadoTutoria1.SelectedIndex = 2;
+            }
+            if (Statics.proyectoSeleccionado.estadoTutoria2 == 'p')
+            {
+                cbbEstadoTutoria2.SelectedIndex = 0;
+            }
+            else if (Statics.proyectoSeleccionado.estadoTutoria2 == 'a')
+            {
+                cbbEstadoTutoria2.SelectedIndex = 1;
+            }
+            else
+            {
+                cbbEstadoTutoria2.SelectedIndex = 2;
+            }
+            if (Statics.proyectoSeleccionado.estadoTutoria3 == 'p')
+            {
+                cbbEstadoTutoria3.SelectedIndex = 0;
+            }
+            else if (Statics.proyectoSeleccionado.estadoTutoria3 == 'a')
+            {
+                cbbEstadoTutoria3.SelectedIndex = 1;
+            }
+            else
+            {
+                cbbEstadoTutoria3.SelectedIndex = 2;
+            }
+            cargarAlumnos();
+            cbbAlumnos.SelectedIndex = 0;
+        }
+
+        private void cargarAlumnos()
+        {
+            alumnos = AlumnoApi.ListarAlumnos();
+            List<string> alumnosFiltrados = new List<string>();
+            alumnosFiltrados.Clear();
+            foreach (AlumnoDTO alumno in alumnos)
+            {
+                if (alumno.idCurso == Statics.idCursoElegido && alumno.idEstudios == Statics.idEstudioElegido)
+                {
+                    alumnoDTOs.Add(alumno);
+                    alumnosFiltrados.Add(alumno.nombre);
+                }
+            }
+            cbbAlumnos.ItemsSource = alumnosFiltrados;
         }
 
         // Accion al clickear el boton de creacion del proyecto
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            // Verificar si se introdujo un Id de Alumno vacío
-            if (tbxIdAlumno.Text.Length == 0)
-            {
-                lblErrorIdAlumno.Content = "Id de alumno vacio";
-            }
-            else
-            {
-                lblErrorIdAlumno.Content = "";
-            }
             // Verificar que se introdujo una nota de documentacion mayor que 10
             if (tbxNotaDocumento.Text == "" || int.Parse(tbxNotaDocumento.Text) == 0)
             {
@@ -103,19 +154,19 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 lblErrorNotaFinal.Content = "";
             }
             // Si se cumplen todos los requisitos, entrara en la accion de crear el proyecto
-            if (lblErrorIdAlumno.Content == "" && lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "")
+            if (lblErrorNotaDocumento.Content == "" && lblErrorNotaPresentacion.Content == "" && lblErrorNotaFinal.Content == "")
             {
                 // Crear un objeto
                 ProyectoDTO proyecto = new ProyectoDTO();
-                proyecto.id = 1; // (al ser un id autoincremental, este sera el ultimo id registrado + 1, pero se pone aqui un id por que el objeto tiene que tener un valor en el atributo)
-                proyecto.idAlumno = int.Parse(tbxIdAlumno.Text);
+                proyecto.id = int.Parse(tbxId.Text);
+                proyecto.idAlumno = alumnoDTOs[cbbAlumnos.SelectedIndex].id;
                 if (chbDocumento.IsChecked == true)
                 {
                     proyecto.documento = 's';
                 }
                 else
                 {
-                    proyecto.documento = 'a';
+                    proyecto.documento = 'n';
                 }
                 if (chbPresentacion.IsChecked == true)
                 {
@@ -123,7 +174,7 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
                 }
                 else
                 {
-                    proyecto.presentacion = 'a';
+                    proyecto.presentacion = 'n';
                 }
                 proyecto.notaDoc = int.Parse(tbxNotaDocumento.Text);
                 proyecto.notaPres = int.Parse(tbxNotaPresentacion.Text);

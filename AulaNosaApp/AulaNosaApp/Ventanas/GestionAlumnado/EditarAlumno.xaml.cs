@@ -2,6 +2,7 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,10 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
             txtid.Text = alumnoDTO.id.ToString();
             txtNombre.Text = alumnoDTO.nombre.ToString();
             txtEmpresa.Text = alumnoDTO.idEmpresa.ToString();
-            txtEstudios.Text = alumnoDTO.idEstudios.ToString();
-            txtCurso.Text = alumnoDTO.idCurso.ToString();
             DPInicio.Text = alumnoDTO.inicioPr.ToString();
             DPFinal.Text = alumnoDTO.finPr.ToString();
-            chbxCv.IsChecked = alumnoDTO.cv.Equals("a");
-            chbxCarta.IsChecked = alumnoDTO.carta.Equals("a");
+            chbxCv.IsChecked = alumnoDTO.cv.Equals("S");
+            chbxCarta.IsChecked = alumnoDTO.carta.Equals("S");
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -51,19 +50,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                     MessageBox.Show("El valor introducido en el campo 'Id' no es válido. Introduzca un número entero.");
                     return;
                 }
-
-                int Curso;
-                if (!int.TryParse(txtCurso.Text, out Curso))
-                {
-                    MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
-                    return;
-                }
-                int Estudios;
-                if (!int.TryParse(txtEstudios.Text, out Estudios))
-                {
-                    MessageBox.Show("El valor introducido en el campo 'Estudios' no es válido. Introduzca un número entero.");
-                    return;
-                }
                 int Empresa;
                 if (!int.TryParse(txtEmpresa.Text, out Empresa))
                 {
@@ -74,13 +60,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 AlumnoDTO alumnoInsertar = new AlumnoDTO();
                 alumnoInsertar.id = id;
                 alumnoInsertar.nombre = txtNombre.Text.ToString();
-                alumnoInsertar.idCurso = Curso;
-                CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-                if (curso == null)
-                {
-                    MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                alumnoInsertar.idCurso = Statics.idCursoElegido;
                 alumnoInsertar.idEmpresa = Empresa;
                 EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Empresa);
                 if (empresa == null)
@@ -88,15 +68,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                     MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                alumnoInsertar.idEstudios = Estudios;
-                EstudioDTO estudio = new EstudioDTO();
-                estudio.id = Estudios;
-                estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
-                if (estudio == null)
-                {
-                    MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                alumnoInsertar.idEstudios = Statics.idEstudioElegido;
                 try
                 {
                     alumnoInsertar.inicioPr = DateTime.Parse(DPInicio.Text);
@@ -118,19 +90,19 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 }
                 if ((bool)chbxCv.IsChecked)
                 {
-                    alumnoInsertar.cv = "a";
+                    alumnoInsertar.cv = "S";
                 }
                 else
                 {
-                    alumnoInsertar.cv = "b";
+                    alumnoInsertar.cv = "N";
                 }
                 if ((bool)chbxCarta.IsChecked)
                 {
-                    alumnoInsertar.carta = "a";
+                    alumnoInsertar.carta = "S";
                 }
                 else
                 {
-                    alumnoInsertar.carta = "b";
+                    alumnoInsertar.carta = "N";
                 }
                 // Editar alumno
                 AlumnoApi.EditarAlumno(alumnoInsertar);

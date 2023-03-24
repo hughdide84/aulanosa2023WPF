@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AulaNosaApp.Ventanas.GestionProyectos"
         mc:Ignorable="d"
-        Title="CPR AULA NOSA - Gestion Proyecto - Crear Proyecto" Height="650" Width="800" MinHeight="650" MinWidth="800">
+        Title="CPR AULA NOSA - Gestion Proyecto - Crear Proyecto" Height="650" Width="850" MinHeight="650" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -26,10 +26,10 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Margin="20,0,0,0" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">
-                            <TextBlock Text="Id Alumno" Style="{StaticResource TextBlockFormularios}"/>
-                            <TextBox Name="tbxIdAlumno" Style="{StaticResource TextBoxFormularios}" KeyDown="tbxIdAlumno_KeyDown"/>
+                            <TextBlock Text="Alumno" Style="{StaticResource TextBlockFormularios}"/>
+                            <ComboBox Name="cbbAlumnos" Style="{StaticResource ComboBoxFormularios}"/>
                         </StackPanel>
-                        <Label Name="lblErrorIdAlumno" Content=""/>
+                        <Label Name="lblErrorAlumno" Content=""/>
                     </StackPanel>
                     <StackPanel Margin="20,0,0,0" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelDatosForm}">

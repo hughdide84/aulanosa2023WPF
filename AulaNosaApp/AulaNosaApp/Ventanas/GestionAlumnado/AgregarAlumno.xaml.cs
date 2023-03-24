@@ -2,6 +2,7 @@
 using AulaNosaApp.DTO.AdministracionCursos;
 using AulaNosaApp.Servicios;
 using AulaNosaApp.Servicios.AdministracionCursos;
+using AulaNosaApp.Util;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -33,18 +34,6 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
         AlumnoDTO alumno = new AlumnoDTO();
         private async void Guardar_Click(object sender, RoutedEventArgs e)
         {
-            int Curso;
-            if (!int.TryParse(txtCurso.Text, out Curso))
-            {
-                MessageBox.Show("El valor introducido en el campo 'Curso' no es válido. Introduzca un número entero.");
-                return;
-            }
-            int Estudios;
-            if (!int.TryParse(txtEstudios.Text, out Estudios))
-            {    
-                MessageBox.Show("El valor introducido en el campo 'Estudios' no es válido. Introduzca un número entero.");
-                return;                
-            }
             int Empresa;
             if (!int.TryParse(txtEmpresa.Text, out Empresa))
             {
@@ -75,13 +64,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 MessageBox.Show("Error: " + ex.Message);
                 return;
             }
-            alumno.idCurso = Curso;
-            CursoDTO curso = CursosApi.filtrarCursoId(Curso.ToString());
-            if (curso == null)
-            {
-                MessageBox.Show("El curso indicado no existe. Por favor, seleccione un curso válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+            alumno.idCurso = Statics.idCursoElegido;
             alumno.idEmpresa = Empresa;
             EmpresaDTO empresa = EmpresaAPI.consultarEmpresaId(Empresa);
             if (empresa == null)
@@ -89,19 +72,7 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
                 MessageBox.Show("La empresa indicada no existe. Por favor, seleccione una empresa válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            alumno.idEstudios = Estudios;
-            EstudioDTO estudio = new EstudioDTO();
-            estudio.id = Estudios;
-
-            estudio = EstudioApi.filtrarEstudioId(Estudios.ToString());
-
-            if (estudio == null)
-            {
-                MessageBox.Show("El estudio introducido no existe. Introduzca un idEstudios válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-
+            alumno.idEstudios = Statics.idEstudioElegido;
 
 
             if (string.IsNullOrEmpty(alumno.nombre))
@@ -113,19 +84,19 @@ namespace AulaNosaApp.Ventanas.GestionAlumnado
 
             if ((bool)chbxCv.IsChecked)
             {
-                alumno.cv = "a";
+                alumno.cv = "S";
             }
             else
             {
-                alumno.cv = "b";
+                alumno.cv = "N";
             }
             if ((bool)chbxCarta.IsChecked)
             {
-                alumno.carta = "a";
+                alumno.carta = "S";
             }
             else
             {
-                alumno.carta = "b";
+                alumno.carta = "N";
             }
 
             string v = AlumnoApi.AgregarAlumno(alumno);

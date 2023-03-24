@@ -23,5 +23,7 @@ namespace AulaNosaApp.DTO
         public char estadoTutoria1 { get; set; }
         public char estadoTutoria2 { get; set; }
         public char estadoTutoria3 { get; set; }
+        public AlumnoDTO alumno { get; set; }
+        public string nombreAlumno { get; set; }
     }
 }

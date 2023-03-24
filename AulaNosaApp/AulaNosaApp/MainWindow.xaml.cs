@@ -211,9 +211,16 @@ namespace AulaNosaApp
             frmPrincipal.Navigate(new Uri("/Paginas/InfExposiciones/InfExposiciones.xaml", UriKind.Relative));
         }
 
+        // Informe empresas
         private void btnInformes_Click(object sender, RoutedEventArgs e)
         {
             frmPrincipal.Navigate(new Uri("/Paginas/InfEmpresas/InfEmpresas.xaml", UriKind.Relative));
+        }
+
+        // Informe notas
+        private void btnNotas_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrincipal.Navigate(new Uri("/Paginas/InfNotas/InfNotas.xaml", UriKind.Relative));
         }
 
         // Boton de recargar contenido de ambos ComboBox
@@ -318,6 +325,6 @@ namespace AulaNosaApp
             }
         }
 
-        
+       
     }
 }

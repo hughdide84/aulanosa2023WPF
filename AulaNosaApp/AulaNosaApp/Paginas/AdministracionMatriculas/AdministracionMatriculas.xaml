@@ -21,16 +21,16 @@
             <Button Content="Editar" Name="btnEditarMatricula" IsEnabled="False" Style="{StaticResource BotonesAdministracion}" Click="btnEditarMatricula_Click"/>
             <Button Content="Pagos" Name="btnMostrarPagos" IsEnabled="False" Style="{StaticResource BotonesAdministracion}" Click="btnMostrarPagos_Click"/>
         </ToolBar>
-        <DataGrid Grid.Row="2" Name="dgvMatriculas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False"
-                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvMatriculas_Selected">
+        <DataGrid Grid.Row="2" Name="dgvMatriculas" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" DataGridCell.Selected="dgvMatriculas_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="7*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="10*"/>
                 <DataGridTextColumn Header="Factura" Binding="{Binding factura}" Width="10*"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="10*"/>
                 <DataGridTextColumn Header="NIF" Binding="{Binding nif}" Width="10*"/>
                 <DataGridTextColumn Header="Cuota" Binding="{Binding cuota}" Width="10*"/>
                 <DataGridTextColumn Header="Matricula" Binding="{Binding matricula}" Width="10*"/>
-                <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}" Width="20*"/>
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}" Width="10*"/>
                 <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding fecha}" Width="10*"/>
                 <DataGridTextColumn Header="Fecha Baja" Binding="{Binding fechaBaja}" Width="10*"/>
             </DataGrid.Columns> 

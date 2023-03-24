@@ -39,18 +39,17 @@ namespace AulaNosaApp.Paginas.GestionProyectos
         // Refrescar lista de cursos
         void refrescarProyectos()
         {
+            btnModificar.IsEnabled = false;
+            btnEliminar.IsEnabled = false;
             cbbConsultar.Visibility = Visibility.Collapsed;
             tbxConsultarId.Text = "";
             tbxConsultarId.Visibility = Visibility.Collapsed;
             btnBuscar.Visibility = Visibility.Collapsed;
             proyectosLista = ProyectoApi.listarProyectos();
-            //for (int i = 0; i < proyectosLista.Count; i++)
-            //{
-            //    if (proyectosLista[i].documento.Checked == true)
-            //    {
-            //        cbxDocumento.IsThreeState = true;
-            //    }
-            //}
+            foreach (ProyectoDTO proyecto in proyectosLista)
+            {
+                proyecto.nombreAlumno = proyecto.alumno.nombre;
+            }
             dgvListado.ItemsSource = null;
             dgvListado.Items.Clear();
             dgvListado.ItemsSource = proyectosLista;
