@@ -105,7 +105,7 @@ namespace AulaNosaApp.Ventanas.GestionProyectos
             }
             else
             {
-                lblErrorFechaFin.Content = "";
+                lblErrorFechaTutoria2.Content = "";
             }
             // Verificar si se introdujo una fecha de tutoria3 y que esta sea despues de la fecha de tutoria2
             if (dtpTutoria3.SelectedDate == null)
